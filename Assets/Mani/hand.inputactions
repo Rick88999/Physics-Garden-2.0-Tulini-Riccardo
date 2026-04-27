@@ -1,0 +1,183 @@
+{
+    "version": 1,
+    "name": "hand",
+    "maps": [
+        {
+            "name": "hand_input",
+            "id": "18321b57-30cc-40b5-ac82-24c1d68c2ad8",
+            "actions": [
+                {
+                    "name": "GripRight",
+                    "type": "Value",
+                    "id": "762be972-c447-4e0d-9faf-81c22c0d65bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GripLeft",
+                    "type": "Value",
+                    "id": "193a1b21-545f-4964-8b23-b2c424dc8a83",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TriggerRight",
+                    "type": "Value",
+                    "id": "a3f7d660-f481-461d-a276-dc82af9d66f7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TriggerLeft",
+                    "type": "Value",
+                    "id": "666c429d-859a-4003-8557-663fe95ba1f1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5fd9facd-635b-47a3-8af4-1e357178209c",
+                    "path": "<ViveController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6c81fe0f-2782-4d55-95ce-a2ece06b369e",
+                    "path": "<QuestProTouchController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "840e8455-5dce-4385-8a15-98332e4a4ed6",
+                    "path": "<QuestProTouchController>/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bba6e50f-e6da-4f20-8db7-f5799e8b3f46",
+                    "path": "<ViveController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88a458f8-d9f8-48eb-8e02-a90fe601dfdc",
+                    "path": "<QuestProTouchController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d094cca-7433-44ec-bced-d3279a8e74e6",
+                    "path": "<QuestProTouchController>/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GripLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01720a02-81d6-41e9-b0fa-f274d7b5b2e0",
+                    "path": "<ViveController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebc067fc-b95c-4a86-bec6-e4d63d658bf9",
+                    "path": "<QuestTouchPlusController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6ebb575-9271-4a5d-a73e-b44eb743bf70",
+                    "path": "<QuestProTouchController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24c6e3fd-2911-49a6-b388-f01a4894103f",
+                    "path": "<ViveController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1fd10a8-8bee-4e94-a3b4-7a1a70942f76",
+                    "path": "<QuestTouchPlusController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0047f27c-681f-4043-aef5-ed63bd3f20ac",
+                    "path": "<QuestProTouchController>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

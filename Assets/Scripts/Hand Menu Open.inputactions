@@ -1,0 +1,121 @@
+{
+    "version": 1,
+    "name": "Hand Menu Open",
+    "maps": [
+        {
+            "name": "Hand Menu Open",
+            "id": "8d3be7af-79c7-44cb-a2b3-47699e1e22dc",
+            "actions": [
+                {
+                    "name": "OpenHandMenuRight",
+                    "type": "Button",
+                    "id": "74bd3653-a903-49e4-81da-25be388e4d45",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenHandMenuLeft",
+                    "type": "Button",
+                    "id": "23d085ea-9bac-4618-954e-0719cb2c4b19",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "RightHandMenu",
+                    "id": "c6ec8fa5-0792-484b-89d0-c50dc55d5201",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "488334ae-0fff-46cc-966b-1c7b62089149",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "f6d85994-b0d3-42bd-b2f6-ca6f7989a68a",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>/trackpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5d63f822-379f-4717-b42c-380073a09c57",
+                    "path": "<QuestTouchPlusController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "LeftHandMenu",
+                    "id": "5a827977-1f67-421a-9c43-238656bea3af",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "759d8b7b-991a-4e79-bf69-21a8fbf0aabf",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "7b7cc8ec-30ad-4255-bb12-2a84346e9c26",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>/trackpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ef10a520-4cd4-4240-88bf-f499e0fd7171",
+                    "path": "<QuestTouchPlusController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
