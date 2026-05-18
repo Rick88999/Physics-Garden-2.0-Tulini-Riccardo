@@ -25,6 +25,8 @@ public class RuotaPiano : MonoBehaviour
     private float angoloMano;
     private float angoloManopolaAttuale = 0f;
     private Vector3 fixedPosition;
+    [SerializeField] private GameObject DataCardSpawner;
+    private float actualPianoAngle = 0f;
 
     void Awake()
     {
@@ -45,7 +47,17 @@ public class RuotaPiano : MonoBehaviour
 
         
         if (currentInteractXR != null)
+        {
             UpdateKnob(currentInteractXR.transform);
+            TransmitResult();
+        }
+            
+    }
+
+    private void TransmitResult() { 
+        if (DataCardSpawner != null) {
+            DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(actualPianoAngle);
+        }
     }
 
     private void OnGrab(SelectEnterEventArgs args)
@@ -79,6 +91,7 @@ public class RuotaPiano : MonoBehaviour
         float pianoAngle = Mathf.Lerp(minAngle, maxAngle, t);
         angoloText.text = $"{pianoAngle:F1}°";
         piano.localRotation = Quaternion.Euler(-pianoAngle, 0f, 0f);
+        actualPianoAngle = pianoAngle;
     }
 
     private float GetHandAngle(Transform hand)

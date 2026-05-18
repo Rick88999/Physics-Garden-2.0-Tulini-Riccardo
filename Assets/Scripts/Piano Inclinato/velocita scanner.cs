@@ -6,6 +6,7 @@ public class velocitascanner : MonoBehaviour
     [SerializeField] public float minimumvelocity = 0.05f;
     [SerializeField] public float detectionValue = 0;
     [SerializeField] public TextMeshProUGUI velocitaText;
+    [SerializeField] private GameObject DataCardSpawner;
     private float velocitaVera;
 
  
@@ -19,7 +20,8 @@ public class velocitascanner : MonoBehaviour
             
             velocitaText.text = $"Velocita finale: {velocitaFinale:F3} m/s";
 
-            
+            DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(velocitaFinale);
+            DataCardSpawner.GetComponent<SpawnCard>().SpawnDataCard();
 
         }
 
