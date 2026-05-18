@@ -50,7 +50,7 @@ public class SpawnCard : MonoBehaviour
             if (resultCard != null)
             {
                 resultCard.SetName(nome);
-                resultCard.SetValue(valore);
+                resultCard.SetValue(Mathf.Round(valore * 100f) / 100f);
                 resultCard.SetUnitaMisura(unitaMisura);
                 if (!string.IsNullOrEmpty(details))
                 {
