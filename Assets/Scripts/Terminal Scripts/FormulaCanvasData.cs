@@ -11,4 +11,9 @@ public class FormulaCanvasData : MonoBehaviour
             canvasDaAttivare.SetActive(false);
         }
     }
+
+    public void SetCanvas(GameObject NewCanvas)
+    {
+        canvasDaAttivare = NewCanvas;
+    }
 }

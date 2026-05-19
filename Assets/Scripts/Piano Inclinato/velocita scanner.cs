@@ -20,7 +20,7 @@ public class velocitascanner : MonoBehaviour
             
             velocitaText.text = $"Velocita finale: {velocitaFinale:F3} m/s";
 
-            DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(velocitaFinale);
+            DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 10f) / 10f);
             DataCardSpawner.GetComponent<SpawnCard>().SpawnDataCard();
 
         }

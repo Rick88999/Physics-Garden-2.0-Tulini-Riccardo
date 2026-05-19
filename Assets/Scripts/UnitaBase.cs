@@ -13,3 +13,9 @@ public enum UnitaMisura
     Velocita,
     Angolo
 }
+
+public enum TipoCard
+{
+    DataCard,
+    FormulaCard
+}

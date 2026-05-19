@@ -93,7 +93,7 @@ public class CalculationCore : MonoBehaviour
 
     private void AltezzaSeno()
     {
-        result = value[0]* Mathf.Sin(value[1] * Mathf.Deg2Rad);
+        result = value[0] * Mathf.Sin(value[1] * Mathf.Deg2Rad);
     }
 
     private void AltezzaCoseno()

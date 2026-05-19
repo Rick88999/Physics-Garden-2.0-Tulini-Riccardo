@@ -91,7 +91,7 @@ public class RuotaPiano : MonoBehaviour
         float pianoAngle = Mathf.Lerp(minAngle, maxAngle, t);
         angoloText.text = $"{pianoAngle:F1}°";
         piano.localRotation = Quaternion.Euler(-pianoAngle, 0f, 0f);
-        actualPianoAngle = pianoAngle;
+        actualPianoAngle = Mathf.Round(pianoAngle * 10f) / 10f;
     }
 
     private float GetHandAngle(Transform hand)
