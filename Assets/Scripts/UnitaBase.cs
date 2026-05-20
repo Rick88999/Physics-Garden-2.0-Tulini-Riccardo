@@ -2,7 +2,11 @@ public enum Operazione
 {
     AltezzaSeno,
     AltezzaCoseno,
-    AltezzaTan
+    AltezzaTan,
+    MassaDaInerzia,
+    costanteInerzialeX1,
+    costanteInerzialeX2,
+    costanteInerzialeO,
 }
 
 public enum UnitaMisura
@@ -11,7 +15,10 @@ public enum UnitaMisura
     Centimetri,
     Millimetri,
     Velocita,
-    Angolo
+    Angolo,
+    Kilogrammi,
+    Accelerazione,
+    None
 }
 
 public enum TipoCard

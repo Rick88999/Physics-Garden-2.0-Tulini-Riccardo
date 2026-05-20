@@ -100,4 +100,9 @@ public class RuotaPiano : MonoBehaviour
         dir.x = 0f;
         return Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
     }
+
+    public float GetCurrentPianoAngle()
+    {
+        return actualPianoAngle;
+    }
 }

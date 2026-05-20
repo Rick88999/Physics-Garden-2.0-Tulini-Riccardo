@@ -30,6 +30,11 @@ public class SpawnCard : MonoBehaviour
     [Header("Formula Card Only")]
     [SerializeField] private GameObject formulaCanvas;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clickSoundError;
+    [SerializeField] private AudioClip clickSoundSuccess;
+
     private GameObject SpawnAction()
     {
         if (spawnSocket.hasSelection)
@@ -72,6 +77,7 @@ public class SpawnCard : MonoBehaviour
                     if (formulaCanvasData != null)
                     {
                         formulaCanvasData.SetCanvas(formulaCanvas);
+                        audioSource.PlayOneShot(clickSoundSuccess);
                     }
                 }
             }
@@ -84,9 +90,8 @@ public class SpawnCard : MonoBehaviour
         if (CardPrefab != null && tipoCard == TipoCard.DataCard)
         {
             //valueIsSet = false;
-            nome = tipoDataCard.ToString();
-            string unitaMisura = simboliUnita[tipoDataCard];
             GameObject card = SpawnAction();
+            string unitaMisura = simboliUnita[tipoDataCard];
             DataCard resultCard = card.GetComponent<DataCard>();
             if (resultCard != null)
             {
@@ -98,15 +103,18 @@ public class SpawnCard : MonoBehaviour
                     resultCard.SetDetails(details);
                 }
                 resultCard.SetTextTarghetta();
+                audioSource.PlayOneShot(clickSoundSuccess);
             }
         }
         else if(!valueIsSet)
         {
             Debug.LogWarning("Valore non impostato. Impossibile generare la DataCard.");
+            audioSource.PlayOneShot(clickSoundError);
         }
          else if (CardPrefab == null)
         {
             Debug.LogWarning("Prefab della DataCard non assegnato. Impossibile generare la DataCard.");
+            audioSource.PlayOneShot(clickSoundError);
         }
     }
 

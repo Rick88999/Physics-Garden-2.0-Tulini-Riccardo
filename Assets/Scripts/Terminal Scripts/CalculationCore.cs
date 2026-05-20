@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class CalculationCore : MonoBehaviour
@@ -10,19 +11,37 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Metri,       "m"  },
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
-        { UnitaMisura.Velocita,    "m/s" }
+        { UnitaMisura.Velocita,    "m/s" },
+        { UnitaMisura.Angolo,      "°"  },
+        { UnitaMisura.Kilogrammi, "kg" },
+        { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
+        { UnitaMisura.None, "" }
     };
 
-
+    [Header("Sockets per i valori")]
     [SerializeField]XRSocketInteractor[] sockets;
-    [SerializeField] XRSocketInteractor spawnSocket;
+
+    [Header("Prefab della card risultato (DataCard)")]
     [SerializeField] GameObject resultCardPrefab;
+
+    [Header("Puntatori per la spawn della card risultato")]
+    [SerializeField] XRSocketInteractor spawnSocket;
     [SerializeField] Transform spawnResultCard;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clickSoundError;
+    [SerializeField] private AudioClip clickSoundSuccess;
+
+    [Header("Script per il cambio pagina")]
     [SerializeField] changePage changePageScript;
-    private float[] value;
+
+    private Dictionary<string, float> value;
     private float result;
     
     private string unitaMisura;
+    private float velocitaReale;
+
 
     private void eliminaOggettiInSockets()
     {
@@ -64,14 +83,16 @@ public class CalculationCore : MonoBehaviour
             resultCard.SetUnitaMisura(unitaMisura);
             resultCard.SetTextTarghetta();
         }
+        audioSource.PlayOneShot(clickSoundSuccess);
         changePageScript.ChangePageNext();
+
     }
 
     private bool ConversioneSocket(XRSocketInteractor[] sockets)
     {
         if (sockets != null)
         {
-            value = new float[sockets.Length];
+            value = new Dictionary<string, float>();
         }
         foreach (XRSocketInteractor socket in sockets) {
             if (socket.hasSelection)
@@ -80,36 +101,134 @@ public class CalculationCore : MonoBehaviour
 
                 if (data != null)
                 {
-                    value[System.Array.IndexOf(sockets, socket)] = data.GetValue();
+                    value.Add(data.GetName(), data.GetValue());
                 }
             }
             else{
-                Debug.LogError("Socket " + socket.name + " is empty. Please fill all sockets.");
+                Debug.Log("Socket " + socket.name + " is empty. Please fill all sockets.");
+                audioSource.PlayOneShot(clickSoundError);
                 return false;
             }
         }
         return true;
     }
 
-    private void AltezzaSeno()
+    private bool AltezzaSeno()
     {
-        result = value[0] * Mathf.Sin(value[1] * Mathf.Deg2Rad);
+        if(value.ContainsKey("Lunghezza") && value.ContainsKey("Angolo")) 
+        {
+            result = value["Lunghezza"] * Mathf.Sin(value["Angolo"] * Mathf.Deg2Rad);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for AltezzaSeno calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
     }
 
-    private void AltezzaCoseno()
+    private bool AltezzaCoseno()
     {
-        result = value[0] * Mathf.Cos(value[1] * Mathf.Deg2Rad);
+        if (value.ContainsKey("Lunghezza") && value.ContainsKey("Angolo"))
+        {
+            result = value["Lunghezza"] * Mathf.Cos(value["Angolo"] * Mathf.Deg2Rad);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for AltezzaCoseno calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
     }
 
-    private void AltezzaTan()
+    private bool AltezzaTan()
     {
-        result = value[0] * Mathf.Tan(value[1] * Mathf.Deg2Rad);
+        if(value.ContainsKey("Altezza") && value.ContainsKey("Angolo")) 
+        {
+            result = value["Altezza"] * Mathf.Tan(value["Angolo"] * Mathf.Deg2Rad);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for AltezzaTan calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool MassaDaInerzia()
+    {
+        if(value.ContainsKey("Inerzia") && value.ContainsKey("Velocita") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Raggio")) 
+        {
+            result = value["Inerzia"] * Mathf.Pow(value["Velocita"], 2) / (Mathf.Pow(value["Raggio"], 2) * ((2 * value["Accelerazione di gravita"] * value["Altezza"]) - Mathf.Pow(value["Velocita"],2)));
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for MassaDaInerzia calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+    private bool CostanteInerzialeX1()
+    {
+        float localRes;
+        if(value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        {
+            localRes = ((value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1;
+            result = Mathf.Round(localRes * 10f) / 10f;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for CostanteInerzialeX1 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool CostanteInerzialeX2()
+    {
+        float localRes;
+        if (value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        {
+            localRes = Mathf.Sqrt(((2 * value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1);
+            result = Mathf.Round(localRes * 10f) / 10f;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for CostanteInerzialeX2 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool CostanteInerzialeO()
+    {
+        float localRes;
+        if (value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        {
+            localRes = (2*(value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1;
+            result = Mathf.Round(localRes * 10f) / 10f;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for CostanteInerzialeO calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
     }
 
     private void Calcolo(Operazione operazione)
     {
+        bool esito = false;
         if (!ConversioneSocket(sockets))
         {
+            audioSource.PlayOneShot(clickSoundError);
             return;
         }
         else
@@ -117,23 +236,44 @@ public class CalculationCore : MonoBehaviour
             switch (operazione)
             {
                 case Operazione.AltezzaSeno:
-                    AltezzaSeno();
+                    esito = AltezzaSeno();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    SpawnResultCard("Altezza h");
+                    if (esito) SpawnResultCard("Altezza");
                     Debug.Log("Altezza: " + result);
                     break;
                 case Operazione.AltezzaCoseno:
-                    AltezzaCoseno();
+                    esito = AltezzaCoseno();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    SpawnResultCard("Altezza h");
+                    if (esito) SpawnResultCard("Altezza");
                     Debug.Log("Altezza: " + result);
                     break;
                 case Operazione.AltezzaTan:
-                    AltezzaTan();
+                    esito = AltezzaTan();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    SpawnResultCard("Altezza h");
+                    if (esito) SpawnResultCard("Altezza");
                     Debug.Log("Altezza: " + result);
                     break;
+                case Operazione.MassaDaInerzia:
+                    esito = MassaDaInerzia();
+                    unitaMisura = simboliUnita[UnitaMisura.Kilogrammi];
+                    if (esito) SpawnResultCard("Massa");
+                    break;
+                case Operazione.costanteInerzialeX1:
+                    esito = CostanteInerzialeX1();
+                    unitaMisura = simboliUnita[UnitaMisura.None];
+                    if (esito) SpawnResultCard("Costante Inerziale");
+                    break;
+                case Operazione.costanteInerzialeX2:
+                    esito = CostanteInerzialeX2();
+                    unitaMisura = simboliUnita[UnitaMisura.None];
+                    if (esito) SpawnResultCard("Costante Inerziale");
+                    break;
+                case Operazione.costanteInerzialeO:
+                    esito = CostanteInerzialeO();
+                    unitaMisura = simboliUnita[UnitaMisura.None];
+                    if (esito) SpawnResultCard("Costante Inerziale");
+                    break;
+
 
             }
         }   
@@ -142,5 +282,10 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloAltezzaSeno() => Calcolo(Operazione.AltezzaSeno);
         public void CalcoloAltezzaCoseno() => Calcolo(Operazione.AltezzaCoseno);
         public void CalcoloAltezzaTan() => Calcolo(Operazione.AltezzaTan);
+        public void CalcoloMassaDaInerzia() => Calcolo(Operazione.MassaDaInerzia);
+        public void CalcoloCostanteInerzialeX1() => Calcolo(Operazione.costanteInerzialeX1);
+        public void CalcoloCostanteInerzialeX2() => Calcolo(Operazione.costanteInerzialeX2);
+        public void CalcoloCostanteInerzialeO() => Calcolo(Operazione.costanteInerzialeO);
+
 }
 
