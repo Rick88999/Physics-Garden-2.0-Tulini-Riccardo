@@ -15,6 +15,9 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Angolo,      "°"  },
         { UnitaMisura.Kilogrammi, "kg" },
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
+        { UnitaMisura.Inerzia, "kg*m<sup>2</sup>" },
+        { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
+        { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
         { UnitaMisura.None, "" }
     };
 
@@ -223,6 +226,67 @@ public class CalculationCore : MonoBehaviour
         }
     }
 
+    private bool InerziaX1()
+    {
+        if(value.ContainsKey("Massa") && value.ContainsKey("Raggio"))
+        {
+            result = value["Massa"] * Mathf.Pow(value["Raggio"], 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for InerziaX1 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool InerziaX2()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        {
+            result = value["Costante Inerziale"] * value["Massa"] * Mathf.Pow(value["Raggio"], 3);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for InerziaX2 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool InerziaX3()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        {
+            result = value["Costante Inerziale"] * value["Raggio"] * Mathf.Pow(value["Massa"], 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for InerziaX3 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool InerziaO()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        {
+            result = value["Costante Inerziale"] * value["Massa"] * Mathf.Pow(value["Raggio"], 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for InerziaO calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+
     private void Calcolo(Operazione operazione)
     {
         bool esito = false;
@@ -273,8 +337,26 @@ public class CalculationCore : MonoBehaviour
                     unitaMisura = simboliUnita[UnitaMisura.None];
                     if (esito) SpawnResultCard("Costante Inerziale");
                     break;
-
-
+                case Operazione.InerziaX1:
+                    esito = InerziaX1();
+                    unitaMisura = simboliUnita[UnitaMisura.Inerzia];
+                    if (esito) SpawnResultCard("Inerzia");
+                    break;
+                case Operazione.InerziaX2:
+                    esito = InerziaX2();
+                    unitaMisura = simboliUnita[UnitaMisura.InerziaX2];
+                    if (esito) SpawnResultCard("Inerzia");
+                    break;
+                case Operazione.InerziaX3:
+                    esito = InerziaX3();
+                    unitaMisura = simboliUnita[UnitaMisura.InerziaX3];
+                    if (esito) SpawnResultCard("Inerzia");
+                    break;
+                case Operazione.InerziaO:
+                    esito = InerziaO();
+                    unitaMisura = simboliUnita[UnitaMisura.Inerzia];
+                    if (esito) SpawnResultCard("Inerzia");
+                    break;
             }
         }   
     }
@@ -286,6 +368,11 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloCostanteInerzialeX1() => Calcolo(Operazione.costanteInerzialeX1);
         public void CalcoloCostanteInerzialeX2() => Calcolo(Operazione.costanteInerzialeX2);
         public void CalcoloCostanteInerzialeO() => Calcolo(Operazione.costanteInerzialeO);
+        public void CalcoloInerziaX1() => Calcolo(Operazione.InerziaX1);
+        public void CalcoloInerziaX2() => Calcolo(Operazione.InerziaX2);
+        public void CalcoloInerziaX3() => Calcolo(Operazione.InerziaX3);
+        public void CalcoloInerziaO() => Calcolo(Operazione.InerziaO);
+
 
 }
 

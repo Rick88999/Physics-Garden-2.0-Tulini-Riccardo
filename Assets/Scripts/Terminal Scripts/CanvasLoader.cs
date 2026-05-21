@@ -13,6 +13,11 @@ public class CanvasLoader : MonoBehaviour
     private GameObject canvasAttivo;
     public float durataFade = 0.5f;
 
+    public void ChengeCanvasAttivo(GameObject nuovoCanvas)
+    {
+        canvasAttivo = nuovoCanvas;
+    }
+
     void Awake()
     {
         socket = GetComponent<XRSocketInteractor>();

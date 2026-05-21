@@ -7,6 +7,10 @@ public enum Operazione
     costanteInerzialeX1,
     costanteInerzialeX2,
     costanteInerzialeO,
+    InerziaO,
+    InerziaX1,
+    InerziaX2,
+    InerziaX3
 }
 
 public enum UnitaMisura
@@ -18,6 +22,9 @@ public enum UnitaMisura
     Angolo,
     Kilogrammi,
     Accelerazione,
+    Inerzia,
+    InerziaX2,
+    InerziaX3,
     None
 }
 

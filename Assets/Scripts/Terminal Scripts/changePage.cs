@@ -4,6 +4,7 @@ public class changePage : MonoBehaviour
 {
     [SerializeField] private GameObject pageNext;
     [SerializeField] private GameObject pageActual;
+    [SerializeField] private CanvasLoader canvasLoader;
 
     private  void ChangePage(string command)
     {
@@ -14,6 +15,7 @@ public class changePage : MonoBehaviour
 
                 pageNext.SetActive(true);
                 pageActual.SetActive(false);
+                canvasLoader.ChengeCanvasAttivo(pageNext);
             }
         }
     }
