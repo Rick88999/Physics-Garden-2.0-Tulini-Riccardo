@@ -7,6 +7,7 @@ TagManager:
   - DataCard
   - LinkSocket
   - FormulaCard
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

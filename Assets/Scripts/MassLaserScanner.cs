@@ -5,21 +5,27 @@ using TMPro;
 [RequireComponent(typeof(LineRenderer))]
 public class MassLaserScanner : MonoBehaviour
 {
-    public Transform rayOrigin;
-    public float maxDistance = 10f;
+    [SerializeField] private SpawnCard spawnCard;
+    [SerializeField] private Transform rayOrigin;
+    [SerializeField] private float maxDistance = 10f;
 
-    public Color coloreNormale = Color.red;
-    public Color coloreScansionabile = Color.green;
+    [SerializeField] private Color coloreNormale = Color.red;
+    [SerializeField] private Color coloreScansionabile = Color.green;
 
-    public InputActionReference scanAction;
-    public float massaMemorizzata = 0f;
-
+    private DualHandAttach dualHandAttach;
+    [SerializeField]private InputActionReference scanAction;
+    [SerializeField] private InputActionReference spawnCardAction;
     private LineRenderer lineRenderer;
-    [SerializeField] public TextMeshProUGUI displayRisultato;
+
+    private float massaMemorizzata = 0f;
+    
+    [SerializeField] private TextMeshProUGUI displayRisultato;
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        dualHandAttach = GetComponent<DualHandAttach>();
+        spawnCard = GetComponent<SpawnCard>();
         lineRenderer.positionCount = 2;
 
         ImpostaColoreLaser(coloreNormale);
@@ -27,12 +33,42 @@ public class MassLaserScanner : MonoBehaviour
 
     private void OnEnable()
     {
-        if (scanAction != null) scanAction.action.performed += EseguiScansione;
+        SubscribeScan();
+        Debug.Log("Scan action enabled: " + scanAction);
     }
 
     private void OnDisable()
     {
+        UnsubscribeScan();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("PlayerHand")) return;
+
+        var newAction = dualHandAttach.getScanAction();
+        var newSpawnCardAction = dualHandAttach.getSpawnCardAction();
+        if (newAction == null) return;
+
+        if (scanAction != newAction && spawnCardAction != newSpawnCardAction)
+        {
+            UnsubscribeScan();
+            scanAction = newAction;
+            spawnCardAction = newSpawnCardAction;
+            SubscribeScan();
+        }
+    }
+
+    private void SubscribeScan()
+    {
+        if (scanAction != null) scanAction.action.performed += EseguiScansione;
+        if (spawnCardAction != null) spawnCardAction.action.performed += GenerateDataCard;
+    }
+
+    private void UnsubscribeScan()
+    {
         if (scanAction != null) scanAction.action.performed -= EseguiScansione;
+        if (spawnCardAction != null) spawnCardAction.action.performed -= GenerateDataCard;
     }
 
     private void Update()
@@ -75,9 +111,21 @@ public class MassLaserScanner : MonoBehaviour
             {
                 massaMemorizzata = rb.mass;
 
-                displayRisultato.text = massaMemorizzata+" kg";
+                displayRisultato.text = massaMemorizzata+"kg";
+                Debug.Log("Massa scansionata: " + massaMemorizzata + " kg");
             }
         }
+    }
+
+    private void GenerateDataCard(InputAction.CallbackContext context) 
+    { 
+        if (!context.performed) return;
+        if (spawnCard == null) return;
+        if(massaMemorizzata <= 0f) return;
+
+        spawnCard.ValueReceiver(massaMemorizzata);
+        spawnCard.SpawnDataCard();
+
     }
 
  

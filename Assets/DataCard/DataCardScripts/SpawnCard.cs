@@ -10,7 +10,8 @@ public class SpawnCard : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
-        { UnitaMisura.Angolo,      "°"  }
+        { UnitaMisura.Angolo,      "°"  },
+        { UnitaMisura.Kilogrammi,  "kg" }
     };
     
     [SerializeField] public TipoCard tipoCard;

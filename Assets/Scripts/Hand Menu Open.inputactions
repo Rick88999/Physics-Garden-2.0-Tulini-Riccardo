@@ -62,7 +62,7 @@
                 {
                     "name": "",
                     "id": "5d63f822-379f-4717-b42c-380073a09c57",
-                    "path": "<QuestTouchPlusController>{RightHand}/primaryButton",
+                    "path": "<QuestTouchPlusController>{RightHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -106,11 +106,59 @@
                 {
                     "name": "",
                     "id": "ef10a520-4cd4-4240-88bf-f499e0fd7171",
-                    "path": "<QuestTouchPlusController>{LeftHand}/primaryButton",
+                    "path": "<QuestTouchPlusController>{LeftHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OpenHandMenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Tools Action",
+            "id": "7a546e15-a178-4788-886c-0bd40a1f2ba4",
+            "actions": [
+                {
+                    "name": "SpawnCardRight",
+                    "type": "Button",
+                    "id": "aef6caff-a906-45e0-ac53-ca5f7c60a11e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpawnCardLeft",
+                    "type": "Button",
+                    "id": "0a39742d-d7d8-489d-90c4-58a5d8e66d61",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "58615f5f-b690-4b7f-8f24-21642757fb72",
+                    "path": "<QuestTouchPlusController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnCardRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24f62ea0-bdbf-4475-ace9-c70153f6df8f",
+                    "path": "<QuestTouchPlusController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnCardLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
