@@ -59,6 +59,22 @@ public class MassLaserScanner : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("PlayerHand")) return;
+        if (scanAction == null) return;
+        UnsubscribeScan();
+        var newAction = dualHandAttach.getScanAction();
+        var newSpawnCardAction = dualHandAttach.getSpawnCardAction();
+        if (scanAction != newAction && spawnCardAction != newSpawnCardAction)
+        {
+            scanAction = newAction;
+            spawnCardAction = newSpawnCardAction;
+            SubscribeScan();
+        }
+    }
+
+
     private void SubscribeScan()
     {
         if (scanAction != null) scanAction.action.performed += EseguiScansione;
