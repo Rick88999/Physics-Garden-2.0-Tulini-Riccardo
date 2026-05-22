@@ -5,6 +5,7 @@ public class Quest : MonoBehaviour
     [SerializeField] public int questID;
     [SerializeField]private string state = "noActivated";
     [SerializeField] public Step[] steps;
+    [SerializeField] private StartCollider[] startColliders;
 
 
     public void startQuest()
@@ -27,6 +28,12 @@ public class Quest : MonoBehaviour
     public string getQuestState()
     {
         return state;
+    }
+
+    public void DestroyQuestTrigger()
+    {
+        if (startColliders == null || startColliders.Length == 0) return;
+        else foreach (StartCollider startCollider in startColliders) startCollider.DestroyTriggers();
     }
 
 

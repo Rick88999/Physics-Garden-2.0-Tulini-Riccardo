@@ -1,15 +1,21 @@
 using UnityEngine;
 
-public class startCollider : MonoBehaviour
+public class StartCollider : MonoBehaviour
 {
-   public QuestManager questManager;
+    public QuestManager questManager;
     [SerializeField] private int number;
+    [SerializeField] private GameObject[] members;
 
     public void OnTriggerEnter(Collider other)
     {
-        
-            questManager.startQuest(number);
-            Destroy(gameObject);
-        
+        if (other.gameObject.tag != "Player") return;
+        questManager.startQuest(number);
+        DestroyTriggers();
+    }
+
+    public void DestroyTriggers()
+    {
+        if (members == null || members.Length == 0) return;
+        foreach (GameObject member in members) Destroy(member);
     }
 }
