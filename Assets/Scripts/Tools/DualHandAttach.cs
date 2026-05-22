@@ -23,11 +23,13 @@ public class DualHandAttach : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("PlayerHand")) return;
+#if UNITY_EDITOR && DEBUG
         if (counterDebug == 0)
         {
             counterDebug++;
             return;
         }
+#endif
         beforeGrabIsRight = isRight;
 
         isRight = other.transform.name.Contains("Right");

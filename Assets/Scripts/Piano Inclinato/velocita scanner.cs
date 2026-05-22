@@ -17,8 +17,8 @@ public class velocitascanner : MonoBehaviour
         float velocitaFinale;
         float accelerazioneGravitazionale = 9.81f;
         float lunghezzaPianoInclinato = 1.5f;
-        float costanteInerzialeSfera = 0.5f;
-        float costanteInerzialeCilindro = 0.4f;
+        float costanteInerzialeSfera = 0.4f;
+        float costanteInerzialeCilindro = 0.5f;
 
         if (rb != null)
         {
