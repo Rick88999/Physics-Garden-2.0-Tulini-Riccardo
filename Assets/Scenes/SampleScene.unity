@@ -22282,6 +22282,7 @@ MonoBehaviour:
   - {fileID: 1026969690}
   objectsList:
   - {fileID: 1026969690}
+  - {fileID: 1695145293}
   - {fileID: 532795929}
   - {fileID: 1434681435}
   isLastStep: 0
@@ -32562,6 +32563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryValue
   matchName: Inerzia
   matchData: 0.005
+  delta: 0.00001
 --- !u!1 &536848952
 GameObject:
   m_ObjectHideFlags: 0
@@ -56782,6 +56784,7 @@ MonoBehaviour:
   toActivateAtEnd:
   - {fileID: 532795929}
   - {fileID: 1434681435}
+  - {fileID: 1695145293}
 --- !u!4 &1026969692
 Transform:
   m_ObjectHideFlags: 0
@@ -87059,6 +87062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryValue
   matchName: Inerzia
   matchData: 0.004
+  delta: 0.00001
 --- !u!1 &1436655025
 GameObject:
   m_ObjectHideFlags: 0
@@ -92032,7 +92036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   state: noActivated
   father: {fileID: 218441061}
-  NextStep: {fileID: 692968591}
+  NextStep: {fileID: 0}
   objectsToActivate:
   - {fileID: 275886485}
   objectsList:
@@ -98213,6 +98217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MemoryValue
   matchName: Altezza
   matchData: 0.75
+  delta: 0.00001
 --- !u!1 &1837072367
 GameObject:
   m_ObjectHideFlags: 0

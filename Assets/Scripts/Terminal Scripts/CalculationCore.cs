@@ -276,6 +276,7 @@ public class CalculationCore : MonoBehaviour
         if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
         {
             result = value["Costante Inerziale"] * value["Massa"] * Mathf.Pow(value["Raggio"], 2);
+            result = Mathf.Round(result * 1000f) / 1000f;
             return true;
         }
         else

@@ -112,15 +112,20 @@ public class DataCardScanValueActivator : MonoBehaviour
                 DataCard dataCardValue = interactables[i].transform.GetComponent<DataCard>();
                 if (dataCardValue != null)
                 {
+                    bool esito = false;
                     name = dataCardValue.GetName();
                     value = dataCardValue.GetValue();
-                    checks[i] = memoryValueList[i].ControlValue(name, value);
+                    foreach (MemoryValue memValue in memoryValueList)
+                    {
+                        if (memValue.ControlValue(name, value))
+                        {
+                            esito = true;
+                            checks[i] = esito;
+                            break;
+                        }
+                    }
                 }
-                else
-                {
-                    Debug.LogWarning("L'interactable non ha il componente DataCardValue.");
-                    return;
-                }
+                else Debug.LogWarning($"L'interactable {i} non ha il componente DataCardValue.");
             }
 
             if(checks.All(check => check == true))
@@ -135,7 +140,7 @@ public class DataCardScanValueActivator : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Non sono state inserite tutte le schede dati previste.");
+            Debug.Log("Non sono state inserite tutte le schede dati previste.");
         }
     }
 
