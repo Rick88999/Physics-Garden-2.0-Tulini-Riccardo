@@ -25,13 +25,23 @@ public struct SavedState
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Quest Manager")]
     [SerializeField] private QuestManager questManager;
+
+    [Header("Player & Companion Bot")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject companion;
-    [SerializeField] private SavedState actualSavedState;
+
+    [Header("Base Player Posizione & Rotazione")]
     [SerializeField] private Vector3 basePlayerPosition;
     [SerializeField] private Quaternion basePlayerRotation;
-    
+
+    [SerializeField] private PlayerMenuManager playerMenuManager;
+
+    [Header("Global Light")]
+    [SerializeField] private Light globalLight;
+
+    private SavedState actualSavedState;
 
     public void NewSaveGame(string name)
     {
@@ -51,6 +61,8 @@ public class GameManager : MonoBehaviour
         savedState.position_companion = companion.transform.position;
         savedState.rotation_companion = companion.transform.rotation;
         actualSavedState = savedState;
+        globalLight.intensity = 3f;
+        playerMenuManager.UnlockMenu();
         player.transform.position = basePlayerPosition;
         player.transform.rotation = basePlayerRotation;
     }
@@ -70,6 +82,15 @@ public class GameManager : MonoBehaviour
         File.WriteAllText(path, json);
         Debug.Log("Dati salvati in: " + path);
     }
+
+    public void SaveAndClose()
+    {
+        SaveGame();
+        Close();
+    }
+
+    public void Close() =>Application.Quit();
+    
 
     public void LoadSavedGame(string name)
     {

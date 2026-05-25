@@ -163,6 +163,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerMenu",
+            "id": "b3a784c9-183c-4eba-bb7d-172d3c4a8b5a",
+            "actions": [
+                {
+                    "name": "PlayerMenu",
+                    "type": "Button",
+                    "id": "0d5d7479-b2d0-4415-989a-e411286b9e39",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cfb6f44d-569d-4f0f-81e3-ddf8db7468c4",
+                    "path": "<QuestTouchPlusController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

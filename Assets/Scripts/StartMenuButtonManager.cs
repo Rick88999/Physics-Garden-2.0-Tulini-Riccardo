@@ -46,6 +46,7 @@ public class GestioneMenuSalvataggi : MonoBehaviour
         }
         else
         {
+            xrKeyboard.gameObject.SetActive(false);
             gameManager.NewSaveGame(name);
         }
     }
