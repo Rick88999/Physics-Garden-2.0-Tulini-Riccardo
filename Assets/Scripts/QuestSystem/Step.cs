@@ -45,14 +45,9 @@ public class Step : MonoBehaviour
         
     }
 
-    public void setState(string oldState)
-    {
-        state = oldState;
-    }
+    public void setStateStep(string oldState) => state = oldState;
 
-    public string getState()
-    {
-        return state;
-    }
-    
+
+    public string getStateStep() => state;
+
 }

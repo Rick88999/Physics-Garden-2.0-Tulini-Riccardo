@@ -12,15 +12,19 @@ public class QuestManager : MonoBehaviour
         quests[number].startQuest();
     }
 
-    public void settingsSaves(string[] questData, string[] stepData)
+    public void settingsSaves(SavedQuest[] allQuest)
     {
         for (int i = 0; i < quests.Length; i++)
         {
-            quests[i].setQuestState(questData[i]);
-            for (int j = 0; j < quests[i].steps.Length; j++)
-            {
-                quests[i].steps[j].setState(stepData[j]);
-            }
+            quests[i].setQuestState(allQuest[i].state);
+            quests[i].setSavedStep(allQuest[i].allSteps);
         }
+    }
+
+    public SavedQuest[] getSavedQuests()
+    {
+        SavedQuest[] savedQuests = new SavedQuest[quests.Length];
+        for (int i = 0; i < quests.Length; i++) savedQuests[i] = quests[i].getSavedQuest();
+        return savedQuests;
     }
 }
