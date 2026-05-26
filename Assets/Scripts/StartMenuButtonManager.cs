@@ -10,7 +10,8 @@ public class GestioneMenuSalvataggi : MonoBehaviour
     [Header("Configurazione UI")]
     [SerializeField]private GameManager gameManager;
     [SerializeField]private Transform panelContenitore; 
-    [SerializeField]private GameObject prefabBottone;
+    [SerializeField]private GameObject prefabBottoneLoad;
+    [SerializeField]private GameObject prefabBottoneDelete;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] public XRKeyboard xrKeyboard;
 
@@ -51,7 +52,7 @@ public class GestioneMenuSalvataggi : MonoBehaviour
         }
     }
 
-    public void GenerateButton()
+    private void GenerateButton(string command)
     {
         string[] saveFiles = gameManager.GetSavedFiles();
         if (saveFiles.Length == 0)
@@ -64,7 +65,9 @@ public class GestioneMenuSalvataggi : MonoBehaviour
             foreach (string saveFile in saveFiles)
             {
                 string nameFile = Path.GetFileNameWithoutExtension(saveFile);
-                GameObject newButton = Instantiate(prefabBottone, panelContenitore);
+                GameObject newButton = null;
+                if(command == "Load") newButton = Instantiate(prefabBottoneLoad, panelContenitore);
+                else if(command == "Delete") newButton = Instantiate(prefabBottoneDelete, panelContenitore);
                 newButton.SetActive(true);
                 TextMeshProUGUI testoBottone = newButton.GetComponentInChildren<TextMeshProUGUI>();
                 if (testoBottone != null)
@@ -75,14 +78,25 @@ public class GestioneMenuSalvataggi : MonoBehaviour
                 Button button = newButton.GetComponent<Button>();
                 if(button != null)
                 {
-                    button.onClick.AddListener(() => gameManager.LoadSavedGame(nameFile));
+                    if (command == "Load") button.onClick.AddListener(() => gameManager.LoadSavedGame(nameFile));
+                    else if (command == "Delete") button.onClick.AddListener(() => gameManager.DeleteSavedGame(nameFile));
                 }
             }
         }
     }
 
+    public void ClearButtons()
+    {
+        foreach (Transform child in panelContenitore)
+        {
+            if(child != null && child.name != "Back") Destroy(child.gameObject);
+        }
+    }
+
     public void OnStartButtonClick() =>ControlNewGame(inputField.text);
     public void OnKeybordSubmit() => ControlNewGame(inputField.text);
+    public void GenerateButtonLoad() => GenerateButton("Load");
+    public void GenerateButtonDelete() => GenerateButton("Delete");
 
 
 

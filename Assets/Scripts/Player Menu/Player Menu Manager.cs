@@ -6,11 +6,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerMenuManager : MonoBehaviour
 {
+    [Header("Menu Canvas")]
     [SerializeField] private GameObject menuCanvas;
+    [Header("Menu Pages")]
     [SerializeField] private List<GameObject> menuPages = new List<GameObject>();
     [SerializeField] private List<bool> states = new List<bool>();
+    [Header("Menu Settings")]
     [SerializeField] private bool turnOnStartMenu = false;
     [SerializeField] private InputActionReference toggleMenuAction;
+    [Header("Menu Positioning")]
+    [SerializeField] private Camera playerCamera; 
+    [SerializeField] private float menuDistance = 1.5f;
+    [SerializeField] private float menuHeight = 0f;
 
 
     private void OnEnable()
@@ -33,11 +40,31 @@ public class PlayerMenuManager : MonoBehaviour
 
     private void ToggleMenu(InputAction.CallbackContext context)
     {
-        if (turnOnStartMenu)
+        if (!turnOnStartMenu) return;
+
+        CloseStillActive();
+
+        bool willOpen = !menuCanvas.activeSelf;
+
+        if (willOpen)
         {
-            CloseStillActive();
-            menuCanvas.SetActive(!menuCanvas.activeSelf);
+            PlaceMenuInFrontOfPlayer();
         }
+
+        menuCanvas.SetActive(willOpen);
+    }
+
+    private void PlaceMenuInFrontOfPlayer()
+    {
+        Transform cam = playerCamera.transform;
+
+        Vector3 flatForward = new Vector3(cam.forward.x, 0f, cam.forward.z).normalized;
+
+        Vector3 targetPosition = cam.position + flatForward * menuDistance;
+        targetPosition.y += menuHeight;
+
+        menuCanvas.transform.position = targetPosition;
+        menuCanvas.transform.rotation = Quaternion.LookRotation(flatForward);
     }
 
     public void TogglePage(string pageName)
@@ -82,10 +109,4 @@ public class PlayerMenuManager : MonoBehaviour
     private void deactivatePage(int i) => menuPages[i].SetActive(false);
 
     public void UnlockMenu() => turnOnStartMenu = true;
-
-
-
-
-
-
 }

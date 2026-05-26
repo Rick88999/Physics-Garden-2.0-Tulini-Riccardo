@@ -45,7 +45,11 @@ public class Step : MonoBehaviour
         
     }
 
-    public void setStateStep(string oldState) => state = oldState;
+    public void setStateStep(string oldState)
+    {
+        if (oldState == "OnGoing") startStep();
+        else state = oldState;
+    }
 
 
     public string getStateStep() => state;

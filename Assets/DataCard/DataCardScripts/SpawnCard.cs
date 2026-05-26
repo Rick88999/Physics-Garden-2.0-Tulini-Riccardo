@@ -36,8 +36,22 @@ public class SpawnCard : MonoBehaviour
     [SerializeField] private AudioClip clickSoundError;
     [SerializeField] private AudioClip clickSoundSuccess;
 
+    [Header("Bot Menu")]
+    [SerializeField] private bool isBotMenu = false;
+
     private GameObject SpawnAction()
     {
+        if (!isBotMenu)
+        {
+            if (spawnSocket.hasSelection)
+            {
+                Destroy(spawnSocket
+                    .GetOldestInteractableSelected()
+                    .transform
+                    .gameObject);
+            }
+        }
+
         if (spawnSocket.hasSelection)
         {
             Destroy(spawnSocket
