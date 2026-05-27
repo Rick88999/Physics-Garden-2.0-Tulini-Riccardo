@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private List<InventoryButton> formulaButtons;
     [SerializeField] private List<InventoryButton> constantButtons;
     [SerializeField] private List<InventoryButton> toolsButtons;
@@ -76,17 +77,27 @@ public class InventoryManager : MonoBehaviour
 
     public void AwakeButtons()
     {
-        foreach (InventoryButton button in formulaButtons)
+        foreach (InventoryButton button in formulaButtons) button.AwakeBotton();
+        
+        foreach (InventoryButton button in constantButtons) button.AwakeBotton();
+        
+        foreach (InventoryButton button in toolsButtons) button.AwakeBotton();
+    }
+
+    public void OpenInventory()
+    { 
+        inventoryPanel.SetActive(true);
+
+        GameObject canvas = inventoryPanel.transform.GetChild(0).gameObject;
+
+        foreach (Transform son in canvas.transform)
         {
-            button.AwakeBotton();
-        }
-        foreach (InventoryButton button in constantButtons)
-        {
-            button.AwakeBotton();
-        }
-        foreach (InventoryButton button in toolsButtons)
-        {
-            button.AwakeBotton();
+            GameObject panel = son.gameObject;
+            if (panel.name != "Root Panel" && panel.name != "Start Panel")
+                if (panel.activeSelf) panel.SetActive(false);
         }
     }
+
+    public void CloseInventory() => inventoryPanel.SetActive(false);
+    
 }

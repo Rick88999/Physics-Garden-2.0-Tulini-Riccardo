@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
         actualSavedState = savedState;
         ResetLight();
         playerMenuManager.UnlockMenu();
-        inventoryManager.gameObject.SetActive(true);
+        //inventoryManager.gameObject.SetActive(true);
         inventoryManager.AwakeButtons();
-        inventoryManager.gameObject.SetActive(false);
+        //inventoryManager.gameObject.SetActive(false);
         player.transform.position = basePlayerPosition;
         player.transform.rotation = basePlayerRotation;
         startTower.SetActive(false);
