@@ -10,6 +10,8 @@ public class Step : MonoBehaviour
     [SerializeField] GameObject[] objectsToActivate;
     [Header("Oggetti che appartengono allo step")]
     [SerializeField] GameObject[] objectsList;
+    [Header("Loot")]
+    [SerializeField] LootGiver lootGiver;
     [SerializeField] bool isLastStep;
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class Step : MonoBehaviour
             {
                 objAct.SetActive(true);
             }
+            if(lootGiver!=null) lootGiver.GiveLoot();
         }
         else
         {

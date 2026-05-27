@@ -94,7 +94,14 @@ public class InventoryManager : MonoBehaviour
         {
             GameObject panel = son.gameObject;
             if (panel.name != "Root Panel" && panel.name != "Start Panel")
+            { 
                 if (panel.activeSelf) panel.SetActive(false);
+            }   
+            else
+            {
+                if (!panel.activeSelf) panel.SetActive(true);
+            }
+                
         }
     }
 

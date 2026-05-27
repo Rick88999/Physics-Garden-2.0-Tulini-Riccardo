@@ -2,17 +2,20 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.Events;
-
-public struct GraphEvents
-{
-    public UnityEvent event;
-    public UnityEvent nextEvent;
-}
+using System.Collections;
 
 public class VRInterruptor : MonoBehaviour
 {
+    public class GraphEvent
+    {
+        public UnityEvent eventIO;
+        public GraphEvent nextEvent;
+    }
+
     [SerializeField] private UnityEvent[] onPressed = new UnityEvent[2];
-    private GraphEvents graphEvents = new GraphEvents();
+    private GraphEvent on = new GraphEvent();
+    private GraphEvent off = new GraphEvent();
+    private GraphEvent actualEvent = new GraphEvent();
 
 
     [Header("Impostazioni Pulsante")]
@@ -22,11 +25,17 @@ public class VRInterruptor : MonoBehaviour
     private XRSimpleInteractable interactable;
     private Vector3 startPosition;
     private bool isPressed = false;
-    private bool inCooldown = false; // Flag per bloccare lo spam
+    private bool inCooldown = false; 
 
     void Awake()
     {
         interactable = GetComponent<XRSimpleInteractable>();
+
+        on.eventIO = onPressed[0];
+        off.eventIO = onPressed[1];
+        on.nextEvent = off;
+        off.nextEvent = on;
+        actualEvent = on;
 
         interactable.hoverEntered.AddListener(OnPress);
         interactable.hoverExited.AddListener(OnRelease);
@@ -36,36 +45,30 @@ public class VRInterruptor : MonoBehaviour
 
     private void OnPress(HoverEnterEventArgs args)
     {
-        // Se il pulsante è già premuto o stiamo aspettando il timer di cooldown, ignora l'input
         if (isPressed || inCooldown) return;
 
         isPressed = true;
 
-        // Abbassa il pulsante visivamente
         transform.localPosition = startPosition - new Vector3(0, 0.005f, 0);
 
-        // Genera la carta (o qualsiasi altro evento)
-        onPressed.Invoke();
+        actualEvent.eventIO.Invoke();
     }
 
     private void OnRelease(HoverExitEventArgs args)
     {
-        // Se si esce dall'area ma il pulsante non era stato effettivamente premuto (es. durante il cooldown), ignora
         if (!isPressed) return;
 
-        // Resetta lo stato di pressione e rialza il pulsante
         isPressed = false;
         transform.localPosition = startPosition;
+        actualEvent = actualEvent.nextEvent;
 
-
-        // Avvia il timer di pausa prima che possa essere premuto di nuovo
         StartCoroutine(CooldownRoutine());
     }
 
     private IEnumerator CooldownRoutine()
     {
-        inCooldown = true; // Blocca il pulsante
-        yield return new WaitForSeconds(cooldownDelay); // Aspetta i secondi scelti nell'Inspector
-        inCooldown = false; // Sblocca il pulsante
+        inCooldown = true; 
+        yield return new WaitForSeconds(cooldownDelay); 
+        inCooldown = false;
     }
 }

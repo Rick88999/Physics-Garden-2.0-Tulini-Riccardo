@@ -1,17 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class LootEvent : UnityEvent<string, TipoLoot> { }
+
 public class GameEvents : MonoBehaviour
 {
     public static GameEvents Instance { get; private set; }
+    public LootEvent onNewLootAcquired;
 
-    public UnityEvent NuovaCardGenerata;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
+    void Awake() => Instance = this;
 }

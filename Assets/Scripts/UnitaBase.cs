@@ -33,3 +33,10 @@ public enum TipoCard
     DataCard,
     FormulaCard
 }
+
+public enum TipoLoot
+{
+    Card,
+    Tool,
+    Button
+}

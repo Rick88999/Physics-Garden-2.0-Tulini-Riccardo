@@ -10,6 +10,7 @@ public class SpawnCard : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
+        {UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
         { UnitaMisura.Angolo,      "°"  },
         { UnitaMisura.Kilogrammi,  "kg" }
     };
@@ -50,14 +51,6 @@ public class SpawnCard : MonoBehaviour
                     .transform
                     .gameObject);
             }
-        }
-
-        if (spawnSocket.hasSelection)
-        {
-            Destroy(spawnSocket
-                .GetOldestInteractableSelected()
-                .transform
-                .gameObject);
         }
 
         GameObject card = Instantiate(
