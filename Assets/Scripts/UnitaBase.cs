@@ -40,3 +40,9 @@ public enum TipoLoot
     Tool,
     Button
 }
+public enum Event
+{
+    SpawnTool,
+    SpawnDataCard,
+    SpawnFormulaCard
+}

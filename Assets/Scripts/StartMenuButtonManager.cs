@@ -41,15 +41,32 @@ public class GestioneMenuSalvataggi : MonoBehaviour
     public void ControlNewGame(string name)
     {
         string[] saveFiles = gameManager.GetSavedFiles();
+        bool nameExists = false;
+
         if (saveFiles.Length > 0)
         {
-            audioSource.PlayOneShot(clickSoundError);
+            foreach(string file in saveFiles)
+            {
+                string nameFile = Path.GetFileNameWithoutExtension(file);
+                if (nameFile == name) nameExists = true;
+            }
+            if (nameExists)
+            {
+                audioSource.PlayOneShot(clickSoundError);
+                return;
+            }
+            else
+            {
+                xrKeyboard.gameObject.SetActive(false);
+                gameManager.NewSaveGame(name);
+            }
         }
         else
         {
             xrKeyboard.gameObject.SetActive(false);
             gameManager.NewSaveGame(name);
         }
+
     }
 
     private void GenerateButton(string command)

@@ -24,6 +24,7 @@ public struct SaveInventoryButton
 
 public struct SavedStep
 {
+    public int id_step;
     public string state;
 }
 public struct SavedQuest
@@ -60,7 +61,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector3 basePlayerPosition;
     [SerializeField] private Quaternion basePlayerRotation;
 
+    [Header("Menu Manager")]
     [SerializeField] private PlayerMenuManager playerMenuManager;
+    [SerializeField] private MenuCircleManager handMenuManager;
 
     [Header("Inventory")]
     [SerializeField] private InventoryManager inventoryManager;
@@ -149,6 +152,26 @@ public class GameManager : MonoBehaviour
             botController.StartFollow();
             LoadInvetory();
             startTower.SetActive(false);
+            foreach(SavedQuest quest in actualSavedState.allQuests)
+            {
+                if(quest.id_quest == 0)
+                {
+                    if (quest.state == "Completed")
+                    {
+                        foreach (SavedStep step in quest.allSteps)
+                        {
+                            if (step.id_step == 3)
+                            {
+                                if (step.state == "Completed")
+                                {
+                                    handMenuManager.activateMenus();
+                                    handMenuManager.enableAttrattore();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

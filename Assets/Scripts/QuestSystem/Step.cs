@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Step : MonoBehaviour
 {
+    [SerializeField]private int stepID;
     [SerializeField]private string state = "noActivated";
     [SerializeField] Quest father;
     [SerializeField] Step NextStep;
@@ -56,5 +57,6 @@ public class Step : MonoBehaviour
 
 
     public string getStateStep() => state;
+    public int getIdStep() => stepID;
 
 }

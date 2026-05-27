@@ -11,6 +11,7 @@ public class SpawnTool : MonoBehaviour
         {
             GameObject newTool = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
             newTool.SetActive(true);
+            GameEvents.Instance.onToolSpawned.Invoke(newTool.name);
         }
         else
         {

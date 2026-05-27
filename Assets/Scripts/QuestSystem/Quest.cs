@@ -40,6 +40,7 @@ public class Quest : MonoBehaviour
         for (int i = 0; i < steps.Length; i++)
         {
             SavedStep savedStep = new SavedStep();
+            savedStep.id_step = steps[i].getIdStep();
             savedStep.state = steps[i].getStateStep();
             savedQuest.allSteps[i] = savedStep;
         }

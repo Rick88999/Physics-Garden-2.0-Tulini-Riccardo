@@ -8,6 +8,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private List<InventoryButton> formulaButtons;
     [SerializeField] private List<InventoryButton> constantButtons;
     [SerializeField] private List<InventoryButton> toolsButtons;
+    private bool enableInventory = false;
+
+    public void EnableInventory() => enableInventory = true;
 
     public void SetActiveFormulaButtons(SaveInventoryButton[] oldState)
     {
@@ -86,6 +89,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OpenInventory()
     { 
+        if (!enableInventory) return;
         inventoryPanel.SetActive(true);
 
         GameObject canvas = inventoryPanel.transform.GetChild(0).gameObject;
@@ -105,6 +109,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void CloseInventory() => inventoryPanel.SetActive(false);
+    public void CloseInventory() { if (enableInventory) inventoryPanel.SetActive(false); }
     
 }
