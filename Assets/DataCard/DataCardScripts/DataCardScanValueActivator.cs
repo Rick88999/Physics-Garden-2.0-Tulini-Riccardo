@@ -61,20 +61,15 @@ public class DataCardScanValueActivator : MonoBehaviour
         {
             for (int i = 0; i < socketInteractors.Count; i++)
             {
-                IXRSelectInteractable interactable = socketInteractors[i].GetOldestInteractableSelected();
-                if (interactable != null)
-                {
-                    interactables.Remove(interactable);
-                }
-
                 RampHolder socketHolder = sockets[i].GetComponent<RampHolder>();
 
                 if (socketHolder != null)
                 {
                     socketHolder.Release();
                 }
-
             }
+            InteractableCleaner();
+
             if (audioSource != null && clickSoundError != null)
             {
                 audioSource.PlayOneShot(clickSoundError);
@@ -140,6 +135,7 @@ public class DataCardScanValueActivator : MonoBehaviour
         }
         else
         {
+            InteractableCleaner();
             Debug.Log("Non sono state inserite tutte le schede dati previste.");
         }
     }
@@ -148,5 +144,17 @@ public class DataCardScanValueActivator : MonoBehaviour
     {
         yield return new WaitForSeconds(3.5f);
         Step.endStep();
+    }
+
+    public void InteractableCleaner()
+    {
+        for (int i = 0; i < socketInteractors.Count; i++)
+        {
+            IXRSelectInteractable interactable = socketInteractors[i].GetOldestInteractableSelected();
+            if (interactable != null)
+            {
+                interactables.Remove(interactable);
+            } 
+        }
     }
 }

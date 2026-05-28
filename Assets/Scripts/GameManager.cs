@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
             {
                 if(quest.id_quest == 0)
                 {
-                    if (quest.state == "Completed")
+                    if (quest.state == "Completed" || quest.state == "OnGoing")
                     {
                         foreach (SavedStep step in quest.allSteps)
                         {
@@ -166,6 +166,14 @@ public class GameManager : MonoBehaviour
                                 {
                                     handMenuManager.activateMenus();
                                     handMenuManager.enableAttrattore();
+                                }
+                            }
+
+                            if (step.id_step == 5)
+                            {
+                                if (step.state == "Completed")
+                                {
+                                    inventoryManager.EnableInventory();
                                 }
                             }
                         }
