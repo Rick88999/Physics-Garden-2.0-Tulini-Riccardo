@@ -51,7 +51,7 @@ public class UiManager : MonoBehaviour
                 }
                 audioSource.PlayOneShot(lootSound);
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(4f);
             lootUi.SetActive(false);
         }
     }

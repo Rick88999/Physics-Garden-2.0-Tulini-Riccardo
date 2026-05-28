@@ -68,7 +68,7 @@ public class DataCardScanValueActivator : MonoBehaviour
                     socketHolder.Release();
                 }
             }
-            InteractableCleaner();
+            interactables.Clear();
 
             if (audioSource != null && clickSoundError != null)
             {
@@ -135,7 +135,7 @@ public class DataCardScanValueActivator : MonoBehaviour
         }
         else
         {
-            InteractableCleaner();
+            interactables.Clear();
             Debug.Log("Non sono state inserite tutte le schede dati previste.");
         }
     }
@@ -146,15 +146,5 @@ public class DataCardScanValueActivator : MonoBehaviour
         Step.endStep();
     }
 
-    public void InteractableCleaner()
-    {
-        for (int i = 0; i < socketInteractors.Count; i++)
-        {
-            IXRSelectInteractable interactable = socketInteractors[i].GetOldestInteractableSelected();
-            if (interactable != null)
-            {
-                interactables.Remove(interactable);
-            } 
-        }
-    }
+    
 }
