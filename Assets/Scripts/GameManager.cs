@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     private SavedState actualSavedState;
 
-    private void ResetLight() => globalLight.intensity = 3f;
+    private void ResetLight() => globalLight.intensity = 2.5f;
 
     public void NewSaveGame(string name)
     {
