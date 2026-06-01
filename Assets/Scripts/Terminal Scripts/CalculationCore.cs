@@ -15,6 +15,8 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Angolo,      "°"  },
         { UnitaMisura.Kilogrammi, "kg" },
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
+        { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
+        { UnitaMisura.DensitaO, "kg/m<sup>3</sup>" },
         { UnitaMisura.Inerzia, "kg*m<sup>2</sup>" },
         { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
         { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
@@ -116,6 +118,50 @@ public class CalculationCore : MonoBehaviour
         return true;
     }
 
+    private bool DensitaX1()
+    {
+        if(value.ContainsKey("Massa") && value.ContainsKey("Volume")) 
+        {
+            result = value["Volume"] / value["Massa"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for DensitaX1 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool DensitaArch()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Densita fluido") && value.ContainsKey("Forza di archimede"))
+        {
+            result = value["Densita fluido"]*(value["Forza di archimede"] / (value["Massa"]* value["Accelerazione di gravita"]));
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for DensitaArch calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool DensitaO()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Volume"))
+        {
+            result = value["Massa"] / value["Volume"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for DensitaX1 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
     private bool AltezzaSeno()
     {
         if(value.ContainsKey("Lunghezza") && value.ContainsKey("Angolo")) 
@@ -358,6 +404,21 @@ public class CalculationCore : MonoBehaviour
                     unitaMisura = simboliUnita[UnitaMisura.Inerzia];
                     if (esito) SpawnResultCard("Inerzia");
                     break;
+                case Operazione.DensitaX1:
+                    esito = DensitaX1();
+                    unitaMisura = simboliUnita[UnitaMisura.DensitaX1];
+                    if (esito) SpawnResultCard("Densità");
+                    break;
+                case Operazione.DensitaArch:
+                    esito = DensitaArch();
+                    unitaMisura = simboliUnita[UnitaMisura.DensitaO];
+                    if (esito) SpawnResultCard("Densità");
+                    break;
+                case Operazione.DensitaO:
+                    esito = DensitaO();
+                    unitaMisura = simboliUnita[UnitaMisura.DensitaO];
+                    if (esito) SpawnResultCard("Densità");
+                    break;
             }
         }   
     }
@@ -373,6 +434,9 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloInerziaX2() => Calcolo(Operazione.InerziaX2);
         public void CalcoloInerziaX3() => Calcolo(Operazione.InerziaX3);
         public void CalcoloInerziaO() => Calcolo(Operazione.InerziaO);
+        public void CalcoloDensitaX1() => Calcolo(Operazione.DensitaX1);
+        public void CalcoloDensitaArch() => Calcolo(Operazione.DensitaArch);
+        public void CalcoloDensitaO() => Calcolo(Operazione.DensitaO);
 
 
 }

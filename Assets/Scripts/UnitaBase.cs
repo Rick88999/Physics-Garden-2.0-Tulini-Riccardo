@@ -10,7 +10,10 @@ public enum Operazione
     InerziaO,
     InerziaX1,
     InerziaX2,
-    InerziaX3
+    InerziaX3,
+    DensitaX1,
+    DensitaArch,
+    DensitaO
 }
 
 public enum UnitaMisura
@@ -22,6 +25,9 @@ public enum UnitaMisura
     Angolo,
     Kilogrammi,
     Accelerazione,
+    Volume,
+    DensitaX1,
+    DensitaO,
     Inerzia,
     InerziaX2,
     InerziaX3,

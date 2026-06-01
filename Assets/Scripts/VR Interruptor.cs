@@ -4,6 +4,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.Events;
 using System.Collections;
 
+[RequireComponent(typeof(XRSimpleInteractable))]
+[RequireComponent(typeof(MeshCollider))]
 public class VRInterruptor : MonoBehaviour
 {
     public class GraphEvent
