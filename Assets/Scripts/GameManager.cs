@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviour
         SavedState savedState = new SavedState();
         if (Directory.Exists(Application.persistentDataPath))
         {
-            // Ottiene un array con i percorsi completi di tutti i file .json
             string[] fileSalvati = Directory.GetFiles(Application.persistentDataPath, "*.json");
             nextId = fileSalvati.Length;
         }
