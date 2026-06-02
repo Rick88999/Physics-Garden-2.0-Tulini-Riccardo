@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
     [Header("Global Light")]
     [SerializeField] private Light globalLight;
 
+    [Header("Player Audio")]
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip playerAudioClip;
+
     private SavedState actualSavedState;
 
     private void ResetLight() => globalLight.intensity = 2.5f;
@@ -100,6 +104,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = basePlayerPosition;
         player.transform.rotation = basePlayerRotation;
         startTower.SetActive(false);
+        AudioChangeClip();
     }
 
     public void SaveGame()
@@ -147,6 +152,7 @@ public class GameManager : MonoBehaviour
             companion.transform.rotation = savedState.rotation_companion.ToQuaternion();
             actualSavedState = savedState;
             ResetLight();
+            AudioChangeClip();
             BotController botController = companion.GetComponent<BotController>();
             botController.StartFollow();
             LoadInvetory();
@@ -214,5 +220,12 @@ public class GameManager : MonoBehaviour
         inventoryManager.SetActiveFormulaButtons(actualSavedState.allFormulaButtons);
         inventoryManager.SetActiveConstantButtons(actualSavedState.allConstantButtons);
         inventoryManager.SetActiveToolsButtons(actualSavedState.allToolsButtons);
+    }
+
+    private void AudioChangeClip()
+        {
+        playerAudioSource.Stop();
+        playerAudioSource.clip = playerAudioClip;
+        playerAudioSource.Play();
     }
 }
