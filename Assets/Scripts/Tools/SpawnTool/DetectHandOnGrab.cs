@@ -12,12 +12,12 @@ public class DetectHandOnGrab : MonoBehaviour
     private XRGrabInteractable grab;
     [SerializeField] private Transform attachRight;
     [SerializeField] private Transform attachLeft;
-    [SerializeField] private InputActionReference scanActionRight;
-    [SerializeField] private InputActionReference scanActionLeft;
-    [SerializeField] private InputActionReference spawnActionRight;
-    [SerializeField] private InputActionReference spawnActionLeft;
-    private InputActionReference scanAction;
-    private InputActionReference spawnAction;
+    [SerializeField] private InputActionReference primaryActionRight;
+    [SerializeField] private InputActionReference primaryActionLeft;
+    [SerializeField] private InputActionReference secondaryActionRight;
+    [SerializeField] private InputActionReference secondaryActionLeft;
+    private InputActionReference primaryAction; //Dorsale
+    private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
     private int counterDebug = 0;
@@ -91,18 +91,18 @@ public class DetectHandOnGrab : MonoBehaviour
             return;
         }
 
-        
-        scanAction = (handedness.hand == Hand.Right) ? scanActionRight : scanActionLeft;
-        spawnAction = (handedness.hand == Hand.Right) ? spawnActionRight : spawnActionLeft;
-        if (scanAction == null || spawnAction == null)
+        primaryAction = (handedness.hand == Hand.Right) ? primaryActionRight : primaryActionLeft;
+        secondaryAction = (handedness.hand == Hand.Right) ? secondaryActionRight : secondaryActionLeft;
+        if (primaryAction == null || secondaryAction == null)
         {
-            Debug.LogWarning("ScanAction o SpawnAction non assegnate per la mano: " + handedness.hand);
+            Debug.LogWarning("PrimaryAction o SecondaryAction non assegnate per la mano: " + handedness.hand);
             return;
         }
         else
-            Debug.Log($"Grab con mano: {handedness.hand}; ScanAction: {scanAction.name}; SpawnAction: {spawnAction.name}");
+            Debug.Log($"Grab con mano: {handedness.hand}; PrimaryAction: {primaryAction.name}; SecondaryAction: {secondaryAction.name}");
         
-        grab.attachEaseInTime = 0f;
+        
+        GameEvents.Instance.onChangeHand.Invoke(handedness.hand.ToString());
 
     }
 
@@ -111,13 +111,13 @@ public class DetectHandOnGrab : MonoBehaviour
         // opzionale
     }
 
-    public InputActionReference GetScanAction()
+    public InputActionReference GetPrimaryAction()
     {
-        return scanAction;
+        return primaryAction;
     }
 
-    public InputActionReference GetSpawnAction()
+    public InputActionReference GetSecondaryAction()
     {
-        return spawnAction;
+        return secondaryAction;
     }
 }

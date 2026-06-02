@@ -8,6 +8,7 @@ TagManager:
   - LinkSocket
   - FormulaCard
   - PlayerHand
+  - Tool
   layers:
   - Default
   - TransparentFX
