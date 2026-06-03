@@ -13,7 +13,12 @@ public enum Operazione
     InerziaX3,
     DensitaX1,
     DensitaArch,
-    DensitaO
+    DensitaO,
+    VolumeCubo,
+    VolumeSfera,
+    VolumeCilindro,
+    VolumeX1,
+    None
 }
 
 public enum UnitaMisura
@@ -26,6 +31,7 @@ public enum UnitaMisura
     Kilogrammi,
     Accelerazione,
     Volume,
+    VolumeX1,
     DensitaX1,
     DensitaO,
     Inerzia,

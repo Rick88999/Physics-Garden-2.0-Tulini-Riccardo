@@ -108,7 +108,8 @@ public class DetectHandOnGrab : MonoBehaviour
 
     private void OnSelectExited(SelectExitEventArgs args)
     {
-        // opzionale
+        primaryAction = null;   secondaryAction = null;
+        GameEvents.Instance.onDropTool.Invoke();
     }
 
     public InputActionReference GetPrimaryAction()

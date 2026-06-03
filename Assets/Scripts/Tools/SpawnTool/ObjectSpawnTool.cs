@@ -42,9 +42,10 @@ public class ObjectSpawnTool : MonoBehaviour
             return;
         }
 
-        RebindActions();
-        GameEvents.Instance.onChangeHand.AddListener(OnChangeHand);
         
+        GameEvents.Instance.onChangeHand.AddListener(OnChangeHand);
+        GameEvents.Instance.onDropTool.AddListener(OnDrop);
+
 
         if (materiali.Count >= 5)
         {
@@ -84,6 +85,12 @@ public class ObjectSpawnTool : MonoBehaviour
     {
         RebindActions();
         ChangeScreenPosition(newHand);
+    }
+
+    private void OnDrop()
+    {
+        RebindActions();
+        menuPrefab.SetActive(false);
     }
     
 
@@ -158,11 +165,22 @@ public class ObjectSpawnTool : MonoBehaviour
         materiale = nuovoMateriale;
     }
 
-    public void ChangeMass()
-    {
-        massa = Mathf.Round(massaSlider.value/0.1f) * 0.1f;  
+     public void IncreaseMass()
+     {
+        massa += 0.5f;
         massaText.text = massa.ToString("F1");
+     }
+
+    public void DecreaseMass()
+    {
+        if (massa > 1f)
+        {
+            massa -= 0.5f;
+            massaText.text = massa.ToString("F1");
+        }
     }
+
+
 
     public void ChangeRadius()
     {

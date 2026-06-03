@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BilanciaDuePiatti : MonoBehaviour
 {
+    [SerializeField] private Step step;
     [Header("Riferimenti Piatti")]
     [SerializeField] private Transform leftPlate;
     [SerializeField] private Transform rightPlate;
@@ -40,7 +42,8 @@ public class BilanciaDuePiatti : MonoBehaviour
     public void ObjectExit(GameObject obj)
     {
         RemoveObject(obj);
-        AggiornaPosizionePiatti();
+        bool result = AggiornaPosizionePiatti();
+        //if (result) StartCoroutine(EndStep());
     }
 
 
@@ -76,10 +79,10 @@ public class BilanciaDuePiatti : MonoBehaviour
     }
     void Update()
     {
-        AggiornaPosizionePiatti();
+        bool result = AggiornaPosizionePiatti();
     }
 
-    private void AggiornaPosizionePiatti()
+    private bool AggiornaPosizionePiatti()
     {
         float weightDifference = rightPlateWeight - leftPlateWeight;
         float t = Mathf.InverseLerp(-leftPlateWeight, leftPlateWeight, weightDifference);
@@ -92,6 +95,22 @@ public class BilanciaDuePiatti : MonoBehaviour
 
         rightPlate.localPosition = Vector3.Lerp(rightPlate.localPosition, targetRightPos, Time.deltaTime * speed);
         leftPlate.localPosition = Vector3.Lerp(leftPlate.localPosition, targetLeftPos, Time.deltaTime * speed);
+
+        if(Mathf.Approximately(weightDifference, 0f))
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+    private IEnumerator EndStep() 
+    {
+        yield return new WaitForSeconds(1f);
+        step.endStep();
+        yield return null;
     }
 }
 

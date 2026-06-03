@@ -16,6 +16,7 @@ public class GameEvents : MonoBehaviour
     public LootEvent onNewLootAcquired;
     public ToolEvent onToolSpawned;
     public ChangeHandEvent onChangeHand;
+    public UnityEvent onDropTool;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,5 +29,6 @@ public class GameEvents : MonoBehaviour
         onNewLootAcquired ??= new LootEvent();
         onToolSpawned ??= new ToolEvent();
         onChangeHand ??= new ChangeHandEvent();
+        onDropTool ??= new UnityEvent();
     }
 }

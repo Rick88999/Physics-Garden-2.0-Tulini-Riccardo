@@ -7,7 +7,7 @@ public class SpawnTerminal : MonoBehaviour
 
     public void Spawn()
     {
-        if(terminalManager.terminale.transform.position  != spawnPosition.position && terminalManager.terminale.transform.rotation != spawnPosition.rotation)
+        if(terminalManager.terminale.transform.position  != spawnPosition.position)
             terminalManager.SpawnTerminal(spawnPosition.position, spawnPosition.rotation);
         terminalManager.ActiveTerminal();
     }

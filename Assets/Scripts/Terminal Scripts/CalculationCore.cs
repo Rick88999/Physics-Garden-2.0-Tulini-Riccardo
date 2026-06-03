@@ -17,6 +17,8 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
         { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
         { UnitaMisura.DensitaO, "kg/m<sup>3</sup>" },
+        { UnitaMisura.Volume, "m<sup>3</sup>" },
+        { UnitaMisura.VolumeX1, "m<sup>2</sup>" },
         { UnitaMisura.Inerzia, "kg*m<sup>2</sup>" },
         { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
         { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
@@ -118,6 +120,65 @@ public class CalculationCore : MonoBehaviour
         return true;
     }
 
+    private bool VolumeCubo()
+    {
+        if(value.ContainsKey("Lunghezza")) 
+        {
+            result = Mathf.Pow(value["Lunghezza"], 3);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for VolumeCubo calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool VolumeSfera()
+    {
+        if (value.ContainsKey("Raggio"))
+        {
+            result = (4f / 3f) * Mathf.PI * Mathf.Pow(value["Raggio"], 3);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for VolumeSfera calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool VolumeCilindro()
+    {
+        if (value.ContainsKey("Raggio") && value.ContainsKey("Altezza"))
+        {
+            result = Mathf.PI * Mathf.Pow(value["Raggio"], 2) * value["Altezza"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for VolumeCilindro calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool VolumeX1()
+    {
+        if (value.ContainsKey("Raggio"))
+        {
+            result = (1f / 3f) * Mathf.PI * Mathf.Pow(value["Raggio"], 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for VolumeX1 calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
     private bool DensitaX1()
     {
         if(value.ContainsKey("Massa") && value.ContainsKey("Volume")) 
@@ -419,6 +480,26 @@ public class CalculationCore : MonoBehaviour
                     unitaMisura = simboliUnita[UnitaMisura.DensitaO];
                     if (esito) SpawnResultCard("Densità");
                     break;
+                case Operazione.VolumeCubo:
+                    esito = VolumeCubo();
+                    unitaMisura = simboliUnita[UnitaMisura.Volume];
+                    if (esito) SpawnResultCard("Volume");
+                    break;
+                case Operazione.VolumeSfera:
+                    esito = VolumeSfera();
+                    unitaMisura = simboliUnita[UnitaMisura.Volume];
+                    if (esito) SpawnResultCard("Volume");
+                    break;
+                case Operazione.VolumeCilindro:
+                    esito = VolumeCilindro();
+                    unitaMisura = simboliUnita[UnitaMisura.Volume];
+                    if (esito) SpawnResultCard("Volume");
+                    break;
+                case Operazione.VolumeX1:
+                    esito = VolumeX1();
+                    unitaMisura = simboliUnita[UnitaMisura.VolumeX1];
+                    if (esito) SpawnResultCard("VolumeX1");
+                    break;
             }
         }   
     }
@@ -437,6 +518,10 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloDensitaX1() => Calcolo(Operazione.DensitaX1);
         public void CalcoloDensitaArch() => Calcolo(Operazione.DensitaArch);
         public void CalcoloDensitaO() => Calcolo(Operazione.DensitaO);
+        public void CalcoloVolumeCubo() => Calcolo(Operazione.VolumeCubo);
+        public void CalcoloVolumeSfera() => Calcolo(Operazione.VolumeSfera);
+        public void CalcoloVolumeCilindro() => Calcolo(Operazione.VolumeCilindro);
+        public void CalcoloVolumeX1() => Calcolo(Operazione.VolumeX1);
 
 
 }
