@@ -12,7 +12,7 @@ public class MassLaserScanner : MonoBehaviour
     [SerializeField] private Color coloreNormale = Color.red;
     [SerializeField] private Color coloreScansionabile = Color.green;
 
-    private DualHandAttach dualHandAttach;
+    private DetectHandOnGrab dualHandAttach;
     [SerializeField]private InputActionReference scanAction;
     [SerializeField] private InputActionReference spawnCardAction;
     private LineRenderer lineRenderer;
@@ -24,68 +24,49 @@ public class MassLaserScanner : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        dualHandAttach = GetComponent<DualHandAttach>();
+        dualHandAttach = GetComponent<DetectHandOnGrab>();
         spawnCard = GetComponent<SpawnCard>();
         lineRenderer.positionCount = 2;
+
+        GameEvents.Instance.onChangeHand.AddListener(OnChangeHand);
+        GameEvents.Instance.onDropTool.AddListener(OnDrop);
 
         ImpostaColoreLaser(coloreNormale);
     }
 
-    private void OnEnable()
+    private void RebindActions()
     {
-        SubscribeScan();
-        Debug.Log("Scan action enabled: " + scanAction);
+        
+        if (spawnCardAction != null)
+            spawnCardAction.action.performed -= GenerateDataCard;
+        if (scanAction != null)
+            openMenuAction.action.performed -= EseguiScansione;
+        
+
+
+        spawnCardAction = detectHandOnGrab.GetPrimaryAction();
+        scanAction = detectHandOnGrab.GetSecondaryAction();
+
+        
+        if (isActiveAndEnabled && spawnCardAction != null)
+            spawnCardAction.action.performed += GenerateDataCard;
+        if (isActiveAndEnabled && scanAction != null)
+            scanAction.action.performed += EseguiScansione;
     }
+
+    private void OnChangeHand(string newHand) => RebindActions();
+    
+
+    private void OnDrop() => RebindActions();
+
+    private void OnEnable() => RebindActions();
 
     private void OnDisable()
     {
-        UnsubscribeScan();
+        if (spawnAction != null) spawnCardAction.action.performed -= GenerateDataCard;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("PlayerHand")) return;
-
-        var newAction = dualHandAttach.getScanAction();
-        var newSpawnCardAction = dualHandAttach.getSpawnCardAction();
-        if (newAction == null) return;
-
-        if (scanAction != newAction && spawnCardAction != newSpawnCardAction)
-        {
-            UnsubscribeScan();
-            scanAction = newAction;
-            spawnCardAction = newSpawnCardAction;
-            SubscribeScan();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("PlayerHand")) return;
-        if (scanAction == null) return;
-        UnsubscribeScan();
-        var newAction = dualHandAttach.getScanAction();
-        var newSpawnCardAction = dualHandAttach.getSpawnCardAction();
-        if (scanAction != newAction && spawnCardAction != newSpawnCardAction)
-        {
-            scanAction = newAction;
-            spawnCardAction = newSpawnCardAction;
-            SubscribeScan();
-        }
-    }
-
-
-    private void SubscribeScan()
-    {
-        if (scanAction != null) scanAction.action.performed += EseguiScansione;
-        if (spawnCardAction != null) spawnCardAction.action.performed += GenerateDataCard;
-    }
-
-    private void UnsubscribeScan()
-    {
-        if (scanAction != null) scanAction.action.performed -= EseguiScansione;
-        if (spawnCardAction != null) spawnCardAction.action.performed -= GenerateDataCard;
-    }
+    
 
     private void Update()
     {
