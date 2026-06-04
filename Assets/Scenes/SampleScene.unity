@@ -41295,7 +41295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440250228}
   m_Layer: 5
-  m_Name: canvas pointer (1)
+  m_Name: canvas pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137938,8 +137938,8 @@ MonoBehaviour:
   sentences:
   - Meno male che avevi l'attrezzatura giusta, grazie mille!
   - Ma i problemi non sono ancora finiti.
-  - Sono sicuro che proseguendo su questa starada avrai altre missioni, in bocca
-    al lupo!
+  - Sono sicuro che proseguendo su questa strada avrai altre missioni, in bocca al
+    lupo!
   toActivateAtEnd: []
 --- !u!4 &1782498767
 Transform:
@@ -140462,7 +140462,7 @@ MonoBehaviour:
   stepID: 2
   state: noActivated
   father: {fileID: 1896143717}
-  NextStep: {fileID: 56181013}
+  NextStep: {fileID: 0}
   objectsToActivate:
   - {fileID: 1782498765}
   objectsList:
@@ -157483,7 +157483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inserire qui\nDensita Masso
+  m_text: Inserire qui\nDensita cubo di legno
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -157510,8 +157510,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.05
-  m_fontSizeBase: 0.05
+  m_fontSize: 0.048
+  m_fontSizeBase: 0.048
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

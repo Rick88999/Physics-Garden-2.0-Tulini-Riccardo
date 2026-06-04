@@ -41,13 +41,12 @@ public class Step : MonoBehaviour
             obj.SetActive(false);
         }
 
-        if(NextStep!=null) NextStep.startStep();
-        else if (isLastStep)
+        if (isLastStep)
         {
             if(lootGiver!=null) lootGiver.GiveLoot();
             father.endQuest();
         }
-        
+        else if(NextStep!=null && !isLastStep) NextStep.startStep();
     }
 
     public void setStateStep(string oldState)
