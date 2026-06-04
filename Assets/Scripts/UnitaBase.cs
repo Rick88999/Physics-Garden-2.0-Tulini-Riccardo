@@ -58,3 +58,9 @@ public enum Event
     SpawnDataCard,
     SpawnFormulaCard
 }
+
+public enum TipoTool
+{
+    MassSensor,
+    Spawner
+}

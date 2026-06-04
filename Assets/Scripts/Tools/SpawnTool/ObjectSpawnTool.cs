@@ -43,8 +43,8 @@ public class ObjectSpawnTool : MonoBehaviour
         }
 
         
-        GameEvents.Instance.onChangeHand.AddListener(OnChangeHand);
-        GameEvents.Instance.onDropTool.AddListener(OnDrop);
+        GameEvents.Instance.onChangeHandSpawnerTool.AddListener(OnChangeHand);
+        GameEvents.Instance.onDropSpawnerTool.AddListener(OnDrop);
 
 
         if (materiali.Count >= 5)
@@ -81,16 +81,22 @@ public class ObjectSpawnTool : MonoBehaviour
             openMenuAction.action.performed += OnOpenMenuPerformed;
     }
 
-    private void OnChangeHand(string newHand)
+    private void OnChangeHand(string newHand, int idRiser)
     {
-        RebindActions();
-        ChangeScreenPosition(newHand);
+        if (gameObject.GetInstanceID() == idRiser)
+        {
+            RebindActions();
+            ChangeScreenPosition(newHand);
+        }
     }
 
-    private void OnDrop()
+    private void OnDrop(int idRiser)
     {
-        RebindActions();
-        menuPrefab.SetActive(false);
+        if (gameObject.GetInstanceID() == idRiser)
+        {
+            RebindActions();
+            menuPrefab.SetActive(false);
+        }
     }
     
 
@@ -165,20 +171,33 @@ public class ObjectSpawnTool : MonoBehaviour
         materiale = nuovoMateriale;
     }
 
-     public void IncreaseMass()
+     private void IncreaseMass(float amount)
      {
-        massa += 0.5f;
+        massa += amount;
+        if(massa > 100f)
+            massa = 100f;
         massaText.text = massa.ToString("F1");
      }
 
-    public void DecreaseMass()
+    private void DecreaseMass(float amount)
     {
         if (massa > 1f)
         {
-            massa -= 0.5f;
+            massa -= amount;
+            if (massa < 1f)
+                massa = 1f;
             massaText.text = massa.ToString("F1");
         }
     }
+
+    public void IncreaseMassOneOnTen() => IncreaseMass(0.1f);
+    public void DecreaseMassOneOnTen() => DecreaseMass(0.1f);
+    public void IncreaseMassOne() => IncreaseMass(1f);
+    public void DecreaseMassOne() => DecreaseMass(1f);
+    public void IncreaseMassTen() => IncreaseMass(10f);
+    public void DecreaseMassTen() => DecreaseMass(10f);
+    public void IncreaseMassHalf() => IncreaseMass(0.5f);
+    public void DecreaseMassHalf() => DecreaseMass(0.5f);
 
 
 

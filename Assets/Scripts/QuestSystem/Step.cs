@@ -25,7 +25,7 @@ public class Step : MonoBehaviour
             {
                 objAct.SetActive(true);
             }
-            if(lootGiver!=null) lootGiver.GiveLoot();
+            if(lootGiver!=null && !isLastStep) lootGiver.GiveLoot();
         }
         else
         {
@@ -44,6 +44,7 @@ public class Step : MonoBehaviour
         if(NextStep!=null) NextStep.startStep();
         else if (isLastStep)
         {
+            if(lootGiver!=null) lootGiver.GiveLoot();
             father.endQuest();
         }
         

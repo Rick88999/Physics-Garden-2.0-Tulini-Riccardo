@@ -8,15 +8,21 @@ public class LootEvent : UnityEvent<string, TipoLoot> { }
 public class ToolEvent : UnityEvent<string> { }
 
 [System.Serializable]
-public class  ChangeHandEvent : UnityEvent<string> { }
+public class  ChangeHandEvent : UnityEvent<string, int> { }
+
+[System.Serializable]
+
+public class DropToolEvent : UnityEvent<int> { }
 
 public class GameEvents : MonoBehaviour
 {
     public static GameEvents Instance { get; private set; }
     public LootEvent onNewLootAcquired;
     public ToolEvent onToolSpawned;
-    public ChangeHandEvent onChangeHand;
-    public UnityEvent onDropTool;
+    public ChangeHandEvent onChangeHandMassTool;
+    public ChangeHandEvent onChangeHandSpawnerTool;
+    public DropToolEvent onDropMassTool;
+    public DropToolEvent onDropSpawnerTool;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,7 +34,9 @@ public class GameEvents : MonoBehaviour
 
         onNewLootAcquired ??= new LootEvent();
         onToolSpawned ??= new ToolEvent();
-        onChangeHand ??= new ChangeHandEvent();
-        onDropTool ??= new UnityEvent();
+        onChangeHandMassTool ??= new ChangeHandEvent();
+        onChangeHandSpawnerTool ??= new ChangeHandEvent();
+        onDropMassTool ??= new DropToolEvent();
+        onDropSpawnerTool ??= new DropToolEvent();
     }
 }

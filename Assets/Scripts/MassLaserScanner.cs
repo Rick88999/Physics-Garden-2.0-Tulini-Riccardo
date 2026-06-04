@@ -12,7 +12,7 @@ public class MassLaserScanner : MonoBehaviour
     [SerializeField] private Color coloreNormale = Color.red;
     [SerializeField] private Color coloreScansionabile = Color.green;
 
-    private DetectHandOnGrab dualHandAttach;
+    private DetectHandOnGrab detectHandOnGrab;
     [SerializeField]private InputActionReference scanAction;
     [SerializeField] private InputActionReference spawnCardAction;
     private LineRenderer lineRenderer;
@@ -24,23 +24,23 @@ public class MassLaserScanner : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        dualHandAttach = GetComponent<DetectHandOnGrab>();
+        detectHandOnGrab = GetComponent<DetectHandOnGrab>();
         spawnCard = GetComponent<SpawnCard>();
         lineRenderer.positionCount = 2;
 
-        GameEvents.Instance.onChangeHand.AddListener(OnChangeHand);
-        GameEvents.Instance.onDropTool.AddListener(OnDrop);
+        GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
+        GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
 
         ImpostaColoreLaser(coloreNormale);
     }
 
     private void RebindActions()
     {
-        
+        lineRenderer.enabled = true;
         if (spawnCardAction != null)
             spawnCardAction.action.performed -= GenerateDataCard;
         if (scanAction != null)
-            openMenuAction.action.performed -= EseguiScansione;
+            scanAction.action.performed -= EseguiScansione;
         
 
 
@@ -54,16 +54,26 @@ public class MassLaserScanner : MonoBehaviour
             scanAction.action.performed += EseguiScansione;
     }
 
-    private void OnChangeHand(string newHand) => RebindActions();
-    
+    private void OnChangeHand(string newHand, int idRiser)
+    { 
+        if(gameObject.GetInstanceID() == idRiser) RebindActions();
+    }
 
-    private void OnDrop() => RebindActions();
+    private void OnDrop(int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser)
+        {
+            RebindActions();
+            lineRenderer.enabled = false;
+        }
+    }
 
     private void OnEnable() => RebindActions();
 
     private void OnDisable()
     {
-        if (spawnAction != null) spawnCardAction.action.performed -= GenerateDataCard;
+        if (spawnCardAction != null) spawnCardAction.action.performed -= GenerateDataCard;
+        if (scanAction != null) scanAction.action.performed -= EseguiScansione;
     }
 
     

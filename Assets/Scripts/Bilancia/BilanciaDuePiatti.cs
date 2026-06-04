@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BilanciaDuePiatti : MonoBehaviour
 {
-    [SerializeField] private Step step;
     [Header("Riferimenti Piatti")]
     [SerializeField] private Transform leftPlate;
     [SerializeField] private Transform rightPlate;
@@ -12,7 +11,10 @@ public class BilanciaDuePiatti : MonoBehaviour
     [Header("Impostazioni Peso")]
     [SerializeField] private float leftPlateWeight;
 
-
+    [Header ("Led")]
+    [SerializeField] private GameObject led;
+    [SerializeField] private Material red;
+    [SerializeField] private Material green;
 
     [Header("Impostazioni Movimento")]
     [SerializeField] private float minY = 0.56f;
@@ -43,7 +45,7 @@ public class BilanciaDuePiatti : MonoBehaviour
     {
         RemoveObject(obj);
         bool result = AggiornaPosizionePiatti();
-        //if (result) StartCoroutine(EndStep());
+
     }
 
 
@@ -80,6 +82,14 @@ public class BilanciaDuePiatti : MonoBehaviour
     void Update()
     {
         bool result = AggiornaPosizionePiatti();
+        if (result && led != null)
+        {
+            led.GetComponent<Renderer>().material = green;
+        }
+        else if (led != null)
+        {
+            led.GetComponent<Renderer>().material = red;
+        }
     }
 
     private bool AggiornaPosizionePiatti()
@@ -106,11 +116,6 @@ public class BilanciaDuePiatti : MonoBehaviour
         }
     }
 
-    private IEnumerator EndStep() 
-    {
-        yield return new WaitForSeconds(1f);
-        step.endStep();
-        yield return null;
-    }
+
 }
 
