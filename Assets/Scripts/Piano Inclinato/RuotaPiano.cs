@@ -26,7 +26,7 @@ public class RuotaPiano : MonoBehaviour
     private float angoloManopolaAttuale = 0f;
     private Vector3 fixedPosition;
     [SerializeField] private GameObject DataCardSpawner;
-    private float actualPianoAngle = 0f;
+    private int actualPianoAngle = 0;
 
     void Awake()
     {
@@ -89,9 +89,10 @@ public class RuotaPiano : MonoBehaviour
 
         float t = angoloManopolaAttuale / rotazioneMax;
         float pianoAngle = Mathf.Lerp(minAngle, maxAngle, t);
-        angoloText.text = $"{pianoAngle:F1}°";
+        
         piano.localRotation = Quaternion.Euler(-pianoAngle, 0f, 0f);
-        actualPianoAngle = Mathf.Round(pianoAngle * 10f) / 10f;
+        actualPianoAngle = (int)Mathf.Round(pianoAngle);
+        angoloText.text = $"{actualPianoAngle}°";
     }
 
     private float GetHandAngle(Transform hand)

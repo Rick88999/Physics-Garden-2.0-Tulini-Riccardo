@@ -1,4 +1,4 @@
-using Unity.Multiplayer.Center.Common;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Step : MonoBehaviour
@@ -12,7 +12,7 @@ public class Step : MonoBehaviour
     [Header("Oggetti che appartengono allo step")]
     [SerializeField] GameObject[] objectsList;
     [Header("Loot")]
-    [SerializeField] LootGiver lootGiver;
+    [SerializeField] List<LootGiver> lootGivers = new();
     [SerializeField] bool isLastStep;
 
     // Update is called once per frame
@@ -25,7 +25,12 @@ public class Step : MonoBehaviour
             {
                 objAct.SetActive(true);
             }
-            if(lootGiver!=null && !isLastStep) lootGiver.GiveLoot();
+            if (lootGivers != null && !isLastStep)
+            {
+                if (lootGivers.Count > 0)
+                    foreach (LootGiver loot in lootGivers)
+                        loot.GiveLoot();
+            }
         }
         else
         {
@@ -43,7 +48,12 @@ public class Step : MonoBehaviour
 
         if (isLastStep)
         {
-            if(lootGiver!=null) lootGiver.GiveLoot();
+            if (lootGivers != null)
+            {
+                if(lootGivers.Count > 0)
+                    foreach (LootGiver lootGiver in lootGivers)
+                        lootGiver.GiveLoot();
+            }
             father.endQuest();
         }
         else if(NextStep!=null && !isLastStep) NextStep.startStep();

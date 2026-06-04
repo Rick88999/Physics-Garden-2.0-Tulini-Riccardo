@@ -9,6 +9,7 @@ public class LootGiver : MonoBehaviour
     [SerializeField] private List<GameObject> lootPrefabs = new();
     [SerializeField] private Transform lootSpawnPoint;
     [SerializeField] private TipoLoot tipoLoot;
+    [SerializeField] private bool main;
 
 
     public void GiveLoot()
@@ -26,7 +27,7 @@ public class LootGiver : MonoBehaviour
                 GameObject loot = Instantiate(lootPrefab, lootSpawnPoint.position, lootSpawnPoint.rotation);
                 loot.SetActive(true);
             }
-            GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
+            if(main) GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
         }
         else if(tipoLoot == TipoLoot.Card && lootSpawnPoint != null)
         {
@@ -45,7 +46,7 @@ public class LootGiver : MonoBehaviour
                     }
                 }
             }
-            GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
+            if(main) GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
             
         }
          else if(tipoLoot == TipoLoot.Button)
@@ -58,7 +59,7 @@ public class LootGiver : MonoBehaviour
                     button.SetActive(true);
                 }
             }
-            GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
+            if(main) GameEvents.Instance.onNewLootAcquired.Invoke(nameLoot, tipoLoot);
             
          }
 

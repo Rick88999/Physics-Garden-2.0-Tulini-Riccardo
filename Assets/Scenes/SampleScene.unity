@@ -3255,7 +3255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1351215576}
+  - {fileID: 1280592458}
   - {fileID: 585073007}
   m_Father: {fileID: 1896143716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3276,11 +3276,11 @@ MonoBehaviour:
   father: {fileID: 1896143717}
   NextStep: {fileID: 1833015743}
   objectsToActivate:
-  - {fileID: 1351215575}
+  - {fileID: 0}
   objectsList:
-  - {fileID: 1351215575}
   - {fileID: 585073008}
-  lootGiver: {fileID: 1873188130}
+  lootGivers:
+  - {fileID: 1873188130}
   isLastStep: 0
 --- !u!1 &60757981
 GameObject:
@@ -9749,7 +9749,7 @@ MonoBehaviour:
   player: {fileID: 983569967}
   companion: {fileID: 1330588979}
   startTower: {fileID: 398121035}
-  basePlayerPosition: {x: 0, y: 4.288, z: -4.064}
+  basePlayerPosition: {x: 0, y: 4.286, z: -4.57}
   basePlayerRotation: {x: 0, y: 0, z: 0, w: 0}
   playerMenuManager: {fileID: 320170902}
   handMenuManager: {fileID: 1808717007}
@@ -22583,7 +22583,7 @@ GameObject:
   - component: {fileID: 218441060}
   - component: {fileID: 218441061}
   m_Layer: 0
-  m_Name: Quest 3 (piano inclinato)
+  m_Name: Quest 2 (piano inclinato)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22626,7 +22626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9406a7abc4f15884c8c259b403d924cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questID: 3
+  questID: 2
   state: noActivated
   steps:
   - {fileID: 929292075}
@@ -28525,7 +28525,8 @@ MonoBehaviour:
   - {fileID: 1026969690}
   - {fileID: 1695145293}
   - {fileID: 1434681435}
-  lootGiver: {fileID: 1849187811}
+  lootGivers:
+  - {fileID: 1849187811}
   isLastStep: 0
 --- !u!4 &240910065
 Transform:
@@ -30388,7 +30389,7 @@ MonoBehaviour:
   - Ho reso disponibili nel tuo inventario le Formula Card di Altezza e inerzia,
     te le sei guadagnate.
   - Uscendo di qui potresti trovari altre persone bisognose del tuo aiuto.
-  - Segui i cartelli e in bocca al lupo.
+  - Segui la strada, non puoi sbaglairti.
   toActivateAtEnd: []
 --- !u!4 &275886487
 Transform:
@@ -46600,15 +46601,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46620,7 +46621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.055
+      value: -4.555
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -46653,6 +46654,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
       propertyPath: m_Name
       value: Teleporter 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583996763152934667, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583996763152934667, guid: 1d9d8acec5d5c71418eb7343c8f57d3c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.063
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47105,7 +47114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 97.10501
+      value: 117.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48155,7 +48164,7 @@ MonoBehaviour:
   - {fileID: 804898329}
   objectsList:
   - {fileID: 804898329}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &605507528
 Transform:
@@ -50761,7 +50770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 478f762cbbd6b2f4d8b4bd37c24c6ad7, type: 2}
+  - {fileID: 2100000, guid: f34d13499366a0743ac4bcc0fc0b3162, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51495,7 +51504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb0b7ca83a252c418a87c8ce8a465ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
-  fatherStep: {fileID: 949765307}
+  fatherStep: {fileID: 56181013}
   botText: {fileID: 1402265429}
   panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
@@ -51504,13 +51513,8 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   sentences:
-  - Ti ha mandato Angel Bot vero?
-  - Non si fa mai gli affari suoi...
-  - ... ma capiti al momento giusto. Stavo analizzando la densita di questo legno.
-  - Ma quando l'ho messo sulla bilancia la Garden Dome l'ha visto come ostile e ha
-    generato un campo di forza intorno ad esso.
-  - "Per\xF2 si trova sulla bilancia, magari con qualche strumento e un p\xF2 di
-    inventiva potresti calcolarne la densit\xE0."
+  - Ho aggiunto un  generatore di oggetti di nuova generazione
+  - "Ti torner\xE0 utile vedrai..."
   toActivateAtEnd: []
 --- !u!4 &667211462
 Transform:
@@ -51763,6 +51767,7 @@ MonoBehaviour:
   - {fileID: 1781231151}
   lootSpawnPoint: {fileID: 0}
   tipoLoot: 2
+  main: 1
 --- !u!4 &671370033
 Transform:
   m_ObjectHideFlags: 0
@@ -53011,7 +53016,7 @@ MonoBehaviour:
   - {fileID: 1732155601}
   objectsList:
   - {fileID: 1732155601}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &692968592
 Transform:
@@ -59368,7 +59373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartCollider
   questManager: {fileID: 1954238526}
-  number: 2
+  number: 3
   members:
   - {fileID: 794840385}
 --- !u!135 &794840387
@@ -59401,7 +59406,7 @@ Transform:
   m_GameObject: {fileID: 794840385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.49, y: -2.37, z: 100.9}
+  m_LocalPosition: {x: -57.49, y: -2.37, z: 122.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63369,7 +63374,7 @@ MonoBehaviour:
   - {fileID: 989154720}
   objectsList:
   - {fileID: 989154720}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!1 &868772346
 GameObject:
@@ -70454,7 +70459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartCollider
   questManager: {fileID: 1954238526}
-  number: 1
+  number: 2
   members:
   - {fileID: 902135467}
   - {fileID: 1918344525}
@@ -70495,13 +70500,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902135467}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.532, y: -1.8570001, z: 94.59}
+  m_LocalRotation: {x: -0, y: -0, z: -0.005121174, w: 0.9999869}
+  m_LocalPosition: {x: -13.559999, y: -0.9797387, z: 104.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 218441060}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.587}
 --- !u!1 &907205965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1787346994484839025, guid: ad818c36731146e994540a1896ad8f24, type: 3}
@@ -72516,7 +72521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 92.08648
+      value: 91.553
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72848,7 +72853,7 @@ MonoBehaviour:
   - {fileID: 844472632}
   objectsList:
   - {fileID: 844472632}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &929292076
 Transform:
@@ -73454,7 +73459,7 @@ MonoBehaviour:
   - {fileID: 667211460}
   objectsList:
   - {fileID: 667211460}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &949765308
 Transform:
@@ -73768,7 +73773,7 @@ Transform:
   m_GameObject: {fileID: 956251130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0049386052, w: 0.99998784}
-  m_LocalPosition: {x: 0, y: 0.11, z: 51.94}
+  m_LocalPosition: {x: 0, y: 0.11, z: 10.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76543,7 +76548,7 @@ MonoBehaviour:
   objectsList:
   - {fileID: 1911130803}
   - {fileID: 1834757371}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!1001 &1003872287
 PrefabInstance:
@@ -78661,6 +78666,7 @@ MonoBehaviour:
   - {fileID: 1712377617}
   lootSpawnPoint: {fileID: 0}
   tipoLoot: 2
+  main: 1
 --- !u!1 &1042782528
 GameObject:
   m_ObjectHideFlags: 0
@@ -81230,7 +81236,7 @@ MonoBehaviour:
   - {fileID: 2042454917}
   objectsList:
   - {fileID: 2042454917}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!1 &1108873830 stripped
 GameObject:
@@ -93309,15 +93315,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.019
+      value: -14.854
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3001103
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100.215
+      value: 110.497
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalRotation.w
@@ -93718,7 +93724,7 @@ MonoBehaviour:
   - {fileID: 740079779}
   objectsList:
   - {fileID: 740079779}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!1 &1173204945
 GameObject:
@@ -98891,15 +98897,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.848
+      value: -15.683
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3001103
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100.215
+      value: 110.497
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalRotation.w
@@ -99548,7 +99554,7 @@ Transform:
   m_GameObject: {fileID: 1188142273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 21.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -101684,7 +101690,7 @@ MonoBehaviour:
   - {fileID: 248987409}
   - {fileID: 289931487}
   - {fileID: 1523981525}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!114 &1242973314
 MonoBehaviour:
@@ -104498,6 +104504,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
   m_PrefabInstance: {fileID: 871691151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1280592457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280592458}
+  - component: {fileID: 1280592459}
+  m_Layer: 0
+  m_Name: dialogContoller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1280592458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280592457}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 56181012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1280592459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280592457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb0b7ca83a252c418a87c8ce8a465ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogManager
+  fatherStep: {fileID: 949765307}
+  botText: {fileID: 1402265429}
+  panel: {fileID: 909406670}
+  canvasPointer: {fileID: 440250227}
+  bot: {fileID: 1424672685}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  typingSpeed: 0.05
+  sentences:
+  - Ti ha mandato Angel Bot vero?
+  - Non si fa mai gli affari suoi...
+  - ... ma capiti al momento giusto. Stavo analizzando la densita di questo legno.
+  - Ma quando l'ho messo sulla bilancia la Garden Dome l'ha visto come ostile e ha
+    generato un campo di forza intorno ad esso.
+  - "Per\xF2 si trova sulla bilancia, magari con qualche strumento e un p\xF2 di
+    inventiva potresti calcolarne la densit\xE0."
+  toActivateAtEnd:
+  - {fileID: 585073008}
 --- !u!1 &1280598210
 GameObject:
   m_ObjectHideFlags: 0
@@ -104535,7 +104603,7 @@ MonoBehaviour:
   - {fileID: 105040721}
   objectsList:
   - {fileID: 105040721}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &1280598212
 Transform:
@@ -105954,7 +106022,7 @@ MonoBehaviour:
   - {fileID: 1308254462}
   objectsList:
   - {fileID: 1308254462}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 1
 --- !u!1 &1288406336
 GameObject:
@@ -112578,15 +112646,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.502
+      value: -15.337
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3001103
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100.215
+      value: 110.497
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       propertyPath: m_LocalRotation.w
@@ -114523,64 +114591,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351030147}
   m_CullTransparentMesh: 1
---- !u!1 &1351215575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1351215576}
-  - component: {fileID: 1351215577}
-  m_Layer: 0
-  m_Name: dialogContoller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1351215576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351215575}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 56181012}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1351215577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351215575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb0b7ca83a252c418a87c8ce8a465ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogManager
-  fatherStep: {fileID: 56181013}
-  botText: {fileID: 1402265429}
-  panel: {fileID: 909406670}
-  canvasPointer: {fileID: 440250227}
-  bot: {fileID: 1424672685}
-  afterEndStep: 0
-  canvasEndToggle: 1
-  typingSpeed: 0.05
-  sentences:
-  - Nel tuo amico zaino ho inserito un genera oggetti di ultima generazione, ti potrebbe
-    essere utile.
-  - Fammi sapere come va!
-  toActivateAtEnd:
-  - {fileID: 585073008}
 --- !u!1 &1361870571
 GameObject:
   m_ObjectHideFlags: 0
@@ -119035,6 +119045,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cc24dad9f5c49d748816855364e17507, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1330588983}
+    - targetCorrespondingSourceObject: {fileID: -7080008205057387153, guid: cc24dad9f5c49d748816855364e17507, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1877862383}
+    - targetCorrespondingSourceObject: {fileID: -4550517907847052725, guid: cc24dad9f5c49d748816855364e17507, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1758025327}
   m_SourcePrefab: {fileID: 100100000, guid: cc24dad9f5c49d748816855364e17507, type: 3}
 --- !u!1 &1440697675
 GameObject:
@@ -120482,7 +120498,7 @@ MonoBehaviour:
   objectsList:
   - {fileID: 1817900265}
   - {fileID: 1180378049}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &1482478877
 Transform:
@@ -120893,7 +120909,7 @@ Transform:
   m_GameObject: {fileID: 1487630850}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4801567, y: 0.51908535, z: 0.4801567, w: 0.51908535}
-  m_LocalPosition: {x: -0.08471324, y: 0.18565288, z: 1.1435242}
+  m_LocalPosition: {x: -0.089, y: 0.131, z: 0.762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122222,7 +122238,7 @@ MonoBehaviour:
   objectsList:
   - {fileID: 1582318034}
   - {fileID: 1428852015}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &1504984094
 Transform:
@@ -129554,7 +129570,8 @@ MonoBehaviour:
   - {fileID: 275886485}
   objectsList:
   - {fileID: 275886485}
-  lootGiver: {fileID: 1042226467}
+  lootGivers:
+  - {fileID: 1042226467}
   isLastStep: 1
 --- !u!4 &1639189152
 Transform:
@@ -131714,7 +131731,7 @@ MonoBehaviour:
   - {fileID: 851850741}
   objectsList:
   - {fileID: 851850741}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!1 &1681944848
 GameObject:
@@ -136467,7 +136484,7 @@ MonoBehaviour:
   - {fileID: 1844331452}
   - {fileID: 440509665}
   - {fileID: 115518310}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!4 &1754470033
 Transform:
@@ -136588,6 +136605,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5504e76df4e473f45bffcad7a3ec7d54, type: 3}
   m_PrefabInstance: {fileID: 1757865902}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1758025325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4550517907847052725, guid: cc24dad9f5c49d748816855364e17507, type: 3}
+  m_PrefabInstance: {fileID: 1439723194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1758025327
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758025325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b4cf626322428345b7e68363c3f00b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1758146466
 GameObject:
   m_ObjectHideFlags: 0
@@ -137184,7 +137228,7 @@ MonoBehaviour:
   - {fileID: 1626725243}
   - {fileID: 380325282}
   - {fileID: 414730969}
-  lootGiver: {fileID: 0}
+  lootGivers: []
   isLastStep: 0
 --- !u!114 &1764536154
 MonoBehaviour:
@@ -138923,7 +138967,8 @@ MonoBehaviour:
   - {fileID: 546120229}
   objectsList:
   - {fileID: 546120229}
-  lootGiver: {fileID: 2058471554}
+  lootGivers:
+  - {fileID: 2058471554}
   isLastStep: 1
 --- !u!1 &1808717006
 GameObject:
@@ -140467,7 +140512,7 @@ MonoBehaviour:
   - {fileID: 1782498765}
   objectsList:
   - {fileID: 1782498765}
-  lootGiver: {fileID: 671370032}
+  lootGivers: []
   isLastStep: 1
 --- !u!4 &1833015744
 Transform:
@@ -141623,6 +141668,7 @@ MonoBehaviour:
   - {fileID: 1993900806}
   lootSpawnPoint: {fileID: 0}
   tipoLoot: 2
+  main: 1
 --- !u!1 &1850758053
 GameObject:
   m_ObjectHideFlags: 0
@@ -142533,7 +142579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: edbde3082e4308c45876e2f86fbaeb25, type: 2}
+  - {fileID: 2100000, guid: f34d13499366a0743ac4bcc0fc0b3162, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143584,6 +143630,7 @@ MonoBehaviour:
   - {fileID: 772735550}
   lootSpawnPoint: {fileID: 0}
   tipoLoot: 2
+  main: 1
 --- !u!1 &1874609793
 GameObject:
   m_ObjectHideFlags: 0
@@ -143892,6 +143939,33 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 709241428}
   m_SourcePrefab: {fileID: 100100000, guid: 789fa6fedff3e9449be6e8cc3ff5d007, type: 3}
+--- !u!1 &1877862381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7080008205057387153, guid: cc24dad9f5c49d748816855364e17507, type: 3}
+  m_PrefabInstance: {fileID: 1439723194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1877862383
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877862381}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e32f06aa95534174bb668951feff8a35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1878613469
 GameObject:
   m_ObjectHideFlags: 0
@@ -144894,7 +144968,7 @@ GameObject:
   - component: {fileID: 1896143716}
   - component: {fileID: 1896143717}
   m_Layer: 0
-  m_Name: Quest 2 (bilancia)
+  m_Name: Quest 3 (bilancia)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144933,7 +145007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9406a7abc4f15884c8c259b403d924cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Quest
-  questID: 2
+  questID: 3
   state: noActivated
   steps:
   - {fileID: 949765307}
@@ -146461,13 +146535,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918344525}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.481, y: -1.8570001, z: 101.324005}
+  m_LocalRotation: {x: -0, y: -0, z: -0.005121174, w: 0.9999869}
+  m_LocalPosition: {x: -13.509002, y: -0.9802613, z: 111.54401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 218441060}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.587}
 --- !u!1 &1918843162
 GameObject:
   m_ObjectHideFlags: 0
@@ -148114,8 +148188,8 @@ MonoBehaviour:
   quests:
   - {fileID: 1947110043}
   - {fileID: 1164634572}
-  - {fileID: 1896143717}
   - {fileID: 218441061}
+  - {fileID: 1896143717}
 --- !u!4 &1954238527
 Transform:
   m_ObjectHideFlags: 0
@@ -148132,8 +148206,8 @@ Transform:
   - {fileID: 1749335284}
   - {fileID: 1947110044}
   - {fileID: 1164634571}
-  - {fileID: 1896143716}
   - {fileID: 218441060}
+  - {fileID: 1896143716}
   m_Father: {fileID: 2099585674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954579567
@@ -158311,6 +158385,7 @@ MonoBehaviour:
   - {fileID: 446868278}
   lootSpawnPoint: {fileID: 0}
   tipoLoot: 2
+  main: 1
 --- !u!1 &2059922858
 GameObject:
   m_ObjectHideFlags: 0
