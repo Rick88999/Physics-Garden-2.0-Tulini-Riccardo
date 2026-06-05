@@ -3255,7 +3255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1280592458}
+  - {fileID: 667211462}
   - {fileID: 585073007}
   m_Father: {fileID: 1896143716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3276,8 +3276,9 @@ MonoBehaviour:
   father: {fileID: 1896143717}
   NextStep: {fileID: 1833015743}
   objectsToActivate:
-  - {fileID: 0}
+  - {fileID: 667211460}
   objectsList:
+  - {fileID: 667211460}
   - {fileID: 585073008}
   lootGivers:
   - {fileID: 1873188130}
@@ -51509,13 +51510,14 @@ MonoBehaviour:
   panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
   bot: {fileID: 1424672685}
-  afterEndStep: 1
+  afterEndStep: 0
   canvasEndToggle: 1
   typingSpeed: 0.05
   sentences:
   - Ho aggiunto un  generatore di oggetti di nuova generazione
   - "Ti torner\xE0 utile vedrai..."
-  toActivateAtEnd: []
+  toActivateAtEnd:
+  - {fileID: 585073008}
 --- !u!4 &667211462
 Transform:
   m_ObjectHideFlags: 0
@@ -51529,7 +51531,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 949765308}
+  m_Father: {fileID: 56181012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &668272061
 GameObject:
@@ -73456,9 +73458,9 @@ MonoBehaviour:
   father: {fileID: 1896143717}
   NextStep: {fileID: 56181013}
   objectsToActivate:
-  - {fileID: 667211460}
+  - {fileID: 1280592457}
   objectsList:
-  - {fileID: 667211460}
+  - {fileID: 1280592457}
   lootGivers: []
   isLastStep: 0
 --- !u!4 &949765308
@@ -73474,7 +73476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 667211462}
+  - {fileID: 1280592458}
   m_Father: {fileID: 1896143716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951213373
@@ -104534,7 +104536,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 56181012}
+  m_Father: {fileID: 949765308}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1280592459
 MonoBehaviour:
@@ -104564,8 +104566,7 @@ MonoBehaviour:
     generato un campo di forza intorno ad esso.
   - "Per\xF2 si trova sulla bilancia, magari con qualche strumento e un p\xF2 di
     inventiva potresti calcolarne la densit\xE0."
-  toActivateAtEnd:
-  - {fileID: 585073008}
+  toActivateAtEnd: []
 --- !u!1 &1280598210
 GameObject:
   m_ObjectHideFlags: 0
@@ -140512,7 +140513,8 @@ MonoBehaviour:
   - {fileID: 1782498765}
   objectsList:
   - {fileID: 1782498765}
-  lootGivers: []
+  lootGivers:
+  - {fileID: 671370032}
   isLastStep: 1
 --- !u!4 &1833015744
 Transform:
