@@ -139,6 +139,7 @@ public class ObjectSpawnTool : MonoBehaviour
         if (oggetto != null)
         {
             Rigidbody rb = oggetto.AddComponent<Rigidbody>();
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
             XRGrabInteractable grab = oggetto.AddComponent<XRGrabInteractable>();
             oggetto.transform.position = spawnAttach.position;
 
