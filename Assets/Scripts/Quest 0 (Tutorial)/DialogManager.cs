@@ -21,6 +21,9 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private string[] sentences;
     [SerializeField] public GameObject[] toActivateAtEnd;
 
+    [SerializeField] private AudioSource dialogAudioSource;
+    [SerializeField] private AudioClip[] sentenceClips; 
+
     private Coroutine typingCoroutine;
     private bool isTyping = false;
 
@@ -81,6 +84,8 @@ public class DialogManager : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
+        PlayClipForCurrent();
+
         typingCoroutine = StartCoroutine(Type());
     }
 
@@ -94,6 +99,21 @@ public class DialogManager : MonoBehaviour
 
         botText.text = sentences[index];
         isTyping = false;
+
+        if (dialogAudioSource != null && dialogAudioSource.isPlaying)
+            dialogAudioSource.Stop();
+    }
+
+    private void PlayClipForCurrent()
+    {
+        if (dialogAudioSource == null) return;
+        if (sentenceClips == null || index >= sentenceClips.Length) return;
+        AudioClip clip = sentenceClips[index];
+        if (clip == null) return;
+
+        dialogAudioSource.Stop();
+        dialogAudioSource.clip = clip;
+        dialogAudioSource.Play();
     }
 
     IEnumerator Type()
@@ -108,6 +128,9 @@ public class DialogManager : MonoBehaviour
 
         isTyping = false;
         typingCoroutine = null;
+
+        if (dialogAudioSource != null && dialogAudioSource.isPlaying)
+            dialogAudioSource.Stop();
     }
 
     
