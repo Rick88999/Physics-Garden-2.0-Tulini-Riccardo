@@ -5,24 +5,25 @@ public class FisicaMongolfiera : MonoBehaviour
     public bool activator;
     [SerializeField] private MassaCounterBox massaCounterBox;
     private float massaTotale = 1f;
-    private readonly float terra = -0.5f;
+    private readonly float terra = 0f;
     private float gravita = Mathf.Abs(Physics.gravity.y);
     [Header("Parametri Fisici")]
     [SerializeField] private float volumeOggetto;
     [SerializeField] private float densitaFluido;
     [SerializeField] private float altezzaMassima;
-    [SerializeField] private float altezzaAttesa;
+    [SerializeField] private int altezzaAttesa;
     [Header("Controllo Altezza")]
     [SerializeField] private float intensitaFrenata = 2f;
     [Header("Avvio Graduale")]
     [SerializeField] private float durataAvvio = 3f;
     private float tempoAvvio = 0f;
-
+    [Header("Tappo Invisibile")]
+    [SerializeField] private GameObject Tappo;
     void Start()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
         rb.linearDamping = 8f;
-        altezzaAttesa = altezzaMassima;
+        altezzaAttesa = (int)altezzaMassima;
         massaTotale = massaCounterBox != null ? massaCounterBox.GetMassaTotale() : 1f;
     }
 
@@ -33,34 +34,28 @@ public class FisicaMongolfiera : MonoBehaviour
             tempoAvvio += Time.fixedDeltaTime;
             float fattoreAvvio = Mathf.Clamp01(tempoAvvio / durataAvvio);
 
-            float spintaArchimede = volumeOggetto * densitaFluido * gravita;
-            Vector3 forzaSpinta = Vector3.up * spintaArchimede * fattoreAvvio;
+            float targetY = altezzaAttesa;
+            float distanza = targetY - transform.position.y;
 
-            if (transform.position.y > altezzaAttesa)
-            {
-                float eccessoAltezza = transform.position.y - altezzaAttesa;
-                forzaSpinta += Vector3.down * (eccessoAltezza * eccessoAltezza * intensitaFrenata * gravita * massaTotale);
-                rb.linearDamping = Mathf.Lerp(8f, 1.5f, fattoreAvvio);
-            }
-            else if (transform.position.y > altezzaAttesa - 4f)
-            {
-                float fattoreRallentamento = (transform.position.y - (altezzaAttesa - 2f)) / 2f;
-                rb.linearDamping = Mathf.Lerp(1.5f, 12f, fattoreRallentamento);
-            }
-            else
-            {
-                rb.linearDamping = Mathf.Lerp(6f, 1.5f, fattoreAvvio);
-            }
+            float forzaMinima = Mathf.Clamp(Mathf.Abs(distanza) * 15f, 3f, 50f);
+            float forzaVersTarget = Mathf.Sign(distanza) * forzaMinima * massaTotale * fattoreAvvio;
 
-            rb.AddForce(forzaSpinta, ForceMode.Force);
+            float compensazioneGravita = massaTotale * gravita;
+
+            Vector3 forzaTotale = Vector3.up * (forzaVersTarget + compensazioneGravita);
+            rb.AddForce(forzaTotale, ForceMode.Force);
+
+            float vicinanzaTarget = 1f - Mathf.Clamp01(Mathf.Abs(distanza) / 5f);
+            rb.linearDamping = Mathf.Lerp(2f, 15f, vicinanzaTarget);
         }
     }
 
     public void AttivaDisattivaSpinta()
     {
-        if (Mathf.Abs(transform.position.y - altezzaAttesa) < 3f)
+        if (Mathf.Abs(transform.position.y - altezzaAttesa) < 1f)
         {
             activator = false;
+            Tappo.SetActive(false);
             tempoAvvio = 0f;
         }
         else if (Mathf.Abs(transform.position.y - terra) < 0.1f)
@@ -69,11 +64,16 @@ public class FisicaMongolfiera : MonoBehaviour
             if (Mathf.Abs((volumeOggetto * densitaFluido) - massaTotale) <= 0.01f)
             {
                 activator = false;
+                Tappo.SetActive(false);
                 return;
             }
             float spintaArchimede = volumeOggetto * densitaFluido * gravita;
-            altezzaAttesa = altezzaMassima - (altezzaMassima * ((massaTotale * gravita) / spintaArchimede));
+            if(massaTotale == 0) altezzaAttesa = (int)altezzaMassima;
+            else altezzaAttesa = (int)altezzaMassima - (int)(altezzaMassima * ((massaTotale * gravita) / spintaArchimede));
+
+            if(altezzaAttesa>0 && altezzaAttesa<1) altezzaAttesa = 1;
             tempoAvvio = 0f;
+            Tappo.SetActive(true);
             activator = true;
         }
     }

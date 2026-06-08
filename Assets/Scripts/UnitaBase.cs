@@ -18,6 +18,12 @@ public enum Operazione
     VolumeSfera,
     VolumeCilindro,
     VolumeX1,
+    ForzaCentripeta,
+    ForzaNewtoniana,
+    ForzaElastica,
+    ForzaElettrostatica,
+    ForzaDiLorentz,
+    ForzaAttritoStatico,
     None
 }
 
@@ -37,6 +43,7 @@ public enum UnitaMisura
     Inerzia,
     InerziaX2,
     InerziaX3,
+    Newton,
     None
 }
 

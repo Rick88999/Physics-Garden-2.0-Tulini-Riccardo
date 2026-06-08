@@ -10,10 +10,18 @@ public class SpawnCard : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
-        {UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
-        { UnitaMisura.Volume,      "m<sup>3</sup>" },
         { UnitaMisura.Angolo,      "°"  },
-        { UnitaMisura.Kilogrammi,  "kg" }
+        { UnitaMisura.Kilogrammi, "kg" },
+        { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
+        { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
+        { UnitaMisura.DensitaO, "kg/m<sup>3</sup>" },
+        { UnitaMisura.Volume, "m<sup>3</sup>" },
+        { UnitaMisura.VolumeX1, "m<sup>2</sup>" },
+        { UnitaMisura.Inerzia, "kg*m<sup>2</sup>" },
+        { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
+        { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
+        { UnitaMisura.Newton, "N" },
+        { UnitaMisura.None, "" }
     };
     
     [SerializeField] public TipoCard tipoCard;

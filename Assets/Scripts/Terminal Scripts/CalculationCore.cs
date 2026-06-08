@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -22,6 +23,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Inerzia, "kg*m<sup>2</sup>" },
         { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
         { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
+        { UnitaMisura.Newton, "N" },
         { UnitaMisura.None, "" }
     };
 
@@ -120,6 +122,96 @@ public class CalculationCore : MonoBehaviour
         return true;
     }
 
+    private bool ForzaElastica()
+    {
+        if(value.ContainsKey("Costante elastica") && value.ContainsKey("Spostamento")) 
+        {
+            result = value["Costante elastica"] * value["Spostamento"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaElastica calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool ForzaNewtoniana()
+    {
+        if (value.ContainsKey("Massa") && value.Keys.Any(k => k.Contains("Accelerazione")))
+        {
+            string chiaveAccelerazione = value.Keys.First(k => k.Contains("Accelerazione"));
+            result = value["Massa"] * value[chiaveAccelerazione];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaNewtoniana calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool ForzaCentripeta()
+    {
+        if (value.ContainsKey("Massa") && value.ContainsKey("Velocita") && value.ContainsKey("Raggio"))
+        {
+            result = (value["Massa"] * Mathf.Pow(value["Velocita"], 2)) / value["Raggio"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaCentripeta calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+    private bool ForzaAttritoStatico()
+    {
+        if (value.ContainsKey("Coefficiente di attrito statico") && value.ContainsKey("Reazione vincolare"))
+        {
+            result = value["Coefficiente di attrito statico"] * value["Reazione vincolare"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaAttritoStatico calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool ForzaElettrostatica()
+    {
+        if (value.ContainsKey("Carica") && value.ContainsKey("Campo Elettrico"))
+        {
+            result = value["Carica"] * value["Campo Elettrico"];
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaElettrostatica calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool ForzaDiLorentz()
+    {
+        if (value.ContainsKey("Carica") && value.ContainsKey("Campo Magnetico") && value.ContainsKey("Velocita") && value.ContainsKey("Angolo"))
+        {
+            result = value["Carica"] * value["Campo Magnetico"] * value["Velocita"] * Mathf.Sin(value["Angolo"]);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for ForzaDiLorentz calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
     private bool VolumeCubo()
     {
         if(value.ContainsKey("Lunghezza")) 
@@ -196,9 +288,10 @@ public class CalculationCore : MonoBehaviour
 
     private bool DensitaArch()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Densita fluido") && value.ContainsKey("Forza di archimede"))
+        if (value.ContainsKey("Massa") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Densita fluido") && value.Keys.Any(k => k.Contains("Forza")))
         {
-            result = value["Densita fluido"]*(value["Forza di archimede"] / (value["Massa"]* value["Accelerazione di gravita"]));
+            string chiaveForza = value.Keys.First(k => k.Contains("Forza"));
+            result = value["Densita fluido"]*(value[chiaveForza] / (value["Massa"]* value["Accelerazione di gravita"]));
             return true;
         }
         else
@@ -500,6 +593,36 @@ public class CalculationCore : MonoBehaviour
                     unitaMisura = simboliUnita[UnitaMisura.VolumeX1];
                     if (esito) SpawnResultCard("VolumeX1");
                     break;
+                case Operazione.ForzaCentripeta:
+                    esito = ForzaCentripeta();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza Centripeta");
+                    break;
+                case Operazione.ForzaNewtoniana:
+                    esito = ForzaNewtoniana();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza Newtoniana");
+                    break;
+                case Operazione.ForzaElastica:
+                    esito = ForzaElastica();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza Elastica");
+                    break;
+                case Operazione.ForzaElettrostatica:
+                    esito = ForzaElettrostatica();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza Elettrostatica");
+                    break;
+                case Operazione.ForzaDiLorentz:
+                    esito = ForzaDiLorentz();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza di Lorentz");
+                    break;
+                case Operazione.ForzaAttritoStatico:
+                    esito = ForzaAttritoStatico();
+                    unitaMisura = simboliUnita[UnitaMisura.Newton];
+                    if (esito) SpawnResultCard("Forza di Attrito Statico");
+                    break;
             }
         }   
     }
@@ -522,6 +645,13 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloVolumeSfera() => Calcolo(Operazione.VolumeSfera);
         public void CalcoloVolumeCilindro() => Calcolo(Operazione.VolumeCilindro);
         public void CalcoloVolumeX1() => Calcolo(Operazione.VolumeX1);
+        public void CalcoloForzaCentripeta() => Calcolo(Operazione.ForzaCentripeta);
+        public void CalcoloForzaNewtoniana() => Calcolo(Operazione.ForzaNewtoniana);
+        public void CalcoloForzaElastica() => Calcolo(Operazione.ForzaElastica);
+        public void CalcoloForzaElettrostatica() => Calcolo(Operazione.ForzaElettrostatica);
+        public void CalcoloForzaDiLorentz() => Calcolo(Operazione.ForzaDiLorentz);
+        public void CalcoloForzaAttritoStatico() => Calcolo(Operazione.ForzaAttritoStatico);
+
 
 
 }
