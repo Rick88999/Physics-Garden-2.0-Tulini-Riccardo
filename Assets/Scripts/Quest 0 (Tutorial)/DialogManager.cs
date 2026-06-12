@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class DialogManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public Step fatherStep;
     public TextMeshProUGUI botText;
     public GameObject panel;
@@ -18,17 +19,30 @@ public class DialogManager : MonoBehaviour
     private bool alreadyStarted = false;
 
     [SerializeField] public float typingSpeed;
-    [SerializeField] private string[] sentences;
+    private string[] sentences;
+    [SerializeField] private string[] ItalianSentences;
+    [SerializeField] private string[] EnglishSentences;
     [SerializeField] public GameObject[] toActivateAtEnd;
 
     [SerializeField] private AudioSource dialogAudioSource;
-    [SerializeField] private AudioClip[] sentenceClips; 
+    [SerializeField] private AudioClip[] sentenceClips;
 
     private Coroutine typingCoroutine;
     private bool isTyping = false;
+    private Lenguage actualLenguage;
 
     public void Awake()
     {
+        actualLenguage = gameManager.GetLenguage();
+        if(actualLenguage == Lenguage.Italian)
+        {
+            sentences = ItalianSentences;
+        }
+        else if(actualLenguage == Lenguage.English)
+        {
+            sentences = EnglishSentences;
+        }
+
         canvasPointer.SetActive(true);
         nextSentence();
     }

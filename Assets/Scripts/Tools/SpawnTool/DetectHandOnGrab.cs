@@ -22,7 +22,6 @@ public class DetectHandOnGrab : MonoBehaviour
     private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
-    private int counterDebug = 0;
 
 
     [SerializeField] private XRGrabInteractable grabbable;

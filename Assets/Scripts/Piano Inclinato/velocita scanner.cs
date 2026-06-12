@@ -39,15 +39,16 @@ public class velocitascanner : MonoBehaviour
             if(tipoOggetto == "Sfera")
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad))/(1+costanteInerzialeSfera));
-                velocitaText.text = $"Velocita finale: {velocitaFinale:F1} m/s";
+                velocitaText.text = $"{velocitaFinale:F1} m/s";
                 DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
             else if (tipoOggetto == "Cilindro")
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad)) / (1 + costanteInerzialeCilindro));
-                velocitaText.text = $"Velocita finale: {velocitaFinale:F2} m/s";
+                velocitaText.text = $"{velocitaFinale:F2} m/s";
                 DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
+
 
             DataCardSpawner.GetComponent<SpawnCard>().DetailsReceiver($"{tipoOggetto:F1}");
             DataCardSpawner.GetComponent<SpawnCard>().SpawnDataCard();

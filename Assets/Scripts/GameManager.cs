@@ -68,16 +68,20 @@ public class GameManager : MonoBehaviour
     [Header("Inventory")]
     [SerializeField] private InventoryManager inventoryManager;
 
-    [Header("Global Light")]
-    [SerializeField] private Light globalLight;
-
     [Header("Player Audio")]
     [SerializeField] private AudioSource playerAudioSource;
     [SerializeField] private AudioClip playerAudioClip;
 
-    private SavedState actualSavedState;
+    [Header("Setting Light & Audio")]
+    [SerializeField] private SettingsController settingsController;
 
-    private void ResetLight() => globalLight.intensity = 2.5f;
+    private SavedState actualSavedState;
+    private Lenguage actualLenguage = Lenguage.Italian;
+
+    private void ResetLight() => settingsController.SetSliderSettings();
+    
+    public void SetLenguage(Lenguage lenguage) => actualLenguage = lenguage;
+    public Lenguage GetLenguage() => actualLenguage;
 
     public void NewSaveGame(string name)
     {
@@ -157,7 +161,8 @@ public class GameManager : MonoBehaviour
             botController.StartFollow();
             LoadInvetory();
             startTower.SetActive(false);
-            foreach(SavedQuest quest in actualSavedState.allQuests)
+            playerMenuManager.UnlockMenu();
+            foreach (SavedQuest quest in actualSavedState.allQuests)
             {
                 if(quest.id_quest == 0)
                 {

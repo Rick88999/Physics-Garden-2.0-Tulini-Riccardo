@@ -71,3 +71,9 @@ public enum TipoTool
     MassSensor,
     Spawner
 }
+
+public enum Lenguage
+{
+    Italian,
+    English
+}
