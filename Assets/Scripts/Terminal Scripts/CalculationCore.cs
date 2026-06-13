@@ -557,7 +557,7 @@ public class CalculationCore : MonoBehaviour
                         if (gm.GetLanguage() == Language.Italian)
                             SpawnResultCard("Costante Inerziale");
                         else if (gm.GetLanguage() == Language.English)
-                            SpawnResultCard("Inertial Constant");
+                            SpawnResultCard("Inertia Constant");
                     }
                     break;
                 case Operazione.costanteInerzialeX2:
@@ -568,7 +568,7 @@ public class CalculationCore : MonoBehaviour
                         if (gm.GetLanguage() == Language.Italian)
                             SpawnResultCard("Costante Inerziale");
                         else if (gm.GetLanguage() == Language.English)
-                            SpawnResultCard("Inertial Constant");
+                            SpawnResultCard("Inertia Constant");
                     }   
                     break;
                 case Operazione.costanteInerzialeO:
@@ -579,7 +579,7 @@ public class CalculationCore : MonoBehaviour
                         if (gm.GetLanguage() == Language.Italian)
                             SpawnResultCard("Costante Inerziale");
                         else if (gm.GetLanguage() == Language.English)
-                            SpawnResultCard("Inertial Constant");
+                            SpawnResultCard("Inertia Constant");
                     }
                     break;
                 case Operazione.InerziaX1:

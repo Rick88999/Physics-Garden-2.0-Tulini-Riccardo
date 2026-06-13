@@ -44756,8 +44756,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -53951,7 +53951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24220a009abd264b9d89e025f8398c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiManager
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   lootUi: {fileID: 822300748}
   audioSource: {fileID: 945128976}
   lootSound: {fileID: 8300000, guid: 6e770149852c60d4bb2b6cb7b9f24d19, type: 3}
@@ -65029,7 +65029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: Formula Card Volume
   nameLootEnglish: Formula Card Volume
   lootPrefabs:
@@ -72407,7 +72407,7 @@ MonoBehaviour:
   spawnSocket: {fileID: 1251451679}
   spawnResultCard: {fileID: 1629892241}
   nomeItaliano: Densita fluido
-  nomeInglese: Fluid Density
+  nomeInglese: Fluid density
   tipoDataCard: 10
   valore: 1.2
   details: 
@@ -76719,7 +76719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &822300749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94512,7 +94512,7 @@ Transform:
   m_GameObject: {fileID: 988742115}
   serializedVersion: 2
   m_LocalRotation: {x: 0.35840642, y: 0.6095448, z: -0.6095448, w: -0.35840642}
-  m_LocalPosition: {x: 1.182, y: 1.292, z: -0.016}
+  m_LocalPosition: {x: 1.182, y: 1.292, z: -0.257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95234,7 +95234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: -3.8}
+  m_AnchoredPosition: {x: -56, y: -10.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997612557
@@ -95284,8 +95284,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24.07
+  m_fontSizeBase: 24.07
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -98879,7 +98879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: Formula Card Altezza & Inerzia
   nameLootEnglish: Formula Card Forza Height & Inertia
   lootPrefabs:
@@ -123352,7 +123352,7 @@ Transform:
   m_GameObject: {fileID: 1193970540}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 1.4075012, y: -0.3675003, z: -0.10649991}
+  m_LocalPosition: {x: 1.4075012, y: -0.3675003, z: -0.209}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -140123,7 +140123,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 600
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -159325,7 +159325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Insert here\Cylinder Inertia
+  m_text: Insert here\nCylinder Inertia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -159521,7 +159521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: Formula Card Forza
   nameLootEnglish: Formula Card Force
   lootPrefabs:
@@ -180564,7 +180564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: "Accelerazione di gravit\xE0"
   nameLootEnglish: Gravitational Acceleration
   lootPrefabs:
@@ -182916,7 +182916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: SpawnTool
   nameLootEnglish: SpawnTool
   lootPrefabs:
@@ -201848,7 +201848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a13647bf51954b48b71f649f0cdffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootGiver
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 84319912}
   nameLootItalian: Formula Densita
   nameLootEnglish: Density Formula
   lootPrefabs:
