@@ -23,14 +23,17 @@ public class SpawnCard : MonoBehaviour
         { UnitaMisura.Newton, "N" },
         { UnitaMisura.None, "" }
     };
-    
+    [SerializeField] private GameManager gm;
+
     [SerializeField] public TipoCard tipoCard;
     
     [SerializeField] public GameObject CardPrefab;
     [SerializeField] public XRSocketInteractor spawnSocket;
     [SerializeField] public Transform spawnResultCard;
 
-    [SerializeField] private string nome;
+    [SerializeField] private string nomeItaliano;
+    [SerializeField] private string nomeInglese;
+    private string nome;
 
     [Header("Data Card Only")]
     [SerializeField] public UnitaMisura tipoDataCard;
@@ -80,7 +83,16 @@ public class SpawnCard : MonoBehaviour
             {
                 FormulaCard formulaCard = card.GetComponent<FormulaCard>();
                 if (formulaCard != null) 
-                { 
+                {
+                    if (gm.GetLanguage() == Language.Italian)
+                    {
+                        nome = nomeItaliano;
+                    }
+                    else if (gm.GetLanguage() == Language.English)
+                    {
+                        nome = nomeInglese;
+                    }
+
                     formulaCard.SetName(nome);
                     if (!string.IsNullOrEmpty(details))
                     {
@@ -112,6 +124,14 @@ public class SpawnCard : MonoBehaviour
             DataCard resultCard = card.GetComponent<DataCard>();
             if (resultCard != null)
             {
+                if(gm.GetLanguage() == Language.Italian) 
+                {
+                    nome = nomeItaliano;
+                }
+                else if(gm.GetLanguage() == Language.English) 
+                {
+                    nome = nomeInglese;
+                }
                 resultCard.SetName(nome);
                 resultCard.SetValue(valore);
                 resultCard.SetUnitaMisura(unitaMisura);

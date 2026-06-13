@@ -72,7 +72,7 @@ public enum TipoTool
     Spawner
 }
 
-public enum Lenguage
+public enum Language
 {
     Italian,
     English

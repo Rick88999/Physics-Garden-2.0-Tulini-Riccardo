@@ -5,13 +5,15 @@ using UnityEngine;
 public class LootGiver : MonoBehaviour
 {
     [Header("Loot Settings: Il loot nel componente deve essere tutto dello stesso tipo")]
-    [SerializeField] private string nameLoot;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private string nameLootItalian;
+    [SerializeField] private string nameLootEnglish;
     [SerializeField] private List<GameObject> lootPrefabs = new();
     [SerializeField] private Transform lootSpawnPoint;
     [SerializeField] private TipoLoot tipoLoot;
     [SerializeField] private bool main;
-
-
+     
+    private string nameLoot;
     public void GiveLoot()
     {
         if (lootPrefabs.Count == 0)
@@ -19,8 +21,16 @@ public class LootGiver : MonoBehaviour
             Debug.LogWarning("No loot prefabs assigned to the LootGiver.");
             return;
         }
+        if(gameManager.GetLanguage() == Language.English)
+        {
+            nameLoot = nameLootEnglish;
+        }
+        else if(gameManager.GetLanguage() == Language.Italian)
+        {
+            nameLoot = nameLootItalian;
+        }
 
-        if(tipoLoot == TipoLoot.Tool && lootSpawnPoint != null)
+        if (tipoLoot == TipoLoot.Tool && lootSpawnPoint != null)
         { 
             foreach (var lootPrefab in lootPrefabs)
             {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject lootUi;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip lootSound;
@@ -12,6 +13,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] private float menuDistance = 1.5f;
     [SerializeField] private float menuHeight = 0f;
 
+    private Language language;
     private void OnEnable()
     {
         GameEvents.Instance.onNewLootAcquired.AddListener(onLootAcquired);
@@ -29,6 +31,14 @@ public class UiManager : MonoBehaviour
 
     private IEnumerator ShowLootUI(string lootName, TipoLoot tipoLoot)
     {
+        if(gameManager.GetLanguage() == Language.English)
+        {
+            language = Language.English;
+        }
+        else if(gameManager.GetLanguage() == Language.Italian)
+        {
+            language = Language.Italian;
+        }
         if (lootUi != null)
         {
             lootUi.SetActive(true);
@@ -39,15 +49,36 @@ public class UiManager : MonoBehaviour
             {
                 if (tipoLoot == TipoLoot.Card)
                 {
-                    lootText.text = $"Nuova carta sbloccata:\n {lootName}";
+                    if (language == Language.English)
+                    {
+                        lootText.text = $"New card unlocked:\n {lootName}";
+                    }
+                    else if (language == Language.Italian)
+                    {
+                        lootText.text = $"Nuova carta sbloccata:\n {lootName}";
+                    }
                 }
                 else if (tipoLoot == TipoLoot.Tool)
                 {
-                    lootText.text = $"Nuovo strumento sbloccato:\n {lootName}";
+                    if (language == Language.English)
+                    {
+                        lootText.text = $"New tool unlocked:\n {lootName}";
+                    }
+                    else if (language == Language.Italian)
+                    {
+                        lootText.text = $"Nuovo strumento sbloccato:\n {lootName}";
+                    }
                 }
                 else if (tipoLoot == TipoLoot.Button)
                 {
-                    lootText.text = $"Nuovo pulsante sbloccato:\n {lootName}, controlla l'inventario";
+                    if (language == Language.English)
+                    {
+                        lootText.text = $"New button unlocked:\n {lootName}, check your inventory";
+                    }
+                    else if (language == Language.Italian)
+                    {
+                        lootText.text = $"Nuovo pulsante sbloccato:\n {lootName}, controlla l'inventario";
+                    }
                 }
                 audioSource.PlayOneShot(lootSound);
             }

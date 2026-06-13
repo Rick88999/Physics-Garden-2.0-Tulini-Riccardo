@@ -26,7 +26,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Newton, "N" },
         { UnitaMisura.None, "" }
     };
-
+    [SerializeField] private GameManager gm;
     [Header("Sockets per i valori")]
     [SerializeField]XRSocketInteractor[] sockets;
 
@@ -124,9 +124,10 @@ public class CalculationCore : MonoBehaviour
 
     private bool ForzaElastica()
     {
-        if(value.ContainsKey("Costante elastica") && value.ContainsKey("Spostamento")) 
+        if((value.ContainsKey("Costante elastica") || value.ContainsKey("Elastic constant")) && (value.ContainsKey("Spostamento") || value.ContainsKey("Displacement"))) 
         {
-            result = value["Costante elastica"] * value["Spostamento"];
+            result = value.ContainsKey("Costante elastica") ? value["Costante elastica"] : value["Elastic constant"];
+            result *= value.ContainsKey("Spostamento") ? value["Spostamento"] : value["Displacement"];
             return true;
         }
         else
@@ -139,10 +140,11 @@ public class CalculationCore : MonoBehaviour
 
     private bool ForzaNewtoniana()
     {
-        if (value.ContainsKey("Massa") && value.Keys.Any(k => k.Contains("Accelerazione")))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && value.Keys.Any(k => k.Contains("Accelerazione") || k.Contains("Acceleration")))
         {
-            string chiaveAccelerazione = value.Keys.First(k => k.Contains("Accelerazione"));
-            result = value["Massa"] * value[chiaveAccelerazione];
+            string chiaveAccelerazione = value.Keys.First(k => k.Contains("Accelerazione") || k.Contains("Acceleration"));
+            result = value.ContainsKey("Massa") ? value["Massa"] : value["Mass"];
+            result *= value[chiaveAccelerazione];
             return true;
         }
         else
@@ -155,9 +157,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool ForzaCentripeta()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Velocita") && value.ContainsKey("Raggio"))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius")))
         {
-            result = (value["Massa"] * Mathf.Pow(value["Velocita"], 2)) / value["Raggio"];
+            result = (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * Mathf.Pow(value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"], 2) / (value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]);
             return true;
         }
         else
@@ -169,9 +171,9 @@ public class CalculationCore : MonoBehaviour
     }
     private bool ForzaAttritoStatico()
     {
-        if (value.ContainsKey("Coefficiente di attrito statico") && value.ContainsKey("Reazione vincolare"))
+        if ((value.ContainsKey("Coefficiente di attrito statico") || value.ContainsKey("Static friction coefficient")) && (value.ContainsKey("Reazione vincolare") || value.ContainsKey("Normal force")))
         {
-            result = value["Coefficiente di attrito statico"] * value["Reazione vincolare"];
+            result = (value.ContainsKey("Coefficiente di attrito statico") ? value["Coefficiente di attrito statico"] : value["Static friction coefficient"]) * (value.ContainsKey("Reazione vincolare") ? value["Reazione vincolare"] : value["Normal force"]);
             return true;
         }
         else
@@ -184,9 +186,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool ForzaElettrostatica()
     {
-        if (value.ContainsKey("Carica") && value.ContainsKey("Campo Elettrico"))
+        if ((value.ContainsKey("Carica") || value.ContainsKey("Charge")) && (value.ContainsKey("Campo Elettrico") || value.ContainsKey("Electric field")))
         {
-            result = value["Carica"] * value["Campo Elettrico"];
+            result = (value.ContainsKey("Carica") ? value["Carica"] : value["Charge"]) * (value.ContainsKey("Campo Elettrico") ? value["Campo Elettrico"] : value["Electric field"]);
             return true;
         }
         else
@@ -199,9 +201,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool ForzaDiLorentz()
     {
-        if (value.ContainsKey("Carica") && value.ContainsKey("Campo Magnetico") && value.ContainsKey("Velocita") && value.ContainsKey("Angolo"))
+        if ((value.ContainsKey("Carica") || value.ContainsKey("Charge")) && (value.ContainsKey("Campo Magnetico") || value.ContainsKey("Magnetic field")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle")))
         {
-            result = value["Carica"] * value["Campo Magnetico"] * value["Velocita"] * Mathf.Sin(value["Angolo"]);
+            result = (value.ContainsKey("Carica") ? value["Carica"] : value["Charge"]) * (value.ContainsKey("Campo Magnetico") ? value["Campo Magnetico"] : value["Magnetic field"]) * (value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]) * Mathf.Sin(value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]);
             return true;
         }
         else
@@ -214,9 +216,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool VolumeCubo()
     {
-        if(value.ContainsKey("Lunghezza")) 
+        if(value.ContainsKey("Lato") || value.ContainsKey("Side")) 
         {
-            result = Mathf.Pow(value["Lunghezza"], 3);
+            result = Mathf.Pow(value.ContainsKey("Lato") ? value["Lato"] : value["Side"], 3);
             return true;
         }
         else
@@ -229,9 +231,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool VolumeSfera()
     {
-        if (value.ContainsKey("Raggio"))
+        if (value.ContainsKey("Raggio") || value.ContainsKey("Radius"))
         {
-            result = (4f / 3f) * Mathf.PI * Mathf.Pow(value["Raggio"], 3);
+            result = (4f / 3f) * Mathf.PI * Mathf.Pow(value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"], 3);
             return true;
         }
         else
@@ -244,9 +246,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool VolumeCilindro()
     {
-        if (value.ContainsKey("Raggio") && value.ContainsKey("Altezza"))
+        if ((value.ContainsKey("Raggio") || value.ContainsKey("Radius")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height")))
         {
-            result = Mathf.PI * Mathf.Pow(value["Raggio"], 2) * value["Altezza"];
+            result = Mathf.PI * Mathf.Pow(value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"], 2) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"]);
             return true;
         }
         else
@@ -259,9 +261,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool VolumeX1()
     {
-        if (value.ContainsKey("Raggio"))
+        if (value.ContainsKey("Raggio") || value.ContainsKey("Radius"))
         {
-            result = (1f / 3f) * Mathf.PI * Mathf.Pow(value["Raggio"], 2);
+            result = (1f / 3f) * Mathf.PI * Mathf.Pow(value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"], 2);
             return true;
         }
         else
@@ -273,9 +275,9 @@ public class CalculationCore : MonoBehaviour
     }
     private bool DensitaX1()
     {
-        if(value.ContainsKey("Massa") && value.ContainsKey("Volume")) 
+        if((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Volume") || value.ContainsKey("Volume"))) 
         {
-            result = value["Volume"] / value["Massa"];
+            result = (value.ContainsKey("Volume") ? value["Volume"] : value["Volume"]) / (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]);
             return true;
         }
         else
@@ -288,10 +290,10 @@ public class CalculationCore : MonoBehaviour
 
     private bool DensitaArch()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Densita fluido") && value.Keys.Any(k => k.Contains("Forza")))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Densita fluido") || value.ContainsKey("Fluid density")) && value.Keys.Any(k => k.Contains("Forza") || k.Contains("Force")))
         {
-            string chiaveForza = value.Keys.First(k => k.Contains("Forza"));
-            result = value["Densita fluido"]*(value[chiaveForza] / (value["Massa"]* value["Accelerazione di gravita"]));
+            string chiaveForza = value.Keys.First(k => k.Contains("Forza") || k.Contains("Force"));
+            result = (value.ContainsKey("Densita fluido") ? value["Densita fluido"] : value["Fluid density"]) * (value[chiaveForza] / ((value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * (value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"])));
             return true;
         }
         else
@@ -304,9 +306,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool DensitaO()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Volume"))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Volume") || value.ContainsKey("Volume")))
         {
-            result = value["Massa"] / value["Volume"];
+            result = (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) / (value.ContainsKey("Volume") ? value["Volume"] : value["Volume"]);
             return true;
         }
         else
@@ -318,9 +320,9 @@ public class CalculationCore : MonoBehaviour
     }
     private bool AltezzaSeno()
     {
-        if(value.ContainsKey("Lunghezza") && value.ContainsKey("Angolo")) 
+        if((value.ContainsKey("Lunghezza") || value.ContainsKey("Length")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle"))) 
         {
-            result = value["Lunghezza"] * Mathf.Sin(value["Angolo"] * Mathf.Deg2Rad);
+            result = (value.ContainsKey("Lunghezza") ? value["Lunghezza"] : value["Length"]) * Mathf.Sin((value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]) * Mathf.Deg2Rad);
             return true;
         }
         else
@@ -333,9 +335,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool AltezzaCoseno()
     {
-        if (value.ContainsKey("Lunghezza") && value.ContainsKey("Angolo"))
+        if ((value.ContainsKey("Lunghezza") || value.ContainsKey("Length")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle")))
         {
-            result = value["Lunghezza"] * Mathf.Cos(value["Angolo"] * Mathf.Deg2Rad);
+            result = (value.ContainsKey("Lunghezza") ? value["Lunghezza"] : value["Length"]) * Mathf.Cos((value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]) * Mathf.Deg2Rad);
             return true;
         }
         else
@@ -348,9 +350,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool AltezzaTan()
     {
-        if(value.ContainsKey("Altezza") && value.ContainsKey("Angolo")) 
+        if((value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle"))) 
         {
-            result = value["Altezza"] * Mathf.Tan(value["Angolo"] * Mathf.Deg2Rad);
+            result = (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"]) * Mathf.Tan((value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]) * Mathf.Deg2Rad);
             return true;
         }
         else
@@ -363,9 +365,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool MassaDaInerzia()
     {
-        if(value.ContainsKey("Inerzia") && value.ContainsKey("Velocita") && value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Raggio")) 
+        if((value.ContainsKey("Inerzia") || value.ContainsKey("Inertia")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")) && (value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius"))) 
         {
-            result = value["Inerzia"] * Mathf.Pow(value["Velocita"], 2) / (Mathf.Pow(value["Raggio"], 2) * ((2 * value["Accelerazione di gravita"] * value["Altezza"]) - Mathf.Pow(value["Velocita"],2)));
+            result = (value.ContainsKey("Inerzia") ? value["Inerzia"] : value["Inertia"]) * Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]), 2) / (Mathf.Pow((value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]), 2) * ((2 * (value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"]) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"])) - Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]),2)));
             return true;
         }
         else
@@ -378,9 +380,9 @@ public class CalculationCore : MonoBehaviour
     private bool CostanteInerzialeX1()
     {
         float localRes;
-        if(value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        if((value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")))
         {
-            localRes = ((value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1;
+            localRes = ((value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"]) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"])) / Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]), 2) - 1;
             result = Mathf.Round(localRes * 10f) / 10f;
             return true;
         }
@@ -395,9 +397,9 @@ public class CalculationCore : MonoBehaviour
     private bool CostanteInerzialeX2()
     {
         float localRes;
-        if (value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        if ((value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")))
         {
-            localRes = Mathf.Sqrt(((2 * value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1);
+            localRes = Mathf.Sqrt(((2 * (value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"]) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"])) / Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]), 2)) - 1);
             result = Mathf.Round(localRes * 10f) / 10f;
             return true;
         }
@@ -412,9 +414,9 @@ public class CalculationCore : MonoBehaviour
     private bool CostanteInerzialeO()
     {
         float localRes;
-        if (value.ContainsKey("Accelerazione di gravita") && value.ContainsKey("Altezza") && value.ContainsKey("Velocita"))
+        if ((value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity")))
         {
-            localRes = (2*(value["Accelerazione di gravita"] * value["Altezza"]) / Mathf.Pow(value["Velocita"], 2)) - 1;
+            localRes = (2 * ((value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"]) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"])) / Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]), 2)) - 1;
             result = Mathf.Round(localRes * 10f) / 10f;
             return true;
         }
@@ -428,9 +430,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool InerziaX1()
     {
-        if(value.ContainsKey("Massa") && value.ContainsKey("Raggio"))
+        if((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius")))
         {
-            result = value["Massa"] * Mathf.Pow(value["Raggio"], 2);
+            result = (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * Mathf.Pow((value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]), 2);
             return true;
         }
         else
@@ -443,9 +445,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool InerziaX2()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius")) && (value.ContainsKey("Costante Inerziale") || value.ContainsKey("Inertia Constant")))
         {
-            result = value["Costante Inerziale"] * value["Massa"] * Mathf.Pow(value["Raggio"], 3);
+            result = (value.ContainsKey("Costante Inerziale") ? value["Costante Inerziale"] : value["Inertia Constant"]) * (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * Mathf.Pow((value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]), 3);
             return true;
         }
         else
@@ -458,9 +460,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool InerziaX3()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius")) && (value.ContainsKey("Costante Inerziale") || value.ContainsKey("Inertia Constant")))
         {
-            result = value["Costante Inerziale"] * value["Raggio"] * Mathf.Pow(value["Massa"], 2);
+            result = (value.ContainsKey("Costante Inerziale") ? value["Costante Inerziale"] : value["Inertia Constant"]) * (value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]) * Mathf.Pow((value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]), 2);
             return true;
         }
         else
@@ -473,9 +475,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool InerziaO()
     {
-        if (value.ContainsKey("Massa") && value.ContainsKey("Raggio") && value.ContainsKey("Costante Inerziale"))
+        if ((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Raggio") || value.ContainsKey("Radius")) && (value.ContainsKey("Costante Inerziale") || value.ContainsKey("Inertia Constant")))
         {
-            result = value["Costante Inerziale"] * value["Massa"] * Mathf.Pow(value["Raggio"], 2);
+            result = (value.ContainsKey("Costante Inerziale") ? value["Costante Inerziale"] : value["Inertia Constant"]) * (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * Mathf.Pow((value.ContainsKey("Raggio") ? value["Raggio"] : value["Radius"]), 2);
             result = Mathf.Round(result * 1000f) / 1000f;
             return true;
         }
@@ -503,125 +505,269 @@ public class CalculationCore : MonoBehaviour
                 case Operazione.AltezzaSeno:
                     esito = AltezzaSeno();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    if (esito) SpawnResultCard("Altezza");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Altezza");
+                        else if(gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Height");
+                    }
                     Debug.Log("Altezza: " + result);
                     break;
                 case Operazione.AltezzaCoseno:
                     esito = AltezzaCoseno();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    if (esito) SpawnResultCard("Altezza");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Altezza");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Height");
+                    }
                     Debug.Log("Altezza: " + result);
                     break;
                 case Operazione.AltezzaTan:
                     esito = AltezzaTan();
                     unitaMisura = simboliUnita[UnitaMisura.Metri];
-                    if (esito) SpawnResultCard("Altezza");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Altezza");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Height");
+                    }
                     Debug.Log("Altezza: " + result);
                     break;
                 case Operazione.MassaDaInerzia:
                     esito = MassaDaInerzia();
                     unitaMisura = simboliUnita[UnitaMisura.Kilogrammi];
-                    if (esito) SpawnResultCard("Massa");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Massa");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Mass");
+                    }
                     break;
                 case Operazione.costanteInerzialeX1:
                     esito = CostanteInerzialeX1();
                     unitaMisura = simboliUnita[UnitaMisura.None];
-                    if (esito) SpawnResultCard("Costante Inerziale");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Costante Inerziale");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertial Constant");
+                    }
                     break;
                 case Operazione.costanteInerzialeX2:
                     esito = CostanteInerzialeX2();
                     unitaMisura = simboliUnita[UnitaMisura.None];
-                    if (esito) SpawnResultCard("Costante Inerziale");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Costante Inerziale");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertial Constant");
+                    }   
                     break;
                 case Operazione.costanteInerzialeO:
                     esito = CostanteInerzialeO();
                     unitaMisura = simboliUnita[UnitaMisura.None];
-                    if (esito) SpawnResultCard("Costante Inerziale");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Costante Inerziale");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertial Constant");
+                    }
                     break;
                 case Operazione.InerziaX1:
                     esito = InerziaX1();
                     unitaMisura = simboliUnita[UnitaMisura.Inerzia];
-                    if (esito) SpawnResultCard("Inerzia");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Inerzia");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertia");
+                    }
                     break;
                 case Operazione.InerziaX2:
                     esito = InerziaX2();
                     unitaMisura = simboliUnita[UnitaMisura.InerziaX2];
-                    if (esito) SpawnResultCard("Inerzia");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Inerzia");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertia");
+                    }
                     break;
                 case Operazione.InerziaX3:
                     esito = InerziaX3();
                     unitaMisura = simboliUnita[UnitaMisura.InerziaX3];
-                    if (esito) SpawnResultCard("Inerzia");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Inerzia");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertia");
+                    }
                     break;
                 case Operazione.InerziaO:
                     esito = InerziaO();
                     unitaMisura = simboliUnita[UnitaMisura.Inerzia];
-                    if (esito) SpawnResultCard("Inerzia");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Inerzia");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Inertia");
+                    }
                     break;
                 case Operazione.DensitaX1:
                     esito = DensitaX1();
                     unitaMisura = simboliUnita[UnitaMisura.DensitaX1];
-                    if (esito) SpawnResultCard("Densità");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Densità");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Density");
+                    }
                     break;
                 case Operazione.DensitaArch:
                     esito = DensitaArch();
                     unitaMisura = simboliUnita[UnitaMisura.DensitaO];
-                    if (esito) SpawnResultCard("Densità");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Densità");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Density");
+                    }
                     break;
                 case Operazione.DensitaO:
                     esito = DensitaO();
                     unitaMisura = simboliUnita[UnitaMisura.DensitaO];
-                    if (esito) SpawnResultCard("Densità");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Densità");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Density");
+                    }
                     break;
                 case Operazione.VolumeCubo:
                     esito = VolumeCubo();
                     unitaMisura = simboliUnita[UnitaMisura.Volume];
-                    if (esito) SpawnResultCard("Volume");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Volume");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Volume");
+                    }
                     break;
                 case Operazione.VolumeSfera:
                     esito = VolumeSfera();
                     unitaMisura = simboliUnita[UnitaMisura.Volume];
-                    if (esito) SpawnResultCard("Volume");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Volume");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Volume");
+                    }
                     break;
                 case Operazione.VolumeCilindro:
                     esito = VolumeCilindro();
                     unitaMisura = simboliUnita[UnitaMisura.Volume];
-                    if (esito) SpawnResultCard("Volume");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Volume");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Volume");
+                    }
                     break;
                 case Operazione.VolumeX1:
                     esito = VolumeX1();
                     unitaMisura = simboliUnita[UnitaMisura.VolumeX1];
-                    if (esito) SpawnResultCard("VolumeX1");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("VolumeX1");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("VolumeX1");
+                    }
                     break;
                 case Operazione.ForzaCentripeta:
                     esito = ForzaCentripeta();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza Centripeta");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza Centripeta");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Centripetal Force");
+                    }
                     break;
                 case Operazione.ForzaNewtoniana:
                     esito = ForzaNewtoniana();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza Newtoniana");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza Newtoniana");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Newtonian Force");
+                    }
                     break;
                 case Operazione.ForzaElastica:
                     esito = ForzaElastica();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza Elastica");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza Elastica");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Elastic Force");
+                    }
                     break;
                 case Operazione.ForzaElettrostatica:
                     esito = ForzaElettrostatica();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza Elettrostatica");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza Elettrostatica");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Electrostatic Force");
+                    }
                     break;
                 case Operazione.ForzaDiLorentz:
                     esito = ForzaDiLorentz();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza di Lorentz");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza di Lorentz");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Lorentz Force");
+                    }
                     break;
                 case Operazione.ForzaAttritoStatico:
                     esito = ForzaAttritoStatico();
                     unitaMisura = simboliUnita[UnitaMisura.Newton];
-                    if (esito) SpawnResultCard("Forza di Attrito Statico");
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Forza di Attrito Statico");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Static Friction Force");
+                    }
                     break;
             }
         }   

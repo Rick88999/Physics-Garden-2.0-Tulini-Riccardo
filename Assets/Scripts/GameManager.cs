@@ -76,12 +76,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SettingsController settingsController;
 
     private SavedState actualSavedState;
-    private Lenguage actualLenguage = Lenguage.Italian;
+    private Language actualLanguage = Language.Italian;
 
     private void ResetLight() => settingsController.SetSliderSettings();
     
-    public void SetLenguage(Lenguage lenguage) => actualLenguage = lenguage;
-    public Lenguage GetLenguage() => actualLenguage;
+    public void SetLanguage(Language language) => actualLanguage = language;
+    public Language GetLanguage() => actualLanguage;
 
     public void NewSaveGame(string name)
     {

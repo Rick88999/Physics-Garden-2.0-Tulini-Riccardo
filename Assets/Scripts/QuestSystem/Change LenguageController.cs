@@ -21,23 +21,23 @@ public class ChangeLenguageController : MonoBehaviour
         }
     }
 
-    private void SetLenguage(Lenguage lenguage)
+    private void SetLenguage(Language lenguage)
     {
         switch (lenguage)
         {
-            case Lenguage.Italian:
+            case Language.Italian:
                 setArray(italianTexts, true);
                 setArray(engTexts, false);
-                gm.SetLenguage(Lenguage.Italian);
+                gm.SetLanguage(Language.Italian);
                 break;
-            case Lenguage.English:
+            case Language.English:
                 setArray(italianTexts, false);
                 setArray(engTexts, true);
-                gm.SetLenguage(Lenguage.English);
+                gm.SetLanguage(Language.English);
                 break;
         }
     }
 
-    public void SetItalian() => SetLenguage(Lenguage.Italian);
-    public void SetEnglish() => SetLenguage(Lenguage.English);
+    public void SetItalian() => SetLenguage(Language.Italian);
+    public void SetEnglish() => SetLenguage(Language.English);
 }

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MemoryValue : MonoBehaviour
 {
-    [SerializeField] private string matchName;
+    [SerializeField] private string matchNameItalian;
+    [SerializeField] private string matchNameEnglish;
     [SerializeField] private float matchData;
     [Header("Tolleranza")]
     [SerializeField] private float delta;
@@ -10,7 +11,7 @@ public class MemoryValue : MonoBehaviour
     public bool ControlValue(string name, float value)
     {
         bool checkValue = Mathf.Abs(value - matchData) <= delta;
-        if (name == matchName && checkValue)
+        if ((name == matchNameItalian || name == matchNameEnglish) && checkValue)
         {
             return true;
         }

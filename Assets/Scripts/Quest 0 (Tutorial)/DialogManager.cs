@@ -29,16 +29,16 @@ public class DialogManager : MonoBehaviour
 
     private Coroutine typingCoroutine;
     private bool isTyping = false;
-    private Lenguage actualLenguage;
+    private Language actualLenguage;
 
     public void Awake()
     {
-        actualLenguage = gameManager.GetLenguage();
-        if(actualLenguage == Lenguage.Italian)
+        actualLenguage = gameManager.GetLanguage();
+        if(actualLenguage == Language.Italian)
         {
             sentences = ItalianSentences;
         }
-        else if(actualLenguage == Lenguage.English)
+        else if(actualLenguage == Language.English)
         {
             sentences = EnglishSentences;
         }

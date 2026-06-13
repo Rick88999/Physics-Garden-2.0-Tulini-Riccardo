@@ -12,8 +12,6 @@ public class FisicaMongolfiera : MonoBehaviour
     [SerializeField] private float densitaFluido;
     [SerializeField] private float altezzaMassima;
     [SerializeField] private int altezzaAttesa;
-    [Header("Controllo Altezza")]
-    [SerializeField] private float intensitaFrenata = 2f;
     [Header("Avvio Graduale")]
     [SerializeField] private float durataAvvio = 3f;
     private float tempoAvvio = 0f;
