@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Step : MonoBehaviour
@@ -14,6 +15,7 @@ public class Step : MonoBehaviour
     [Header("Loot")]
     [SerializeField] List<LootGiver> lootGivers = new();
     [SerializeField] bool isLastStep;
+    [SerializeField] bool noActivateYouNextStep;
 
     // Update is called once per frame
     public void startStep()
@@ -50,13 +52,14 @@ public class Step : MonoBehaviour
         {
             if (lootGivers != null)
             {
-                if(lootGivers.Count > 0)
+                if (lootGivers.Count > 0)
                     foreach (LootGiver lootGiver in lootGivers)
                         lootGiver.GiveLoot();
             }
             father.endQuest();
         }
-        else if(NextStep!=null && !isLastStep) NextStep.startStep();
+        else if (NextStep != null && !isLastStep) NextStep.startStep();
+        else if (NextStep == null && noActivateYouNextStep) return;
     }
 
     public void setStateStep(string oldState)

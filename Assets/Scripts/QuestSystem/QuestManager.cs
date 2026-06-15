@@ -6,10 +6,30 @@ public class QuestManager : MonoBehaviour
     [SerializeField] Quest[] quests;
     private int currentQuest = 0;
 
-    public void startQuest(int number)
+    public bool startQuest(int number)
     {
         currentQuest = number;
-        quests[number].startQuest();
+        bool notOneOnGoing = true;
+        foreach (Quest quest in quests) if (quest.getQuestState() == "OnGoing") notOneOnGoing = false;
+        if (notOneOnGoing)
+        {
+            if (quests[number].allReadyComplete())
+            {
+                quests[number].startQuest();
+                return true;
+            }
+            else
+            {
+                quests[number].PlayErrorMessage();
+                return false;
+            }
+        }
+        else
+        {
+            quests[number].PlayErrorMessage();
+            return false;
+        }
+        
     }
 
     public void settingsSaves(SavedQuest[] allQuest)

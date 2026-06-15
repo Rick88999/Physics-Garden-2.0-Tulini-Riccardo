@@ -8,9 +8,9 @@ public class StartCollider : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Player") return;
-        questManager.startQuest(number);
-        DestroyTriggers();
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "PlayerHand") return;
+        bool start = questManager.startQuest(number);
+        if(start) DestroyTriggers();
     }
 
     public void DestroyTriggers()

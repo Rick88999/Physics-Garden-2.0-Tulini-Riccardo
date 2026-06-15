@@ -87,7 +87,7 @@ public class DialogManager : MonoBehaviour
                 if(bot.GetComponent<BotController>().getMode() == "GoToPoint") bot.GetComponent<BotController>().StartFollow();
             }
 
-            if(afterEndStep) fatherStep.endStep();
+            if(afterEndStep) if(fatherStep != null) fatherStep.endStep();
         }
     }
 

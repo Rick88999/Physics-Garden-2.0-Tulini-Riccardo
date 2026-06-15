@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StariDialogue : MonoBehaviour
 {
-    public GameObject manager;
+    public Step nextStep;
     public GameObject collider;
     
     
@@ -10,8 +10,7 @@ public class StariDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            manager.SetActive(true);
-            manager.GetComponent<DialogManager>().nextSentence();
+            nextStep.startStep();
             collider.SetActive(false);
         }
     }
