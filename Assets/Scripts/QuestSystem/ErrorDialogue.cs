@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -23,10 +25,13 @@ public class ErrorDialogue : MonoBehaviour
 
     [SerializeField] private AudioSource dialogAudioSourceError;
     [SerializeField] private AudioClip[] sentenceClipsError;
-
+    
+    [SerializeField]private bool oneWayAddOn;
+    [SerializeField] private List<GameObject> ways;
     private Coroutine typingCoroutineError;
     private bool isTypingError = false;
     private Language actualLenguageError;
+   
 
     public void Awake()
     {
@@ -43,6 +48,10 @@ public class ErrorDialogue : MonoBehaviour
 
     public void StarterDialogueError()
     {
+        if(oneWayAddOn) 
+            if(ways!=null || ways.Count>0) 
+                foreach(GameObject way in ways) way.SetActive(false);
+
         Reset();
         canvasPointerError.SetActive(true);
         nextSentenceError();
