@@ -9,6 +9,8 @@ TagManager:
   - FormulaCard
   - PlayerHand
   - Tool
+  - Bullet
+  - Cannon
   layers:
   - Default
   - TransparentFX
