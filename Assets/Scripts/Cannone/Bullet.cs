@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float launchForce;
+    private Vector3 launchDirection;
     private Rigidbody rb;
 
     public void Shoot()
@@ -13,9 +14,10 @@ public class Bullet : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = true;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        rb.AddForce(transform.forward * launchForce, ForceMode.Impulse);
+        rb.AddForce(launchDirection * launchForce, ForceMode.Impulse);
     }
 
     public void SetLaunchForce(float force) => launchForce = force;
+    public void SetLaunchDirection(Vector3 direction) => launchDirection = direction.normalized;
     
 }

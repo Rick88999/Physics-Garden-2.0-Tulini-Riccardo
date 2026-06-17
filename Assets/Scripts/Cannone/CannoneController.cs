@@ -4,40 +4,49 @@ using System.Collections.Generic;
 
 public class CannoneController : MonoBehaviour
 {
-    [SerializeField] private float launchForce = 200f;
+    [SerializeField] private float launchForce = 10f;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip reloadSound;
     [SerializeField] private AudioClip launchErrorSound;
-    private List<GameObject> bullets;
+
+    [SerializeField] private bool tryShoot;
+
+    private GameObject currentBullet;
+    private List<GameObject> bulletsAlreadyLaunched = new List<GameObject>();
 
     private void Update()
     {
-        if(bullets != null && bullets.Count > 3)
+        if(bulletsAlreadyLaunched != null && bulletsAlreadyLaunched.Count > 3)
         {
-            GameObject bullet = bullets[0];
-            if (bullet == null)
-            {
-                GameObject bulletToRemove = bullets[0];
-                bullets.RemoveAt(0);
-                Destroy(bulletToRemove);
-            }
+            GameObject bulletToRemove = bulletsAlreadyLaunched[0];
+            bulletsAlreadyLaunched.RemoveAt(0);
+            Destroy(bulletToRemove);
+        }
+
+        if(tryShoot && currentBullet != null)
+        {
+            Launch();
+            tryShoot = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (bullets == null) bullets = new List<GameObject>();
 
         if (!other.CompareTag("Player") && !other.CompareTag("PlayerHand") && !other.CompareTag("Bullet") && !other.CompareTag("Cannon"))
         {
             if(other.gameObject.GetComponent<SphereCollider>() != null)
             {
+                if (currentBullet != null)
+                {
+                    Destroy(currentBullet);
+                }
+
                 other.tag = "Bullet";
                 other.gameObject.AddComponent<Bullet>();
                 Bullet bullet = other.gameObject.GetComponent<Bullet>();
-                bullet.SetLaunchForce(launchForce);
-                bullets.Insert(0, other.gameObject); 
+                currentBullet = other.gameObject;
             }
             else
             {
@@ -48,18 +57,30 @@ public class CannoneController : MonoBehaviour
     }
 
     public void SetLaunchForceCannon(float force) => launchForce = force;
-    public void Launch() 
+    public void Launch()
     {
-        if (bullets == null || bullets.Count == 0)
+        if (currentBullet == null)
         {
             audioSource.PlayOneShot(launchErrorSound);
             return;
-        }
-        ;
-
-        GameObject bullet = bullets[0];
+        };
+        
         audioSource.PlayOneShot(launchSound);
-        bullet.GetComponent<Bullet>().Shoot();
+
+        Collider bulletCollider = currentBullet.GetComponent<Collider>();
+        Collider cannonCollider = GetComponent<Collider>();
+        if (bulletCollider != null && cannonCollider != null)
+            Physics.IgnoreCollision(bulletCollider, cannonCollider, true);
+
+        Bullet bulletComponent = currentBullet.GetComponent<Bullet>();
+
+        bulletComponent.SetLaunchDirection(transform.forward);
+        bulletComponent.SetLaunchForce(launchForce);
+
+        bulletComponent.Shoot();
+        bulletsAlreadyLaunched.Add(currentBullet);
+
+        currentBullet = null;
     }
     
 }
