@@ -13,11 +13,14 @@ public class GestioneMenuSalvataggi : MonoBehaviour
     [SerializeField]private GameObject prefabBottoneLoad;
     [SerializeField]private GameObject prefabBottoneDelete;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TextMeshProUGUI errorText;
     [SerializeField] public XRKeyboard xrKeyboard;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip clickSoundError;
+
+    private Language language;
 
     private void Start()
     {
@@ -40,6 +43,15 @@ public class GestioneMenuSalvataggi : MonoBehaviour
     }
     public void ControlNewGame(string name)
     {
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager non assegnato!");
+            return;
+        }
+
+        language = gameManager.GetLanguage();
+        if(language == null) language = Language.English;
+
         string[] saveFiles = gameManager.GetSavedFiles();
         bool nameExists = false;
 
@@ -52,6 +64,19 @@ public class GestioneMenuSalvataggi : MonoBehaviour
             }
             if (nameExists)
             {
+                errorText.gameObject.SetActive(true);
+                if (language == Language.English) errorText.text = "Name already exists!";
+                else if (language == Language.Italian) errorText.text = "Il nome esiste già!";
+                else errorText.text = "Name already exists!";
+                audioSource.PlayOneShot(clickSoundError);
+                return;
+            }
+            else if (string.IsNullOrEmpty(name))
+            {
+                errorText.gameObject.SetActive(true);
+                if (language == Language.English) errorText.text = "Name is empty!";
+                else if (language == Language.Italian) errorText.text = "Il nome  vuoto!";
+                else errorText.text = "Name is empty!";
                 audioSource.PlayOneShot(clickSoundError);
                 return;
             }

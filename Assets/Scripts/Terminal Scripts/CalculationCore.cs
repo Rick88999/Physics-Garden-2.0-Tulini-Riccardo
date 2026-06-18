@@ -13,7 +13,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
-        { UnitaMisura.Angolo,      "°"  },
+        { UnitaMisura.Angolo,      "ï¿½"  },
         { UnitaMisura.Kilogrammi, "kg" },
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
         { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
@@ -350,9 +350,9 @@ public class CalculationCore : MonoBehaviour
 
     private bool AltezzaTan()
     {
-        if((value.ContainsKey("Altezza") || value.ContainsKey("Height")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle"))) 
+        if((value.ContainsKey("Lunghezza") || value.ContainsKey("Length")) && (value.ContainsKey("Angolo") || value.ContainsKey("Angle"))) 
         {
-            result = (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"]) * Mathf.Tan((value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]) * Mathf.Deg2Rad);
+            result = (value.ContainsKey("Lunghezza") ? value["Lunghezza"] : value["Length"]) * Mathf.Tan((value.ContainsKey("Angolo") ? value["Angolo"] : value["Angle"]) * Mathf.Deg2Rad);
             return true;
         }
         else
@@ -360,8 +360,8 @@ public class CalculationCore : MonoBehaviour
             Debug.Log("Missing required values for AltezzaTan calculation.");
             audioSource.PlayOneShot(clickSoundError);
             return false;
-        }
-    }
+        } 
+    } 
 
     private bool MassaDaInerzia()
     {
@@ -632,7 +632,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densità");
+                            SpawnResultCard("Densitï¿½");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
@@ -643,7 +643,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densità");
+                            SpawnResultCard("Densitï¿½");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
@@ -654,7 +654,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densità");
+                            SpawnResultCard("Densitï¿½");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
