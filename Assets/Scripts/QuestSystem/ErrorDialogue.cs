@@ -28,7 +28,9 @@ public class ErrorDialogue : MonoBehaviour
     
     [SerializeField]private bool oneWayAddOn;
     [SerializeField] private List<GameObject> ways;
+    [SerializeField] private float autoNextDelay = 10f;
     private Coroutine typingCoroutineError;
+    private Coroutine autoNextCoroutineError;
     private bool isTypingError = false;
     private Language actualLenguageError;
    
@@ -139,6 +141,19 @@ public class ErrorDialogue : MonoBehaviour
         typingCoroutineError = null;
         if (dialogAudioSourceError != null && dialogAudioSourceError.isPlaying)
             dialogAudioSourceError.Stop();
+
+        if (indexError == sentencesError.Length - 1)
+        {
+            if (autoNextCoroutineError != null) StopCoroutine(autoNextCoroutineError);
+            autoNextCoroutineError = StartCoroutine(AutoNextError());
+        }
+    }
+
+    private IEnumerator AutoNextError()
+    {
+        yield return new WaitForSeconds(autoNextDelay);
+        autoNextCoroutineError = null;
+        nextSentenceError();
     }
 
     private void Reset()
@@ -147,6 +162,11 @@ public class ErrorDialogue : MonoBehaviour
         alreadyStartedError = false;
         isTypingError = false;
         botTextError.text = "";
+        if (autoNextCoroutineError != null)
+        {
+            StopCoroutine(autoNextCoroutineError);
+            autoNextCoroutineError = null;
+        }
     }
 
 

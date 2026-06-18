@@ -5,7 +5,7 @@ public class DataCard : MonoBehaviour
 {
     [SerializeField]private float valore;
     [SerializeField]private string nome;
-    [SerializeField]private string unit‡Misura;
+    [SerializeField]private string unitaMisura;
     [SerializeField] private string details;
     [SerializeField] private TextMeshProUGUI textTarghetta;
 
@@ -24,18 +24,18 @@ public class DataCard : MonoBehaviour
     {
         if (textTarghetta != null)
         {
-            textTarghetta.text = nome+":\n "+valore.ToString()+" "+unit‡Misura;
+            textTarghetta.text = nome+":\n "+valore.ToString()+" "+unitaMisura;
         }
     }
 
-    public string GetUnit‡Misura()
+    public string GetUnitaMisura()
     {
-        return unit‡Misura;
+        return unitaMisura.ToString();
     }
 
     public void SetUnitaMisura(string unit)
     {
-        unit‡Misura = unit;
+        unitaMisura = unit;
     }
 
     public string GetName()

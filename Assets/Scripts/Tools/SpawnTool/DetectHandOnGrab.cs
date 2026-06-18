@@ -81,8 +81,7 @@ public class DetectHandOnGrab : MonoBehaviour
 
     private void OnSelectEntered(SelectEnterEventArgs args)
     {
-        // args.interactorObject è un IXRSelectInteractor
-        // Per risalire al GameObject: cast a Component (gli interactor in XRI sono MonoBehaviour)
+
         var interactorComponent = args.interactorObject as Component;
         if (interactorComponent == null)
             return;

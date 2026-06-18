@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BasketController : MonoBehaviour
 {
+    [SerializeField] private Step step;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip catchSound;
 
@@ -10,6 +11,7 @@ public class BasketController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             audioSource.PlayOneShot(catchSound);
+            step.endStep();
         }
     }
 }

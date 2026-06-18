@@ -4,13 +4,20 @@ using System.Collections.Generic;
 
 public class CannoneController : MonoBehaviour
 {
-    [SerializeField] private float launchForce = 10f;
+    [SerializeField] private float launchForce = 0f;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip launchSound;
     [SerializeField] private AudioClip reloadSound;
+    [SerializeField] private AudioClip forceLoadSound;
     [SerializeField] private AudioClip launchErrorSound;
 
     [SerializeField] private bool tryShoot;
+
+    [SerializeField] private float forzaMinima;
+    [SerializeField] private float massaMinima;
+
+    private float massaEffettiva;
+    private float forzaProporzionaleMinima;
 
     private GameObject currentBullet;
     private List<GameObject> bulletsAlreadyLaunched = new List<GameObject>();
@@ -43,6 +50,16 @@ public class CannoneController : MonoBehaviour
                     Destroy(currentBullet);
                 }
 
+                massaEffettiva = other.gameObject.GetComponent<Rigidbody>().mass;
+
+                if (massaEffettiva < massaMinima)
+                {
+                    audioSource.PlayOneShot(launchErrorSound);
+                    Destroy(other.gameObject);
+                    return;
+                }
+
+                forzaProporzionaleMinima = forzaMinima * (massaEffettiva / massaMinima);
                 other.tag = "Bullet";
                 other.gameObject.AddComponent<Bullet>();
                 Bullet bullet = other.gameObject.GetComponent<Bullet>();
@@ -56,10 +73,22 @@ public class CannoneController : MonoBehaviour
         }
     }
 
-    public void SetLaunchForceCannon(float force) => launchForce = force;
+    public void SetLaunchForceCannon(float force)
+    {
+        if (force < forzaProporzionaleMinima)
+        {
+            audioSource.PlayOneShot(launchErrorSound);
+            return;
+        }
+        else
+        {
+            audioSource.PlayOneShot(forceLoadSound);
+            launchForce = force;
+        }
+    }
     public void Launch()
     {
-        if (currentBullet == null)
+        if (currentBullet == null || launchForce < forzaProporzionaleMinima)
         {
             audioSource.PlayOneShot(launchErrorSound);
             return;

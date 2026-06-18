@@ -10,7 +10,7 @@ public class SpawnCard : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
-        { UnitaMisura.Angolo,      "°"  },
+        { UnitaMisura.Angolo,      "Â°"  },
         { UnitaMisura.Kilogrammi, "kg" },
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
         { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
