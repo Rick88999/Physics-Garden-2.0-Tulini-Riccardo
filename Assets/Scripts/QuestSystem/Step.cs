@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class Step : MonoBehaviour
 {
-    [SerializeField]private int stepID;
-    [SerializeField]private string state = "noActivated";
-    [SerializeField] Quest father;
-    [SerializeField] Step NextStep;
+    [SerializeField] private int stepID;
+    [SerializeField] private string state = "noActivated";
+    [SerializeField] private Quest father;
+    [SerializeField] private Step NextStep;
     [Header("Oggetti che si attivano ad inizio step")]
-    [SerializeField] GameObject[] objectsToActivate;
+    [SerializeField] private GameObject[] objectsToActivate;
     [Header("Oggetti che appartengono allo step")]
-    [SerializeField] GameObject[] objectsList;
+    [SerializeField] private GameObject[] objectsList;
     [Header("Loot")]
-    [SerializeField] List<LootGiver> lootGivers = new();
-    [SerializeField] bool isLastStep;
-    [SerializeField] bool noActivateYouNextStep;
+    [SerializeField] private List<LootGiver> lootGivers = new();
+    [SerializeField] private bool isLastStep;
+    [SerializeField] private bool noActivateYouNextStep;
+
+    [SerializeField] private bool giveLootAtEndStep;
 
     // Update is called once per frame
     public void startStep()
@@ -49,16 +51,15 @@ public class Step : MonoBehaviour
         }
 
         if (isLastStep)
-        {
-            if (lootGivers != null)
-            {
-                if (lootGivers.Count > 0)
-                    foreach (LootGiver lootGiver in lootGivers)
-                        lootGiver.GiveLoot();
-            }
+        { 
+            GiveLoot();
             father.endQuest();
         }
-        else if (NextStep != null && !isLastStep) NextStep.startStep();
+        else if (NextStep != null && !isLastStep)
+        {
+            if (giveLootAtEndStep) GiveLoot();
+            NextStep.startStep();
+        }
         else if (NextStep == null && noActivateYouNextStep) return;
     }
 
@@ -66,6 +67,16 @@ public class Step : MonoBehaviour
     {
         if (oldState == "OnGoing") startStep();
         else state = oldState;
+    }
+
+    private void GiveLoot()
+    {
+        if (lootGivers != null)
+        {
+            if (lootGivers.Count > 0)
+                foreach (LootGiver lootGiver in lootGivers)
+                    lootGiver.GiveLoot();
+        }
     }
 
 

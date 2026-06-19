@@ -45,11 +45,8 @@ public class CannoneController : MonoBehaviour
         {
             if(other.gameObject.GetComponent<SphereCollider>() != null)
             {
-                if (currentBullet != null)
-                {
-                    Destroy(currentBullet);
-                }
-
+                if (currentBullet != null) Destroy(currentBullet);
+                
                 massaEffettiva = other.gameObject.GetComponent<Rigidbody>().mass;
 
                 if (massaEffettiva < massaMinima)
@@ -64,6 +61,7 @@ public class CannoneController : MonoBehaviour
                 other.gameObject.AddComponent<Bullet>();
                 Bullet bullet = other.gameObject.GetComponent<Bullet>();
                 currentBullet = other.gameObject;
+                audioSource.PlayOneShot(reloadSound);
             }
             else
             {

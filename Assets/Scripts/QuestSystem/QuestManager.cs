@@ -8,14 +8,19 @@ public class QuestManager : MonoBehaviour
 
     public bool startQuest(int number)
     {
-        currentQuest = number;
+        
         bool notOneOnGoing = true;
-        foreach (Quest quest in quests) if (quest.getQuestState() == "OnGoing") notOneOnGoing = false;
+        
+        foreach (Quest quest in quests) 
+            if (quest.getQuestState() == "OnGoing" && quest.getIdQuest() != number) 
+                notOneOnGoing = false;
+
         if (notOneOnGoing)
         {
             if (quests[number].allReadyComplete())
             {
                 quests[number].startQuest();
+                currentQuest = number;
                 return true;
             }
             else

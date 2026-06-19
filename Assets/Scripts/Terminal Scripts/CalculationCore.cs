@@ -632,7 +632,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densit�");
+                            SpawnResultCard("Densità");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
@@ -643,7 +643,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densit�");
+                            SpawnResultCard("Densità");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
@@ -654,7 +654,7 @@ public class CalculationCore : MonoBehaviour
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
-                            SpawnResultCard("Densit�");
+                            SpawnResultCard("Densità");
                         else if (gm.GetLanguage() == Language.English)
                             SpawnResultCard("Density");
                     }
