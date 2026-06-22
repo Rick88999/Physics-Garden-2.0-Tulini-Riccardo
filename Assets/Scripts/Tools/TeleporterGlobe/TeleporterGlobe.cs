@@ -69,7 +69,12 @@ public class TeleporterGlobe : MonoBehaviour
     private void OnReleased(SelectExitEventArgs args)
     {
         isHeld = false;
-        currentTarget = null;
+        if (currentTarget != null)
+        {
+            if (GameEvents.Instance != null)
+                GameEvents.Instance.onDefocusTeleport.Invoke(currentTarget.GetTeleporterName());
+            currentTarget = null;
+        }
     }
 
     private void OnInputPerformed(InputAction.CallbackContext context)
@@ -88,7 +93,18 @@ public class TeleporterGlobe : MonoBehaviour
         if (!isHeld) return;
         if (cam == null) return;
 
-        currentTarget = FindBestTargetInCone();
+        LookTarget newTarget = FindBestTargetInCone();
+
+        if (newTarget != currentTarget)
+        {
+            if (currentTarget != null && GameEvents.Instance != null)
+                GameEvents.Instance.onDefocusTeleport.Invoke(currentTarget.GetTeleporterName());
+
+            currentTarget = newTarget;
+
+            if (currentTarget != null && GameEvents.Instance != null)
+                GameEvents.Instance.onTargetTeleport.Invoke(currentTarget.GetTeleporterName());
+        }
     }
 
     private LookTarget FindBestTargetInCone()

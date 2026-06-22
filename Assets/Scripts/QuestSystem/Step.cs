@@ -29,7 +29,7 @@ public class Step : MonoBehaviour
             {
                 objAct.SetActive(true);
             }
-            if (lootGivers != null && !isLastStep)
+            if (lootGivers != null && (!isLastStep && !giveLootAtEndStep))
             {
                 if (lootGivers.Count > 0)
                     foreach (LootGiver loot in lootGivers)
@@ -53,11 +53,13 @@ public class Step : MonoBehaviour
         if (isLastStep)
         { 
             GiveLoot();
+            GameEvents.Instance.onCompleteQuest.Invoke();
             father.endQuest();
         }
         else if (NextStep != null && !isLastStep)
         {
             if (giveLootAtEndStep) GiveLoot();
+            GameEvents.Instance.onCompleteStep.Invoke(father.getIdQuest(), stepID);
             NextStep.startStep();
         }
         else if (NextStep == null && noActivateYouNextStep) return;

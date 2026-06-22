@@ -14,6 +14,20 @@ public class  ChangeHandEvent : UnityEvent<string, int> { }
 
 public class DropToolEvent : UnityEvent<int> { }
 
+[System.Serializable]
+
+public class onTargetTeleport : UnityEvent<string> { }
+
+[System.Serializable]
+
+public class onDefocusTeleport : UnityEvent<string> { }
+
+[System.Serializable]
+
+public class startQuestEvent : UnityEvent<int> { }
+public class completeStepEvent : UnityEvent<int, int> { }
+public class completeQuestEvent : UnityEvent { }
+
 public class GameEvents : MonoBehaviour
 {
     public static GameEvents Instance { get; private set; }
@@ -23,6 +37,11 @@ public class GameEvents : MonoBehaviour
     public ChangeHandEvent onChangeHandSpawnerTool;
     public DropToolEvent onDropMassTool;
     public DropToolEvent onDropSpawnerTool;
+    public onTargetTeleport onTargetTeleport;
+    public onDefocusTeleport onDefocusTeleport;
+    public startQuestEvent onStartQuest;
+    public completeStepEvent onCompleteStep;
+    public completeQuestEvent onCompleteQuest;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -38,5 +57,10 @@ public class GameEvents : MonoBehaviour
         onChangeHandSpawnerTool ??= new ChangeHandEvent();
         onDropMassTool ??= new DropToolEvent();
         onDropSpawnerTool ??= new DropToolEvent();
+        onTargetTeleport ??= new onTargetTeleport();
+        onDefocusTeleport ??=new onDefocusTeleport();
+        onStartQuest ??= new startQuestEvent();
+        onCompleteStep ??= new completeStepEvent();
+        onCompleteQuest ??= new completeQuestEvent();
     }
 }

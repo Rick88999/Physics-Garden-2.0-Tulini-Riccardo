@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
             {
                 quests[number].startQuest();
                 currentQuest = number;
+                GameEvents.Instance.onStartQuest.Invoke(number);
                 return true;
             }
             else
