@@ -22,11 +22,6 @@ public class onTargetTeleport : UnityEvent<string> { }
 
 public class onDefocusTeleport : UnityEvent<string> { }
 
-[System.Serializable]
-
-public class startQuestEvent : UnityEvent<int> { }
-public class completeStepEvent : UnityEvent<int, int> { }
-public class completeQuestEvent : UnityEvent { }
 
 public class GameEvents : MonoBehaviour
 {
@@ -39,9 +34,6 @@ public class GameEvents : MonoBehaviour
     public DropToolEvent onDropSpawnerTool;
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
-    public startQuestEvent onStartQuest;
-    public completeStepEvent onCompleteStep;
-    public completeQuestEvent onCompleteQuest;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,8 +51,5 @@ public class GameEvents : MonoBehaviour
         onDropSpawnerTool ??= new DropToolEvent();
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();
-        onStartQuest ??= new startQuestEvent();
-        onCompleteStep ??= new completeStepEvent();
-        onCompleteQuest ??= new completeQuestEvent();
     }
 }

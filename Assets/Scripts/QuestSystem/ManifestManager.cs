@@ -7,6 +7,7 @@ public class ManifestManager : MonoBehaviour
 {
     [SerializeField] private List<Page> manifestPages;
     [SerializeField] private GameObject anyQuestPage;
+    [SerializeField] private PinManifestController pinManifestController;
 
     private Page currentPage;
 
@@ -27,14 +28,7 @@ public class ManifestManager : MonoBehaviour
         public List<CheckField> checkFields;
 
     }
-    
 
-    private void Start()
-    {
-        GameEvents.Instance.onStartQuest.AddListener(questStarted);
-        GameEvents.Instance.onCompleteStep.AddListener(stepCompleted);
-        GameEvents.Instance.onCompleteQuest.AddListener(questCompleted);
-    }
 
     public void questStarted(int idQuest)
     {
@@ -51,6 +45,8 @@ public class ManifestManager : MonoBehaviour
                         Image image = check.checkField.GetComponent<Image>();
                         if(!check.isYallowAtStart)
                             image.color = Color.yellow;
+                        pinManifestController.SetTitlePin(page.idQuest);
+                        pinManifestController.SetDescriptionPin(page.idQuest, check.idStep);
                     }
                 }
             }
@@ -58,25 +54,28 @@ public class ManifestManager : MonoBehaviour
 
     public void stepCompleted(int idQuest, int idStep)
     {
-        foreach (Page page in manifestPages) if (page.idQuest == idQuest)
+        foreach (Page page in manifestPages)
         {
-            foreach (CheckField check in page.checkFields)
+            if (page.idQuest == idQuest)
             {
-               if (check.idStep == idStep)
+                foreach (CheckField check in page.checkFields)
                 {
-                    Image image = check.checkField.GetComponent<Image>();
-                    image.color = Color.green;
-                }
-                if (page.checkFields.Count > idStep + 1)
-                {
-                    if(check.idStep == idStep + 1)
+                if (check.idStep == idStep)
                     {
                         Image image = check.checkField.GetComponent<Image>();
-                        image.color = Color.yellow;
+                        image.color = Color.green;
                     }
-                } 
-            } 
-            
+                    if (page.checkFields.Count > idStep + 1)
+                    {
+                        if(check.idStep == idStep + 1)
+                        {
+                            Image image = check.checkField.GetComponent<Image>();
+                            image.color = Color.yellow;
+                            pinManifestController.SetDescriptionPin(page.idQuest, check.idStep);
+                        }
+                    } 
+                }   
+            }
         }
     }
 
@@ -84,5 +83,6 @@ public class ManifestManager : MonoBehaviour
     {
         currentPage.page.SetActive(false);
         anyQuestPage.SetActive(true);
+        pinManifestController.resetPin(currentPage.idQuest);
     }
 }

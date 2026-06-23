@@ -50,7 +50,7 @@ public class GestioneMenuSalvataggi : MonoBehaviour
         }
 
         language = gameManager.GetLanguage();
-        if(language == null) language = Language.English;
+        
 
         string[] saveFiles = gameManager.GetSavedFiles();
         bool nameExists = false;

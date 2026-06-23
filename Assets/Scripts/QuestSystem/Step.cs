@@ -15,9 +15,8 @@ public class Step : MonoBehaviour
     [Header("Loot")]
     [SerializeField] private List<LootGiver> lootGivers = new();
     [SerializeField] private bool isLastStep;
-    [SerializeField] private bool noActivateYouNextStep;
-
     [SerializeField] private bool giveLootAtEndStep;
+    [SerializeField] private ManifestManager manifestManager;
 
     // Update is called once per frame
     public void startStep()
@@ -53,16 +52,15 @@ public class Step : MonoBehaviour
         if (isLastStep)
         { 
             GiveLoot();
-            GameEvents.Instance.onCompleteQuest.Invoke();
+            manifestManager.questCompleted();
             father.endQuest();
         }
         else if (NextStep != null && !isLastStep)
         {
             if (giveLootAtEndStep) GiveLoot();
-            GameEvents.Instance.onCompleteStep.Invoke(father.getIdQuest(), stepID);
+            manifestManager.stepCompleted(father.getIdQuest(), stepID);
             NextStep.startStep();
         }
-        else if (NextStep == null && noActivateYouNextStep) return;
     }
 
     public void setStateStep(string oldState)

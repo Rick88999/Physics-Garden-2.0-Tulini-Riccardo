@@ -6,15 +6,17 @@ public class Quest : MonoBehaviour
 {
     [SerializeField] public int questID;
     [SerializeField] private List<Quest> alreadyComplete;
-    [SerializeField]private string state = "noActivated";
+    [SerializeField] private string state = "noActivated";
     [SerializeField] public Step[] steps;
     [SerializeField] private StartCollider[] startColliders;
+    [SerializeField] private ManifestManager manifestManager;
     [SerializeField] private GameObject dialogueMgError;
 
 
     public void startQuest()
     {
         state = "OnGoing";
+        manifestManager.questStarted(questID);
         steps[0].startStep();
     }
 

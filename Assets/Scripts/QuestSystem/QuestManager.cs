@@ -19,9 +19,10 @@ public class QuestManager : MonoBehaviour
         {
             if (quests[number].allReadyComplete())
             {
+
                 quests[number].startQuest();
                 currentQuest = number;
-                GameEvents.Instance.onStartQuest.Invoke(number);
+               
                 return true;
             }
             else

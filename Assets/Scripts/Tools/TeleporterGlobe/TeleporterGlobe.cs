@@ -16,8 +16,8 @@ public class TeleporterGlobe : MonoBehaviour
     [SerializeField] private LayerMask targetLayers;
 
     [Header("Debug Gizmos")]
-    [SerializeField] private bool drawGizmos = true;
-    [SerializeField] private int gizmoSegments = 24;
+    //[SerializeField] private bool drawGizmos = true;
+    //[SerializeField] private int gizmoSegments = 24;
 
     private XRGrabInteractable grabInteractable;
     private bool isHeld = false;
