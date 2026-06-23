@@ -3,7 +3,16 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [SerializeField] Quest[] quests;
+    [SerializeField] private Quest[] quests;
+    [SerializeField] private ManifestManager manifestManager;
+
+    [System.Serializable]
+    private struct StartTriggersContainer
+    {
+        public GameObject[] startTriggers;
+    }
+    [SerializeField] private StartTriggersContainer[] allStartTriggers;
+
     private int currentQuest = 0;
 
     public bool startQuest(int number)
@@ -46,6 +55,16 @@ public class QuestManager : MonoBehaviour
             quests[i].setQuestState(allQuest[i].state);
             quests[i].setSavedStep(allQuest[i].allSteps);
         }
+        foreach (Quest quest in quests)
+        {
+            if (quest.getQuestState() == "OnGoing")
+            {
+                StartTriggersContainer startTriggerContainer = allStartTriggers[quest.getIdQuest()];
+                foreach (GameObject startTrigger in startTriggerContainer.startTriggers) startTrigger.SetActive(false);
+                int lastStep = quest.GetLastOnGoingStep();
+                manifestManager.ReloadFromSavings(quest.getIdQuest(), lastStep);
+            }
+        } 
     }
 
     public SavedQuest[] getSavedQuests()

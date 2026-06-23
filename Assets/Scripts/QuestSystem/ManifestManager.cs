@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class ManifestManager : MonoBehaviour
 {
@@ -84,5 +86,33 @@ public class ManifestManager : MonoBehaviour
         currentPage.page.SetActive(false);
         anyQuestPage.SetActive(true);
         pinManifestController.resetPin(currentPage.idQuest);
+    }
+
+    public void ReloadFromSavings(int fatherQuest, int lastStep)
+    {
+        foreach (Page page in manifestPages)
+        {
+            if (page.idQuest == fatherQuest)
+            {
+                currentPage = page;
+                anyQuestPage.SetActive(false);
+                page.page.SetActive(true);
+                foreach (CheckField check in page.checkFields)
+                {
+                    if (check.idStep < lastStep)
+                    {
+                        Image image = check.checkField.GetComponent<Image>();
+                        image.color = Color.green;
+                    }
+                    else if (check.idStep == lastStep)
+                    {
+                        Image image = check.checkField.GetComponent<Image>();
+                        image.color = Color.yellow;
+                        pinManifestController.SetTitlePin(page.idQuest);
+                        pinManifestController.SetDescriptionPin(page.idQuest, check.idStep);
+                    }
+                }
+            }
+        }
     }
 }

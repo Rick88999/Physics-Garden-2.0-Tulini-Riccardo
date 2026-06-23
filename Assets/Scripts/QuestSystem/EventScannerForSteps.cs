@@ -22,5 +22,9 @@ public class EventScannerForSteps : MonoBehaviour
         GameEvents.Instance.onToolSpawned.RemoveListener(NextStep);
     }
 
-    private void NextStep(string toolName) { if(toolName == toolNameToCheck || toolName.Contains(toolNameToCheck)) if(stepPointer != null) stepPointer.endStep(); }  
+    private void NextStep(string toolName) 
+    { 
+        if(toolName == toolNameToCheck || toolName.Contains(toolNameToCheck) && stepPointer.getStateStep()!="Completed") if(stepPointer != null) stepPointer.endStep(); 
+        Destroy(this.gameObject);
+    }  
 }

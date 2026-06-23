@@ -69,6 +69,17 @@ public class Quest : MonoBehaviour
         }
         return savedQuest;
     }
+    public int GetLastOnGoingStep()
+    {
+        for (int i = 0; i < steps.Length; i++)
+        {
+            if (steps[i].getStateStep() == "OnGoing")
+            {
+                return steps[i].getIdStep();
+            }
+        }
+        return -1;
+    }
 
 
     public void DestroyQuestTrigger()
