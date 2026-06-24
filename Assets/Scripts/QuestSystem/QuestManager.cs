@@ -54,6 +54,7 @@ public class QuestManager : MonoBehaviour
         {
             quests[i].setQuestState(allQuest[i].state);
             quests[i].setSavedStep(allQuest[i].allSteps);
+            quests[i].AllCompleteSteps();
         }
         foreach (Quest quest in quests)
         {

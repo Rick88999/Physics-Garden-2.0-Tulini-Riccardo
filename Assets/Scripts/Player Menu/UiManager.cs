@@ -8,10 +8,10 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject lootUi;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip lootSound;
-    [Header("Menu Positioning")]
+    //[Header("Menu Positioning")]
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float menuDistance = 1.5f;
-    [SerializeField] private float menuHeight = 0f;
+    //[SerializeField] private float menuDistance = 1.5f;
+    //[SerializeField] private float menuHeight = 0f;
 
     private Language language;
     private void OnEnable()
@@ -42,7 +42,7 @@ public class UiManager : MonoBehaviour
         if (lootUi != null)
         {
             lootUi.SetActive(true);
-            PlaceMenuInFrontOfPlayer();
+            //PlaceMenuInFrontOfPlayer();
             GameObject panel = lootUi.transform.GetChild(0).gameObject;
             TextMeshProUGUI lootText = panel.GetComponentInChildren<TextMeshProUGUI>();
             if (lootText != null)
@@ -82,12 +82,12 @@ public class UiManager : MonoBehaviour
                 }
                 audioSource.PlayOneShot(lootSound);
             }
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(6f);
             lootUi.SetActive(false);
         }
     }
 
-    private void PlaceMenuInFrontOfPlayer()
+   /* private void PlaceMenuInFrontOfPlayer()
     {
         Transform cam = playerCamera.transform;
 
@@ -98,6 +98,6 @@ public class UiManager : MonoBehaviour
 
         lootUi.transform.position = targetPosition;
         lootUi.transform.rotation = Quaternion.LookRotation(flatForward);
-    }
+    }*/
 }
 

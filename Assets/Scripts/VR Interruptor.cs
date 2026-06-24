@@ -23,6 +23,8 @@ public class VRInterruptor : MonoBehaviour
     [Header("Impostazioni Pulsante")]
     [Tooltip("Secondi da aspettare dopo il rilascio prima di poter premere di nuovo")]
     [SerializeField] private float cooldownDelay = 2.0f;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip onSound;
 
     private XRSimpleInteractable interactable;
     private Vector3 startPosition;
@@ -52,6 +54,8 @@ public class VRInterruptor : MonoBehaviour
         isPressed = true;
 
         transform.localPosition = startPosition - new Vector3(0, 0.005f, 0);
+
+        audioSource.PlayOneShot(onSound);
 
         actualEvent.eventIO.Invoke();
     }

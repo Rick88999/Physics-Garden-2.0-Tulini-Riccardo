@@ -50,6 +50,14 @@ public class FisicaMongolfiera : MonoBehaviour
 
     public void AttivaDisattivaSpinta()
     {
+        if (massaCounterBox == null)
+        {
+            Debug.LogError("FisicaMongolfiera: MassaCounterBox non assegnato.");
+            return;
+        }
+
+        if(massaCounterBox.TooMuchMass()) return;
+        
         if (Mathf.Abs(transform.position.y - altezzaAttesa) < 1f)
         {
             activator = false;

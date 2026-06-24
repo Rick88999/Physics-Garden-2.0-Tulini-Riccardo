@@ -35,10 +35,6 @@ public class Step : MonoBehaviour
                         loot.GiveLoot();
             }
         }
-        else
-        {
-            Debug.Log("This step is already activated");
-        }
     }
 
     public void endStep()

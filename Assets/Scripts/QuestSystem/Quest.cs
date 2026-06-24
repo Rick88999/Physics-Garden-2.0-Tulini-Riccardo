@@ -20,11 +20,9 @@ public class Quest : MonoBehaviour
         steps[0].startStep();
     }
 
-    public void endQuest()
-    {
-        state = "Completed";
+    public void endQuest() =>state = "Completed";
 
-    }
+    
 
     public void setQuestState(string oldState) => state = oldState;
 
@@ -86,6 +84,18 @@ public class Quest : MonoBehaviour
     {
         if (startColliders == null || startColliders.Length == 0) return;
         else foreach (StartCollider startCollider in startColliders) startCollider.DestroyTriggers();
+    }
+
+    public void AllCompleteSteps()
+    {
+        int counter = 0;
+        foreach (Step step in steps)
+            if(step.getStateStep() == "Completed")
+                counter++;
+
+        if (counter == steps.Length) endQuest();
+            
+        
     }
 
 

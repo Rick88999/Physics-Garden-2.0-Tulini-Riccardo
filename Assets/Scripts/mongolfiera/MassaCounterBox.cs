@@ -1,7 +1,18 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MassaCounterBox : MonoBehaviour
 {
+    [SerializeField] private GameObject led;
+    [SerializeField] private GameObject panel;
+    [SerializeField] private TextMeshProUGUI txt;
+    [SerializeField] private Material red;
+    [SerializeField] private Material green;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip onSound;
+    
     private BoxCollider boxCollider;
     private float massaTotale = 0f;
 
@@ -10,7 +21,7 @@ public class MassaCounterBox : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         if (boxCollider == null)
         {
-            Debug.LogError("MassaCounterBox: Non è stato trovato un Collider sul GameObject.");
+            Debug.LogError("MassaCounterBox: Non Ã¨ stato trovato un Collider sul GameObject.");
         }
     }
 
@@ -34,10 +45,41 @@ public class MassaCounterBox : MonoBehaviour
         }
     }
 
+    public bool TooMuchMass()
+    {
+        if (massaTotale >= 15f)
+        {
+            led.GetComponent<Renderer>().material = red;
+            Image img = panel.GetComponent<Image>();
+            img.color = Color.red;
+            txt.text = "No mass > 15kg";
+            StartCoroutine(SetUp());
+
+            audioSource.PlayOneShot(onSound);
+            return true;
+        }
+        else if (massaTotale < 15f)
+            led.GetComponent<Renderer>().material = green;
+
+        return false;
+        
+        
+    }
+
+    private IEnumerator SetUp()
+    {
+        panel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        led.GetComponent<Renderer>().material = green;
+        panel.SetActive(false);
+    }
+        
+
     public float GetMassaTotale()
     {
         if (massaTotale == 0) return 1;
         else return massaTotale;
+        
     }
 }
 
