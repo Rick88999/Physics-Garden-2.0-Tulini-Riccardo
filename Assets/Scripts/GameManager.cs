@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Menu Manager")]
     [SerializeField] private PlayerMenuManager playerMenuManager;
-    [SerializeField] private MenuCircleManager handMenuManager;
+    [SerializeField] private GravityGunController gravityGunController;
 
     [Header("Inventory")]
     [SerializeField] private InventoryManager inventoryManager;
@@ -170,13 +170,11 @@ public class GameManager : MonoBehaviour
                     {
                         foreach (SavedStep step in quest.allSteps)
                         {
-                            if (step.id_step == 3)
+                            if (step.id_step == 2)
                             {
                                 if (step.state == "Completed")
-                                {
-                                    handMenuManager.activateMenus();
-                                    handMenuManager.enableAttrattore();
-                                }
+                                    gravityGunController.Activation();
+                                
                             }
 
                             if (step.id_step == 5)

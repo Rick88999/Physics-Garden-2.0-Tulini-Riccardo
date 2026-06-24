@@ -42,14 +42,7 @@ public class HandControl : MonoBehaviour
             if (lineVisualAtrattore != null) lineVisualAtrattore.enabled = (trigger < 0.1f);
                 
         }
-
-        if (Modalita[1].activeSelf)
-        {
-
-            Modalita[1].GetComponent<LineRenderer>().enabled = (trigger < 0.1f);
-
-        }
-        if(Modalita[2].activeSelf)
+        if(Modalita[1].activeSelf)
         {
 
             if (lineVisualPointer != null) lineVisualPointer.enabled = (trigger < 0.1f);

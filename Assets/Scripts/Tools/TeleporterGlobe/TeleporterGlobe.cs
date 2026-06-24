@@ -82,10 +82,8 @@ public class TeleporterGlobe : MonoBehaviour
         if (!isHeld) return;
 
         if (currentTarget != null)
-        {
-            Debug.Log($"Activating target: {currentTarget.name}");
             currentTarget.Activate();
-        }
+        
     }
 
     void Update()

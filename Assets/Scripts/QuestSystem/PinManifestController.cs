@@ -4,13 +4,13 @@ using UnityEngine;
 public class PinManifestController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private List<GameObject> italianTitles;
-    [SerializeField] private List<GameObject> englishTitles;
     [SerializeField] private List<RefQuest> questDescriptions;
 
     [System.Serializable]
     private struct RefQuest
     {
+        public GameObject italianTitle;
+        public GameObject englishTitle; 
        public Description description;
     }
 
@@ -28,20 +28,34 @@ public class PinManifestController : MonoBehaviour
 
     public void SetTitlePin(int index)
     {
+        
         if (actualLanguage == Language.Italian)
         {
-            for (int i = 0; i < italianTitles.Count; i++)
+            for (int i = 0; i < questDescriptions.Count; i++)
             {
-                italianTitles[i].SetActive(i == index);
+                if(questDescriptions[i].italianTitle != null)
+                    questDescriptions[i].italianTitle.SetActive(i == index);
+                
                 if(i == index) defaultTitle.SetActive(false);
             }
         }
         else if (actualLanguage == Language.English)
         {
-            for (int i = 0; i < englishTitles.Count; i++)
+            bool flag = false;
+            for (int i = 0; i < questDescriptions.Count; i++)
             {
-                englishTitles[i].SetActive(i == index);
+                if(questDescriptions[i].englishTitle != null)
+                    questDescriptions[i].englishTitle.SetActive(i == index);
+                
                 if(i == index) defaultTitle.SetActive(false);
+            }
+            
+            if (!flag)
+            {
+                if(questDescriptions[index].italianTitle != null)
+                    questDescriptions[index].italianTitle.SetActive(true);
+                
+                defaultTitle.SetActive(false);
             }
         }
     }
@@ -68,7 +82,7 @@ public class PinManifestController : MonoBehaviour
     {
         if (actualLanguage == Language.Italian)
         {
-            italianTitles[fatherIndex].SetActive(false);
+            questDescriptions[fatherIndex].italianTitle.SetActive(false);
             for (int i = 0; i < questDescriptions[fatherIndex].description.italianDescriptions.Count; i++)
             {
                 questDescriptions[fatherIndex].description.italianDescriptions[i].SetActive(false);
@@ -77,7 +91,7 @@ public class PinManifestController : MonoBehaviour
         }
         else if (actualLanguage == Language.English)
         {
-            englishTitles[fatherIndex].SetActive(false);
+            questDescriptions[fatherIndex].englishTitle.SetActive(false);
             for (int i = 0; i < questDescriptions[fatherIndex].description.englishDescriptions.Count; i++)
             {
                 questDescriptions[fatherIndex].description.englishDescriptions[i].SetActive(false);
