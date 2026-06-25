@@ -24,11 +24,9 @@ public class PinManifestController : MonoBehaviour
     [SerializeField] private GameObject defaultTitle;
     private Language actualLanguage;
 
-    private void Awake() => actualLanguage = gameManager.GetLanguage();
-
     public void SetTitlePin(int index)
     {
-        
+        actualLanguage = gameManager.GetLanguage();
         if (actualLanguage == Language.Italian)
         {
             for (int i = 0; i < questDescriptions.Count; i++)
@@ -41,27 +39,20 @@ public class PinManifestController : MonoBehaviour
         }
         else if (actualLanguage == Language.English)
         {
-            bool flag = false;
             for (int i = 0; i < questDescriptions.Count; i++)
             {
                 if(questDescriptions[i].englishTitle != null)
                     questDescriptions[i].englishTitle.SetActive(i == index);
-                
+
                 if(i == index) defaultTitle.SetActive(false);
             }
-            
-            if (!flag)
-            {
-                if(questDescriptions[index].italianTitle != null)
-                    questDescriptions[index].italianTitle.SetActive(true);
-                
-                defaultTitle.SetActive(false);
-            }
+
         }
     }
 
     public void SetDescriptionPin(int fatherIndex, int index)
     {
+        actualLanguage = gameManager.GetLanguage();
         if (actualLanguage == Language.Italian)
         {
             for (int i = 0; i < questDescriptions[fatherIndex].description.italianDescriptions.Count; i++)
@@ -80,6 +71,7 @@ public class PinManifestController : MonoBehaviour
 
     public void resetPin(int fatherIndex)
     {
+        actualLanguage = gameManager.GetLanguage();
         if (actualLanguage == Language.Italian)
         {
             questDescriptions[fatherIndex].italianTitle.SetActive(false);

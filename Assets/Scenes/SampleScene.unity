@@ -213340,7 +213340,7 @@ MonoBehaviour:
   gameManager: {fileID: 84319912}
   questDescriptions:
   - italianTitle: {fileID: 1173183346}
-    englishTitle: {fileID: 0}
+    englishTitle: {fileID: 1173183346}
     description:
       italianDescriptions:
       - {fileID: 1393358214}

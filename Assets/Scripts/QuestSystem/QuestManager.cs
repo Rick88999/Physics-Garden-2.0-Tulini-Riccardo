@@ -1,6 +1,7 @@
+using System.Diagnostics;
 using NUnit.Framework.Constraints;
 using UnityEngine;
-
+using Debug = UnityEngine.Debug;
 public class QuestManager : MonoBehaviour
 {
     [SerializeField] private Quest[] quests;
@@ -17,7 +18,6 @@ public class QuestManager : MonoBehaviour
 
     public bool startQuest(int number)
     {
-        
         bool notOneOnGoing = true;
         
         foreach (Quest quest in quests) 
@@ -64,6 +64,11 @@ public class QuestManager : MonoBehaviour
                 foreach (GameObject startTrigger in startTriggerContainer.startTriggers) startTrigger.SetActive(false);
                 int lastStep = quest.GetLastOnGoingStep();
                 manifestManager.ReloadFromSavings(quest.getIdQuest(), lastStep);
+            }
+            else if (quest.getQuestState() == "Completed")
+            {
+                StartTriggersContainer startTriggerContainer = allStartTriggers[quest.getIdQuest()];
+                foreach (GameObject startTrigger in startTriggerContainer.startTriggers) startTrigger.SetActive(false);
             }
         } 
     }
