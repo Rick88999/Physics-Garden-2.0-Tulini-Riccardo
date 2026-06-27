@@ -5,7 +5,9 @@ public class BotController : MonoBehaviour
 {
     public enum Mode { Idle, GoToPoint, Follow }
 
+    [Header("Player")]
     [SerializeField] public Transform player;
+    [Header("Follow Settings")]
     [SerializeField] public float followRefreshRate = 0.2f;
 
     
@@ -33,7 +35,7 @@ public class BotController : MonoBehaviour
         if (player != null)
         {
             Vector3 look = player.position - transform.position;
-            look.y = 0f; // non inclinare su/giù
+            look.y = 0f; // non inclinare su/giï¿½
 
             if (look.sqrMagnitude > 0.0001f)
             {
@@ -80,7 +82,7 @@ public class BotController : MonoBehaviour
     {
         if (point == null)
         {
-            Debug.LogError("GoToPoint: point è null");
+            Debug.LogError("GoToPoint: point ï¿½ null");
             return;
         }
 
@@ -96,11 +98,26 @@ public class BotController : MonoBehaviour
         StartFollow(player);
     }
 
+    public void ContiuneFollow()
+    {
+        if (player == null)
+        {
+            Debug.LogError("ContinueFollow: player Ã¨ null");
+            return;
+        }
+
+        agent.enabled = true;
+        agent.isStopped = false;
+
+        mode = Mode.Follow;
+        nextFollowUpdate = 0f; 
+    }
+
     public void StartFollow(Transform playerTarget)
     {
         if (playerTarget == null)
         {
-            Debug.LogError("StartFollow: playerTarget è null");
+            Debug.LogError("StartFollow: playerTarget ï¿½ null");
             return;
         }
 
@@ -110,13 +127,21 @@ public class BotController : MonoBehaviour
         agent.isStopped = false;
 
         mode = Mode.Follow;
-        nextFollowUpdate = 0f; // update immediato
+        nextFollowUpdate = 0f; 
     }
 
     public void StopBot()
     {
         mode = Mode.Idle;
         if (agent.enabled) agent.isStopped = true;
+    }
+
+    public void TeleportTo(Vector3 position)
+    {
+        mode = Mode.Idle;
+        agent.enabled = true;
+        agent.Warp(position);
+        agent.isStopped = true;
     }
 
     public Mode GetMode() => mode;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using TMPro;
 
 public struct SerializableVector3
 {
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
     [Header("Menu Manager")]
     [SerializeField] private PlayerMenuManager playerMenuManager;
     [SerializeField] private GravityGunController gravityGunController;
+    [SerializeField] private TextMeshProUGUI saveNotificationText;
 
     [Header("Inventory")]
     [SerializeField] private InventoryManager inventoryManager;
@@ -74,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Setting Light & Audio")]
     [SerializeField] private SettingsController settingsController;
+
+    private bool closingGame = false;
 
     private SavedState actualSavedState;
     private Language actualLanguage = Language.Italian;
@@ -120,14 +124,35 @@ public class GameManager : MonoBehaviour
         actualSavedState.rotation_companion = new SerializableQuaternion(companion.transform.rotation);
         actualSavedState.allQuests = questManager.getSavedQuests();
         SaveInventory();
-        string json = JsonConvert.SerializeObject(actualSavedState, Formatting.Indented);
-        string path = Path.Combine(Application.persistentDataPath, $"{actualSavedState.name_player}.json");
-        File.WriteAllText(path, json);
-        Debug.Log("Dati salvati in: " + path);
+        try
+        {
+            string json = JsonConvert.SerializeObject(actualSavedState, Formatting.Indented);
+            string path = Path.Combine(Application.persistentDataPath, $"{actualSavedState.name_player}.json");
+            File.WriteAllText(path, json);
+            if (!closingGame)
+            {
+                saveNotificationText.text = "Dati salvati con successo!"; 
+                StartCoroutine(playerMenuManager.ShowSaveNotification(2f));
+                closingGame = false;
+            }
+        }
+        catch (System.Exception)
+        {
+            if (!closingGame)
+            {
+                saveNotificationText.text = "Errore salvataggio dati!";
+                StartCoroutine(playerMenuManager.ShowSaveNotification(2f));
+                closingGame = false;
+            }
+
+        }
+
+        
     }
 
     public void SaveAndClose()
     {
+        closingGame = true;
         SaveGame();
         Close();
     }
@@ -177,7 +202,7 @@ public class GameManager : MonoBehaviour
                                 
                             }
 
-                            if (step.id_step == 5)
+                            if (step.id_step == 4)
                             {
                                 if (step.state == "Completed")
                                 {

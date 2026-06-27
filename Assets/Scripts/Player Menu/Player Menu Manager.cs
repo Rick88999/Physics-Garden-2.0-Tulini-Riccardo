@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +9,7 @@ public class PlayerMenuManager : MonoBehaviour
 {
     [Header("Menu Canvas")]
     [SerializeField] private GameObject menuCanvas;
+     [SerializeField] private GameObject saveNotificationPanel;
     [Header("Menu Pages")]
     [SerializeField] private List<GameObject> menuPages = new List<GameObject>();
     [SerializeField] private List<bool> states = new List<bool>();
@@ -18,7 +20,17 @@ public class PlayerMenuManager : MonoBehaviour
     [SerializeField] private Camera playerCamera; 
     [SerializeField] private float menuDistance = 1.5f;
     [SerializeField] private float menuHeight = 0f;
+    [SerializeField] private float fadeDuration = 0.4f;
+    [Header("Player Audio Source")]
+    [SerializeField] private AudioSource playerAudioSource;
+    [SerializeField] private AudioClip saveDataSound;
+    private CanvasGroup gruppoCanvas;
 
+    private void Awake()
+    {
+        if (saveNotificationPanel != null)
+            gruppoCanvas = saveNotificationPanel.GetComponent<CanvasGroup>();
+    }
 
     private void OnEnable()
     {
@@ -109,4 +121,37 @@ public class PlayerMenuManager : MonoBehaviour
     private void deactivatePage(int i) => menuPages[i].SetActive(false);
 
     public void UnlockMenu() => turnOnStartMenu = true;
+
+    public IEnumerator ShowSaveNotification(float duration)
+    {
+        if (playerAudioSource != null && saveDataSound != null)
+        {
+            playerAudioSource.PlayOneShot(saveDataSound);
+        }
+        saveNotificationPanel.SetActive(true);
+
+        // Fade in
+        float t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            gruppoCanvas.alpha = Mathf.Clamp01(t / fadeDuration);
+            yield return null;
+        }
+        gruppoCanvas.alpha = 1f;
+
+        yield return new WaitForSeconds(duration);
+
+        // Fade out
+        t = 0f;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            gruppoCanvas.alpha = Mathf.Clamp01(1f - t / fadeDuration);
+            yield return null;
+        }
+        gruppoCanvas.alpha = 0f;
+
+        saveNotificationPanel.SetActive(false);
+    }
 }

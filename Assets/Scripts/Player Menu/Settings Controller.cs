@@ -17,11 +17,16 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
     [Header("Audio NPC")]
     [SerializeField] private List<AudioSource> npcAudioSources;
+    [Header("Audio Objects")]
+    [SerializeField] private float objectsVolumeMultiplier = 2f;
+    [SerializeField] private List<AudioSource> objectsAudioSources;
+  
+    
 
     private Volume volume;
     private Bloom bloom;
 
-    void Start()
+    private void Start()
     {
         Volume[] volumes = FindObjectsByType<Volume>(FindObjectsSortMode.None);
 
@@ -45,7 +50,7 @@ public class SettingsController : MonoBehaviour
         volumeSlider.value = mainAudioSource.volume;
     }
 
-    void SetLightIntensity(float value)
+    public void SetLightIntensity(float value)
     {
         if (!isStartMenu)mainLight.intensity = value*3;
         if (spotLights != null)
@@ -59,15 +64,31 @@ public class SettingsController : MonoBehaviour
 
     }
 
-    void SetAudioVolume(float value)
+    public void SetAudioVolume(float value)
     {
         mainAudioSource.volume = value;
-        if(npcAudioSources !=null)
+        if(npcAudioSources != null)
         {
             foreach(AudioSource npcAudio in npcAudioSources)
             {
-                npcAudio.volume = value;
+                npcAudio.volume = Mathf.Min(value, 0.7f);
             }
+        }
+        if(objectsAudioSources != null)
+        {
+            foreach(AudioSource objectAudio in objectsAudioSources)
+            {
+                objectAudio.volume = Mathf.Clamp01(value * objectsVolumeMultiplier);
+            }
+        }
+    }
+
+    public void InsertNewToolInList(AudioSource newTool)
+    {
+        if (!objectsAudioSources.Contains(newTool))
+        {
+            objectsAudioSources.Add(newTool);
+            newTool.volume = Mathf.Clamp01(volumeSlider.value * objectsVolumeMultiplier);
         }
     }
     public void SetSliderSettings() => mainLight.intensity = spotLights[0].intensity*0.006f;
