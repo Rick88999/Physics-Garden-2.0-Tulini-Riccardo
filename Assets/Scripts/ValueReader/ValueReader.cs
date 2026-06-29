@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class ValueReader : MonoBehaviour
 {
     [SerializeField] private XRSocketInteractor socketInteractor;
-    [SerializeField] private CannoneController cannone;
+    [SerializeField] private Handler<float> handler;
     [SerializeField] private string unitaMisura;
 
     [SerializeField] private AudioSource audioSource;
@@ -19,8 +19,6 @@ public class ValueReader : MonoBehaviour
     [SerializeField] private float ejectForce = 3f;
     [SerializeField] private Vector3 ejectDirection = Vector3.forward;
     [SerializeField] private List<Collider> box;
-
-
 
     public void ActivateCheckValue()
     {
@@ -34,7 +32,7 @@ public class ValueReader : MonoBehaviour
                 {
                     if (dataCard.GetUnitaMisura() == unitaMisura)
                     {
-                        cannone.SetLaunchForceCannon(dataCard.GetValue());
+                        handler.Perform(dataCard.GetValue());
                         StartCoroutine(DestroyCard(interactable));
                     }
                     else
