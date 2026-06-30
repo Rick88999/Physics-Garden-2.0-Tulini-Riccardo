@@ -3,20 +3,25 @@ using UnityEngine;
 
 public class CarrucolaHandler : Handler<float>
 {
-    [SerializeField] private CestaCarrucola cestaCarrucola;
+    [SerializeField] private CestaCarrucola cestaCarrucolaSocket;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip errorSound;
    public override void Perform(float data)
     {
         AudioSource audioSource = target.GetComponent<AudioSource>();
-        if (cestaCarrucola != null)
+        if (cestaCarrucolaSocket != null)
         {
-            bool checkValue = Mathf.Abs(data - cestaCarrucola.GetEnergiaPotenziale()) <= 0.1f;
+            bool checkValue = Mathf.Abs(data - cestaCarrucolaSocket.GetEnergiaPotenziale()) <= 0.1f;
             if (checkValue)
             {
                 audioSource.PlayOneShot(successSound);
-                target.GetComponent<CarrucolaController>().MovetoTop();
-                StartCoroutine(ComeDownAfterDelay(10f));
+                CarrucolaController carrucolaController = target.GetComponent<CarrucolaController>();
+                if (carrucolaController != null)
+                {
+                    carrucolaController.CloseDoors();
+                    carrucolaController.MovetoTop();
+                    StartCoroutine(ComeDownAfterDelay(10f));
+                }
             }
             else
             {
@@ -29,5 +34,7 @@ public class CarrucolaHandler : Handler<float>
     {
         yield return new WaitForSeconds(delay);
         target.GetComponent<CarrucolaController>().MovetoDown();
+        yield return new WaitForSeconds(delay-0.1f);
+        target.GetComponent<CarrucolaController>().OpenDoors();
     }
 }

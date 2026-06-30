@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-[RequireComponent(typeof(XRSocketInteractor))]
+
 public class CestaCarrucola : MonoBehaviour
 {
     [SerializeField] private Material materialeDesiderato;
@@ -10,28 +10,21 @@ public class CestaCarrucola : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip errorSound;
-    private XRSocketInteractor socketInteractor;
     private float energiaPotenziale;
-    private void Start()
+    private void OnTriggerEnter(Collider other) 
     {
-        socketInteractor = GetComponent<XRSocketInteractor>();
-        socketInteractor.selectEntered.AddListener(InBasket);
-        socketInteractor.selectExited.AddListener(OutBasket);
-    }
-
-    private void InBasket(SelectEnterEventArgs args)
-    {
-        GameObject go = args.interactableObject.transform.gameObject;
+        GameObject go = other.gameObject;
         MeshRenderer mr = go.GetComponent<MeshRenderer>();
         if (go.GetComponent<BoxCollider>() != null && mr != null)
         {
             if (mr.sharedMaterial == materialeDesiderato)
+            {
                 audioSource.PlayOneShot(successSound);
+                CalcoloEnergiaPotenziale(go.GetComponent<Rigidbody>().mass);
+            }
             else
             {
                 audioSource.PlayOneShot(errorSound);
-
-                CalcoloEnergiaPotenziale(go.GetComponent<Rigidbody>().mass);
                 Destroy(go);
             }
         }
@@ -42,10 +35,16 @@ public class CestaCarrucola : MonoBehaviour
         }
     }
 
-    private void OutBasket(SelectExitEventArgs args) => energiaPotenziale = 0f;
-    
-    private void CalcoloEnergiaPotenziale(float massa) => energiaPotenziale = massa * 9.81f * altezza;
+    private void OnTriggerExit(Collider other)
+    {
+        energiaPotenziale -= other.gameObject.GetComponent<Rigidbody>().mass * 9.81f * altezza;
+        if (energiaPotenziale < 0f)
+        {
+            energiaPotenziale = 0f;
+        }
+    }
 
-    public float GetEnergiaPotenziale() => energiaPotenziale;
-    
+    private void CalcoloEnergiaPotenziale(float massa) => energiaPotenziale += massa * 9.81f * altezza;
+
+    public float GetEnergiaPotenziale() => energiaPotenziale;  
 }

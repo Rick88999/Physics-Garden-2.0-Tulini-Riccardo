@@ -4,6 +4,7 @@ public class CarrucolaController : MonoBehaviour
 {
     [SerializeField] private Transform endPoint;
     [SerializeField] private Transform startPoint;
+    [SerializeField] private GameObject[] doors;
     [SerializeField] private float baseSpeed;
     [SerializeField] private bool downToTop = false;
     [SerializeField] private bool topToDown = false;
@@ -69,6 +70,21 @@ public class CarrucolaController : MonoBehaviour
         if(!isMoving)
         {
             topToDown = true;
+        }
+    }
+    public void CloseDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(true);
+        }
+    }
+
+    public void OpenDoors()
+    {
+        foreach (GameObject door in doors)
+        {
+            door.SetActive(false);
         }
     }
 }
