@@ -24,6 +24,9 @@ public enum Operazione
     ForzaElettrostatica,
     ForzaDiLorentz,
     ForzaAttritoStatico,
+    EnergiaCinetica,
+    EnergiaPotenziale,
+    EnergiaElastica,
     None
 }
 
@@ -44,6 +47,7 @@ public enum UnitaMisura
     InerziaX2,
     InerziaX3,
     Newton,
+    Jouole,
     None
 }
 

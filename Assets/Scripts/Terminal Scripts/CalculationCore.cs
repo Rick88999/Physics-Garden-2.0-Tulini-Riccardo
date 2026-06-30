@@ -13,7 +13,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.Centimetri,  "cm" },
         { UnitaMisura.Millimetri,  "mm" },
         { UnitaMisura.Velocita,    "m/s" },
-        { UnitaMisura.Angolo,      "�"  },
+        { UnitaMisura.Angolo,      "°"  },
         { UnitaMisura.Kilogrammi, "kg" },
         { UnitaMisura.Accelerazione, "m/s<sup>2</sup>" },
         { UnitaMisura.DensitaX1, "m<sup>3</sup>/kg" },
@@ -24,6 +24,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
         { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
         { UnitaMisura.Newton, "N" },
+        { UnitaMisura.Jouole, "J" },
         { UnitaMisura.None, "" }
     };
     [SerializeField] private GameManager gm;
@@ -120,6 +121,51 @@ public class CalculationCore : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private bool EnergiaCinetica()
+    {
+        if((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Velocita") || value.ContainsKey("Velocity"))) 
+        {
+            result = 0.5f * (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * Mathf.Pow((value.ContainsKey("Velocita") ? value["Velocita"] : value["Velocity"]), 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for EnegiaCinetica calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool EnergiaPotenziale()
+    {
+        if((value.ContainsKey("Massa") || value.ContainsKey("Mass")) && (value.ContainsKey("Accelerazione di gravita") || value.ContainsKey("Gravity Acceleration")) && (value.ContainsKey("Altezza") || value.ContainsKey("Height"))) 
+        {
+            result = (value.ContainsKey("Massa") ? value["Massa"] : value["Mass"]) * (value.ContainsKey("Accelerazione di gravita") ? value["Accelerazione di gravita"] : value["Gravity Acceleration"]) * (value.ContainsKey("Altezza") ? value["Altezza"] : value["Height"]);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for EnergiaPotenziale calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
+    }
+
+    private bool EnergiaElastica()
+    {
+        if((value.ContainsKey("Costante elastica") || value.ContainsKey("Elastic constant")) && (value.ContainsKey("Spostamento") || value.ContainsKey("Displacement"))) 
+        {
+            result = 0.5f * (value.ContainsKey("Costante elastica") ? value["Costante elastica"] : value["Elastic constant"]) * Mathf.Pow((value.ContainsKey("Spostamento") ? value["Spostamento"] : value["Displacement"]), 2);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Missing required values for EnergiaElastica calculation.");
+            audioSource.PlayOneShot(clickSoundError);
+            return false;
+        }
     }
 
     private bool ForzaElastica()
@@ -769,6 +815,39 @@ public class CalculationCore : MonoBehaviour
                             SpawnResultCard("Static Friction Force");
                     }
                     break;
+                case Operazione.EnergiaCinetica:
+                    esito = EnergiaCinetica();
+                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Energia Cinetica");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Kinetic Energy");
+                    }
+                    break;
+                case Operazione.EnergiaPotenziale:
+                    esito = EnergiaPotenziale();
+                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Energia Potenziale");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Potential Energy");
+                    }
+                    break;
+                case Operazione.EnergiaElastica:
+                    esito = EnergiaElastica();
+                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    if (esito)
+                    {
+                        if (gm.GetLanguage() == Language.Italian)
+                            SpawnResultCard("Energia Elastica");
+                        else if (gm.GetLanguage() == Language.English)
+                            SpawnResultCard("Elastic Energy");
+                    }
+                    break;
             }
         }   
     }
@@ -797,8 +876,8 @@ public class CalculationCore : MonoBehaviour
         public void CalcoloForzaElettrostatica() => Calcolo(Operazione.ForzaElettrostatica);
         public void CalcoloForzaDiLorentz() => Calcolo(Operazione.ForzaDiLorentz);
         public void CalcoloForzaAttritoStatico() => Calcolo(Operazione.ForzaAttritoStatico);
-
-
-
+        public void CalcoloEnergiaCinetica() => Calcolo(Operazione.EnergiaCinetica);
+        public void CalcoloEnergiaPotenziale() => Calcolo(Operazione.EnergiaPotenziale);
+        public void CalcoloEnergiaElastica() => Calcolo(Operazione.EnergiaElastica);
 }
 

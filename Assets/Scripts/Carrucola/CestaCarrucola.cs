@@ -25,7 +25,7 @@ public class CestaCarrucola : MonoBehaviour
         MeshRenderer mr = go.GetComponent<MeshRenderer>();
         if (go.GetComponent<BoxCollider>() != null && mr != null)
         {
-            if (mr.material == materialeDesiderato)
+            if (mr.sharedMaterial == materialeDesiderato)
                 audioSource.PlayOneShot(successSound);
             else
             {
