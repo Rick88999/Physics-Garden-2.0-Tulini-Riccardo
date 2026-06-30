@@ -43,7 +43,7 @@ public class CannoneController : MonoBehaviour
 
         if (!other.CompareTag("Player") && !other.CompareTag("PlayerHand") && !other.CompareTag("Bullet") && !other.CompareTag("Cannon"))
         {
-            if(other.gameObject.GetComponent<SphereCollider>() != null)
+            if(other.gameObject.GetComponent<SphereCollider>() != null && other.gameObject.transform.localScale.x <= 0.2f && other.gameObject.transform.localScale.y <= 0.2f && other.gameObject.transform.localScale.z <= 0.2f)
             {
                 if (currentBullet != null) Destroy(currentBullet);
                 

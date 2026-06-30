@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BasketController : MonoBehaviour
@@ -11,7 +12,13 @@ public class BasketController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             audioSource.PlayOneShot(catchSound);
-            step.endStep();
+            StartCoroutine(EndStepDelay());
         }
+    }
+
+    private IEnumerator EndStepDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        step.endStep();
     }
 }
