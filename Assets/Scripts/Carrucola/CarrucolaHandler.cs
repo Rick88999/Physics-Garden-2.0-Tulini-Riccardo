@@ -4,6 +4,7 @@ using UnityEngine;
 public class CarrucolaHandler : Handler<float>
 {
     [SerializeField] private CestaCarrucola cestaCarrucolaSocket;
+    [SerializeField] private Step step;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip errorSound;
    public override void Perform(float data)
@@ -21,6 +22,7 @@ public class CarrucolaHandler : Handler<float>
                     carrucolaController.CloseDoors();
                     carrucolaController.MovetoTop();
                     StartCoroutine(ComeDownAfterDelay(10f));
+                    step.endStep();
                 }
             }
             else

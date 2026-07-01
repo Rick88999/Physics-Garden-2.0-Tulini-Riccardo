@@ -1,12 +1,13 @@
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactors;
-
 
 public class CestaCarrucola : MonoBehaviour
 {
     [SerializeField] private Material materialeDesiderato;
     [SerializeField] private float altezza = 5.6f;
+    [SerializeField] private float fattoreDiScala = 1.0f;
+    [SerializeField] private GameObject warningCanvas;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip errorSound;
@@ -15,24 +16,29 @@ public class CestaCarrucola : MonoBehaviour
     {
         GameObject go = other.gameObject;
         MeshRenderer mr = go.GetComponent<MeshRenderer>();
+        float SizeM = Mathf.Max(go.transform.localScale.x, go.transform.localScale.y, go.transform.localScale.z);
         if (go.GetComponent<BoxCollider>() != null && mr != null)
         {
             if (mr.sharedMaterial == materialeDesiderato)
             {
-                audioSource.PlayOneShot(successSound);
-                CalcoloEnergiaPotenziale(go.GetComponent<Rigidbody>().mass);
+                if(SizeM >= 3*fattoreDiScala)
+                {
+                    audioSource.PlayOneShot(successSound);
+                    CalcoloEnergiaPotenziale(go.GetComponent<Rigidbody>().mass);
+                }
+                else WrongObjectType(go);
             }
-            else
-            {
-                audioSource.PlayOneShot(errorSound);
-                Destroy(go);
-            }
+            else WrongObjectType(go);
         }
-        else
-        {
-            audioSource.PlayOneShot(errorSound);
-            Destroy(go);
-        }
+        else WrongObjectType(go);
+        
+    }
+
+    private void WrongObjectType(GameObject go)
+    {
+        StartCoroutine(ShowWarningCanvas(4f));
+        audioSource.PlayOneShot(errorSound);
+        Destroy(go);
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,6 +47,16 @@ public class CestaCarrucola : MonoBehaviour
         if (energiaPotenziale < 0f)
         {
             energiaPotenziale = 0f;
+        }
+    }
+
+    public IEnumerator ShowWarningCanvas(float duration)
+    {
+        if (warningCanvas != null)
+        {
+            warningCanvas.SetActive(true);
+            yield return new WaitForSeconds(duration);
+            warningCanvas.SetActive(false);
         }
     }
 
