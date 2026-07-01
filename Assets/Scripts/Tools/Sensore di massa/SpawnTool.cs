@@ -16,12 +16,12 @@ public class SpawnTool : MonoBehaviour
         if (prefabToSpawn != null && spawnPoint != null)
         {
             GameObject newTool = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
-            AudioSource audioSource = newTool.GetComponent<AudioSource>();
-            if (audioSource != null && settingsControllers.Length > 0)
+            AudioSource objectAudioSource = newTool.GetComponent<AudioSource>();
+            if (objectAudioSource != null && settingsControllers.Length > 0)
             {
                 foreach (SettingsController settingsController in settingsControllers)
                 {
-                    settingsController.InsertNewToolInList(audioSource);
+                    settingsController.InsertNewToolInList(objectAudioSource);
                 }
             }
 
