@@ -37,6 +37,7 @@ public class VendingMachineManager : MonoBehaviour
         if (cookiePrefab != null && spawnPoint != null && coinInserted)
         {
             GameObject spawnedCookie = Instantiate(cookiePrefab, spawnPoint.position, spawnPoint.rotation);
+            spawnedCookie.SetActive(true);
             audioSource.PlayOneShot(soundSpawn);
             coinInserted = false;
             if (step != null)

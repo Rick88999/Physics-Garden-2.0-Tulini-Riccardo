@@ -21,10 +21,16 @@ public class EsterEggCardReader : MonoBehaviour
     {
         if (isBlueCardInserted && isRedCardInserted && isGreenCardInserted)
         {
-            EsterEggPrefab.SetActive(true);
             IXRSelectInteractable interactableRed = socketInteractorRed.GetOldestInteractableSelected();
             IXRSelectInteractable interactableBlue = socketInteractorBlue.GetOldestInteractableSelected();
             IXRSelectInteractable interactableGreen = socketInteractorGreen.GetOldestInteractableSelected();
+
+            if (interactableRed == null || interactableBlue == null || interactableGreen == null)
+            {
+                return;
+            }
+
+            EsterEggPrefab.SetActive(true);
             Destroy(interactableRed.transform.gameObject);
             Destroy(interactableBlue.transform.gameObject);
             Destroy(interactableGreen.transform.gameObject);
@@ -40,4 +46,8 @@ public class EsterEggCardReader : MonoBehaviour
     public void RedCardCheck() => isRedCardInserted = true;
     public void BlueCardCheck() => isBlueCardInserted = true;
     public void GreenCardCheck() => isGreenCardInserted = true;
+
+    public void RedCardRemoved() => isRedCardInserted = false;
+    public void BlueCardRemoved() => isBlueCardInserted = false;
+    public void GreenCardRemoved() => isGreenCardInserted = false;
 }

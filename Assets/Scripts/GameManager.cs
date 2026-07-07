@@ -53,10 +53,11 @@ public class GameManager : MonoBehaviour
     [Header("Quest Manager")]
     [SerializeField] private QuestManager questManager;
 
-    [Header("Player & Companion Bot & StartTower")]
+    [Header("Priority Gameobjects")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject companion;
     [SerializeField] private GameObject startTower;
+    [SerializeField] private GameObject spaceShip;
 
     [Header("Base Player Posizione & Rotazione")]
     [SerializeField] private Vector3 basePlayerPosition;
@@ -208,6 +209,25 @@ public class GameManager : MonoBehaviour
                                 {
                                     inventoryManager.EnableInventory();
                                 }
+                            }
+                        }
+                    }
+                }
+                else if(quest.id_quest == 7)
+                {
+                    if (quest.state == "Completed" || quest.state == "OnGoing")
+                    {
+                        foreach (SavedStep step in quest.allSteps)
+                        {
+                            if (step.id_step == 1)
+                            {
+                                if (step.state == "Completed")
+                                {
+                                    spaceShip.GetComponent<SpaceShipController>().SetNoPerformAnimation();
+                                    spaceShip.GetComponent<SpaceShipController>().SetPostAnimationPosition();
+                                    spaceShip.SetActive(true);
+                                }
+                                    
                             }
                         }
                     }

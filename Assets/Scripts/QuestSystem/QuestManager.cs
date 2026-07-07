@@ -4,7 +4,10 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 public class QuestManager : MonoBehaviour
 {
+    [Header("Quests")]
     [SerializeField] private Quest[] quests;
+    [SerializeField] private GameObject EsterEggQuest;
+    [Header("Manifest Manager")]
     [SerializeField] private ManifestManager manifestManager;
 
     [System.Serializable]
@@ -12,9 +15,12 @@ public class QuestManager : MonoBehaviour
     {
         public GameObject[] startTriggers;
     }
+    [Header("Trigger Controllers")]
     [SerializeField] private StartTriggersContainer[] allStartTriggers;
 
     private int currentQuest = 0;
+
+    private void Start() => GameEvents.Instance.onQuestCompleted.AddListener(AllQuestsCompleted);
 
     public bool startQuest(int number)
     {
@@ -78,5 +84,16 @@ public class QuestManager : MonoBehaviour
         SavedQuest[] savedQuests = new SavedQuest[quests.Length];
         for (int i = 0; i < quests.Length; i++) savedQuests[i] = quests[i].getSavedQuest();
         return savedQuests;
+    }
+
+    private void AllQuestsCompleted()
+    {
+        bool flag = true;
+
+        foreach (Quest quest in quests) 
+            if(quest.transform.gameObject.activeSelf) 
+                if (quest.getQuestState() != "Completed") flag = false;
+
+        if (flag) EsterEggQuest.SetActive(true);
     }
 }

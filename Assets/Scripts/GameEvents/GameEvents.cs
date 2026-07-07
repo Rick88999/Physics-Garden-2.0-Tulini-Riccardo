@@ -34,6 +34,7 @@ public class GameEvents : MonoBehaviour
     public DropToolEvent onDropSpawnerTool;
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
+    public UnityEvent onQuestCompleted;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -51,5 +52,6 @@ public class GameEvents : MonoBehaviour
         onDropSpawnerTool ??= new DropToolEvent();
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();
+        onQuestCompleted ??= new UnityEvent();
     }
 }

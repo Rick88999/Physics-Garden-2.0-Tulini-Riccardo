@@ -22,7 +22,11 @@ public class Quest : MonoBehaviour
         steps[0].startStep();
     }
 
-    public void endQuest() =>state = "Completed";
+    public void endQuest()
+    {
+        state = "Completed";
+        GameEvents.Instance.onQuestCompleted.Invoke();
+    }
 
     
 
