@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class EsterEggCardReader : MonoBehaviour
 {
+    [SerializeField] private Step step;
     [SerializeField] private XRSocketInteractor socketInteractorRed;
     [SerializeField] private XRSocketInteractor socketInteractorGreen;
     [SerializeField] private XRSocketInteractor socketInteractorBlue;
@@ -27,6 +28,7 @@ public class EsterEggCardReader : MonoBehaviour
             Destroy(interactableRed.transform.gameObject);
             Destroy(interactableBlue.transform.gameObject);
             Destroy(interactableGreen.transform.gameObject);
+            step.endStep();
             audioSource.PlayOneShot(soundSuccess);
             isBlueCardInserted = false;
             isRedCardInserted = false;

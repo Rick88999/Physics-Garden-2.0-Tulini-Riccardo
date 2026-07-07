@@ -11,6 +11,7 @@ TagManager:
   - Tool
   - Bullet
   - Cannon
+  - SpaceShip
   layers:
   - Default
   - TransparentFX

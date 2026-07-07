@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class VendingMachineManager : MonoBehaviour
 {
+    [SerializeField] private Step step;
     [SerializeField] private XRSocketInteractor socketInteractor;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject cookiePrefab;
@@ -37,7 +39,20 @@ public class VendingMachineManager : MonoBehaviour
             GameObject spawnedCookie = Instantiate(cookiePrefab, spawnPoint.position, spawnPoint.rotation);
             audioSource.PlayOneShot(soundSpawn);
             coinInserted = false;
+            if (step != null)
+            {
+                StartCoroutine(ContinueStepAfterDelay(1.5f));
+            }
         }
         else audioSource.PlayOneShot(soundError);
+    }
+
+    private IEnumerator ContinueStepAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (step != null)
+        {
+            step.endStep();
+        }
     }
 }
