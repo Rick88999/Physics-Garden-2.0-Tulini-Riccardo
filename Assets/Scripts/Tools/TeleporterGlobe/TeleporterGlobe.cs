@@ -8,7 +8,8 @@ public class TeleporterGlobe : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera cam;
-    [SerializeField] private InputActionReference input;
+    private DetectHandOnGrab detectHandOnGrab;
+    private InputActionReference inputTeleport;
 
     [Header("Cone Settings")]
     [SerializeField] private float maxDistance = 10f;
@@ -23,32 +24,39 @@ public class TeleporterGlobe : MonoBehaviour
     private bool isHeld = false;
     private LookTarget currentTarget;
 
-    void Awake()
+    private void Awake()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
+        detectHandOnGrab = GetComponent<DetectHandOnGrab>();
 
         if (grabInteractable != null)
         {
             grabInteractable.selectEntered.AddListener(OnGrabbed);
             grabInteractable.selectExited.AddListener(OnReleased);
+            GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
+            GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
         }
     }
 
-    private void OnEnable()
+    private void RebindActions()
     {
-        if (input != null && input.action != null)
-        {
-            input.action.Enable();
-            input.action.performed += OnInputPerformed;
-        }
+        if(inputTeleport != null)
+            inputTeleport.action.performed -= OnInputPerformed;
+        
+        inputTeleport = detectHandOnGrab.GetPrimaryAction();
+
+        if (isActiveAndEnabled && inputTeleport != null)
+            inputTeleport.action.performed += OnInputPerformed;
     }
+
+    private void OnEnable() => RebindActions();
 
     private void OnDisable()
     {
-        if (input != null && input.action != null)
+        if (inputTeleport != null && inputTeleport.action != null)
         {
-            input.action.performed -= OnInputPerformed;
-            input.action.Disable();
+            inputTeleport.action.performed -= OnInputPerformed;
+            inputTeleport.action.Disable();
         }
     }
 
@@ -64,6 +72,17 @@ public class TeleporterGlobe : MonoBehaviour
     private void OnGrabbed(SelectEnterEventArgs args)
     {
         isHeld = true;
+        RebindActions();
+    }
+
+    private void OnChangeHand(string newHand, int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser) RebindActions();
+    }
+
+    private void OnDrop(int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser) RebindActions();
     }
 
     private void OnReleased(SelectExitEventArgs args)

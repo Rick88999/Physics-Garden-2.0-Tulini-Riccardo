@@ -73,7 +73,8 @@ public enum Event
 public enum TipoTool
 {
     MassSensor,
-    Spawner
+    Spawner,
+    Teleport
 }
 
 public enum Language

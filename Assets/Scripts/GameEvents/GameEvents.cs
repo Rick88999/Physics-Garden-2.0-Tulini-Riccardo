@@ -27,13 +27,20 @@ public class GameEvents : MonoBehaviour
 {
     public static GameEvents Instance { get; private set; }
     public LootEvent onNewLootAcquired;
+
     public ToolEvent onToolSpawned;
+
     public ChangeHandEvent onChangeHandMassTool;
     public ChangeHandEvent onChangeHandSpawnerTool;
+    public ChangeHandEvent onChangeHandTeleportTool;
+
     public DropToolEvent onDropMassTool;
     public DropToolEvent onDropSpawnerTool;
+    public DropToolEvent onDropTeleportTool;
+
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
+    
     public UnityEvent onQuestCompleted;
     void Awake()
     {
@@ -45,13 +52,20 @@ public class GameEvents : MonoBehaviour
         Instance = this;
 
         onNewLootAcquired ??= new LootEvent();
+
         onToolSpawned ??= new ToolEvent();
+
         onChangeHandMassTool ??= new ChangeHandEvent();
         onChangeHandSpawnerTool ??= new ChangeHandEvent();
+        onChangeHandTeleportTool ??= new ChangeHandEvent();
+
         onDropMassTool ??= new DropToolEvent();
         onDropSpawnerTool ??= new DropToolEvent();
+        onDropTeleportTool ??= new DropToolEvent();
+
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();
+
         onQuestCompleted ??= new UnityEvent();
     }
 }

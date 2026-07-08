@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.GPUSort;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class DetectHandOnGrab : MonoBehaviour
 {
-    private XRGrabInteractable grab;
+    [Header("Controls Settings")]
     [SerializeField] private TipoTool tipoTool;
     [SerializeField] private Transform attachRight;
     [SerializeField] private Transform attachLeft;
@@ -17,26 +17,25 @@ public class DetectHandOnGrab : MonoBehaviour
     [SerializeField] private InputActionReference primaryActionLeft;
     [SerializeField] private InputActionReference secondaryActionRight;
     [SerializeField] private InputActionReference secondaryActionLeft;
+    [Header("Debug Values")]
     [SerializeField] private Transform alreadyAttach;
+    private XRGrabInteractable grabbable;
     private InputActionReference primaryAction; //Dorsale
     private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
 
-
-    [SerializeField] private XRGrabInteractable grabbable;
+    private void Awake()
+    {
+        grabbable = GetComponent<XRGrabInteractable>();
+        grabbable.selectEntered.AddListener(OnSelectEntered);
+        grabbable.selectExited.AddListener(OnSelectExited);
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("PlayerHand")) return;
-/*#if UNITY_EDITOR && DEBUG
-        if (counterDebug == 0)
-        {
-            counterDebug++;
-            return;
-        }
-#endif*/
-        
+        if (!other.CompareTag("PlayerHand") || (attachLeft == null && attachRight == null)) return;
+
         beforeGrabIsRight = isRight;
         var handedness = other.GetComponentInParent<ManoEco>();
         if (handedness == null)
@@ -54,7 +53,7 @@ public class DetectHandOnGrab : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("PlayerHand")) return;
+        if (!other.CompareTag("PlayerHand") || (attachLeft == null && attachRight == null)) return;
 
         if (beforeGrabIsRight == null)
         {
@@ -70,15 +69,6 @@ public class DetectHandOnGrab : MonoBehaviour
         Debug.Log($"Mano uscita: {isRight} con AttachTransform: {grabbable.attachTransform?.name}");
     }
 
-
-
-    private void Awake()
-    {
-        grab = GetComponent<XRGrabInteractable>();
-        grab.selectEntered.AddListener(OnSelectEntered);
-        grab.selectExited.AddListener(OnSelectExited);
-    }
-
     private void OnSelectEntered(SelectEnterEventArgs args)
     {
 
@@ -92,18 +82,12 @@ public class DetectHandOnGrab : MonoBehaviour
             Debug.LogWarning("Interactor senza Handedness nei parent: non posso determinare la mano.");
             return;
         }
+        if(primaryActionRight != null && primaryActionLeft != null)
+            primaryAction = (handedness.hand == Hand.Right) ? primaryActionRight : primaryActionLeft;
 
-        primaryAction = (handedness.hand == Hand.Right) ? primaryActionRight : primaryActionLeft;
-        secondaryAction = (handedness.hand == Hand.Right) ? secondaryActionRight : secondaryActionLeft;
-        if (primaryAction == null || secondaryAction == null)
-        {
-            Debug.LogWarning("PrimaryAction o SecondaryAction non assegnate per la mano: " + handedness.hand);
-            return;
-        }
-        else
-            Debug.Log($"Grab con mano: {handedness.hand}; PrimaryAction: {primaryAction.name}; SecondaryAction: {secondaryAction.name}");
-        
-        
+        if(secondaryActionRight != null && secondaryActionLeft != null)
+            secondaryAction = (handedness.hand == Hand.Right) ? secondaryActionRight : secondaryActionLeft;
+
         switch(tipoTool)
         {
             case TipoTool.Spawner:
@@ -111,6 +95,9 @@ public class DetectHandOnGrab : MonoBehaviour
                 break;
             case TipoTool.MassSensor:
                 GameEvents.Instance.onChangeHandMassTool.Invoke(handedness.hand.ToString(), gameObject.GetInstanceID());
+                break;
+            case TipoTool.Teleport:
+                GameEvents.Instance.onChangeHandTeleportTool.Invoke(handedness.hand.ToString(), gameObject.GetInstanceID());
                 break;
         }
 
@@ -126,6 +113,9 @@ public class DetectHandOnGrab : MonoBehaviour
                 break;
             case TipoTool.MassSensor:
                 GameEvents.Instance.onDropMassTool.Invoke(gameObject.GetInstanceID());
+                break;
+            case TipoTool.Teleport:
+                GameEvents.Instance.onDropTeleportTool.Invoke(gameObject.GetInstanceID());
                 break;
         }
     }
