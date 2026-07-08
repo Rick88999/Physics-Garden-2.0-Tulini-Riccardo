@@ -20,8 +20,8 @@ public class DetectHandOnGrab : MonoBehaviour
     [Header("Debug Values")]
     [SerializeField] private Transform alreadyAttach;
     private XRGrabInteractable grabbable;
-    private InputActionReference primaryAction; //Dorsale
-    private InputActionReference secondaryAction;//Pulsante
+    [SerializeField]private InputActionReference primaryAction; //Dorsale
+    [SerializeField]private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
 

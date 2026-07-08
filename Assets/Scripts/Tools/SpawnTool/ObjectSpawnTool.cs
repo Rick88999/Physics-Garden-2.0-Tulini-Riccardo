@@ -142,6 +142,7 @@ public class ObjectSpawnTool : MonoBehaviour
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             XRGrabInteractable grab = oggetto.AddComponent<XRGrabInteractable>();
             oggetto.transform.position = spawnAttach.position;
+            oggetto.tag = "Spawned Object";
 
             float sizeM = raggio * fattoreDiScala;
 

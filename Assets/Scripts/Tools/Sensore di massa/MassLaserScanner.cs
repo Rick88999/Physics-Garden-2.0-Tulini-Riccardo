@@ -76,6 +76,15 @@ public class MassLaserScanner : MonoBehaviour
         if (scanAction != null) scanAction.action.performed -= EseguiScansione;
     }
 
+    private void OnDestroy()
+    {
+        if (GameEvents.Instance != null)
+        {
+            GameEvents.Instance.onChangeHandMassTool.RemoveListener(OnChangeHand);
+            GameEvents.Instance.onDropMassTool.RemoveListener(OnDrop);
+        }
+    }
+
     
 
     private void Update()

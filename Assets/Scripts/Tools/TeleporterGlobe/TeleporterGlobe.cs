@@ -33,8 +33,8 @@ public class TeleporterGlobe : MonoBehaviour
         {
             grabInteractable.selectEntered.AddListener(OnGrabbed);
             grabInteractable.selectExited.AddListener(OnReleased);
-            GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
-            GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
+            GameEvents.Instance.onChangeHandTeleportTool.AddListener(OnChangeHand);
+            GameEvents.Instance.onDropTeleportTool.AddListener(OnDrop);
         }
     }
 
@@ -46,28 +46,33 @@ public class TeleporterGlobe : MonoBehaviour
         inputTeleport = detectHandOnGrab.GetPrimaryAction();
 
         if (isActiveAndEnabled && inputTeleport != null)
+        {
             inputTeleport.action.performed += OnInputPerformed;
+            // L'action è condivisa tra tutti i tool della stessa mano:
+            // riabilitarla qui recupera eventuali Disable() fatti altrove.
+            inputTeleport.action.Enable();
+        }
     }
 
     private void OnEnable() => RebindActions();
 
     private void OnDisable()
     {
+        // Solo unsubscribe: niente Disable(), l'action è condivisa
+        // e spegnerla bloccherebbe l'input di tutti gli altri tool.
         if (inputTeleport != null && inputTeleport.action != null)
-        {
             inputTeleport.action.performed -= OnInputPerformed;
-            inputTeleport.action.Disable();
-        }
     }
 
     private void OnDestroy()
     {
-        if (grabInteractable != null)
+        if (GameEvents.Instance != null)
         {
-            grabInteractable.selectEntered.RemoveListener(OnGrabbed);
-            grabInteractable.selectExited.RemoveListener(OnReleased);
+            GameEvents.Instance.onChangeHandTeleportTool.RemoveListener(OnChangeHand);
+            GameEvents.Instance.onDropTeleportTool.RemoveListener(OnDrop);
         }
     }
+
 
     private void OnGrabbed(SelectEnterEventArgs args)
     {

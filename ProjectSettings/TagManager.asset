@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Cannon
   - SpaceShip
+  - Spawned Object
   layers:
   - Default
   - TransparentFX
