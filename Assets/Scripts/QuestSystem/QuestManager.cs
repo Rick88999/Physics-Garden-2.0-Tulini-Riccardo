@@ -18,9 +18,11 @@ public class QuestManager : MonoBehaviour
     [Header("Trigger Controllers")]
     [SerializeField] private StartTriggersContainer[] allStartTriggers;
 
+    [SerializeField] private GameObject[] points;
+
     private int currentQuest = 0;
 
-    private void Start() => GameEvents.Instance.onQuestCompleted.AddListener(AllQuestsCompleted);
+    private void Start() => GameEvents.Instance.onQuestCompleted.AddListener(EventQuestCompleted);
 
     public bool startQuest(int number)
     {
@@ -86,6 +88,11 @@ public class QuestManager : MonoBehaviour
         return savedQuests;
     }
 
+    private void EventQuestCompleted()
+    {
+        AllQuestsCompleted();
+        PointsHandler();
+    }
     private void AllQuestsCompleted()
     {
         bool flag = true;
@@ -95,5 +102,17 @@ public class QuestManager : MonoBehaviour
                 if (quest.getQuestState() != "Completed") flag = false;
 
         if (flag) EsterEggQuest.SetActive(true);
+    }
+
+    private void PointsHandler()
+    {
+        for (int i = 0; i < quests.Length; i++)
+        {
+            if(quests[i].getQuestState() == "noActivated")
+                if (quests[i].isAllAlreadyCompletedEnd())
+                {
+                    points[i].SetActive(true);
+                }
+        }
     }
 }

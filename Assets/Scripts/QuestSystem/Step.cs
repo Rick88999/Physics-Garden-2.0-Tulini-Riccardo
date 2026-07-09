@@ -10,6 +10,7 @@ public class Step : MonoBehaviour
     [SerializeField] private Step NextStep;
     [Header("Oggetti che si attivano ad inizio step")]
     [SerializeField] private GameObject[] objectsToActivate;
+    [SerializeField] private GameObject[] objectsToDeactivateAtStart;
     [Header("Oggetti che appartengono allo step")]
     [SerializeField] private GameObject[] objectsList;
     [Header("Loot")]
@@ -27,6 +28,10 @@ public class Step : MonoBehaviour
             foreach (GameObject objAct in objectsToActivate)
             {
                 objAct.SetActive(true);
+            }
+            foreach (GameObject objDeact in objectsToDeactivateAtStart)
+            {
+                objDeact.SetActive(false);
             }
             if (lootGivers != null && (!isLastStep && !giveLootAtEndStep))
             {

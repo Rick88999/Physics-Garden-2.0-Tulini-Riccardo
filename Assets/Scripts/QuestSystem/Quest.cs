@@ -10,6 +10,8 @@ public class Quest : MonoBehaviour
     [SerializeField] private List<Quest> alreadyComplete;
     [SerializeField] private string state = "noActivated";
     [SerializeField] public Step[] steps;
+
+    [SerializeField] private GameObject point;
     [SerializeField] private StartCollider[] startColliders;
     [SerializeField] private ManifestManager manifestManager;
     [SerializeField] private GameObject dialogueMgError;
@@ -18,6 +20,7 @@ public class Quest : MonoBehaviour
     public void startQuest()
     {
         state = "OnGoing";
+        TurnOffPoint();
         manifestManager.questStarted(questID);
         steps[0].startStep();
     }
@@ -28,6 +31,12 @@ public class Quest : MonoBehaviour
         GameEvents.Instance.onQuestCompleted.Invoke();
     }
 
+    public bool isAllAlreadyCompletedEnd()
+    {
+        if (alreadyComplete == null || alreadyComplete.Count == 0) return true;
+        foreach (Quest quest in alreadyComplete) if (quest.getQuestState() != "Completed") return false;
+        return true;
+    }
     
 
     public void setQuestState(string oldState) => state = oldState;
@@ -35,6 +44,7 @@ public class Quest : MonoBehaviour
     public int getIdQuest() => questID;
 
     public string getQuestState() => state;
+    
 
     public bool allReadyComplete()
     {
@@ -100,9 +110,8 @@ public class Quest : MonoBehaviour
                 counter++;
 
         if (counter == steps.Length) endQuest();
-            
-        
     }
 
+    private void TurnOffPoint() => point.SetActive(false);
 
 }

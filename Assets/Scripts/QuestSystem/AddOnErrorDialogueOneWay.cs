@@ -17,7 +17,7 @@ public class AddOnErrorDialogueOneWay : MonoBehaviour
                 {
                     foreach (GameObject way in ways)
                     {
-                        way.SetActive(true);
+                        if (way != null) way.SetActive(true);
                     }
                 }
             }
