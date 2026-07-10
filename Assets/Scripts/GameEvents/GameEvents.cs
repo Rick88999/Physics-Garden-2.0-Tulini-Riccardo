@@ -41,7 +41,6 @@ public class GameEvents : MonoBehaviour
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
     
-    public UnityEvent onQuestCompleted;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -65,7 +64,5 @@ public class GameEvents : MonoBehaviour
 
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();
-
-        onQuestCompleted ??= new UnityEvent();
     }
 }

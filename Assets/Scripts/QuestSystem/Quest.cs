@@ -16,6 +16,13 @@ public class Quest : MonoBehaviour
     [SerializeField] private ManifestManager manifestManager;
     [SerializeField] private GameObject dialogueMgError;
 
+    private QuestManager questManager;
+
+    private void Start()
+    {
+        questManager = GetComponentInParent<QuestManager>();
+    }
+
 
     public void startQuest()
     {
@@ -28,7 +35,7 @@ public class Quest : MonoBehaviour
     public void endQuest()
     {
         state = "Completed";
-        GameEvents.Instance.onQuestCompleted.Invoke();
+        questManager.OnQuestCompleted();
     }
 
     public bool isAllAlreadyCompletedEnd()
@@ -49,7 +56,7 @@ public class Quest : MonoBehaviour
     public bool allReadyComplete()
     {
         if (questID == 0) return true;
-        else if ((alreadyComplete == null || alreadyComplete.Count == 0)) return false;
+        else if (alreadyComplete == null || alreadyComplete.Count == 0) return false;
 
         foreach (Quest quest in alreadyComplete) if (quest.getQuestState() != "Completed") return false;
         return true;
@@ -100,16 +107,6 @@ public class Quest : MonoBehaviour
     {
         if (startColliders == null || startColliders.Length == 0) return;
         else foreach (StartCollider startCollider in startColliders) startCollider.DestroyTriggers();
-    }
-
-    public void AllCompleteSteps()
-    {
-        int counter = 0;
-        foreach (Step step in steps)
-            if(step.getStateStep() == "Completed")
-                counter++;
-
-        if (counter == steps.Length) endQuest();
     }
 
     private void TurnOffPoint() => point.SetActive(false);

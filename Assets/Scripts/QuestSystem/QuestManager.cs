@@ -22,8 +22,6 @@ public class QuestManager : MonoBehaviour
 
     private int currentQuest = 0;
 
-    private void Start() => GameEvents.Instance.onQuestCompleted.AddListener(EventQuestCompleted);
-
     public bool startQuest(int number)
     {
         bool notOneOnGoing = true;
@@ -62,7 +60,6 @@ public class QuestManager : MonoBehaviour
         {
             quests[i].setQuestState(allQuest[i].state);
             quests[i].setSavedStep(allQuest[i].allSteps);
-            quests[i].AllCompleteSteps();
         }
         foreach (Quest quest in quests)
         {
@@ -88,7 +85,7 @@ public class QuestManager : MonoBehaviour
         return savedQuests;
     }
 
-    private void EventQuestCompleted()
+    public void OnQuestCompleted()
     {
         AllQuestsCompleted();
         PointsHandler();
@@ -109,9 +106,15 @@ public class QuestManager : MonoBehaviour
         for (int i = 0; i < quests.Length; i++)
         {
             if(quests[i].getQuestState() == "noActivated")
+            {
                 if (quests[i].isAllAlreadyCompletedEnd())
                 {
                     points[i].SetActive(true);
+                }
+            }  
+            else if (quests[i].getQuestState() == "Completed" || quests[i].getQuestState() == "OnGoing")
+                {
+                    if(points[i].activeSelf) points[i].SetActive(false);
                 }
         }
     }

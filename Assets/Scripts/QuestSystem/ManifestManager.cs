@@ -96,9 +96,9 @@ public class ManifestManager : MonoBehaviour
 
     public void ReloadFromSavings(int fatherQuest, int lastStep)
     {
-        var frame = new StackTrace().GetFrame(1);
+        /*var frame = new StackTrace().GetFrame(1);
         var metodo = frame?.GetMethod();
-        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");
+        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");*/
         foreach (Page page in manifestPages)
         {
             if (page.idQuest == fatherQuest)

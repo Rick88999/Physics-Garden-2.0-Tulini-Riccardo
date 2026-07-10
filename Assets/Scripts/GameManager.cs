@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject companion;
     [SerializeField] private GameObject startTower;
     [SerializeField] private GameObject spaceShip;
+    [SerializeField] private GameObject esterEggPlatform;
 
     [Header("Base Player Posizione & Rotazione")]
     [SerializeField] private Vector3 basePlayerPosition;
@@ -175,7 +176,9 @@ public class GameManager : MonoBehaviour
         {
             string json = File.ReadAllText(path);
             SavedState savedState = JsonConvert.DeserializeObject<SavedState>(json);
+            QuestCompletationController(savedState.allQuests);
             questManager.settingsSaves(savedState.allQuests);
+            questManager.OnQuestCompleted();
             player.transform.position = savedState.position_player.ToVector3();
             player.transform.rotation = savedState.rotation_player.ToQuaternion();
             companion.transform.position = savedState.position_companion.ToVector3();
@@ -223,6 +226,7 @@ public class GameManager : MonoBehaviour
                             {
                                 if (step.state == "Completed")
                                 {
+                                    esterEggPlatform.SetActive(true);
                                     spaceShip.GetComponent<SpaceShipController>().SetNoPerformAnimation();
                                     spaceShip.GetComponent<SpaceShipController>().SetPostAnimationPosition();
                                     spaceShip.SetActive(true);
@@ -254,6 +258,36 @@ public class GameManager : MonoBehaviour
             return fileSalvati;
         }
         return new string[0];
+    }
+
+    private void QuestCompletationController(SavedQuest[] quests)
+    {
+        for (int i = 0; i < quests.Length; i++)
+        {
+            SavedQuest quest = quests[i];
+            bool allCompleted = true;
+            if(quest.state == "OnGoing" || quest.state == "noActivated")
+            {
+                foreach (SavedStep step in quest.allSteps)
+                {
+                    if (step.state == "OnGoing")
+                    {
+                        allCompleted = false;
+                        break;
+                    }
+                    else if (step.state == "noActivated")
+                    {
+                        allCompleted = false;
+                        break;
+                    }
+                }
+                if (allCompleted)
+                {
+                    quest.state = "Completed";
+                    quests[i] = quest;
+                }
+            }
+        }
     }
 
     private void SaveInventory()
