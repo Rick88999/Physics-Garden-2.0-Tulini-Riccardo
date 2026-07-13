@@ -13,6 +13,7 @@ TagManager:
   - Cannon
   - SpaceShip
   - Spawned Object
+  - No Destroy
   layers:
   - Default
   - TransparentFX

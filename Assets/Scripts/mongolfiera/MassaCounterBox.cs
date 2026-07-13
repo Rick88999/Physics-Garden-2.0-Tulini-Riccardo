@@ -28,19 +28,24 @@ public class MassaCounterBox : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (rb != null && !(rb.CompareTag("Tool") || rb.CompareTag("Player") || rb.CompareTag("PlayerHand") || rb.CompareTag("FormulaCard") || rb.CompareTag("DataCard")))
         {
             massaTotale += rb.mass;
+            other.tag = "No Destroy";
             Debug.Log("Massa totale nella box: " + massaTotale);
         }
+
+        if(rb != null && (rb.CompareTag("Tool") || rb.CompareTag("FormulaCard") || rb.CompareTag("DataCard")))
+            Destroy(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
         Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (rb != null && !(rb.CompareTag("Tool") || rb.CompareTag("Player") || rb.CompareTag("PlayerHand") || rb.CompareTag("FormulaCard") || rb.CompareTag("DataCard")))
         {
             massaTotale -= rb.mass;
+            other.tag = "Spawned Object";
             Debug.Log("Massa totale nella box: " + massaTotale);
         }
     }

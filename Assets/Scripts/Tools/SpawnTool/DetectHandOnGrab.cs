@@ -47,7 +47,7 @@ public class DetectHandOnGrab : MonoBehaviour
 
         isRight = handedness.hand == Hand.Right;
         grabbable.attachTransform = (bool)isRight ? attachRight : attachLeft;
-        Debug.Log($"TriggerEnter con mano: {handedness.hand}; AttachTransform: {grabbable.attachTransform.name}");
+        //Debug.Log($"TriggerEnter con mano: {handedness.hand}; AttachTransform: {grabbable.attachTransform.name}");
 
     }
 
@@ -66,7 +66,7 @@ public class DetectHandOnGrab : MonoBehaviour
             grabbable.attachTransform = (bool)isRight ? attachRight : attachLeft;
             alreadyAttach = grabbable.attachTransform;
         }
-        Debug.Log($"Mano uscita: {isRight} con AttachTransform: {grabbable.attachTransform?.name}");
+        //Debug.Log($"Mano uscita: {isRight} con AttachTransform: {grabbable.attachTransform?.name}");
     }
 
     private void OnSelectEntered(SelectEnterEventArgs args)

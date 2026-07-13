@@ -44553,7 +44553,7 @@ GameObject:
   - component: {fileID: 246770528}
   - component: {fileID: 246770526}
   - component: {fileID: 246770527}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mongolfiera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44648,6 +44648,7 @@ MonoBehaviour:
   altezzaAttesa: 0
   durataAvvio: 1
   Tappo: {fileID: 1111666754}
+  Barriera: {fileID: 521727684}
 --- !u!1 &247580398
 GameObject:
   m_ObjectHideFlags: 0
@@ -47578,22 +47579,20 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Bene, adesso prova a puntare il laser verso il cubo d'oro.
-  - Appena diventa verde premi il grilletto laterale, cosi da scansionare la massa.
-  - Poi premi A o X a seconda della mano, per far apparire la Data Card.
-  - Inserisci poi la carta nella blue box che sta per apparire
+  - Bene adesso, finito questo dialogo, prova a puntare il laser verso il cubo d'oro.
+    Appena diventa verde premi il grilletto laterale, cosi da scansionare la massa.
+  - Poi premi A o X a seconda della mano, per far apparire la Data Card. Inserisci
+    poi la carta nella blue box che sta per apparire
   EnglishSentences:
-  - Okay, now try to point the laser at the golden cube.
-  - As soon as it turns green, press the side trigger to scan the mass.
-  - Then press A or X depending on your hand, to bring up the Data Card.
-  - Then insert the card into the blue box that is about to spawn
+  - Okay now, at the dialogue's end, try to point the laser at the golden cube. As
+    soon as it turns green, press the side trigger to scan the mass.
+  - Then press A or X depending on your hand, to bring up the Data Card. Then insert
+    the card into the blue box that is about to spawn
   toActivateAtEnd:
   - {fileID: 440509665}
   - {fileID: 115518310}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
 --- !u!1 &271558367
@@ -48423,17 +48422,16 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - 'Non hai perso colpi vedo, sto inviando alla sede centrale di nuovo i dati. '
-  - Come premio ti lascio le formule di inerzia e altezza.
+  - Non hai perso colpi vedo, sto inviando alla sede centrale di nuovo i dati. Come
+    premio ti lascio le formule di inerzia e altezza.
   - Continua su questa strada, altri hanno bisogno di te!
   EnglishSentences:
   - You haven't missed a beat, I see, I'm sending the data back to headquarters.
-  - As a reward, I'll leave you the formulas for inertia and height.
+    As a reward, I'll leave you the formulas for inertia and height.
   - Keep going, others need you!
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 2125395825}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
 --- !u!4 &275886487
@@ -56455,19 +56453,17 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Ehi collega, abbiamo bisogno di un giudice imparziale.
-  - Io e mio fratello abbiamo fatto una scommessa.
+  - Ehi collega, abbiamo bisogno di un giudice imparziale. Io e mio fratello abbiamo
+    fatto una scommessa.
   - "Secondo me la densita del materiale di questo pallone \xE8 leggermente pi\xF9
     grande di 1, ma minore di 1,2"
   EnglishSentences:
-  - Hey colleague, we need an impartial judge.
-  - I and my brotheri made a bet.
+  - Hey colleague, we need an impartial judge. I and my brotheri made a bet.
   - In my opinion the material density of this ball is slightly greater than 1, but
     lesser than 1,2
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
-  - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
 --- !u!1 &334561724
@@ -78169,6 +78165,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519705612}
   m_CullTransparentMesh: 1
+--- !u!1 &521727684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521727685}
+  - component: {fileID: 521727686}
+  m_Layer: 10
+  m_Name: Barriera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521727685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521727684}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.925, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1903147418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &521727686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521727684}
+  m_Material: {fileID: 13400000, guid: 5911b27ad6a78334181e24e6555e198b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 25727
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 0.5, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &523227165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8347006329004459674, guid: 90125e72b45744a41898a2b3f56109b6, type: 3}
@@ -80553,19 +80602,16 @@ MonoBehaviour:
   ItalianSentences:
   - Grazie mille! Ho inviato i dati al server centrale.
   - "Continua su questa strada, un mio amico stava avendo problemi con la densit\xE0
-    su una bilancia."
-  - Magari puoi aiutarlo
-  - Ho rischiato davvero grosso, meriti un premio.
+    su una bilancia. Magari puoi aiutarlo."
+  - Ho rischiato davvero grosso, meriti un premio per il tuo aiuto.
   EnglishSentences:
   - Thank you so much! I've sent the data to the central server.
   - Continue on this path, a friend of mine was having problems with the density
-    on a scale.
-  - Maybe you can help him
-  - I took a really big risk, you deserve a reward.
+    on a scale. Maybe you can help him.
+  - I took a really big risk, you deserve a reward for your help..
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 963334293}
   sentenceClips:
-  - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
@@ -86633,7 +86679,7 @@ GameObject:
   - component: {fileID: 607945707}
   - component: {fileID: 607945706}
   - component: {fileID: 607945705}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93871,22 +93917,19 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - "Ti regalo un generatore di oggetti di ultima generazione che avevo in pi\xF9"
-  - Puoi trovarlo nel tuo inventario sotto la voce strumenti
-  - "Ti sar\xE0 utile per cercare la massa del cubo"
-  - "Perch\xE8 non te la do io direttamente... beh, me la sono scordata... contento?"
+  - "Ti regalo un generatore di oggetti di ultima generazione che avevo in pi\xF9.
+    Puoi trovarlo nel tuo inventario sotto la voce strumenti."
+  - "Ti sar\xE0 utile per cercare la massa del cubo. Perch\xE8 non te la do io direttamente...
+    beh, me la sono scordata... contento? "
   EnglishSentences:
-  - I'll give you a latest generation spawn tool that I had extra
-  - You can find it in your inventory under tools
-  - It will be useful for finding the mass of the cube
-  - Why don't I give it to you directly... well, I forgot about it... are you happy
-    now?
+  - I'll give you a latest generation spawn tool that I had extra. You can find it
+    in your inventory under tools.
+  - It will be useful for finding the mass of the cube. Why don't I give it to you
+    directly... well, I forgot about it... are you happy now?
   toActivateAtEnd:
   - {fileID: 585073008}
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
 --- !u!4 &667211462
@@ -101758,19 +101801,18 @@ MonoBehaviour:
   typingSpeed: 0.05
   ItalianSentences:
   - Grandioso!
-  - Con le mani potrai raccogliere durante il tuo viaggio degli oggetti
-  - Questi ti aiuteranno nelle tue missioni
-  - Puoi afferrarli come hai afferrato prima il cubo o richiamarli a te con l'attrattore
+  - Con le mani potrai raccogliere durante il tuo viaggio degli oggetti. Questi ti
+    aiuteranno nelle tue missioni
+  - Puoi afferrarli come hai afferrato prima il cubo o richiamarli a te con l'attrattore.
   EnglishSentences:
   - Great!
-  - With your hands you will be able to collect objects during your journey
-  - These will help you on your missions
+  - With your hands you will be able to collect objects during your journey. These
+    will help you on your missions
   - You can grab them like you grabbed the cube before or call them back to you with
     the gravity gun
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
@@ -109520,35 +109562,34 @@ MonoBehaviour:
   ItalianSentences:
   - Ok socio, ecco il piano. Il pulsante sul lato di questo Angel Bot richiama il
     terminale.
-  - Il terminale viene usato per fare vari calcoli tramite le Formula Card
-  - Quelle di colore verde, per intenderci. Mettile nello slot verde del terminale
-  - Seleziona una opzione e inserisci negli slot sottostanti le varie data card utili
+  - Il terminale viene usato per fare vari calcoli tramite le Formula Card. Quelle
+    di colore verde, per intenderci.
+  - Mettile nello slot verde del terminale Seleziona una opzione e inserisci negli
+    slot sottostanti le varie data card utili.
   - Una volta inserite tutte, premi il bottone verde con l'uguale e ottieni il risultato.
-  - Li vicino ci sono delle Formula Box e Data Box con tutto il necessario.
-  - Se hai dei dubbi apri il menu utente con il tasto menu del controller sinistro.
-  - "Li c'\xE8 un icona a forma di libro dove puoi consultare sempre la documentazione,
+  - "Le Formula Box e le Data Box l\xEC dietro ti daranno il necessario, ma dovrai
+    usare l'ingegno per procurarti i dati mancanti."
+  - "Se hai dei dubbi apri il menu utente con il tasto menu del controller sinistro.
+    Li c'\xE8 un icona a forma di libro dove puoi consultare sempre la documentazione,
     per ogni esperimento."
-  - Ti potrebbe essere di aiuto :-)
-  - Cominciamo!
+  - Ti potrebbe essere di aiuto. Cominciamo :-)
   EnglishSentences:
   - Okay, buddy, here's the plan. The button on the side of this Angel Bot calls
     up the terminal.
-  - The terminal is used to make various calculations using Formula Cards
-  - The green ones, to be clear. Insert them into the green slot on the terminal.
-  - Select an option and insert the various useful data cards into the slots below
+  - The terminal is used to make various calculations using Formula Cards. The green
+    ones, to be clear.
+  - Insert them into the green slot on the terminal. Select an option and insert
+    the various useful data cards into the slots below
   - Once you've entered them all, press the green equals button and get the result.
-  - Nearby there are Formula Box and Data Box with everything you need.
-  - If you have any doubtsopen the user menu with the menu button on the left controller.
-  - There is an book icon where you can always consult the documentation, for each
+  - The Formula Box and the Data Box there behind will give you what you need, but
+    you must think if there are some missing data.
+  - If you have any doubts open the user menu with the menu button on the left controller.
+    There is an book icon where you can always consult the documentation, for each
     experiment.
-  - This might help you :-)
-  - Let's get started!
+  - 'This might help you. Let''s get started :-) '
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -111225,32 +111266,29 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - "Ohi! Di nuovo qui! Ne \xE8 passato di tempo recluta."
-  - "Perci\xF2 meglio se ti aggiorno. Il nuovo giardino possiede un sistema di protezione,
-    che limita quasi a zero gli attriti, come quello dell'aria."
-  - Noi la chiamiamo The Dome
-  - "Inoltre come puoi vedere le tue mani sono un p\xF2 pi\xF9... complesse"
-  - Si chiamano Mani Astrali
+  - "Ohi! Di nuovo qui! Ne \xE8 passato di tempo recluta. Perci\xF2 meglio se ti
+    aggiorno."
+  - Il nuovo giardino possiede un sistema di protezione, che limita quasi a zero
+    gli attriti, come quello dell'aria.
+  - "Noi la chiamiamo The Dome. Inoltre come puoi vedere le tue mani sono un p\xF2
+    pi\xF9... complesse. Si chiamano Mani Astrali"
   - "Prendiamo un p\xF2 di confidenza. Appena smetto di parlare, prendi il cubo sul
-    tavolo destro con una delle mani premendo il grilletto posteriore del controller"
-  - Trascina l'oggetto all'interno del cubo lumino a sinistra
+    tavolo destro con una delle mani premendo il grilletto anteriore del joystick."
+  - Trascina l'oggetto all'interno del cubo luminoso a sinistra della piattaforma.
   EnglishSentences:
-  - Hey! Here again! It's been a while, recruit.
-  - So I'd better update you. The new garden has a shield system that reduces friction
-    to almost zero, like the air flow.
-  - We call it The Dome
-  - Also as you can see your hands are a little more... complex
-  - They are call Astral Hands
+  - Hey! Here again! It's been a while, recruit. So it'd be better if i update you.
+  - The new garden has a shield system that reduces friction to almost zero, like
+    the air flow.
+  - We call it The Dome. Also as you can see your hands are a little more... complex.
+    They are called Astral Hands.
   - Let's get a little familiar. As soon as I stop talking, pick up the cube on the
-    right table with one of your hands by pressing the rear trigger on the controller.
-  - Drag and drop  the object inside the light cube on the left
+    right table with one of your hands by pressing the front trigger on the joystick.
+  - Drag and drop the object inside the light cube on the left side of the platform.
   toActivateAtEnd:
   - {fileID: 248987409}
   - {fileID: 289931487}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
@@ -114520,19 +114558,16 @@ MonoBehaviour:
   ItalianSentences:
   - "Guarda un p\xF2 chi si vede! Ho sentito ti sei rimesso in pista."
   - Capiti al momento giusto. Uno sbullonato ha perso i dati dell'inerzia di sfera
-    e cilndro nel settore C137.
-  - Mi hano chiesto di ricaricare quei dati da qui.
+    e cilndro nel settore C137. Mi hano chiesto di ricaricare quei dati da qui.
   - Cubot, potresti gentilmente spiegare al nostro collega cosa bisogna fare?
   EnglishSentences:
   - Look who's here! I heard you're back on track.
   - You're in the nick of time. An unbolted has lost the sphere and cylinder inertia
-    data in sector C137.
-  - The headquarters asked me to reload that data from here.
+    data in sector C137. The headquarters asked me to reload that data from here.
   - Cubot, could you kindly explain to our colleague what needs to be done?
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 2125395825}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
@@ -132051,39 +132086,32 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Ciao! Da quanto Tempo!
-  - Benvenuto nel Physic Garden 2.0
+  - Ciao! Da quanto Tempo! Benvenuto nel Physic Garden 2.0
   - "Le cose sono un p\xF2 cambiate dall'ultima volta. Nel caso avessi perso la memoria
     questo \xE8 il Garden 2.0."
   - Qui studiamo e preserviamo il sapere sulla fisica del nostro universo
   - "Io sono CuBot e sono il tuo assistente. Sar\xF2 il tuo consigliere e zaino per
     il resto del tuo viaggio"
-  - Ora facciamo pratica con i comandi di base.
-  - Prova a muoverti con l'anologico sinistro e usa il tuo corpo per ruotare la visuale
-  - Fai qualche prova e poi dirigiti verso la pedana in fondo
-  - Il mio collega ti sta aspettando per darti nuove direttive per rimetterti al
-    lavoro.
+  - Ora facciamo pratica con i comandi di base. Prova a muoverti con l'anologico
+    sinistro e usa il tuo corpo per ruotare la visuale
+  - Fai qualche prova e poi dirigiti verso la pedana in fondo. Il mio collega ti
+    sta aspettando per darti nuove direttive per rimetterti al lavoro.
   EnglishSentences:
-  - Hi! How Long!
-  - Welcome to Physic Garden 2.0
+  - Hi! How Long! Welcome to Physic Garden 2.0
   - Things have changed a bit since last time. In case you've forgotten, this is
     Garden 2.0.
   - Here we study and preserve knowledge about the physics of our universe.
   - I'm CuBot and I'm your assistant. I'll be your advisor and backpack for the rest
     of your journey.
-  - Now let's get practice with the basic commands first.
-  - Try moving with the left analog and use your body to rotate the view
-  - Do a few tests and then go to the platform at the end of the road.
-  - My colleague is waiting to give you new instructions to get back to work.
+  - Now let's get practice with the basic commands first. Try moving with the left
+    analog and use your body to rotate the view
+  - Do a few tests and then go to the platform at the end of the road. My colleague
+    is waiting to give you new instructions to get back to work.
   toActivateAtEnd:
   - {fileID: 1776649277}
   - {fileID: 1338467549}
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -136746,36 +136774,30 @@ MonoBehaviour:
   - Ho aggiunto nel tuo inventario la costante di accelerazione gravitazionale, ci
     potrebbe essere utile.
   - Adesso con l'altezza calcolata prova a calcolare man mano l'inerzia della sfera
-    e del cilindro con la rampa a 30 gradi.
-  - Trovi questi due oggetti sulla mensola all'entrata
+    e del cilindro con la rampa a 30 gradi. Trovi questi due oggetti sulla mensola
+    all'entrata.
   - 'Due consigli: avvicinando uno dei due oggetti all''inizio della rampa, si metteranno
     da soli in posizione quando li rilasci'
   - Seconda cosa, calcola sempre prima la costante inerziale e poi l'inerzia
-  - "Sta attento la chiave di questo esperimento \xE8 proprio la velocit\xE0."
-  - Inoltre, ti dico da subito che da quanto rilevo, il raggio dei 2 corpi e la loro
-    massa sono uguali.
-  - Proviamo...
+  - "Sta attento la chiave di questo esperimento \xE8 proprio la velocit\xE0. Inoltre,
+    ti dico da subito che da quanto rilevo, il raggio dei 2 corpi e la loro massa
+    sono uguali."
   EnglishSentences:
   - I added the gravitational acceleration constant to your inventory, it might be
     useful.
   - Now with the calculated height try to gradually calculate the inertia of the
-    sphere and the cylinder with the 30 degree ramp.
-  - You find these two objects on the shelf at the entrance
+    sphere and the cylinder with the 30 degree ramp. You find these two objects on
+    the shelf at the entrance
   - 'Two tips: by bringing one of the two objects closer to the beginning of the
     ramp, they will automatically fall into place when you release them.'
   - Second, always calculate the inertial constant first and then the inertia.
-  - Be careful, the key to this experiment is speed.
-  - Moreover, I tell you right now that from what I can see, the radius of the 2
-    bodies and their mass are equal
-  - Let's ride dude...
+  - Be careful, the key to this experiment is speed. Moreover, I tell you right now
+    that from what I can see, the radius of the 2 bodies and their mass are equal
   toActivateAtEnd:
   - {fileID: 1434681435}
   - {fileID: 1695145293}
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -144350,16 +144372,14 @@ MonoBehaviour:
   typingSpeed: 0.05
   ItalianSentences:
   - "Secondo me invece \xE8 uguale o al massimo pi\xF9 piccola di 1."
-  - "Il pallone \xE8 collegato ad una piattaforma di rilascio e richiamo"
-  - "Cos\xEC non vola via."
+  - "Il pallone \xE8 collegato ad una piattaforma di rilascio e richiamo. Cos\xEC
+    non vola via."
   EnglishSentences:
   - Instead, in my opinion it is equal to or at most smaller than 1.
-  - The balloon is connected to a release and recall platform
-  - So it can't fly away
+  - The balloon is connected to a release and recall platform. So it can't fly away
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 2122634347}
   sentenceClips:
-  - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
 --- !u!1 &1093866662 stripped
@@ -184550,26 +184570,20 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Ti ha mandato quel modello di Angel Bot, giusto?
-  - Non si fa mai gli affari suoi!
-  - Ma magari stavolta ne ha fatta una giusta, avrei bisogno di una mano
-  - La Garden Dome ha visto come ostile quel cubo sulla bilancia.
+  - 'Ti ha mandato quel modello di Angel Bot, giusto? Non si fa mai gli affari suoi! '
+  - Ma magari stavolta ne ha fatta una giusta, avrei bisogno di una mano. La Garden
+    Dome ha visto come ostile quel cubo sulla bilancia.
   - "Ha creato un campo di forza e adesso non posso pi\xF9 misurare la densit\xE0
-    direttamente"
-  - "Per\xF2 magari con gli strumenti giusti tu potresti riuscirci"
+    direttamente. Per\xF2 magari con gli strumenti giusti tu potresti riuscirci"
   EnglishSentences:
-  - Did that Angel Bot model send you here, right?
-  - He never minds his own business!
-  - But maybe he did it right this time, you can help me
-  - The Garden Dome saw that cube on the scale as hostile.
-  - It created a force field and now I can no longer measure the density directly
-  - But maybe with the right tools you could do it
+  - Did that Angel Bot model send you here, right? He never minds his own business!
+  - But maybe he did it right this time, you can help me. The Garden Dome saw that
+    cube on the scale as hostile.
+  - It created a force field and now I can no longer measure the density directly.
+    But maybe with the right tools you could do it
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -194971,17 +194985,16 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - "Molto bene! Da adesso otterai molti pi\xF9 strumenti e Card durante il tuo viaggio"
-  - Gira nel Garden troverai sicuramente persone da aiutare
+  - "Molto bene! Da adesso otterai molti pi\xF9 strumenti e Card durante il tuo viaggio.
+    Gira nel Garden troverai sicuramente persone da aiutare."
   - Buona Fortuna, recluta :-)
   EnglishSentences:
   - Very good! From now on, you'll get many more tools and cards during your journey.
-  - Wander around the Garden and you'll surely find people to help.
+    Wander around the Garden and you'll surely find people to help.
   - Good luck, recruit :-)
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
 --- !u!4 &1310706415 stripped
@@ -206732,7 +206745,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1402265430
@@ -208834,7 +208847,7 @@ GameObject:
   - component: {fileID: 1421859709}
   - component: {fileID: 1421859708}
   - component: {fileID: 1421859707}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: massaScan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212066,19 +212079,15 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Prova a mettere degli oggetti dentro la cesta.
-  - Ti potrebbe essere utile come cosa.
-  - Ora sta a te amico.
+  - Prova a mettere degli oggetti dentro la cesta. Ti potrebbe essere utile come
+    cosa. Ora sta a te amico.
   EnglishSentences:
-  - Try placing objects inside the basket.
-  - It might be useful to you.
-  - Now it's up to you friend.
+  - Try placing objects inside the basket. It might be useful to you. Now it's up
+    to you friend.
   toActivateAtEnd:
   - {fileID: 2114334353}
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
-  - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
-  - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
 --- !u!4 &1439810813
 Transform:
@@ -225011,7 +225020,7 @@ GameObject:
   - component: {fileID: 1549540545}
   - component: {fileID: 1549540544}
   - component: {fileID: 1549540543}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228842,7 +228851,7 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Facciamo un prova proprio con uno degli strumenti
+  - Facciamo un prova proprio con uno degli strumenti.
   - Da adesso puoi aprire l'inventario. Per aprire l'inventario premi il pulsante
     rosso sulla testa di CuBot.
   - Avrai davanti a te varie sezioni dell'inventario. Vai in strumenti e seleziona
@@ -236824,8 +236833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.004, y: 0.049}
-  m_SizeDelta: {x: 1.4268, y: 0.4554}
+  m_AnchoredPosition: {x: -0.0007, y: 0.049}
+  m_SizeDelta: {x: 1.4174, y: 0.4555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1638518259
 CanvasRenderer:
@@ -236921,7 +236930,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.024459183, y: 0, z: -0.009096384, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -249563,22 +249572,19 @@ MonoBehaviour:
   ItalianSentences:
   - "Certo red bot! Non \xE8 troppo complesso. Per iniziare prova a calcolare l'altezza
     della rampa."
-  - Dato che ci servira per dopo. Metti la rampa a 30 gradi.
-  - Per farlo usa la manopola del selettore angolare dietro di te, quel cubo nero
-    con i pulsanti.
-  - Poi usa la formula card "altezza"  per ricavare l'altezza della rampa a quella
-    inclinazione
+  - Dato che ci servira per dopo. Metti la rampa a 30 gradi. Per farlo usa la manopola
+    del selettore angolare dietro di te, quel cubo nero con i pulsanti.
+  - Poi usa la formula card "altezza" per ricavare l'altezza della rampa a quella
+    inclinazione.
   EnglishSentences:
   - Sure, red bot! It's not too complex. To start, try calculating the height of
     the ramp.
-  - Since we'll need this later. Set the ramp to 30 degrees.
-  - To do this, use the angle selector knob behind you, that black cube with the
-    buttons.
+  - Since we'll need this later. Set the ramp to 30 degrees. Use the angle selector
+    knob behind you, that black cube with the buttons.
   - Then use the "height" card formula to find the height of the ramp at that angle.
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -255436,18 +255442,17 @@ MonoBehaviour:
   - Bel colpo!
   - "Sapevo potevi farcela, pi\xF9 avanti se ti interessa ci dovrebbero essere due
     bot con un problema"
-  - Ti consiglio di dare un'occhiata non si sa mai
-  - Ah si! Visto che ci sei pulisici anche questo casino
+  - Ti consiglio di dare un'occhiata non si sa mai. Ah si! Visto che ci sei pulisici
+    anche questo casino
   EnglishSentences:
   - Nice shot!
   - I knew you could do it, later if you're interested there should be two bots with
     a problem
-  - I recommend you take a look just in case
-  - Oh yeah! It's better that you'll clean this mess
+  - I recommend you take a look just in case. Oh yeah! It's better that you'll clean
+    this mess
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
-  - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -269363,15 +269368,14 @@ MonoBehaviour:
   canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
-  - Accidenti! Per poco!
-  - "Grazie del tuo aiuto! Prendi la formula della forza ti sar\xE0 d'aiuto"
+  - "Accidenti! Per poco! Grazie del tuo aiuto! Prendi la formula della forza ti
+    sar\xE0 d'aiuto"
   EnglishSentences:
-  - Damn! For a little while!
-  - Thanks for your help! Take the force formula it will help you
+  - Damn! For a little while! Thanks for your help! Take the force formula it will
+    help you
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
-  - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
 --- !u!1 &1883147648
 GameObject:
@@ -279703,29 +279707,22 @@ MonoBehaviour:
   - Premendo su i controller il tasto Y o B, attiverai l'attrattore per ciascuna
     mano.
   - Appena finisce il dialogo, prova a prendere il cubo qui in fondo, puntando il
-    laser rosso
-  - Una volta puntato premi il grlletto posteriore del controller e attira il cubo
-    a te.
-  - Rilascialo poi nel cubo luminoso dietro di te.
-  - Fai una prova!
+    laser rosso. Una volta puntato premi il grlletto anteriore del joystick e attira
+    il cubo a te.
+  - Rilascialo poi nel cubo luminoso dietro di te. Fai una prova!
   EnglishSentences:
   - Perfect, now I'll show you the main function of your hands.
   - Pressing the Y or B  button on the controllers, you will activate the gravity
     gun for each hand.
   - As soon as the dialogue ends, try to take the cube here at the bottom, aiming
-    the red laser at it
-  - Once aimed, press the rear trigger on the controller and attract the cube to
-    you.
-  - Then release it into the glowing cube behind you.
-  - Let's try!
+    the red laser at it. Once aimed, press the rear trigger on the controller and
+    attract the cube to you.
+  - Then release it into the glowing cube behind you. Let's try!
   toActivateAtEnd:
   - {fileID: 380325282}
   - {fileID: 414730969}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
-  - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
@@ -283329,7 +283326,7 @@ GameObject:
   - component: {fileID: 2000950204}
   - component: {fileID: 2000950203}
   - component: {fileID: 2000950202}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292969,28 +292966,22 @@ MonoBehaviour:
   - Aiuto! Oh no come faro! Sono nei guai seri!
   - Ehi tu! Puoi aiutarmi?
   - "Il mio carretto si \xE8 rotto mentre andavo alla sede centrale per analizzare
-    la densit\xE0 di questo masso"
-  - Ma adesso non arrivero mai in tempo
+    la densit\xE0 di questo masso. Ma adesso non arrivero mai in tempo"
   - Qui ho tutto il necessario per analizzare la massa, ma non ho delle mani astrali
-    con me
-  - Potreste pensarci voi?
+    con me. Potreste pensarci voi?
   - "Il tuo compagno bot ti spiegher\xE0 come fare... io devo chiamare i soccorsi"
   EnglishSentences:
   - Help! Oh no, how can I do it? I'm in serious trouble!
   - Hey! Can you help me?
   - My cart broke down on my way to headquarters. I have to analyze the density of
-    this boulder.
-  - But now I'll never get there in time
+    this boulder. But now I'll never get there in time
   - Here I have everything I need to analyze the mass, but I don't have any astral
-    hands with me.
-  - Could you think about it?
+    hands with me. Could you think about it?
   - Your bot buddy will tell you what to do... I must call for help.
   toActivateAtEnd: []
   dialogAudioSource: {fileID: 963334293}
   sentenceClips:
   - {fileID: 8300000, guid: b8df0ecd53156184e9f89de551eb9520, type: 3}
-  - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
-  - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
@@ -295313,7 +295304,7 @@ GameObject:
   - component: {fileID: 2058492203}
   - component: {fileID: 2058492202}
   - component: {fileID: 2058492201}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301971,6 +301962,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5ad51ae710a398b4d8efa723d966c00c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1111666756}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5ad51ae710a398b4d8efa723d966c00c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521727685}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -6372620159720347986, guid: 5ad51ae710a398b4d8efa723d966c00c, type: 3}
       insertIndex: -1
