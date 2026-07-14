@@ -77,6 +77,13 @@ public enum TipoTool
     Teleport
 }
 
+public enum EsterEggCardType
+{
+    CardRed,
+    CardGreen,
+    CardBlue
+}
+
 public enum Language
 {
     Italian,

@@ -44,10 +44,10 @@ public class BilanciaDuePiatti : MonoBehaviour
     public void ObjectExit(GameObject obj)
     {
         RemoveObject(obj);
-        bool result = AggiornaPosizionePiatti();
+        AggiornaPosizionePiatti();
 
     }
-
+    
 
     private void AddObject(GameObject obj)
     {

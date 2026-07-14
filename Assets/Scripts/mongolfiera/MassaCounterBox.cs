@@ -8,6 +8,7 @@ public class MassaCounterBox : MonoBehaviour
     [SerializeField] private GameObject led;
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI txt;
+    [SerializeField] private float errorBound = 15f;
     [SerializeField] private Material red;
     [SerializeField] private Material green;
     [SerializeField] private AudioSource audioSource;
@@ -52,7 +53,7 @@ public class MassaCounterBox : MonoBehaviour
 
     public bool TooMuchMass()
     {
-        if (massaTotale >= 15f)
+        if (massaTotale >= errorBound)
         {
             led.GetComponent<Renderer>().material = red;
             Image img = panel.GetComponent<Image>();
@@ -63,7 +64,7 @@ public class MassaCounterBox : MonoBehaviour
             audioSource.PlayOneShot(onSound);
             return true;
         }
-        else if (massaTotale < 15f)
+        else if (massaTotale < errorBound)
             led.GetComponent<Renderer>().material = green;
 
         return false;
@@ -77,6 +78,12 @@ public class MassaCounterBox : MonoBehaviour
         yield return new WaitForSeconds(5f);
         led.GetComponent<Renderer>().material = green;
         panel.SetActive(false);
+    }
+
+    public float GetErrorBound()
+    {
+        if(errorBound == 0) return 1f;
+        else return errorBound;
     }
         
 

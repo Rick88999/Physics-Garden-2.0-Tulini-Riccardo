@@ -71,6 +71,15 @@ public class CannoneController : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            other.tag = "Spawned Object";
+            currentBullet = null;
+        }
+    }
+
     public void SetLaunchForceCannon(float force)
     {
         if (force < forzaProporzionaleMinima)

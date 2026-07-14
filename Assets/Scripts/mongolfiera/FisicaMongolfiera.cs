@@ -17,7 +17,6 @@ public class FisicaMongolfiera : MonoBehaviour
     private float tempoAvvio = 0f;
     [Header("Tappo Invisibile")]
     [SerializeField] private GameObject Tappo;
-    [SerializeField] private GameObject Barriera;
 
     void Start()
     {
@@ -64,7 +63,6 @@ public class FisicaMongolfiera : MonoBehaviour
         {
             activator = false;
             Tappo.SetActive(false);
-            Barriera.SetActive(true);
             tempoAvvio = 0f;
         }
         else if (Mathf.Abs(transform.position.y - terra) < 0.1f)
@@ -74,7 +72,6 @@ public class FisicaMongolfiera : MonoBehaviour
             {
                 activator = false;
                 Tappo.SetActive(false);
-                Barriera.SetActive(true);
                 return;
             }
             float spintaArchimede = volumeOggetto * densitaFluido * gravita;
@@ -82,10 +79,19 @@ public class FisicaMongolfiera : MonoBehaviour
             else altezzaAttesa = (int)altezzaMassima - (int)(altezzaMassima * ((massaTotale * gravita) / spintaArchimede));
 
             if(altezzaAttesa>0 && altezzaAttesa<1) altezzaAttesa = 1;
-            tempoAvvio = 0f;
-            Barriera.SetActive(false);
-            Tappo.SetActive(true);
-            activator = true;
+
+            if ((massaTotale > volumeOggetto*densitaFluido && massaTotale < massaCounterBox.GetErrorBound()) || massaTotale > massaCounterBox.GetErrorBound())
+            {
+                tempoAvvio = 0f;
+                Tappo.SetActive(false);
+                activator = false;
+            }
+            else if (massaTotale < volumeOggetto * densitaFluido)
+            {
+                tempoAvvio = 0f;
+                Tappo.SetActive(true);
+                activator = true;
+            }
         }
     }
 }

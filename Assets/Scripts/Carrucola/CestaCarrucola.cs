@@ -24,6 +24,7 @@ public class CestaCarrucola : MonoBehaviour
                 if(SizeM >= 3*fattoreDiScala)
                 {
                     audioSource.PlayOneShot(successSound);
+                    other.tag = "No Destroy";
                     CalcoloEnergiaPotenziale(go.GetComponent<Rigidbody>().mass);
                 }
                 else WrongObjectType(go);
@@ -44,6 +45,7 @@ public class CestaCarrucola : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         energiaPotenziale -= other.gameObject.GetComponent<Rigidbody>().mass * 9.81f * altezza;
+        other.tag = "Spawned Object";
         if (energiaPotenziale < 0f)
         {
             energiaPotenziale = 0f;
