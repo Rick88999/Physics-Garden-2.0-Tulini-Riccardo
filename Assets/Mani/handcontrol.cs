@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class HandControl : MonoBehaviour
 {
@@ -10,20 +11,24 @@ public class HandControl : MonoBehaviour
     
     public GameObject rayInteractorObjectAttrattore;
     public GameObject rayInteractorObjectPointer;
+    public GameObject handInteractor;
     [SerializeField] private List<GameObject> Modalita = new List<GameObject>();
 
     private Animator animator;
+
+    private XRDirectInteractor directInteractor;
     private UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual lineVisualAtrattore;
     private UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual lineVisualPointer;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        
+        directInteractor = handInteractor.GetComponent<XRDirectInteractor>();
         if (rayInteractorObjectAttrattore != null && rayInteractorObjectPointer != null)
         {
             lineVisualAtrattore = rayInteractorObjectAttrattore.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual>();
             lineVisualPointer = rayInteractorObjectPointer.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals.XRInteractorLineVisual>();
+            
         }
     }
 
@@ -47,6 +52,15 @@ public class HandControl : MonoBehaviour
 
             if (lineVisualPointer != null) lineVisualPointer.enabled = (trigger < 0.1f);
 
+        }
+
+        if(directInteractor != null && directInteractor.hasSelection)
+        {
+            if (Modalita[0].activeSelf)
+            {
+                Modalita[0].SetActive(false);
+                Modalita[1].SetActive(true);
+            }
         }
     }
 }

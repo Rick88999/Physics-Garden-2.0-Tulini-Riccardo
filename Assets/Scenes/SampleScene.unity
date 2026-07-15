@@ -184397,6 +184397,7 @@ MonoBehaviour:
   triggerInput: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rayInteractorObjectAttrattore: {fileID: 1108873830}
   rayInteractorObjectPointer: {fileID: 1921967652}
+  handInteractor: {fileID: 176660619}
   Modalita:
   - {fileID: 133648389}
   - {fileID: 1952821628}
@@ -217703,7 +217704,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482760474}
   m_LocalRotation: {x: 0.07590885, y: 0.72085434, z: 0.68505716, w: 0.07282571}
-  m_LocalPosition: {x: 0, y: 0, z: 0.15467177}
+  m_LocalPosition: {x: 0, y: 0, z: 0.153}
   m_LocalScale: {x: 0.50000006, y: 0.49999994, z: 0.50000006}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -217712,7 +217713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.258, y: -27.164, z: 0.062}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0046691895, y: -0.005699843}
+  m_AnchoredPosition: {x: 0.007, y: 0.024}
   m_SizeDelta: {x: 0.4898, y: 0.1496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482760476
@@ -220201,7 +220202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
   m_sharedMaterial: {fileID: 8317943428649638076, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
@@ -220231,9 +220232,9 @@ MonoBehaviour:
   m_fontSize: 5
   m_fontSizeBase: 5
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 4
+  m_fontSizeMax: 5
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -220247,7 +220248,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -220267,7 +220268,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 44.854736, y: 12.053683, z: 44.63501, w: 11.869308}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -231044,6 +231045,7 @@ MonoBehaviour:
   triggerInput: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rayInteractorObjectAttrattore: {fileID: 907205965}
   rayInteractorObjectPointer: {fileID: 747749659}
+  handInteractor: {fileID: 325673659}
   Modalita:
   - {fileID: 732686505}
   - {fileID: 1766373631}
@@ -261219,9 +261221,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814484309}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41865042, y: 0.5757575, z: 0.5465942, w: 0.44098735}
-  m_LocalPosition: {x: -0.5673766, y: 1.2443107, z: 0.03342414}
-  m_LocalScale: {x: 0.50000006, y: 0.5, z: 0.5000001}
+  m_LocalRotation: {x: 0.41865045, y: 0.57575756, z: 0.54659426, w: 0.4409873}
+  m_LocalPosition: {x: -0.537, y: 1.272, z: 0.002}
+  m_LocalScale: {x: 0.49999994, y: 0.49999988, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1872341690}
@@ -268572,15 +268574,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56.517
+      value: -56.528
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.314
+      value: 1.312
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 97.55172
+      value: 97.594
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_LocalRotation.w

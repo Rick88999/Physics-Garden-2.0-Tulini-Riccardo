@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Garden 2.0.slnx"
+    "dotnet.defaultSolution": "Physic-Garden-2.0-Tulini-Riccardo.slnx"
 }
