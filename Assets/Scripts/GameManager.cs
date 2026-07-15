@@ -133,7 +133,11 @@ public class GameManager : MonoBehaviour
             File.WriteAllText(path, json);
             if (!closingGame)
             {
-                saveNotificationText.text = "Dati salvati con successo!"; 
+                if (actualLanguage == Language.English)
+                    saveNotificationText.text = "Data saved successfully!";
+                else if (actualLanguage == Language.Italian)
+                    saveNotificationText.text = "Dati salvati con successo!"; 
+                    
                 StartCoroutine(playerMenuManager.ShowSaveNotification(2f));
                 closingGame = false;
             }

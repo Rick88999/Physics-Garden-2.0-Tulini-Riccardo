@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class CannoneController : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class CannoneController : MonoBehaviour
     private float forzaProporzionaleMinima;
 
     private GameObject currentBullet;
+
     private List<GameObject> bulletsAlreadyLaunched = new List<GameObject>();
 
     private void Update()
@@ -58,8 +61,12 @@ public class CannoneController : MonoBehaviour
 
                 forzaProporzionaleMinima = forzaMinima * (massaEffettiva / massaMinima);
                 other.tag = "Bullet";
+
+                XRGrabInteractable grabInteractable = other.gameObject.GetComponent<XRGrabInteractable>();
+                if (grabInteractable != null)
+                    grabInteractable.interactionLayers = InteractionLayerMask.GetMask("Bullet");
+
                 other.gameObject.AddComponent<Bullet>();
-                Bullet bullet = other.gameObject.GetComponent<Bullet>();
                 currentBullet = other.gameObject;
                 audioSource.PlayOneShot(reloadSound);
             }
@@ -68,15 +75,6 @@ public class CannoneController : MonoBehaviour
                 Destroy(other.gameObject);
                 audioSource.PlayOneShot(launchErrorSound);
             }
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Bullet"))
-        {
-            other.tag = "Spawned Object";
-            currentBullet = null;
         }
     }
 
