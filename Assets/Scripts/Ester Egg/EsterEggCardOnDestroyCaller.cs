@@ -9,6 +9,16 @@ public class EsterEggCardOnDestroyCaller : MonoBehaviour
 
     private void Start() => cardHandler = GetComponentInParent<EsterEggCardHandler>();
 
+    private void Update()
+    {
+        Vector3 position = transform.position;
+
+        if (position.y < -21f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnApplicationQuit() => isQuitting = true;
 
     private void OnDestroy()

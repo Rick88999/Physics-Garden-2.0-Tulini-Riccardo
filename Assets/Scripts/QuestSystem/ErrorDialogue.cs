@@ -23,6 +23,8 @@ public class ErrorDialogue : MonoBehaviour
     [SerializeField] private string[] ItalianSentencesError;
     [SerializeField] private string[] EnglishSentencesError;
 
+    [SerializeField] private GameObject point;
+
     [SerializeField] private AudioSource dialogAudioSourceError;
     [SerializeField] private AudioClip[] sentenceClipsError;
     
@@ -33,6 +35,8 @@ public class ErrorDialogue : MonoBehaviour
     private Coroutine autoNextCoroutineError;
     private bool isTypingError = false;
     private Language actualLenguageError;
+
+    private bool initialPointState;
    
 
     public void Awake()
@@ -56,6 +60,8 @@ public class ErrorDialogue : MonoBehaviour
 
         Reset();
         canvasPointerError.SetActive(true);
+        initialPointState = point.activeSelf;
+        point.SetActive(false);
         nextSentenceError();
     }
 
@@ -85,6 +91,7 @@ public class ErrorDialogue : MonoBehaviour
                 canvasPointerError.SetActive(false);
                 Reset();
                 gameObject.SetActive(false);
+                point.SetActive(initialPointState);
         }
     }
 

@@ -22,6 +22,8 @@ public class onTargetTeleport : UnityEvent<string> { }
 
 public class onDefocusTeleport : UnityEvent<string> { }
 
+[System.Serializable]
+public class InclinedPlaneObjectDestroyedEvent : UnityEvent<int> { }
 
 public class GameEvents : MonoBehaviour
 {
@@ -40,6 +42,8 @@ public class GameEvents : MonoBehaviour
 
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
+
+    public InclinedPlaneObjectDestroyedEvent onInclinedPlaneObjectDestroyed;
     
     void Awake()
     {
@@ -64,5 +68,6 @@ public class GameEvents : MonoBehaviour
 
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();
+        onInclinedPlaneObjectDestroyed ??= new InclinedPlaneObjectDestroyedEvent();
     }
 }

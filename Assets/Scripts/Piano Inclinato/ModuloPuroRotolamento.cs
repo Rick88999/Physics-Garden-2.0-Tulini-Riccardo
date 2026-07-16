@@ -7,36 +7,36 @@ public class ModuloPuroRotolamento : MonoBehaviour
     private Rigidbody corpo;
 
     [Header("Parametri Fisici")]
-    public bool forzareInerziaTeorica = true;
+    [SerializeField] private bool forzareInerziaTeorica = true;
 
-    void Start()
+    private void Awake()
     {
         corpo = GetComponent<Rigidbody>();
 
-        // 1. Pulizia parametri fisici per evitare attriti dell'aria
+        // Pulizia parametri fisici per evitare attriti dell'aria
         corpo.linearDamping = 0f;
         corpo.angularDamping = 0f;
 
-        // 2. Calcolo raggio preciso
+        // Calcolo raggio preciso
         if (GetComponent<SphereCollider>())
             radius = GetComponent<SphereCollider>().radius * transform.localScale.x;
         else if (GetComponent<CapsuleCollider>())
             radius = GetComponent<CapsuleCollider>().radius * transform.localScale.x;
 
-        // 4. Configurazione Tensore d'Inerzia
+        // Configurazione Tensore d'Inerzia
         if (forzareInerziaTeorica)
         {
             ConfiguraInerzia();
         }
     }
 
-    void ConfiguraInerzia()
+    private void ConfiguraInerzia()
     {
         float m = corpo.mass;
         float r2 = radius * radius;
         float inerziaVal = 0f;
 
-        // Applichiamo i coefficienti k corretti
+        // Applico i coefficienti k corretti
         if (corpo.name.ToLower().Contains("sfera"))
         {
             inerziaVal = 0.4f * m * r2; // k = 2/5
@@ -54,21 +54,22 @@ public class ModuloPuroRotolamento : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        // Non forziamo più la velocità angolare.
-        // Lasciamo che il motore fisico calcoli la velocità in base all'inerzia.
+        // Imposto il motore fisico per calcolre l'inerzia corretta e il rotolamento puro
 
         float v = corpo.linearVelocity.magnitude;
         float omega = corpo.angularVelocity.magnitude;
 
-        // Debug per verificare se il rotolamento è coerente (v = omega * r)
         if (v > 0.1f)
         {
             float errore = Mathf.Abs(v - (omega * radius));
-            // Se l'errore è alto, significa che l'oggetto sta slittando 
-            // e serve più attrito nel PhysicMaterial.
             Debug.Log($"{gameObject.name} | Vel: {v:F2} | Errore Rotolamento: {errore:F3}");
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.Instance.onInclinedPlaneObjectDestroyed?.Invoke(GetInstanceID());
     }
 }
