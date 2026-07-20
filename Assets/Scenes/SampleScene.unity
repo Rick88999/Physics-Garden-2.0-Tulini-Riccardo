@@ -5827,13 +5827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 670339627}
   botText: {fileID: 1799169881}
-  panel: {fileID: 61786435}
   canvasPointer: {fileID: 547925225}
   bot: {fileID: 1391984908}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ferma Ferma!
@@ -5843,11 +5839,14 @@ MonoBehaviour:
   - Stop Stop!
   - You can't stay here! I'm testing this pulley system. It must pull up some glass
     cubes in a building site near us
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1391984911}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 670339627}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &47218444
 Transform:
   m_ObjectHideFlags: 0
@@ -24431,7 +24430,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24947,21 +24946,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 1066840954}
-  panelError: {fileID: 348877810}
-  canvasPointerError: {fileID: 873636907}
-  botError: {fileID: 963334290}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 1066840954}
+  canvasPointer: {fileID: 873636907}
+  bot: {fileID: 963334290}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 2008555667}
-  dialogAudioSourceError: {fileID: 963334293}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 963334293}
+  sentenceClips:
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
+  point: {fileID: 2008555667}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -43514,13 +43512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1093923457}
   botText: {fileID: 2134444937}
-  panel: {fileID: 2070650885}
   canvasPointer: {fileID: 604824408}
   bot: {fileID: 2140245701}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Amico mio che piacere rivederti! Quella che vedi qui \xE8 un piccola collezioni
@@ -43532,11 +43526,14 @@ MonoBehaviour:
     about physic engines and virtual reality
   - Go around and take a look, after when you finish, insert that coin here on me.
     I'll give you a yummy gift
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2140245703}
   sentenceClips:
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
+  fatherStep: {fileID: 1093923457}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &235199625
 Transform:
   m_ObjectHideFlags: 0
@@ -47785,13 +47782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1754470032}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Bene adesso, finito questo dialogo, prova a puntare il laser verso il cubo d'oro.
@@ -47803,13 +47796,16 @@ MonoBehaviour:
     soon as it turns green, press the side trigger to scan the mass.
   - Then press A or X depending on your hand, to bring up the Data Card. Then insert
     the card into the blue box that is about to spawn
-  toActivateAtEnd:
-  - {fileID: 440509665}
-  - {fileID: 115518310}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1754470032}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 440509665}
+  - {fileID: 115518310}
 --- !u!1 &271558367
 GameObject:
   m_ObjectHideFlags: 0
@@ -48628,13 +48624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1639189151}
   botText: {fileID: 2055804399}
-  panel: {fileID: 352826430}
   canvasPointer: {fileID: 1863628836}
   bot: {fileID: 2125395821}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Non hai perso colpi vedo, sto inviando alla sede centrale di nuovo i dati. Come
@@ -48644,11 +48636,14 @@ MonoBehaviour:
   - You haven't missed a beat, i''m sending the data back to headquarters. As a reward,
     I'll leave you the formulas for inertia and height.
   - Keep going, others need you!
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2125395825}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1639189151}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &275886487
 Transform:
   m_ObjectHideFlags: 0
@@ -56659,13 +56654,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1189249091}
   botText: {fileID: 1783611680}
-  panel: {fileID: 1497574516}
   canvasPointer: {fileID: 835672146}
   bot: {fileID: 639840590}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ehi collega, abbiamo bisogno di un giudice imparziale. Io e mio fratello abbiamo
@@ -56676,11 +56667,14 @@ MonoBehaviour:
   - Hey colleague, we need an impartial judge. I and my brotheri have made a bet.
   - In my opinion the material density of this ball is slightly greater than 1, but
     lesser than 1,2
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  fatherStep: {fileID: 1189249091}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &334561724
 GameObject:
   m_ObjectHideFlags: 0
@@ -58820,9 +58814,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 159035425}
-        m_TargetAssemblyTypeName: ErrorDailogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+      - m_Target: {fileID: 1464078000}
+        m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70407,13 +70401,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1860154973}
   botText: {fileID: 1593690087}
-  panel: {fileID: 72500254}
   canvasPointer: {fileID: 1040700766}
   bot: {fileID: 325410640}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Ti stavo aspettando giovane. E' il momento di imparare un p\xF2 di cinematica."
@@ -70421,11 +70411,14 @@ MonoBehaviour:
   EnglishSentences:
   - I was waiting for you kid. it's time to learn something abount kinematics
   - i can see you seem familiar with force
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 502467013}
   sentenceClips:
   - {fileID: 8300000, guid: 3d6adab38f7ca0d41b3958e1d716e14b, type: 3}
   - {fileID: 8300000, guid: 3e7208601d9fc394d9bd04aec18da10b, type: 3}
+  fatherStep: {fileID: 1860154973}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &442985284
 GameObject:
   m_ObjectHideFlags: 0
@@ -77810,13 +77803,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1992235640}
   botText: {fileID: 1402265429}
-  panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
   bot: {fileID: 1424672685}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "La Scopa Laser ti sar\xE0 d'aiuto, prendila con entrambe le mani per attivarla
@@ -77826,11 +77815,14 @@ MonoBehaviour:
   - The Laser Broom will help you, warning get it with both your hands to activate
     it
   - Good luck for your journey
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 1992235640}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1001 &511774355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79109,13 +79101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 327234951}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Prendi la laterna e vai a goderti il premio! Ah si portati questa! Ti servir\xE0
@@ -79123,12 +79111,15 @@ MonoBehaviour:
   EnglishSentences:
   - Take the latern and go to enjoy your reward! Oh yes take this with you! you'll
     need it to scrunch something
-  toActivateAtEnd:
-  - {fileID: 264412984}
-  - {fileID: 1763464560}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 327234951}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 264412984}
+  - {fileID: 1763464560}
 --- !u!1 &524661739
 GameObject:
   m_ObjectHideFlags: 0
@@ -81245,13 +81236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1806915642}
   botText: {fileID: 1644550547}
-  panel: {fileID: 1259891056}
   canvasPointer: {fileID: 1593606399}
   bot: {fileID: 963334290}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Grazie mille! Ho inviato i dati al server centrale.
@@ -81263,12 +81250,15 @@ MonoBehaviour:
   - Continue on this path, a friend of mine was having problems with the density
     on a scale. Maybe you can help him.
   - I took a really big risk, you deserve a reward for your help..
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 963334293}
   sentenceClips:
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
+  fatherStep: {fileID: 1806915642}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &546420364
 GameObject:
   m_ObjectHideFlags: 0
@@ -90032,9 +90022,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2049803233}
+      - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94930,13 +94920,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 56181013}
   botText: {fileID: 1402265429}
-  panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
   bot: {fileID: 1424672685}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Ti regalo un generatore di oggetti di ultima generazione che avevo in pi\xF9.
@@ -94948,12 +94934,15 @@ MonoBehaviour:
     in your inventory under tools.
   - It will be useful for finding the mass of the cube. Why don't I give it to you
     directly... well, I forgot about it... are you happy now?
-  toActivateAtEnd:
-  - {fileID: 585073008}
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 56181013}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 585073008}
 --- !u!4 &667211462
 Transform:
   m_ObjectHideFlags: 0
@@ -96487,13 +96476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 979913473}
   botText: {fileID: 1593690087}
-  panel: {fileID: 72500254}
   canvasPointer: {fileID: 1040700766}
   bot: {fileID: 325410640}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Cerca allora la forza necessaria per colpire quella sfera luminosa li gi\xF9.
@@ -96506,13 +96491,16 @@ MonoBehaviour:
   - 'So find the force who you need to hit that shining sphere there. Warning kid... '
   - Cannon accept only munitions with the right size or mass more than 1 kg
   - Also, if the force is too wick it doesen't work. Close this line and try!
-  toActivateAtEnd:
-  - {fileID: 2040208220}
   dialogAudioSource: {fileID: 502467013}
   sentenceClips:
   - {fileID: 8300000, guid: bf158fcc077215c41bb2f528724dc25e, type: 3}
   - {fileID: 8300000, guid: 3d6adab38f7ca0d41b3958e1d716e14b, type: 3}
   - {fileID: 8300000, guid: 3e7208601d9fc394d9bd04aec18da10b, type: 3}
+  fatherStep: {fileID: 979913473}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 2040208220}
 --- !u!4 &678152277
 Transform:
   m_ObjectHideFlags: 0
@@ -103011,13 +102999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1171898101}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Grandioso!
@@ -103030,12 +103014,15 @@ MonoBehaviour:
     will help you on your missions
   - You can grab them like you grabbed the cube before or call them back to you with
     the gravity gun
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1171898101}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &740874900
 GameObject:
   m_ObjectHideFlags: 0
@@ -110634,13 +110621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 605507527}
   botText: {fileID: 1722589314}
-  panel: {fileID: 1186484113}
   canvasPointer: {fileID: 639265793}
   bot: {fileID: 1330588979}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ok socio, ecco il piano. Il pulsante sul lato di questo Angel Bot richiama il
@@ -110670,7 +110653,6 @@ MonoBehaviour:
     There is an book icon where you can always consult the documentation, for each
     experiment.
   - 'This might help you. Let''s get started :-) '
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -110680,6 +110662,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 605507527}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &804898331
 Transform:
   m_ObjectHideFlags: 0
@@ -112340,13 +112326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1242973313}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Ohi! Di nuovo qui! Ne \xE8 passato di tempo recluta. Perci\xF2 meglio se ti
@@ -112367,9 +112349,6 @@ MonoBehaviour:
   - Let's get a little familiar. As soon as I stop talking, pick up the cube on the
     right table with one of your hands by pressing the front trigger on the joystick.
   - Drag and drop the object inside the light cube on the left side of the platform.
-  toActivateAtEnd:
-  - {fileID: 248987409}
-  - {fileID: 289931487}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
@@ -112377,6 +112356,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1242973313}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 248987409}
+  - {fileID: 289931487}
 --- !u!4 &817266132
 Transform:
   m_ObjectHideFlags: 0
@@ -115529,13 +115514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 929292075}
   botText: {fileID: 2055804399}
-  panel: {fileID: 352826430}
   canvasPointer: {fileID: 1863628836}
   bot: {fileID: 2125395821}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Guarda un p\xF2 chi si vede! Ho sentito ti sei rimesso in pista."
@@ -115547,12 +115528,15 @@ MonoBehaviour:
   - You're in the nick of time. An unbolted has lost the sphere and cylinder inertia
     data in sector C137. The headquarters asked me to reload that data from here.
   - Cubot, could you kindly explain to our colleague what needs to be done?
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2125395825}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 929292075}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &844472634
 Transform:
   m_ObjectHideFlags: 0
@@ -129089,22 +129073,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 334561725}
   botText: {fileID: 1702658065}
-  panel: {fileID: 1155806218}
   canvasPointer: {fileID: 1262005940}
   bot: {fileID: 2122634346}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ah ha lo sapevo! Mi devi dei bulloni nuovi fratello!
   EnglishSentences:
   - Ah ha I knew it! You owe me some new bolts bro!
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2122634347}
   sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  fatherStep: {fileID: 334561725}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &951963793
 Transform:
   m_ObjectHideFlags: 0
@@ -133373,13 +133356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 867653925}
   botText: {fileID: 1722589314}
-  panel: {fileID: 1186484113}
   canvasPointer: {fileID: 639265793}
   bot: {fileID: 1330588979}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ciao! Da quanto Tempo! Benvenuto nel Physic Garden 2.0
@@ -133403,9 +133382,6 @@ MonoBehaviour:
     analog and use your body to rotate the view
   - Do a few tests and then go to the platform at the end of the road. My colleague
     is waiting to give you new instructions to get back to work.
-  toActivateAtEnd:
-  - {fileID: 1776649277}
-  - {fileID: 1338467549}
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -133414,6 +133390,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 867653925}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 1776649277}
+  - {fileID: 1338467549}
 --- !u!1 &989244094
 GameObject:
   m_ObjectHideFlags: 0
@@ -134022,24 +134004,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 773402582}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Ehi guarda lass\xF9!"
   EnglishSentences:
   - Ehy look there!
-  toActivateAtEnd:
-  - {fileID: 2055870060}
-  - {fileID: 919132147881586084}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 773402582}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 2055870060}
+  - {fileID: 919132147881586084}
 --- !u!1 &993010766
 GameObject:
   m_ObjectHideFlags: 0
@@ -135817,13 +135798,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1743365162}
   botText: {fileID: 1799169881}
-  panel: {fileID: 61786435}
   canvasPointer: {fileID: 547925225}
   bot: {fileID: 1391984908}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Wow sei proprio un tutto fare. Bene questo era l'ultimo problema nella zona
@@ -135831,11 +135808,14 @@ MonoBehaviour:
   EnglishSentences:
   - Wow you are a real handyman. Ok this is last probleme in the dome
   - For this work sure Metal Bot have a gift for you, return at the start.
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1391984911}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1743365162}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1001 &1003872287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138086,13 +138066,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 240910064}
   botText: {fileID: 1722589314}
-  panel: {fileID: 1186484113}
   canvasPointer: {fileID: 639265793}
   bot: {fileID: 1330588979}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ho aggiunto nel tuo inventario la costante di accelerazione gravitazionale, ci
@@ -138117,9 +138093,6 @@ MonoBehaviour:
   - Second, always calculate the inertial constant first and then the inertia.
   - Be careful, the key to this experiment is speed. Moreover, I tell you right now
     that from what I can see, the radius of the 2 bodies and their mass are equal
-  toActivateAtEnd:
-  - {fileID: 1434681435}
-  - {fileID: 1695145293}
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
@@ -138127,6 +138100,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 240910064}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 1434681435}
+  - {fileID: 1695145293}
 --- !u!4 &1026969692
 Transform:
   m_ObjectHideFlags: 0
@@ -138563,13 +138542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 2073718281}
   botText: {fileID: 1799169881}
-  panel: {fileID: 61786435}
   canvasPointer: {fileID: 547925225}
   bot: {fileID: 1391984908}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Funziona a Energia potenziale.
@@ -138579,11 +138554,14 @@ MonoBehaviour:
   - That pulley work with potential energy
   - Lift that blocks at the same height, multiple blocks at a time. Why don't you
     try it?
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1391984911}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 2073718281}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &1036118224
 Transform:
   m_ObjectHideFlags: 0
@@ -145716,13 +145694,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1212568244}
   botText: {fileID: 1702658065}
-  panel: {fileID: 1155806218}
   canvasPointer: {fileID: 1262005940}
   bot: {fileID: 2122634346}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Secondo me invece \xE8 uguale o al massimo pi\xF9 piccola di 1."
@@ -145731,11 +145705,14 @@ MonoBehaviour:
   EnglishSentences:
   - Instead, in my opinion it is equal to or at most smaller than 1.
   - The balloon is connected to a release and recall platform. So it can't fly away
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2122634347}
   sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  fatherStep: {fileID: 1212568244}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &1093866662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3661985432938654458, guid: 12872967cd8c13241b29b419360e4cca, type: 3}
@@ -154061,13 +154038,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1112908999}
   botText: {fileID: 1593690087}
-  panel: {fileID: 72500254}
   canvasPointer: {fileID: 1040700766}
   bot: {fileID: 325410640}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Si chiama lanterna del teletrasporto. Qui sotto avrai notato degli stani oggetti
@@ -154082,12 +154055,15 @@ MonoBehaviour:
     A or X, depending on the hand where you are keeping the lantern, you'll teleport
     there
   - Someone will need your help down there.
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 502467013}
   sentenceClips:
   - {fileID: 8300000, guid: bf158fcc077215c41bb2f528724dc25e, type: 3}
   - {fileID: 8300000, guid: ebc0510496418d0448dfb503fcb8fb56, type: 3}
   - {fileID: 8300000, guid: 178dc08f0ad90a34da742540afc86241, type: 3}
+  fatherStep: {fileID: 1112908999}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &1124438291
 GameObject:
   m_ObjectHideFlags: 0
@@ -186263,13 +186239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 949765307}
   botText: {fileID: 1402265429}
-  panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
   bot: {fileID: 1424672685}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - 'Ti ha mandato quel modello di Angel Bot, giusto? Non si fa mai gli affari suoi! '
@@ -186284,12 +186256,15 @@ MonoBehaviour:
     cube on the scale as hostile.
   - It created a force field and now I can no longer measure the density directly.
     But maybe with the right tools you could do it
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 949765307}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &1280598210
 GameObject:
   m_ObjectHideFlags: 0
@@ -196679,13 +196654,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1287180189}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Molto bene! Da adesso otterai molti pi\xF9 strumenti e Card durante il tuo viaggio.
@@ -196695,11 +196666,14 @@ MonoBehaviour:
   - Very good! From now on, you'll get many more tools and cards during your journey.
     Wander around the Garden and you'll surely find people to help.
   - Good luck, recruit :-)
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1287180189}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &1310706415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c32dd1cd63d1aa4f8497648fadbc0d7, type: 3}
@@ -198143,21 +198117,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 1869763507}
-  panelError: {fileID: 1339903575}
-  canvasPointerError: {fileID: 1716133167}
-  botError: {fileID: 1424672685}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 1869763507}
+  canvasPointer: {fileID: 1716133167}
+  bot: {fileID: 1424672685}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 111224818}
-  dialogAudioSourceError: {fileID: 1424672686}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 1424672686}
+  sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  point: {fileID: 111224818}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -200379,9 +200352,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1327185754}
+      - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -209933,13 +209906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1315750119}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ho sentito che hai risolto tutti i problemi in zona
@@ -209956,14 +209925,17 @@ MonoBehaviour:
     some priority datas '
   - I had leaved them around when i did the experiments checking. They are a red
     card, a green card and a blue card. Please find them and brig them here.
-  toActivateAtEnd:
-  - {fileID: 1747249474}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1315750119}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 1747249474}
 --- !u!4 &1415310072
 Transform:
   m_ObjectHideFlags: 0
@@ -213841,13 +213813,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1361092496}
   botText: {fileID: 1783611680}
-  panel: {fileID: 1497574516}
   canvasPointer: {fileID: 835672146}
   bot: {fileID: 639840590}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Prova a mettere degli oggetti dentro la cesta. Ti potrebbe essere utile come
@@ -213855,11 +213823,14 @@ MonoBehaviour:
   EnglishSentences:
   - Try placing objects inside the basket. It might be useful to you. Now it's up
     to you friend.
-  toActivateAtEnd:
-  - {fileID: 2114334353}
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  fatherStep: {fileID: 1361092496}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 2114334353}
 --- !u!4 &1439810813
 Transform:
   m_ObjectHideFlags: 0
@@ -216665,21 +216636,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 901172455}
-  panelError: {fileID: 155484057}
-  canvasPointerError: {fileID: 123446729}
-  botError: {fileID: 325410640}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 901172455}
+  canvasPointer: {fileID: 123446729}
+  bot: {fileID: 325410640}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 1799963996}
-  dialogAudioSourceError: {fileID: 502467013}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 502467013}
+  sentenceClips:
   - {fileID: 8300000, guid: bf158fcc077215c41bb2f528724dc25e, type: 3}
+  point: {fileID: 1799963996}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -216777,21 +216747,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 1791609544}
-  panelError: {fileID: 1909592695}
-  canvasPointerError: {fileID: 1292319430}
-  botError: {fileID: 2122634346}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 1791609544}
+  canvasPointer: {fileID: 1292319430}
+  bot: {fileID: 2122634346}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 1763478122}
-  dialogAudioSourceError: {fileID: 2122634347}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 2122634347}
+  sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  point: {fileID: 1763478122}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -230905,13 +230874,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1504984093}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Facciamo un prova proprio con uno degli strumenti.
@@ -230925,13 +230890,16 @@ MonoBehaviour:
     head.
   - You'll have several inventory sections in front of you. Go to Tools and select
     Weight Sensor.
-  toActivateAtEnd:
-  - {fileID: 1102850526}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1504984093}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 1102850526}
 --- !u!1 &1582789717
 GameObject:
   m_ObjectHideFlags: 0
@@ -244083,22 +244051,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1916405989}
   botText: {fileID: 1593690087}
-  panel: {fileID: 72500254}
   canvasPointer: {fileID: 1040700766}
   bot: {fileID: 325410640}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Ottima mira! Meriti un oggetto per scendere da qui.
   EnglishSentences:
   - Good work hawkeye! You deserve something to get off from here
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 502467013}
   sentenceClips:
   - {fileID: 8300000, guid: 178dc08f0ad90a34da742540afc86241, type: 3}
+  fatherStep: {fileID: 1916405989}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &1678152913
 GameObject:
   m_ObjectHideFlags: 0
@@ -251792,13 +251759,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 692968591}
   botText: {fileID: 1722589314}
-  panel: {fileID: 1186484113}
   canvasPointer: {fileID: 639265793}
   bot: {fileID: 1330588979}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Certo red bot! Non \xE8 troppo complesso. Per iniziare prova a calcolare l'altezza
@@ -251813,12 +251776,15 @@ MonoBehaviour:
   - Since we'll need this later. Set the ramp to 30 degrees. Use the angle selector
     knob behind you, that black cube with the buttons.
   - Then use the "height" card formula to find the height of the ramp at that angle.
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1330588985}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 692968591}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &1732155603
 Transform:
   m_ObjectHideFlags: 0
@@ -257661,13 +257627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1833015743}
   botText: {fileID: 1402265429}
-  panel: {fileID: 909406670}
   canvasPointer: {fileID: 440250227}
   bot: {fileID: 1424672685}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Bel colpo!
@@ -257681,12 +257643,15 @@ MonoBehaviour:
     a problem
   - I recommend you take a look just in case. Oh yeah! It's better that you'll clean
     this mess
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 1424672686}
   sentenceClips:
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
   - {fileID: 8300000, guid: 36c86171f0d4c2843a3ea447881b853c, type: 3}
+  fatherStep: {fileID: 1833015743}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!4 &1782498767
 Transform:
   m_ObjectHideFlags: 0
@@ -260937,9 +260902,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2051809874}
+      - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -272020,13 +271985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 883355703}
   botText: {fileID: 1783611680}
-  panel: {fileID: 1497574516}
   canvasPointer: {fileID: 835672146}
   bot: {fileID: 639840590}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Accidenti! Per poco! Grazie del tuo aiuto! Prendi la formula della forza ti
@@ -272034,10 +271995,13 @@ MonoBehaviour:
   EnglishSentences:
   - Damn! For a little while! Thanks for your help! Take the force formula it will
     help you
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 639840591}
   sentenceClips:
   - {fileID: 8300000, guid: a80124d11defa5440a985afb2ddf78f6, type: 3}
+  fatherStep: {fileID: 883355703}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &1883147648
 GameObject:
   m_ObjectHideFlags: 0
@@ -275656,9 +275620,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1465613168}
+      - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -281718,22 +281682,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 1346551371}
-  panelError: {fileID: 1980717004}
-  canvasPointerError: {fileID: 1777368243}
-  botError: {fileID: 615575289}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 1346551371}
+  canvasPointer: {fileID: 1777368243}
+  bot: {fileID: 615575289}
+  typingSpeed: 0.05
+  ItalianSentences:
   - "Ops... per qualche motivo l'ester egg \xE8 attivo... devi ancora completare
     delle cose prima di questa parte"
-  EnglishSentencesError:
+  EnglishSentences:
   - Oops... for some reason the Easter egg is active... you still need to complete
     a few things before this part.
-  point: {fileID: 394528966}
-  dialogAudioSourceError: {fileID: 615575293}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 615575293}
+  sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  point: {fileID: 394528966}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -282503,13 +282466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1764536153}
   botText: {fileID: 1638518260}
-  panel: {fileID: 1504726136}
   canvasPointer: {fileID: 1525408282}
   bot: {fileID: 615575289}
-  afterEndStep: 0
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Perfetto, adesso ti mostro la funzione principale delle tue mani.
@@ -282527,15 +282486,18 @@ MonoBehaviour:
     the red laser at it. Once aimed, press the front trigger on the joystick and
     attract the cube to you.
   - Then release it into the glowing cube behind you. Let's try!
-  toActivateAtEnd:
-  - {fileID: 380325282}
-  - {fileID: 414730969}
   dialogAudioSource: {fileID: 615575293}
   sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  fatherStep: {fileID: 1764536153}
+  afterEndStep: 0
+  canvasEndToggle: 1
+  toActivateAtEnd:
+  - {fileID: 380325282}
+  - {fileID: 414730969}
 --- !u!1 &1974716142
 GameObject:
   m_ObjectHideFlags: 0
@@ -283476,9 +283438,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966847874}
+      - m_Target: {fileID: 1464078000}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
-        m_MethodName: nextSentenceError
+        m_MethodName: nextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -295690,13 +295652,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1106466033}
   botText: {fileID: 1644550547}
-  panel: {fileID: 1259891056}
   canvasPointer: {fileID: 1593606399}
   bot: {fileID: 963334290}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - Aiuto! Oh no come faro! Sono nei guai seri!
@@ -295714,7 +295672,6 @@ MonoBehaviour:
   - Here I have everything I need to analyze the mass, but I don't have any astral
     hands with me. Could you think about it?
   - Your bot buddy will tell you what to do... I must call for help.
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 963334293}
   sentenceClips:
   - {fileID: 8300000, guid: b8df0ecd53156184e9f89de551eb9520, type: 3}
@@ -295722,6 +295679,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
+  fatherStep: {fileID: 1106466033}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &2042650061
 GameObject:
   m_ObjectHideFlags: 0
@@ -296923,21 +296884,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 770073928}
-  panelError: {fileID: 629649728}
-  canvasPointerError: {fileID: 2140343423}
-  botError: {fileID: 1391984908}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 770073928}
+  canvasPointer: {fileID: 2140343423}
+  bot: {fileID: 1391984908}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 1935901740}
-  dialogAudioSourceError: {fileID: 1391984911}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 1391984911}
+  sentenceClips:
   - {fileID: 8300000, guid: bf158fcc077215c41bb2f528724dc25e, type: 3}
+  point: {fileID: 1935901740}
   oneWayAddOn: 0
   ways: []
   autoNextDelay: 10
@@ -297591,21 +297551,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7327c9eac9b4eb6478610e2791eb2b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ErrorDailogue
-  gameManagerError: {fileID: 84319912}
-  botTextError: {fileID: 1060421499}
-  panelError: {fileID: 1805125434}
-  canvasPointerError: {fileID: 2021008700}
-  botError: {fileID: 2125395821}
-  typingSpeedError: 0.05
-  ItalianSentencesError:
+  gameManager: {fileID: 84319912}
+  botText: {fileID: 1060421499}
+  canvasPointer: {fileID: 2021008700}
+  bot: {fileID: 2125395821}
+  typingSpeed: 0.05
+  ItalianSentences:
   - Hai ancora delle cose da fare prima, una persona da aiutare o strumenti da prendere,
     torna indietro!
-  EnglishSentencesError:
+  EnglishSentences:
   - You alredy have to do something first, someone to help or tools to get, go back!
-  point: {fileID: 2096280339}
-  dialogAudioSourceError: {fileID: 2125395825}
-  sentenceClipsError:
+  dialogAudioSource: {fileID: 2125395825}
+  sentenceClips:
   - {fileID: 8300000, guid: 6a70df7c4b386364d83cafcb4705b108, type: 3}
+  point: {fileID: 2096280339}
   oneWayAddOn: 1
   ways:
   - {fileID: 902135467}
@@ -309982,13 +309941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogManager
   gameManager: {fileID: 84319912}
-  fatherStep: {fileID: 1395024504}
   botText: {fileID: 2134444937}
-  panel: {fileID: 2070650885}
   canvasPointer: {fileID: 604824408}
   bot: {fileID: 2140245701}
-  afterEndStep: 1
-  canvasEndToggle: 1
   typingSpeed: 0.05
   ItalianSentences:
   - "Bene il tuo viaggio si conclude qui. Goditi il biscotto \xE8 il frutto del tuo
@@ -309998,11 +309953,14 @@ MonoBehaviour:
   - Ok this is the end of you journey. Enjoy your cookie, you work very hard for
     it.
   - Thanks for playing this game
-  toActivateAtEnd: []
   dialogAudioSource: {fileID: 2140245703}
   sentenceClips:
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
   - {fileID: 8300000, guid: 438afd5ef723d0d488b5965d730a091b, type: 3}
+  fatherStep: {fileID: 1395024504}
+  afterEndStep: 1
+  canvasEndToggle: 1
+  toActivateAtEnd: []
 --- !u!1 &2146810183
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,151 +1,42 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class DialogManager : MonoBehaviour
+public class DialogManager : DialogueBase
 {
-    public GameManager gameManager;
     public Step fatherStep;
-    public TextMeshProUGUI botText;
-    public GameObject panel;
-    public GameObject canvasPointer;
-    public GameObject bot;
     public bool afterEndStep;
     public bool canvasEndToggle = true;
-
-
-    private int index = 0;
-    private bool alreadyStarted = false;
-
-    [SerializeField] public float typingSpeed;
-    private string[] sentences;
-    [SerializeField] private string[] ItalianSentences;
-    [SerializeField] private string[] EnglishSentences;
     [SerializeField] public GameObject[] toActivateAtEnd;
 
-    [SerializeField] private AudioSource dialogAudioSource;
-    [SerializeField] private AudioClip[] sentenceClips;
-
-    private Coroutine typingCoroutine;
-    private bool isTyping = false;
-    private Language actualLenguage;
-
-    public void Awake()
+    public override void Awake()
     {
-        actualLenguage = gameManager.GetLanguage();
-        if(actualLenguage == Language.Italian)
-        {
-            sentences = ItalianSentences;
-        }
-        else if(actualLenguage == Language.English)
-        {
-            sentences = EnglishSentences;
-        }
-
+        base.Awake();
         canvasPointer.SetActive(true);
         nextSentence();
     }
 
-    public void nextSentence()
+    protected override void EndDialogue()
     {
-   
-        if (isTyping)
+        if (canvasEndToggle)
         {
-            FinishCurrentSentenceInstant();
-            return;
-        }
-
-        if (index == 0 && !alreadyStarted)
-        {
-            alreadyStarted = true;
-            StartTypingCurrent();
-        }
-        else if (alreadyStarted && index < sentences.Length - 1)
-        {
-            index++;
-            StartTypingCurrent();
-        }
-        else
-        {
-            
-            if (canvasEndToggle)
+            botText.text = "";
+            if (toActivateAtEnd != null)
             {
-                botText.text = "";
-                if(toActivateAtEnd != null)
+                foreach (GameObject obj in toActivateAtEnd)
                 {
-                    foreach (GameObject obj in toActivateAtEnd)
-                    {
-                        obj.SetActive(true);
-                    }
+                    obj.SetActive(true);
                 }
-                canvasPointer.SetActive(false);
             }
-
-            if (bot.name == "Bot")
-            {
-                if(bot.GetComponent<BotController>().getMode() == "GoToPoint") bot.GetComponent<BotController>().StartFollow();
-            }
-
-            if(afterEndStep) if(fatherStep != null) fatherStep.endStep();
+            canvasPointer.SetActive(false);
         }
-    }
 
-    private void StartTypingCurrent()
-    {
-        botText.text = "";
-
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
-
-        PlayClipForCurrent();
-
-        typingCoroutine = StartCoroutine(Type());
-    }
-
-    private void FinishCurrentSentenceInstant()
-    {
-        if (typingCoroutine != null)
+        if (bot.name == "Bot")
         {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
+            var controller = bot.GetComponent<BotController>();
+            if (controller != null && controller.getMode() == "GoToPoint") 
+                controller.StartFollow();
         }
 
-        botText.text = sentences[index];
-        isTyping = false;
-
-        if (dialogAudioSource != null && dialogAudioSource.isPlaying)
-            dialogAudioSource.Stop();
+        if (afterEndStep && fatherStep != null) 
+            fatherStep.endStep();
     }
-
-    private void PlayClipForCurrent()
-    {
-        if (dialogAudioSource == null) return;
-        if (sentenceClips == null || index >= sentenceClips.Length) return;
-        AudioClip clip = sentenceClips[index];
-        if (clip == null) return;
-
-        dialogAudioSource.Stop();
-        dialogAudioSource.clip = clip;
-        dialogAudioSource.Play();
-    }
-
-    private IEnumerator Type()
-    {
-        isTyping = true;
-
-        foreach (char letter in sentences[index])
-        {
-            botText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
-        typingCoroutine = null;
-
-        if (dialogAudioSource != null && dialogAudioSource.isPlaying)
-            dialogAudioSource.Stop();
-    }
-
-    
 }
