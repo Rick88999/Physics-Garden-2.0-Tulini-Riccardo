@@ -1,0 +1,10 @@
+@startuml
+enum Hand {
+    Left,
+    Right,
+}
+class ManoEco {
+}
+MonoBehaviour <|-- ManoEco
+ManoEco --> "hand" Hand
+@enduml

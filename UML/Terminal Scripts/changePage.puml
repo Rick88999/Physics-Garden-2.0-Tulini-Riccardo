@@ -1,0 +1,10 @@
+@startuml
+class changePage {
+    - ChangePage(command:string) : void
+    + ChangePageNext() : void
+}
+MonoBehaviour <|-- changePage
+changePage --> "pageNext" GameObject
+changePage --> "pageActual" GameObject
+changePage --> "canvasLoader" CanvasLoader
+@enduml

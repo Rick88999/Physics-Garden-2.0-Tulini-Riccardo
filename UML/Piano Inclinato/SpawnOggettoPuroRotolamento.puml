@@ -1,0 +1,13 @@
+@startuml
+class SpawnOggettoPuroRotolamento {
+    - Awake() : void
+    + SpawnOggettoPianoInclinato() : void
+    - OnObjectInSocket(args:SelectEnterEventArgs) : void
+    - OnObjectRemovedFromSocket(args:SelectExitEventArgs) : void
+}
+MonoBehaviour <|-- SpawnOggettoPuroRotolamento
+SpawnOggettoPuroRotolamento --> "oggettoPrefab" GameObject
+SpawnOggettoPuroRotolamento --> "oggettoInSocket" GameObject
+SpawnOggettoPuroRotolamento --> "lastObjectInSocket" GameObject
+SpawnOggettoPuroRotolamento --> "socket" XRSocketInteractor
+@enduml

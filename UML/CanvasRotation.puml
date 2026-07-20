@@ -1,0 +1,7 @@
+@startuml
+class CanvasRotation {
+    - Update() : void
+}
+MonoBehaviour <|-- CanvasRotation
+CanvasRotation --> "player" Transform
+@enduml

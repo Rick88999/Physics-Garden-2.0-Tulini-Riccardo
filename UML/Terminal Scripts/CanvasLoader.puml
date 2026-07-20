@@ -1,0 +1,17 @@
+@startuml
+class CanvasLoader {
+    + durataFade : float = 0.5f
+    + ChengeCanvasAttivo(nuovoCanvas:GameObject) : void
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnObjectPlaced(args:SelectEnterEventArgs) : void
+    - OnObjectRemoved(args:SelectExitEventArgs) : void
+    - EseguiFade(targetAlpha:float, attivazione:bool) : IEnumerator
+}
+MonoBehaviour <|-- CanvasLoader
+CanvasLoader --> "socket" XRSocketInteractor
+CanvasLoader --> "canvasGroupAttuale" CanvasGroup
+CanvasLoader --> "fadeCoroutine" Coroutine
+CanvasLoader --> "canvasAttivo" GameObject
+@enduml

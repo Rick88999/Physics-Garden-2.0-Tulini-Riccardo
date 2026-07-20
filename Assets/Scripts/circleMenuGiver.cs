@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class circleMenuGiver : MonoBehaviour
 {
@@ -10,4 +10,4 @@ public class circleMenuGiver : MonoBehaviour
         if(activateMenu) CircleManuManager.GetComponent<MenuCircleManager>().activateMenus();
         if(enableAttrattore) CircleManuManager.GetComponent<MenuCircleManager>().enableAttrattore();
     }
-}
+}*/

@@ -1,0 +1,25 @@
+@startuml
+class PinManifestController {
+    + SetTitlePin(index:int) : void
+    + SetDescriptionPin(fatherIndex:int, index:int) : void
+    + resetPin(fatherIndex:int) : void
+}
+class "List`1"<T> {
+}
+struct RefQuest {
+}
+struct Description {
+}
+MonoBehaviour <|-- PinManifestController
+PinManifestController --> "gameManager" GameManager
+PinManifestController --> "questDescriptions<RefQuest>" "List`1"
+PinManifestController --> "defaultTitle" GameObject
+PinManifestController --> "actualLanguage" Language
+PinManifestController +-- RefQuest
+RefQuest --> "italianTitle" GameObject
+RefQuest --> "englishTitle" GameObject
+RefQuest --> "description" Description
+PinManifestController +-- Description
+Description --> "italianDescriptions<GameObject>" "List`1"
+Description --> "englishDescriptions<GameObject>" "List`1"
+@enduml

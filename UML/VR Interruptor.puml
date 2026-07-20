@@ -1,0 +1,25 @@
+@startuml
+class VRInterruptor {
+    - cooldownDelay : float = 2.0f
+    - isPressed : bool = false
+    - inCooldown : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnPress(args:HoverEnterEventArgs) : void
+    - OnRelease(args:HoverExitEventArgs) : void
+    - CooldownRoutine() : IEnumerator
+}
+class GraphEvent {
+}
+MonoBehaviour <|-- VRInterruptor
+VRInterruptor o-> "on" GraphEvent
+VRInterruptor o-> "off" GraphEvent
+VRInterruptor o-> "actualEvent" GraphEvent
+VRInterruptor --> "audioSource" AudioSource
+VRInterruptor --> "onSound" AudioClip
+VRInterruptor --> "interactable" XRSimpleInteractable
+VRInterruptor --> "startPosition" Vector3
+VRInterruptor +-- GraphEvent
+GraphEvent --> "eventIO" UnityEvent
+GraphEvent --> "nextEvent" GraphEvent
+@enduml

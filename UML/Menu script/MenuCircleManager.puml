@@ -1,0 +1,9 @@
+@startuml
+class MenuCircleManager {
+    + activateMenus() : void
+    + enableAttrattore() : void
+}
+MonoBehaviour <|-- MenuCircleManager
+MenuCircleManager --> "HandMenusRight" GameObject
+MenuCircleManager --> "HandMenusLeft" GameObject
+@enduml

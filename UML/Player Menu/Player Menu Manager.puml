@@ -1,0 +1,32 @@
+@startuml
+class PlayerMenuManager {
+    - turnOnStartMenu : bool = false
+    - menuDistance : float = 1.5f
+    - menuHeight : float = 0f
+    - fadeDuration : float = 0.4f
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleMenu(context:InputAction.CallbackContext) : void
+    - PlaceMenuInFrontOfPlayer() : void
+    + TogglePage(pageName:string) : void
+    - CloseStillActive() : void
+    - FindPage(i:int) : void
+    - activatePage(i:int) : void
+    - deactivatePage(i:int) : void
+    + UnlockMenu() : void
+    + ShowSaveNotification(duration:float) : IEnumerator
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- PlayerMenuManager
+PlayerMenuManager --> "menuCanvas" GameObject
+PlayerMenuManager --> "saveNotificationPanel" GameObject
+PlayerMenuManager o-> "menuPages<GameObject>" "List`1"
+PlayerMenuManager o-> "states<bool>" "List`1"
+PlayerMenuManager --> "toggleMenuAction" InputActionReference
+PlayerMenuManager --> "playerCamera" Camera
+PlayerMenuManager --> "playerAudioSource" AudioSource
+PlayerMenuManager --> "saveDataSound" AudioClip
+PlayerMenuManager --> "gruppoCanvas" CanvasGroup
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class ActivatorGun {
+    - Awake() : void
+}
+MonoBehaviour <|-- ActivatorGun
+ActivatorGun --> "cr" GravityGunController
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class SpaceShipController {
+    - noPerformAnimation : bool = false
+    - Awake() : void
+    - StartFlying() : void
+    + SetPostAnimationPosition() : void
+    + SetNoPerformAnimation() : void
+}
+MonoBehaviour <|-- SpaceShipController
+SpaceShipController --> "audioSource" AudioSource
+SpaceShipController --> "audioClip" AudioClip
+SpaceShipController --> "Portello" GameObject
+SpaceShipController --> "targetPostAnimation" Vector3
+SpaceShipController --> "targetPostAnimationRotation" Vector3
+@enduml

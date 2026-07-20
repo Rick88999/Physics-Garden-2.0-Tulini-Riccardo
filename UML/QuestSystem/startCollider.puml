@@ -1,0 +1,9 @@
+@startuml
+class StartCollider {
+    - number : int
+    + OnTriggerEnter(other:Collider) : void
+    + DestroyTriggers() : void
+}
+MonoBehaviour <|-- StartCollider
+StartCollider --> "questManager" QuestManager
+@enduml

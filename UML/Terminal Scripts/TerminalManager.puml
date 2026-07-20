@@ -1,0 +1,9 @@
+@startuml
+class TerminalManager {
+    + DeactiveTerminal() : void
+    + SpawnTerminal(position:Vector3, rotation:Quaternion) : void
+    + ActiveTerminal() : void
+}
+MonoBehaviour <|-- TerminalManager
+TerminalManager --> "terminale" GameObject
+@enduml

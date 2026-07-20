@@ -1,0 +1,9 @@
+@startuml
+class RampHolder {
+    - layerMask : string = "OggettoPianoInclinatoInMoto"
+    - Awake() : void
+    + Release() : void
+}
+MonoBehaviour <|-- RampHolder
+RampHolder --> "socket" XRSocketInteractor
+@enduml

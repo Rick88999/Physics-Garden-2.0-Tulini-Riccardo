@@ -1,0 +1,28 @@
+@startuml
+class BilanciaDuePiatti {
+    - leftPlateWeight : float
+    - minY : float = 0.56f
+    - maxY : float = 1.6f
+    - speed : float = 3f
+    - rightPlateWeight : float = 0f
+    - Start() : void
+    + ObjectEnter(obj:GameObject) : void
+    + ObjectExit(obj:GameObject) : void
+    - AddObject(obj:GameObject) : void
+    - RemoveObject(obj:GameObject) : void
+    - RecalculateRightWeight() : void
+    - Update() : void
+    - AggiornaPosizionePiatti() : bool
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- BilanciaDuePiatti
+BilanciaDuePiatti --> "leftPlate" Transform
+BilanciaDuePiatti --> "rightPlate" Transform
+BilanciaDuePiatti --> "led" GameObject
+BilanciaDuePiatti --> "red" Material
+BilanciaDuePiatti --> "green" Material
+BilanciaDuePiatti --> "leftInitialPos" Vector3
+BilanciaDuePiatti --> "rightInitialPos" Vector3
+BilanciaDuePiatti o-> "objectsOnRightPlate<GameObject>" "List`1"
+@enduml

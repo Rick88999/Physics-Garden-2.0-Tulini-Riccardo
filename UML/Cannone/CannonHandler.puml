@@ -1,0 +1,8 @@
+@startuml
+class CannonHandler {
+    + <<override>> Perform(data:float) : void
+}
+class "Handler`1"<T> {
+}
+"Handler`1" "<float>" <|-- CannonHandler
+@enduml

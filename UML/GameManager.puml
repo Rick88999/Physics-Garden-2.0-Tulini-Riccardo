@@ -1,0 +1,72 @@
+@startuml
+struct SerializableVector3 {
+    + x : float
+    + y : float
+    + z : float
+    + SerializableVector3(v:Vector3)
+    + ToVector3() : Vector3
+}
+struct SerializableQuaternion {
+    + x : float
+    + y : float
+    + z : float
+    + w : float
+    + SerializableQuaternion(q:Quaternion)
+    + ToQuaternion() : Quaternion
+}
+struct SaveInventoryButton {
+    + index : int
+    + state : bool
+}
+struct SavedStep {
+    + id_step : int
+    + state : string
+}
+struct SavedQuest {
+    + id_quest : int
+    + state : string
+}
+struct SavedState {
+    + id_player : int
+    + name_player : string
+}
+class GameManager {
+    - closingGame : bool = false
+    - ResetLight() : void
+    + SetLanguage(language:Language) : void
+    + GetLanguage() : Language
+    + NewSaveGame(name:string) : void
+    + SaveGame() : void
+    + SaveAndClose() : void
+    + Close() : void
+    + LoadSavedGame(name:string) : void
+    + DeleteSavedGame(name:string) : void
+    + GetSavedFiles() : string[]
+    - QuestCompletationController(quests:SavedQuest[]) : void
+    - SaveInventory() : void
+    - LoadInvetory() : void
+    - AudioChangeClip() : void
+}
+SavedState --> "position_player" SerializableVector3
+SavedState --> "rotation_player" SerializableQuaternion
+SavedState --> "position_companion" SerializableVector3
+SavedState --> "rotation_companion" SerializableQuaternion
+MonoBehaviour <|-- GameManager
+GameManager --> "questManager" QuestManager
+GameManager --> "player" GameObject
+GameManager --> "companion" GameObject
+GameManager --> "startTower" GameObject
+GameManager --> "spaceShip" GameObject
+GameManager --> "esterEggPlatform" GameObject
+GameManager --> "basePlayerPosition" Vector3
+GameManager --> "basePlayerRotation" Quaternion
+GameManager --> "playerMenuManager" PlayerMenuManager
+GameManager --> "gravityGunController" GravityGunController
+GameManager --> "saveNotificationText" TextMeshProUGUI
+GameManager --> "inventoryManager" InventoryManager
+GameManager --> "playerAudioSource" AudioSource
+GameManager --> "playerAudioClip" AudioClip
+GameManager --> "settingsController" SettingsController
+GameManager --> "actualSavedState" SavedState
+GameManager o-> "actualLanguage" Language
+@enduml

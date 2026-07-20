@@ -1,0 +1,28 @@
+@startuml
+class RuotaPiano {
+    - minAngle : float = 10f
+    - maxAngle : float = 60f
+    - rotazioneMax : float = 60f
+    - smoothingFactor : float = 0.15f
+    - deadzone : float = 0.5f
+    - angoloMano : float
+    - angoloManopolaAttuale : float = 0f
+    - actualPianoAngle : int = 0
+    - Awake() : void
+    - Start() : void
+    - LateUpdate() : void
+    - TransmitResult() : void
+    - OnGrab(args:SelectEnterEventArgs) : void
+    - OnRelease(args:SelectExitEventArgs) : void
+    - UpdateKnob(hand:Transform) : void
+    - GetHandAngle(hand:Transform) : float
+    + GetCurrentPianoAngle() : float
+}
+MonoBehaviour <|-- RuotaPiano
+RuotaPiano --> "angoloText" TextMeshProUGUI
+RuotaPiano --> "piano" Transform
+RuotaPiano --> "interactXR" XRSimpleInteractable
+RuotaPiano --> "currentInteractXR" IXRSelectInteractor
+RuotaPiano --> "fixedPosition" Vector3
+RuotaPiano --> "DataCardSpawner" GameObject
+@enduml

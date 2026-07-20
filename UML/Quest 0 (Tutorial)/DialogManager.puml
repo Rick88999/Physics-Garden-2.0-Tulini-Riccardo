@@ -1,0 +1,26 @@
+@startuml
+class DialogManager {
+    + afterEndStep : bool
+    + canvasEndToggle : bool = true
+    - index : int = 0
+    - alreadyStarted : bool = false
+    + typingSpeed : float
+    - isTyping : bool = false
+    + Awake() : void
+    + nextSentence() : void
+    - StartTypingCurrent() : void
+    - FinishCurrentSentenceInstant() : void
+    - PlayClipForCurrent() : void
+    - Type() : IEnumerator
+}
+MonoBehaviour <|-- DialogManager
+DialogManager --> "gameManager" GameManager
+DialogManager --> "fatherStep" Step
+DialogManager --> "botText" TextMeshProUGUI
+DialogManager --> "panel" GameObject
+DialogManager --> "canvasPointer" GameObject
+DialogManager --> "bot" GameObject
+DialogManager --> "dialogAudioSource" AudioSource
+DialogManager --> "typingCoroutine" Coroutine
+DialogManager --> "actualLenguage" Language
+@enduml

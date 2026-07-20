@@ -1,0 +1,9 @@
+@startuml
+class SpawnTerminal {
+    + Spawn() : void
+    + Deactive() : void
+}
+MonoBehaviour <|-- SpawnTerminal
+SpawnTerminal --> "terminalManager" TerminalManager
+SpawnTerminal --> "spawnPosition" Transform
+@enduml

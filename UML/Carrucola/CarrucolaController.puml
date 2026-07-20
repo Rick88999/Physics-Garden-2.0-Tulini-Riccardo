@@ -1,0 +1,19 @@
+@startuml
+class CarrucolaController {
+    - baseSpeed : float
+    - downToTop : bool = false
+    - topToDown : bool = false
+    - isMoving : bool = false
+    - minSpeed : float = 0.1f
+    - Start() : void
+    - Update() : void
+    + MovetoTop() : void
+    + MovetoDown() : void
+    + CloseDoors() : void
+    + OpenDoors() : void
+}
+MonoBehaviour <|-- CarrucolaController
+CarrucolaController --> "endPoint" Transform
+CarrucolaController --> "startPoint" Transform
+CarrucolaController --> "carrucola" GameObject
+@enduml

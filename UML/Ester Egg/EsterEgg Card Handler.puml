@@ -1,0 +1,12 @@
+@startuml
+class EsterEggCardHandler {
+    + SpawnCard(cardType:EsterEggCardType) : void
+}
+struct CardData {
+}
+MonoBehaviour <|-- EsterEggCardHandler
+EsterEggCardHandler +-- CardData
+CardData --> "cardPrefab" GameObject
+CardData --> "type" EsterEggCardType
+CardData --> "spawnPoint" Transform
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+class TextPulser {
+    + speed : float = 1.5f
+    + minAlpha : float = 0.2f
+    + maxAlpha : float = 1.0f
+    - Update() : void
+}
+MonoBehaviour <|-- TextPulser
+TextPulser --> "textToPulse" TextMeshProUGUI
+@enduml

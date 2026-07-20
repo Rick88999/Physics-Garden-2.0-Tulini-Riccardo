@@ -1,0 +1,7 @@
+@startuml
+abstract class "Handler`1"<T> {
+    + {abstract} Perform(data:T) : void
+}
+MonoBehaviour <|-- "Handler`1"
+"Handler`1" --> "target" GameObject
+@enduml

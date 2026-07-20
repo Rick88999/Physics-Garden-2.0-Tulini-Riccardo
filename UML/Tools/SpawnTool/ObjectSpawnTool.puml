@@ -1,0 +1,71 @@
+@startuml
+class ObjectSpawnTool {
+    - massa : float = 1f
+    - raggio : float = 1f
+    - fattoreDiScala : float = 0.01f
+    - Awake() : void
+    - RebindActions() : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnSpawnPerformed(context:InputAction.CallbackContext) : void
+    - OnOpenMenuPerformed(context:InputAction.CallbackContext) : void
+    - OpenMenu() : void
+    - Spawn() : void
+    - ChangeShape(nuovaForma:Forma) : void
+    - ChangeMaterial(nuovoMateriale:Materiale) : void
+    - IncreaseMass(amount:float) : void
+    - DecreaseMass(amount:float) : void
+    + IncreaseMassOneOnTen() : void
+    + DecreaseMassOneOnTen() : void
+    + IncreaseMassOne() : void
+    + DecreaseMassOne() : void
+    + IncreaseMassTen() : void
+    + DecreaseMassTen() : void
+    + IncreaseMassHalf() : void
+    + DecreaseMassHalf() : void
+    + ChangeRadius() : void
+    - ChangeScreenPosition(newHand:string) : void
+    + ChangeShapeCube() : void
+    + ChangeShapeSphere() : void
+    + ChangeShapeCylinder() : void
+    + ChangeMaterialWood() : void
+    + ChangeMaterialRock() : void
+    + ChangeMaterialRubber() : void
+    + ChangeMaterialMetal() : void
+    + ChangeMaterialGlass() : void
+}
+enum Forma {
+    Cubo,
+    Sfera,
+    Cilindro,
+}
+enum Materiale {
+    Legno,
+    Roccia,
+    Gomma,
+    Metallo,
+    Vetro,
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+MonoBehaviour <|-- ObjectSpawnTool
+ObjectSpawnTool --> "detectHandOnGrab" DetectHandOnGrab
+ObjectSpawnTool --> "spawnAction" InputActionReference
+ObjectSpawnTool --> "openMenuAction" InputActionReference
+ObjectSpawnTool --> "menuPrefab" GameObject
+ObjectSpawnTool --> "spawnAttach" Transform
+ObjectSpawnTool o-> "forma" Forma
+ObjectSpawnTool o-> "materiale" Materiale
+ObjectSpawnTool --> "massaText" TextMeshProUGUI
+ObjectSpawnTool --> "massaSlider" Slider
+ObjectSpawnTool --> "raggioText" TextMeshProUGUI
+ObjectSpawnTool --> "raggioSlider" Slider
+ObjectSpawnTool o-> "materiali<Material>" "List`1"
+ObjectSpawnTool o-> "materialeMap<Materiale,Material>" "Dictionary`2"
+ObjectSpawnTool +-- Forma
+ObjectSpawnTool +-- Materiale
+@enduml

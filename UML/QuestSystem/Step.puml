@@ -1,0 +1,21 @@
+@startuml
+class Step {
+    - stepID : int
+    - state : string = "noActivated"
+    - isLastStep : bool
+    - giveLootAtEndStep : bool
+    + startStep() : void
+    + endStep() : void
+    + setStateStep(oldState:string) : void
+    - GiveLoot() : void
+    + getStateStep() : string
+    + getIdStep() : int
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- Step
+Step --> "father" Quest
+Step --> "NextStep" Step
+Step o-> "lootGivers<LootGiver>" "List`1"
+Step --> "manifestManager" ManifestManager
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class WaterAnimation {
+    + scrollSpeedX : float = 0.05f
+    + scrollSpeedY : float = 0.02f
+    + waveHeight : float = 0.05f
+    + waveSpeed : float = 1.5f
+    - Start() : void
+    - Update() : void
+    - AnimateUVScroll() : void
+    - AnimateWave() : void
+}
+MonoBehaviour <|-- WaterAnimation
+WaterAnimation --> "mat" Material
+WaterAnimation --> "startPosition" Vector3
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+class ModuloPuroRotolamento {
+    - radius : float
+    - forzareInerziaTeorica : bool = true
+    - Awake() : void
+    - ConfiguraInerzia() : void
+    - FixedUpdate() : void
+    - OnDestroy() : void
+}
+MonoBehaviour <|-- ModuloPuroRotolamento
+ModuloPuroRotolamento --> "corpo" Rigidbody
+@enduml

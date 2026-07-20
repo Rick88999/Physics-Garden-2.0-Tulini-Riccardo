@@ -1,0 +1,79 @@
+@startuml
+enum Operazione {
+    AltezzaSeno,
+    AltezzaCoseno,
+    AltezzaTan,
+    MassaDaInerzia,
+    costanteInerzialeX1,
+    costanteInerzialeX2,
+    costanteInerzialeO,
+    InerziaO,
+    InerziaX1,
+    InerziaX2,
+    InerziaX3,
+    DensitaX1,
+    DensitaArch,
+    DensitaO,
+    VolumeCubo,
+    VolumeSfera,
+    VolumeCilindro,
+    VolumeX1,
+    ForzaCentripeta,
+    ForzaNewtoniana,
+    ForzaElastica,
+    ForzaElettrostatica,
+    ForzaDiLorentz,
+    ForzaAttritoStatico,
+    EnergiaCinetica,
+    EnergiaPotenziale,
+    EnergiaElastica,
+    None,
+}
+enum UnitaMisura {
+    Metri,
+    Centimetri,
+    Millimetri,
+    Velocita,
+    Angolo,
+    Kilogrammi,
+    Accelerazione,
+    Volume,
+    VolumeX1,
+    DensitaX1,
+    DensitaO,
+    Inerzia,
+    InerziaX2,
+    InerziaX3,
+    Newton,
+    Jouole,
+    None,
+}
+enum TipoCard {
+    DataCard,
+    FormulaCard,
+}
+enum TipoLoot {
+    Card,
+    Tool,
+    Button,
+}
+enum Event {
+    SpawnTool,
+    SpawnDataCard,
+    SpawnFormulaCard,
+}
+enum TipoTool {
+    MassSensor,
+    Spawner,
+    Teleport,
+}
+enum EsterEggCardType {
+    CardRed,
+    CardGreen,
+    CardBlue,
+}
+enum Language {
+    Italian,
+    English,
+}
+@enduml

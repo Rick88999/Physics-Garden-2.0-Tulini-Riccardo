@@ -1,0 +1,9 @@
+@startuml
+class AddOnErrorDialogueOneWay {
+    - OnTriggerExit(other:Collider) : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- AddOnErrorDialogueOneWay
+AddOnErrorDialogueOneWay --> "ways<GameObject>" "List`1"
+@enduml

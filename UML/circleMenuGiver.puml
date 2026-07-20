@@ -1,0 +1,9 @@
+@startuml
+class circleMenuGiver {
+    + activateMenu : bool = false
+    + enableAttrattore : bool = false
+    + Awake() : void
+}
+MonoBehaviour <|-- circleMenuGiver
+circleMenuGiver --> "CircleManuManager" GameObject
+@enduml

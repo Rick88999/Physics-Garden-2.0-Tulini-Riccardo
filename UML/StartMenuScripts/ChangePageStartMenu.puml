@@ -1,0 +1,8 @@
+@startuml
+class ChangePageStartMenu {
+    + ChangePage() : void
+}
+MonoBehaviour <|-- ChangePageStartMenu
+ChangePageStartMenu --> "pageNext" GameObject
+ChangePageStartMenu --> "pageActual" GameObject
+@enduml

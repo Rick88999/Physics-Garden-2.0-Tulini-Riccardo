@@ -1,0 +1,13 @@
+@startuml
+class RayCorda {
+    - grandSeg : float = 0.5f
+    - minSeg : int = 3
+    - Start() : void
+    - Update() : void
+    - UpdateRope() : void
+}
+MonoBehaviour <|-- RayCorda
+RayCorda --> "ray" LineRenderer
+RayCorda --> "posA" Transform
+RayCorda --> "posB" Transform
+@enduml

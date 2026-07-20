@@ -1,0 +1,43 @@
+@startuml
+class LootEvent {
+}
+class ToolEvent {
+}
+class ChangeHandEvent {
+}
+class DropToolEvent {
+}
+class onTargetTeleport {
+}
+class onDefocusTeleport {
+}
+class InclinedPlaneObjectDestroyedEvent {
+}
+class GameEvents {
+    - Awake() : void
+}
+class "UnityEvent`2"<T1,T2> {
+}
+class "UnityEvent`1"<T> {
+}
+"UnityEvent`2" "<string,TipoLoot>" <|-- LootEvent
+"UnityEvent`1" "<string>" <|-- ToolEvent
+"UnityEvent`2" "<string,int>" <|-- ChangeHandEvent
+"UnityEvent`1" "<int>" <|-- DropToolEvent
+"UnityEvent`1" "<string>" <|-- onTargetTeleport
+"UnityEvent`1" "<string>" <|-- onDefocusTeleport
+"UnityEvent`1" "<int>" <|-- InclinedPlaneObjectDestroyedEvent
+MonoBehaviour <|-- GameEvents
+GameEvents --> "Instance" GameEvents
+GameEvents --> "onNewLootAcquired" LootEvent
+GameEvents --> "onToolSpawned" ToolEvent
+GameEvents --> "onChangeHandMassTool" ChangeHandEvent
+GameEvents --> "onChangeHandSpawnerTool" ChangeHandEvent
+GameEvents --> "onChangeHandTeleportTool" ChangeHandEvent
+GameEvents --> "onDropMassTool" DropToolEvent
+GameEvents --> "onDropSpawnerTool" DropToolEvent
+GameEvents --> "onDropTeleportTool" DropToolEvent
+GameEvents --> "onTargetTeleport" onTargetTeleport
+GameEvents --> "onDefocusTeleport" onDefocusTeleport
+GameEvents --> "onInclinedPlaneObjectDestroyed" InclinedPlaneObjectDestroyedEvent
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class UiManager {
+    - OnEnable() : void
+    - OnDisable() : void
+    - onLootAcquired(lootName:string, tipoLoot:TipoLoot) : void
+    - ShowLootUI(lootName:string, tipoLoot:TipoLoot) : IEnumerator
+}
+MonoBehaviour <|-- UiManager
+UiManager --> "gameManager" GameManager
+UiManager --> "lootUi" GameObject
+UiManager --> "audioSource" AudioSource
+UiManager --> "lootSound" AudioClip
+UiManager --> "playerCamera" Camera
+UiManager --> "language" Language
+@enduml

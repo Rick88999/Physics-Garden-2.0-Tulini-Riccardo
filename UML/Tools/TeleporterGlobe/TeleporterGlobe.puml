@@ -1,0 +1,26 @@
+@startuml
+class TeleporterGlobe {
+    - maxDistance : float = 10f
+    - coneAngle : float = 15f
+    - isHeld : bool = false
+    - Awake() : void
+    - RebindActions() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnDestroy() : void
+    - OnGrabbed(args:SelectEnterEventArgs) : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnReleased(args:SelectExitEventArgs) : void
+    - OnInputPerformed(context:InputAction.CallbackContext) : void
+    - Update() : void
+    - FindBestTargetInCone() : LookTarget
+}
+MonoBehaviour <|-- TeleporterGlobe
+TeleporterGlobe --> "cam" Camera
+TeleporterGlobe --> "detectHandOnGrab" DetectHandOnGrab
+TeleporterGlobe --> "inputTeleport" InputActionReference
+TeleporterGlobe --> "targetLayers" LayerMask
+TeleporterGlobe --> "grabInteractable" XRGrabInteractable
+TeleporterGlobe --> "currentTarget" LookTarget
+@enduml

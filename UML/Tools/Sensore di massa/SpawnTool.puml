@@ -1,0 +1,10 @@
+@startuml
+class SpawnTool {
+    + Spawn() : void
+}
+MonoBehaviour <|-- SpawnTool
+SpawnTool --> "prefabToSpawn" GameObject
+SpawnTool --> "spawnPoint" Transform
+SpawnTool --> "audioSource" AudioSource
+SpawnTool --> "spawnSound" AudioClip
+@enduml

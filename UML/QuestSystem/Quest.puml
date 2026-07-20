@@ -1,0 +1,28 @@
+@startuml
+class Quest {
+    + questID : int
+    - state : string = "noActivated"
+    - Start() : void
+    + startQuest() : void
+    + endQuest() : void
+    + isAllAlreadyCompletedEnd() : bool
+    + setQuestState(oldState:string) : void
+    + getIdQuest() : int
+    + getQuestState() : string
+    + allReadyComplete() : bool
+    + PlayErrorMessage() : void
+    + setSavedStep(savedSteps:SavedStep[]) : void
+    + getSavedQuest() : SavedQuest
+    + GetLastOnGoingStep() : int
+    + DestroyQuestTrigger() : void
+    - TurnOffPoint() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- Quest
+Quest --> "alreadyComplete<Quest>" "List`1"
+Quest --> "point" GameObject
+Quest --> "manifestManager" ManifestManager
+Quest --> "dialogueMgError" GameObject
+Quest --> "questManager" QuestManager
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class SettingsController {
+    - isStartMenu : bool
+    - objectsVolumeMultiplier : float = 2f
+    - Start() : void
+    + SetLightIntensity(value:float) : void
+    + SetAudioVolume(value:float) : void
+    + InsertNewToolInList(newTool:AudioSource) : void
+    + SetSliderSettings() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- SettingsController
+SettingsController --> "mainLight" Light
+SettingsController --> "spotLights<Light>" "List`1"
+SettingsController --> "intensityLight" Slider
+SettingsController --> "mainAudioSource" AudioSource
+SettingsController --> "volumeSlider" Slider
+SettingsController --> "npcAudioSources<AudioSource>" "List`1"
+SettingsController --> "objectsAudioSources<AudioSource>" "List`1"
+SettingsController --> "volume" Volume
+SettingsController --> "bloom" Bloom
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class WaterSplashEffect {
+    + minVelocityForSplash : float = 1.5f
+    + maxRipples : int = 3
+    - OnTriggerEnter(other:Collider) : void
+    - SpawnSplash(point:Vector3, speed:float, objSize:Vector3) : void
+    - SpawnRipples(point:Vector3, speed:float) : void
+    - SpawnRippleDelayed(point:Vector3, delay:float, index:int) : System.Collections.IEnumerator
+    - ExpandRipple(ripple:GameObject, index:int) : System.Collections.IEnumerator
+}
+MonoBehaviour <|-- WaterSplashEffect
+WaterSplashEffect --> "splashPrefab" GameObject
+WaterSplashEffect --> "ripplePrefab" GameObject
+@enduml

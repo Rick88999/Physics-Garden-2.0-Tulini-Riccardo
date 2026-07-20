@@ -1,0 +1,24 @@
+@startuml
+class CannoneController {
+    - launchForce : float = 0f
+    - tryShoot : bool
+    - forzaMinima : float
+    - massaMinima : float
+    - massaEffettiva : float
+    - forzaProporzionaleMinima : float
+    - Update() : void
+    - OnTriggerEnter(other:Collider) : void
+    + SetLaunchForceCannon(force:float) : void
+    + Launch() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- CannoneController
+CannoneController --> "audioSource" AudioSource
+CannoneController --> "launchSound" AudioClip
+CannoneController --> "reloadSound" AudioClip
+CannoneController --> "forceLoadSound" AudioClip
+CannoneController --> "launchErrorSound" AudioClip
+CannoneController --> "currentBullet" GameObject
+CannoneController o-> "bulletsAlreadyLaunched<GameObject>" "List`1"
+@enduml

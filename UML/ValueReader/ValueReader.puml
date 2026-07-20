@@ -1,0 +1,22 @@
+@startuml
+class ValueReader {
+    - unitaMisura : string
+    - socketDisableDuration : float = 1f
+    - ejectForce : float = 3f
+    + ActivateCheckValue() : void
+    - DisableSocketTemporarily() : IEnumerator
+    - RestoreCollision(cardCollider:Collider) : IEnumerator
+    - DestroyCard(interactable:IXRSelectInteractable) : IEnumerator
+}
+class "Handler`1"<T> {
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ValueReader
+ValueReader --> "socketInteractor" XRSocketInteractor
+ValueReader --> "handler<float>" "Handler`1"
+ValueReader --> "audioSource" AudioSource
+ValueReader --> "soundError" AudioClip
+ValueReader o-> "ejectDirection" Vector3
+ValueReader --> "box<Collider>" "List`1"
+@enduml

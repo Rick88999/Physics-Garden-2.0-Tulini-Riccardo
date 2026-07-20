@@ -1,0 +1,25 @@
+@startuml
+class GestioneMenuSalvataggi {
+    - Start() : void
+    - OnInputSelected(value:string) : void
+    - Update() : void
+    + ControlNewGame(name:string) : void
+    - GenerateButton(command:string) : void
+    + ClearButtons() : void
+    + OnStartButtonClick() : void
+    + OnKeybordSubmit() : void
+    + GenerateButtonLoad() : void
+    + GenerateButtonDelete() : void
+}
+MonoBehaviour <|-- GestioneMenuSalvataggi
+GestioneMenuSalvataggi --> "gameManager" GameManager
+GestioneMenuSalvataggi --> "panelContenitore" Transform
+GestioneMenuSalvataggi --> "prefabBottoneLoad" GameObject
+GestioneMenuSalvataggi --> "prefabBottoneDelete" GameObject
+GestioneMenuSalvataggi --> "inputField" TMP_InputField
+GestioneMenuSalvataggi --> "errorText" TextMeshProUGUI
+GestioneMenuSalvataggi --> "xrKeyboard" XRKeyboard
+GestioneMenuSalvataggi --> "audioSource" AudioSource
+GestioneMenuSalvataggi --> "clickSoundError" AudioClip
+GestioneMenuSalvataggi --> "language" Language
+@enduml

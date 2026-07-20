@@ -1,0 +1,8 @@
+@startuml
+class TriggerAvvicinamento {
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TriggerAvvicinamento
+TriggerAvvicinamento --> "bot" GameObject
+TriggerAvvicinamento --> "punto" Transform
+@enduml

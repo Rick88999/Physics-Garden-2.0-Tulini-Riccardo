@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class MenuCircleManager : MonoBehaviour
 {
@@ -18,5 +18,5 @@ public class MenuCircleManager : MonoBehaviour
         buttonsLeft[0].SetActive(true);
     }
     
-}
+}*/
 

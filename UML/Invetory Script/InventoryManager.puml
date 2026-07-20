@@ -1,0 +1,22 @@
+@startuml
+class InventoryManager {
+    - enableInventory : bool = false
+    + EnableInventory() : void
+    + SetActiveFormulaButtons(oldState:SaveInventoryButton[]) : void
+    + SetActiveConstantButtons(oldState:SaveInventoryButton[]) : void
+    + SetActiveToolsButtons(oldState:SaveInventoryButton[]) : void
+    + SaveFormulaButtons() : SaveInventoryButton[]
+    + SaveConstantButtons() : SaveInventoryButton[]
+    + SaveToolsButtons() : SaveInventoryButton[]
+    + AwakeButtons() : void
+    + OpenInventory() : void
+    + CloseInventory() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- InventoryManager
+InventoryManager --> "inventoryPanel" GameObject
+InventoryManager --> "formulaButtons<InventoryButton>" "List`1"
+InventoryManager --> "constantButtons<InventoryButton>" "List`1"
+InventoryManager --> "toolsButtons<InventoryButton>" "List`1"
+@enduml

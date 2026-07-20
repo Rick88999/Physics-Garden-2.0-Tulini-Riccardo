@@ -1,0 +1,15 @@
+@startuml
+class VRButton {
+    - cooldownDelay : float = 2.0f
+    - isPressed : bool = false
+    - inCooldown : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnPress(args:HoverEnterEventArgs) : void
+    - OnRelease(args:HoverExitEventArgs) : void
+    - CooldownRoutine() : IEnumerator
+}
+MonoBehaviour <|-- VRButton
+VRButton --> "interactable" XRSimpleInteractable
+VRButton --> "startPosition" Vector3
+@enduml

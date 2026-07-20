@@ -1,0 +1,9 @@
+@startuml
+class ValueReaderHandlerController {
+    + ExecHandler(data:float) : void
+}
+class "Handler`1"<T> {
+}
+MonoBehaviour <|-- ValueReaderHandlerController
+ValueReaderHandlerController --> "handler<float>" "Handler`1"
+@enduml

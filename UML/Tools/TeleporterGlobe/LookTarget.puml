@@ -1,0 +1,16 @@
+@startuml
+class LookTarget {
+    - teleporterName : string
+    - resetDelay : float = 2f
+    - triggered : bool = false
+    - Awake() : void
+    + GetTeleporterName() : string
+    + Activate() : void
+    - ResetTriggeredAfterDelay(delay:float) : IEnumerator
+    - TargetTeleport(targetName:string) : void
+    - DefocusTeleport(targetName:string) : void
+}
+MonoBehaviour <|-- LookTarget
+LookTarget --> "onActivated" UnityEvent
+LookTarget --> "emissionController" EmissionController
+@enduml

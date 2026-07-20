@@ -1,0 +1,12 @@
+@startuml
+class EsterEggCardOnDestroyCaller {
+    - {static} isQuitting : bool
+    - Start() : void
+    - Update() : void
+    - OnApplicationQuit() : void
+    - OnDestroy() : void
+}
+MonoBehaviour <|-- EsterEggCardOnDestroyCaller
+EsterEggCardOnDestroyCaller --> "cardHandler" EsterEggCardHandler
+EsterEggCardOnDestroyCaller --> "cardTypeToSpawn" EsterEggCardType
+@enduml

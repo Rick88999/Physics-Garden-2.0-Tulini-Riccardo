@@ -1,0 +1,16 @@
+@startuml
+class LootGiver {
+    - nameLootItalian : string
+    - nameLootEnglish : string
+    - main : bool
+    - nameLoot : string
+    + GiveLoot() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- LootGiver
+LootGiver --> "gameManager" GameManager
+LootGiver o-> "lootPrefabs<GameObject>" "List`1"
+LootGiver --> "lootSpawnPoint" Transform
+LootGiver --> "tipoLoot" TipoLoot
+@enduml

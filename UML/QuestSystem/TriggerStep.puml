@@ -1,0 +1,15 @@
+@startuml
+class TriggerStep {
+    - alreadyTriggered : bool = false
+    - triggerTag : string
+    - OnTriggerEnter(other:Collider) : void
+}
+enum StepAction {
+    StartNewStep,
+    EndCurrentStep,
+}
+MonoBehaviour <|-- TriggerStep
+TriggerStep --> "step" Step
+TriggerStep --> "stepAction" StepAction
+TriggerStep +-- StepAction
+@enduml

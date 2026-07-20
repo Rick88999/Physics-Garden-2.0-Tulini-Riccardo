@@ -1,0 +1,78 @@
+@startuml
+class CalculationCore {
+    - result : float
+    - unitaMisura : string
+    - velocitaReale : float
+    - eliminaOggettiInSockets() : void
+    - SpawnResultCard(nomeResult:string) : void
+    - ConversioneSocket(sockets:XRSocketInteractor[]) : bool
+    - EnergiaCinetica() : bool
+    - EnergiaPotenziale() : bool
+    - EnergiaElastica() : bool
+    - ForzaElastica() : bool
+    - ForzaNewtoniana() : bool
+    - ForzaCentripeta() : bool
+    - ForzaAttritoStatico() : bool
+    - ForzaElettrostatica() : bool
+    - ForzaDiLorentz() : bool
+    - VolumeCubo() : bool
+    - VolumeSfera() : bool
+    - VolumeCilindro() : bool
+    - VolumeX1() : bool
+    - DensitaX1() : bool
+    - DensitaArch() : bool
+    - DensitaO() : bool
+    - AltezzaSeno() : bool
+    - AltezzaCoseno() : bool
+    - AltezzaTan() : bool
+    - MassaDaInerzia() : bool
+    - CostanteInerzialeX1() : bool
+    - CostanteInerzialeX2() : bool
+    - CostanteInerzialeO() : bool
+    - InerziaX1() : bool
+    - InerziaX2() : bool
+    - InerziaX3() : bool
+    - InerziaO() : bool
+    - Calcolo(operazione:Operazione) : void
+    + CalcoloAltezzaSeno() : void
+    + CalcoloAltezzaCoseno() : void
+    + CalcoloAltezzaTan() : void
+    + CalcoloMassaDaInerzia() : void
+    + CalcoloCostanteInerzialeX1() : void
+    + CalcoloCostanteInerzialeX2() : void
+    + CalcoloCostanteInerzialeO() : void
+    + CalcoloInerziaX1() : void
+    + CalcoloInerziaX2() : void
+    + CalcoloInerziaX3() : void
+    + CalcoloInerziaO() : void
+    + CalcoloDensitaX1() : void
+    + CalcoloDensitaArch() : void
+    + CalcoloDensitaO() : void
+    + CalcoloVolumeCubo() : void
+    + CalcoloVolumeSfera() : void
+    + CalcoloVolumeCilindro() : void
+    + CalcoloVolumeX1() : void
+    + CalcoloForzaCentripeta() : void
+    + CalcoloForzaNewtoniana() : void
+    + CalcoloForzaElastica() : void
+    + CalcoloForzaElettrostatica() : void
+    + CalcoloForzaDiLorentz() : void
+    + CalcoloForzaAttritoStatico() : void
+    + CalcoloEnergiaCinetica() : void
+    + CalcoloEnergiaPotenziale() : void
+    + CalcoloEnergiaElastica() : void
+}
+class "Dictionary`2"<T1,T2> {
+}
+MonoBehaviour <|-- CalculationCore
+CalculationCore o-> "simboliUnita<UnitaMisura,string>" "Dictionary`2"
+CalculationCore --> "gm" GameManager
+CalculationCore --> "resultCardPrefab" GameObject
+CalculationCore --> "spawnSocket" XRSocketInteractor
+CalculationCore --> "spawnResultCard" Transform
+CalculationCore --> "audioSource" AudioSource
+CalculationCore --> "clickSoundError" AudioClip
+CalculationCore --> "clickSoundSuccess" AudioClip
+CalculationCore --> "changePageScript" changePage
+CalculationCore --> "value<string,float>" "Dictionary`2"
+@enduml

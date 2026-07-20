@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -70,4 +70,4 @@ public class HandMenu : MonoBehaviour
         }
         Base.SetActive(true);
     }
-}
+}*/

@@ -1,0 +1,13 @@
+@startuml
+class Teleport {
+    - Awake() : void
+    + TeleportPlayer() : void
+    + TeleportBot() : void
+}
+MonoBehaviour <|-- Teleport
+Teleport --> "player" GameObject
+Teleport --> "Bot" GameObject
+Teleport --> "targetPositionPlayer" Vector3
+Teleport --> "targetPositionBot" Vector3
+Teleport --> "botController" BotController
+@enduml

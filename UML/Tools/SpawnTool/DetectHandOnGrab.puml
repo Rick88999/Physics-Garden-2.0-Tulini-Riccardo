@@ -1,0 +1,25 @@
+@startuml
+class DetectHandOnGrab {
+    - isRight : bool? = null
+    - beforeGrabIsRight : bool? = null
+    - Awake() : void
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    - OnSelectEntered(args:SelectEnterEventArgs) : void
+    - OnSelectExited(args:SelectExitEventArgs) : void
+    + GetPrimaryAction() : InputActionReference
+    + GetSecondaryAction() : InputActionReference
+}
+MonoBehaviour <|-- DetectHandOnGrab
+DetectHandOnGrab --> "tipoTool" TipoTool
+DetectHandOnGrab --> "attachRight" Transform
+DetectHandOnGrab --> "attachLeft" Transform
+DetectHandOnGrab --> "primaryActionRight" InputActionReference
+DetectHandOnGrab --> "primaryActionLeft" InputActionReference
+DetectHandOnGrab --> "secondaryActionRight" InputActionReference
+DetectHandOnGrab --> "secondaryActionLeft" InputActionReference
+DetectHandOnGrab --> "alreadyAttach" Transform
+DetectHandOnGrab --> "grabbable" XRGrabInteractable
+DetectHandOnGrab --> "primaryAction" InputActionReference
+DetectHandOnGrab --> "secondaryAction" InputActionReference
+@enduml

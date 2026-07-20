@@ -1,0 +1,29 @@
+@startuml
+class velocitascanner {
+    + minimumvelocity : float = 0.05f
+    + detectionValue : float = 0
+    - wasObjectInSocket : bool
+    - savedStateSocket : bool
+    - velocitaFinale : float
+    - accelerazioneGravitazionale : float = 9.81f
+    - lunghezzaPianoInclinato : float = 1.5f
+    - costanteInerzialeSfera : float = 0.4f
+    - costanteInerzialeCilindro : float = 0.5f
+    - ultimoOggetto : string = "Sconosciuto"
+    - lastObjectId : int
+    - abortTriggerExecution : bool
+    + SaveStateSocket() : void
+    - Start() : void
+    - OnObjectInSocket(args:SelectEnterEventArgs) : void
+    - OnObjectRemovedFromSocket(args:SelectExitEventArgs) : void
+    - OnInclinedPlaneObjectDestroyed(objectId:int) : void
+    - OnTriggerEnter(other:Collider) : void
+    - ResetGrabInteractable(other:Collider) : IEnumerator
+}
+MonoBehaviour <|-- velocitascanner
+velocitascanner --> "velocitaText" TextMeshProUGUI
+velocitascanner --> "DataCardSpawner" GameObject
+velocitascanner --> "manopolaAngolo" GameObject
+velocitascanner --> "socket" XRSocketInteractor
+velocitascanner --> "lastObjectInSocket" GameObject
+@enduml

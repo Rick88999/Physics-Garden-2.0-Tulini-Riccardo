@@ -1,0 +1,21 @@
+@startuml
+class FisicaMongolfiera {
+    + activator : bool
+    - massaTotale : float = 1f
+    - <<readonly>> terra : float = 0f
+    - gravita : float
+    - volumeOggetto : float
+    - densitaFluido : float
+    - altezzaMassima : float
+    - altezzaAttesa : int
+    - durataAvvio : float = 3f
+    - tempoAvvio : float = 0f
+    - Start() : void
+    - FixedUpdate() : void
+    + AttivaDisattivaSpinta() : void
+}
+MonoBehaviour <|-- FisicaMongolfiera
+FisicaMongolfiera --> "rb" Rigidbody
+FisicaMongolfiera --> "massaCounterBox" MassaCounterBox
+FisicaMongolfiera --> "Tappo" GameObject
+@enduml

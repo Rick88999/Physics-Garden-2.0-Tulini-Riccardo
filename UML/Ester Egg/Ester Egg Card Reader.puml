@@ -1,0 +1,22 @@
+@startuml
+class EsterEggCardReader {
+    - isBlueCardInserted : bool = false
+    - isRedCardInserted : bool = false
+    - isGreenCardInserted : bool = false
+    - Update() : void
+    + RedCardCheck() : void
+    + BlueCardCheck() : void
+    + GreenCardCheck() : void
+    + RedCardRemoved() : void
+    + BlueCardRemoved() : void
+    + GreenCardRemoved() : void
+}
+MonoBehaviour <|-- EsterEggCardReader
+EsterEggCardReader --> "step" Step
+EsterEggCardReader --> "socketInteractorRed" XRSocketInteractor
+EsterEggCardReader --> "socketInteractorGreen" XRSocketInteractor
+EsterEggCardReader --> "socketInteractorBlue" XRSocketInteractor
+EsterEggCardReader --> "EsterEggPrefab" GameObject
+EsterEggCardReader --> "audioSource" AudioSource
+EsterEggCardReader --> "soundSuccess" AudioClip
+@enduml

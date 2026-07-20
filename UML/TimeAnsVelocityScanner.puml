@@ -1,0 +1,10 @@
+@startuml
+class TimeAnsVelocityScanner {
+    - minVelocity : float = 0.1f
+    + tempoIniziale : float <<get>>
+    + OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TimeAnsVelocityScanner
+TimeAnsVelocityScanner --> "rb" Rigidbody
+TimeAnsVelocityScanner --> "velocitaIniziale" Vector3
+@enduml

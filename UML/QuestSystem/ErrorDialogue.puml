@@ -1,0 +1,34 @@
+@startuml
+class ErrorDialogue {
+    - indexError : int = 0
+    - alreadyStartedError : bool = false
+    + typingSpeedError : float
+    - oneWayAddOn : bool
+    - autoNextDelay : float = 10f
+    - isTypingError : bool = false
+    - initialPointState : bool
+    + Awake() : void
+    + StarterDialogueError() : void
+    + nextSentenceError() : void
+    - StartTypingCurrentError() : void
+    - FinishCurrentSentenceInstantError() : void
+    - PlayClipForCurrentError() : void
+    - TypeError() : IEnumerator
+    - AutoNextError() : IEnumerator
+    - Reset() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ErrorDialogue
+ErrorDialogue --> "gameManagerError" GameManager
+ErrorDialogue --> "botTextError" TextMeshProUGUI
+ErrorDialogue --> "panelError" GameObject
+ErrorDialogue --> "canvasPointerError" GameObject
+ErrorDialogue --> "botError" GameObject
+ErrorDialogue --> "point" GameObject
+ErrorDialogue --> "dialogAudioSourceError" AudioSource
+ErrorDialogue --> "ways<GameObject>" "List`1"
+ErrorDialogue --> "typingCoroutineError" Coroutine
+ErrorDialogue --> "autoNextCoroutineError" Coroutine
+ErrorDialogue --> "actualLenguageError" Language
+@enduml

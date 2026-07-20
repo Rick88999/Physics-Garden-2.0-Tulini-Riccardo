@@ -1,0 +1,27 @@
+@startuml
+class ManifestManager {
+    + questStarted(idQuest:int) : void
+    + stepCompleted(idQuest:int, idStep:int) : void
+    + questCompleted() : void
+    + ReloadFromSavings(fatherQuest:int, lastStep:int) : void
+}
+class "List`1"<T> {
+}
+struct CheckField {
+    + idStep : int
+    + isYallowAtStart : bool
+}
+struct Page {
+    + idQuest : int
+}
+MonoBehaviour <|-- ManifestManager
+ManifestManager --> "manifestPages<Page>" "List`1"
+ManifestManager --> "anyQuestPage" GameObject
+ManifestManager --> "pinManifestController" PinManifestController
+ManifestManager --> "currentPage" Page
+ManifestManager +-- CheckField
+CheckField --> "checkField" GameObject
+ManifestManager +-- Page
+Page --> "page" GameObject
+Page --> "checkFields<CheckField>" "List`1"
+@enduml

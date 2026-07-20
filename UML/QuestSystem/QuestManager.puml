@@ -1,0 +1,17 @@
+@startuml
+class QuestManager {
+    - currentQuest : int = 0
+    + startQuest(number:int) : bool
+    + settingsSaves(allQuest:SavedQuest[]) : void
+    + getSavedQuests() : SavedQuest[]
+    + OnQuestCompleted() : void
+    - AllQuestsCompleted() : void
+    - PointsHandler() : void
+}
+struct StartTriggersContainer {
+}
+MonoBehaviour <|-- QuestManager
+QuestManager --> "EsterEggQuest" GameObject
+QuestManager --> "manifestManager" ManifestManager
+QuestManager +-- StartTriggersContainer
+@enduml

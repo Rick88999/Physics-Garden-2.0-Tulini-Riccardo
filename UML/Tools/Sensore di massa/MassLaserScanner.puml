@@ -1,0 +1,27 @@
+@startuml
+class MassLaserScanner {
+    - maxDistance : float = 10f
+    - massaMemorizzata : float = 0f
+    - Awake() : void
+    - RebindActions() : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnDestroy() : void
+    - Update() : void
+    - EseguiScansione(context:InputAction.CallbackContext) : void
+    - GenerateDataCard(context:InputAction.CallbackContext) : void
+    - ImpostaColoreLaser(colore:Color) : void
+}
+MonoBehaviour <|-- MassLaserScanner
+MassLaserScanner --> "spawnCard" SpawnCard
+MassLaserScanner --> "rayOrigin" Transform
+MassLaserScanner o-> "coloreNormale" Color
+MassLaserScanner o-> "coloreScansionabile" Color
+MassLaserScanner --> "detectHandOnGrab" DetectHandOnGrab
+MassLaserScanner --> "scanAction" InputActionReference
+MassLaserScanner --> "spawnCardAction" InputActionReference
+MassLaserScanner --> "lineRenderer" LineRenderer
+MassLaserScanner --> "displayRisultato" TextMeshProUGUI
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+class FormulaCanvasData {
+    - Awake() : void
+    + SetCanvas(NewCanvas:GameObject) : void
+}
+MonoBehaviour <|-- FormulaCanvasData
+FormulaCanvasData --> "canvasDaAttivare" GameObject
+@enduml

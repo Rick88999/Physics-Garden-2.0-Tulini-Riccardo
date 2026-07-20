@@ -1,0 +1,11 @@
+@startuml
+class InventoryButton {
+    - state : bool = false
+    + SetActive(oldState:bool) : void
+    + AwakeBotton() : void
+    + GetState() : bool
+}
+MonoBehaviour <|-- InventoryButton
+InventoryButton --> "FatherPanel" GameObject
+InventoryButton --> "inventoryButton" GameObject
+@enduml

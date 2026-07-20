@@ -1,0 +1,15 @@
+@startuml
+class ChangeLenguageController {
+    - Start() : void
+    - setArray(array:List<GameObject>, value:bool) : void
+    - SetLenguage(lenguage:Language) : void
+    + SetItalian() : void
+    + SetEnglish() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ChangeLenguageController
+ChangeLenguageController --> "gm" GameManager
+ChangeLenguageController --> "italianTexts<GameObject>" "List`1"
+ChangeLenguageController --> "engTexts<GameObject>" "List`1"
+@enduml

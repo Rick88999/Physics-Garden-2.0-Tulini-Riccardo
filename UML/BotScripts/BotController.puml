@@ -1,0 +1,29 @@
+@startuml
+class BotController {
+    + followRefreshRate : float = 0.2f
+    - followDistance : float = 1.5f
+    - stopIfCloserThan : float = 1.2f
+    - nextFollowUpdate : float
+    - Awake() : void
+    - Update() : void
+    + GoToFixedPoint(point:Transform) : void
+    + StartFollow() : void
+    + ContiuneFollow() : void
+    + StartFollow(playerTarget:Transform) : void
+    + StopBot() : void
+    + TeleportTo(position:Vector3) : void
+    + GetMode() : Mode
+    - ModeToString(m:Mode) : string
+    + getMode() : string
+}
+enum Mode {
+    Idle,
+    GoToPoint,
+    Follow,
+}
+MonoBehaviour <|-- BotController
+BotController --> "player" Transform
+BotController --> "agent" NavMeshAgent
+BotController o-> "mode" Mode
+BotController +-- Mode
+@enduml

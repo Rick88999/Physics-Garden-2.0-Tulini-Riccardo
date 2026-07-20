@@ -1,0 +1,1464 @@
+@startuml
+class accelerationScanner {
+    + minimumAcceleration : float = 0.1f
+    + detectionValue : float = 0
+    + acceleration : float <<get>>
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- accelerationScanner
+accelerationScanner --> "tracker" TimeAnsVelocityScanner
+accelerationScanner --> "accelerationText" TextMeshProUGUI
+class CanvasRotation {
+    - Update() : void
+}
+MonoBehaviour <|-- CanvasRotation
+CanvasRotation --> "player" Transform
+class circleMenuGiver {
+    + activateMenu : bool = false
+    + enableAttrattore : bool = false
+    + Awake() : void
+}
+MonoBehaviour <|-- circleMenuGiver
+circleMenuGiver --> "CircleManuManager" GameObject
+struct SerializableVector3 {
+    + x : float
+    + y : float
+    + z : float
+    + SerializableVector3(v:Vector3)
+    + ToVector3() : Vector3
+}
+struct SerializableQuaternion {
+    + x : float
+    + y : float
+    + z : float
+    + w : float
+    + SerializableQuaternion(q:Quaternion)
+    + ToQuaternion() : Quaternion
+}
+struct SaveInventoryButton {
+    + index : int
+    + state : bool
+}
+struct SavedStep {
+    + id_step : int
+    + state : string
+}
+struct SavedQuest {
+    + id_quest : int
+    + state : string
+}
+struct SavedState {
+    + id_player : int
+    + name_player : string
+}
+class GameManager {
+    - closingGame : bool = false
+    - ResetLight() : void
+    + SetLanguage(language:Language) : void
+    + GetLanguage() : Language
+    + NewSaveGame(name:string) : void
+    + SaveGame() : void
+    + SaveAndClose() : void
+    + Close() : void
+    + LoadSavedGame(name:string) : void
+    + DeleteSavedGame(name:string) : void
+    + GetSavedFiles() : string[]
+    - QuestCompletationController(quests:SavedQuest[]) : void
+    - SaveInventory() : void
+    - LoadInvetory() : void
+    - AudioChangeClip() : void
+}
+SavedState --> "position_player" SerializableVector3
+SavedState --> "rotation_player" SerializableQuaternion
+SavedState --> "position_companion" SerializableVector3
+SavedState --> "rotation_companion" SerializableQuaternion
+MonoBehaviour <|-- GameManager
+GameManager --> "questManager" QuestManager
+GameManager --> "player" GameObject
+GameManager --> "companion" GameObject
+GameManager --> "startTower" GameObject
+GameManager --> "spaceShip" GameObject
+GameManager --> "esterEggPlatform" GameObject
+GameManager --> "basePlayerPosition" Vector3
+GameManager --> "basePlayerRotation" Quaternion
+GameManager --> "playerMenuManager" PlayerMenuManager
+GameManager --> "gravityGunController" GravityGunController
+GameManager --> "saveNotificationText" TextMeshProUGUI
+GameManager --> "inventoryManager" InventoryManager
+GameManager --> "playerAudioSource" AudioSource
+GameManager --> "playerAudioClip" AudioClip
+GameManager --> "settingsController" SettingsController
+GameManager --> "actualSavedState" SavedState
+GameManager o-> "actualLanguage" Language
+class GestioneMneuSalvataggi {
+}
+MonoBehaviour <|-- GestioneMneuSalvataggi
+class HandMenu {
+    + spawnDistance : float = 1.0f
+    + enableButton : bool = false
+    + updateButton() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleMenu(context:InputAction.CallbackContext) : void
+    - ResetHand() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- HandMenu
+HandMenu --> "radialMenu" GameObject
+HandMenu --> "Player" Transform
+HandMenu --> "toggleMenuAction" InputActionReference
+HandMenu --> "Base" GameObject
+HandMenu o-> "Modalita<GameObject>" "List`1"
+class RampHolder {
+    - layerMask : string = "OggettoPianoInclinatoInMoto"
+    - Awake() : void
+    + Release() : void
+}
+MonoBehaviour <|-- RampHolder
+RampHolder --> "socket" XRSocketInteractor
+class GestioneMenuSalvataggi {
+    - Start() : void
+    - OnInputSelected(value:string) : void
+    - Update() : void
+    + ControlNewGame(name:string) : void
+    - GenerateButton(command:string) : void
+    + ClearButtons() : void
+    + OnStartButtonClick() : void
+    + OnKeybordSubmit() : void
+    + GenerateButtonLoad() : void
+    + GenerateButtonDelete() : void
+}
+MonoBehaviour <|-- GestioneMenuSalvataggi
+GestioneMenuSalvataggi --> "gameManager" GameManager
+GestioneMenuSalvataggi --> "panelContenitore" Transform
+GestioneMenuSalvataggi --> "prefabBottoneLoad" GameObject
+GestioneMenuSalvataggi --> "prefabBottoneDelete" GameObject
+GestioneMenuSalvataggi --> "inputField" TMP_InputField
+GestioneMenuSalvataggi --> "errorText" TextMeshProUGUI
+GestioneMenuSalvataggi --> "xrKeyboard" XRKeyboard
+GestioneMenuSalvataggi --> "audioSource" AudioSource
+GestioneMenuSalvataggi --> "clickSoundError" AudioClip
+GestioneMenuSalvataggi --> "language" Language
+class TextPulser {
+    + speed : float = 1.5f
+    + minAlpha : float = 0.2f
+    + maxAlpha : float = 1.0f
+    - Update() : void
+}
+MonoBehaviour <|-- TextPulser
+TextPulser --> "textToPulse" TextMeshProUGUI
+class TimeAnsVelocityScanner {
+    - minVelocity : float = 0.1f
+    + tempoIniziale : float <<get>>
+    + OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TimeAnsVelocityScanner
+TimeAnsVelocityScanner --> "rb" Rigidbody
+TimeAnsVelocityScanner --> "velocitaIniziale" Vector3
+enum Operazione {
+    AltezzaSeno,
+    AltezzaCoseno,
+    AltezzaTan,
+    MassaDaInerzia,
+    costanteInerzialeX1,
+    costanteInerzialeX2,
+    costanteInerzialeO,
+    InerziaO,
+    InerziaX1,
+    InerziaX2,
+    InerziaX3,
+    DensitaX1,
+    DensitaArch,
+    DensitaO,
+    VolumeCubo,
+    VolumeSfera,
+    VolumeCilindro,
+    VolumeX1,
+    ForzaCentripeta,
+    ForzaNewtoniana,
+    ForzaElastica,
+    ForzaElettrostatica,
+    ForzaDiLorentz,
+    ForzaAttritoStatico,
+    EnergiaCinetica,
+    EnergiaPotenziale,
+    EnergiaElastica,
+    None,
+}
+enum UnitaMisura {
+    Metri,
+    Centimetri,
+    Millimetri,
+    Velocita,
+    Angolo,
+    Kilogrammi,
+    Accelerazione,
+    Volume,
+    VolumeX1,
+    DensitaX1,
+    DensitaO,
+    Inerzia,
+    InerziaX2,
+    InerziaX3,
+    Newton,
+    Jouole,
+    None,
+}
+enum TipoCard {
+    DataCard,
+    FormulaCard,
+}
+enum TipoLoot {
+    Card,
+    Tool,
+    Button,
+}
+enum Event {
+    SpawnTool,
+    SpawnDataCard,
+    SpawnFormulaCard,
+}
+enum TipoTool {
+    MassSensor,
+    Spawner,
+    Teleport,
+}
+enum EsterEggCardType {
+    CardRed,
+    CardGreen,
+    CardBlue,
+}
+enum Language {
+    Italian,
+    English,
+}
+class ValueReaderHandlerController {
+    + ExecHandler(data:float) : void
+}
+class "Handler`1"<T> {
+}
+MonoBehaviour <|-- ValueReaderHandlerController
+ValueReaderHandlerController --> "handler<float>" "Handler`1"
+class VRInterruptor {
+    - cooldownDelay : float = 2.0f
+    - isPressed : bool = false
+    - inCooldown : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnPress(args:HoverEnterEventArgs) : void
+    - OnRelease(args:HoverExitEventArgs) : void
+    - CooldownRoutine() : IEnumerator
+}
+class GraphEvent {
+}
+MonoBehaviour <|-- VRInterruptor
+VRInterruptor o-> "on" GraphEvent
+VRInterruptor o-> "off" GraphEvent
+VRInterruptor o-> "actualEvent" GraphEvent
+VRInterruptor --> "audioSource" AudioSource
+VRInterruptor --> "onSound" AudioClip
+VRInterruptor --> "interactable" XRSimpleInteractable
+VRInterruptor --> "startPosition" Vector3
+VRInterruptor +-- GraphEvent
+GraphEvent --> "eventIO" UnityEvent
+GraphEvent --> "nextEvent" GraphEvent
+class VRButton {
+    - cooldownDelay : float = 2.0f
+    - isPressed : bool = false
+    - inCooldown : bool = false
+    - Awake() : void
+    - Start() : void
+    - OnPress(args:HoverEnterEventArgs) : void
+    - OnRelease(args:HoverExitEventArgs) : void
+    - CooldownRoutine() : IEnumerator
+}
+MonoBehaviour <|-- VRButton
+VRButton --> "interactable" XRSimpleInteractable
+VRButton --> "startPosition" Vector3
+class ZFallBotRecovery {
+    - sampleInterval : float = 0.5f
+    - floorTolerance : float = 2f
+    - sampleTimer : float
+    - isFalling : bool
+    - Start() : void
+    - Update() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ZFallBotRecovery
+ZFallBotRecovery --> "teleporters<GameObject>" "List`1"
+ZFallBotRecovery --> "Player" GameObject
+ZFallBotRecovery --> "pastPlayerPosition" Vector3
+class BilanciaDuePiatti {
+    - leftPlateWeight : float
+    - minY : float = 0.56f
+    - maxY : float = 1.6f
+    - speed : float = 3f
+    - rightPlateWeight : float = 0f
+    - Start() : void
+    + ObjectEnter(obj:GameObject) : void
+    + ObjectExit(obj:GameObject) : void
+    - AddObject(obj:GameObject) : void
+    - RemoveObject(obj:GameObject) : void
+    - RecalculateRightWeight() : void
+    - Update() : void
+    - AggiornaPosizionePiatti() : bool
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- BilanciaDuePiatti
+BilanciaDuePiatti --> "leftPlate" Transform
+BilanciaDuePiatti --> "rightPlate" Transform
+BilanciaDuePiatti --> "led" GameObject
+BilanciaDuePiatti --> "red" Material
+BilanciaDuePiatti --> "green" Material
+BilanciaDuePiatti --> "leftInitialPos" Vector3
+BilanciaDuePiatti --> "rightInitialPos" Vector3
+BilanciaDuePiatti o-> "objectsOnRightPlate<GameObject>" "List`1"
+class PlateScanner {
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+}
+MonoBehaviour <|-- PlateScanner
+PlateScanner --> "bilancia" BilanciaDuePiatti
+class BotController {
+    + followRefreshRate : float = 0.2f
+    - followDistance : float = 1.5f
+    - stopIfCloserThan : float = 1.2f
+    - nextFollowUpdate : float
+    - Awake() : void
+    - Update() : void
+    + GoToFixedPoint(point:Transform) : void
+    + StartFollow() : void
+    + ContiuneFollow() : void
+    + StartFollow(playerTarget:Transform) : void
+    + StopBot() : void
+    + TeleportTo(position:Vector3) : void
+    + GetMode() : Mode
+    - ModeToString(m:Mode) : string
+    + getMode() : string
+}
+enum Mode {
+    Idle,
+    GoToPoint,
+    Follow,
+}
+MonoBehaviour <|-- BotController
+BotController --> "player" Transform
+BotController --> "agent" NavMeshAgent
+BotController o-> "mode" Mode
+BotController +-- Mode
+class TriggerAvvicinamento {
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TriggerAvvicinamento
+TriggerAvvicinamento --> "bot" GameObject
+TriggerAvvicinamento --> "punto" Transform
+class BasketController {
+    - OnTriggerEnter(other:Collider) : void
+    - EndStepDelay() : IEnumerator
+}
+MonoBehaviour <|-- BasketController
+BasketController --> "step" Step
+BasketController --> "audioSource" AudioSource
+BasketController --> "catchSound" AudioClip
+class Bullet {
+    - launchForce : float
+    + Shoot() : void
+    + SetLaunchForce(force:float) : void
+    + SetLaunchDirection(direction:Vector3) : void
+}
+MonoBehaviour <|-- Bullet
+Bullet --> "launchDirection" Vector3
+Bullet --> "rb" Rigidbody
+class CannoneController {
+    - launchForce : float = 0f
+    - tryShoot : bool
+    - forzaMinima : float
+    - massaMinima : float
+    - massaEffettiva : float
+    - forzaProporzionaleMinima : float
+    - Update() : void
+    - OnTriggerEnter(other:Collider) : void
+    + SetLaunchForceCannon(force:float) : void
+    + Launch() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- CannoneController
+CannoneController --> "audioSource" AudioSource
+CannoneController --> "launchSound" AudioClip
+CannoneController --> "reloadSound" AudioClip
+CannoneController --> "forceLoadSound" AudioClip
+CannoneController --> "launchErrorSound" AudioClip
+CannoneController --> "currentBullet" GameObject
+CannoneController o-> "bulletsAlreadyLaunched<GameObject>" "List`1"
+class CannonHandler {
+    + <<override>> Perform(data:float) : void
+}
+class "Handler`1"<T> {
+}
+"Handler`1" "<float>" <|-- CannonHandler
+class CarrucolaController {
+    - baseSpeed : float
+    - downToTop : bool = false
+    - topToDown : bool = false
+    - isMoving : bool = false
+    - minSpeed : float = 0.1f
+    - Start() : void
+    - Update() : void
+    + MovetoTop() : void
+    + MovetoDown() : void
+    + CloseDoors() : void
+    + OpenDoors() : void
+}
+MonoBehaviour <|-- CarrucolaController
+CarrucolaController --> "endPoint" Transform
+CarrucolaController --> "startPoint" Transform
+CarrucolaController --> "carrucola" GameObject
+class CarrucolaHandler {
+    + <<override>> Perform(data:float) : void
+    - ComeDownAfterDelay(delay:float) : IEnumerator
+}
+class "Handler`1"<T> {
+}
+"Handler`1" "<float>" <|-- CarrucolaHandler
+CarrucolaHandler --> "cestaCarrucolaSocket" CestaCarrucola
+CarrucolaHandler --> "step" Step
+CarrucolaHandler --> "successSound" AudioClip
+CarrucolaHandler --> "errorSound" AudioClip
+class CestaCarrucola {
+    - altezza : float = 5.6f
+    - fattoreDiScala : float = 1.0f
+    - energiaPotenziale : float
+    - OnTriggerEnter(other:Collider) : void
+    - WrongObjectType(go:GameObject) : void
+    - OnTriggerExit(other:Collider) : void
+    + ShowWarningCanvas(duration:float) : IEnumerator
+    - CalcoloEnergiaPotenziale(massa:float) : void
+    + GetEnergiaPotenziale() : float
+}
+MonoBehaviour <|-- CestaCarrucola
+CestaCarrucola --> "materialeDesiderato" Material
+CestaCarrucola --> "warningCanvas" GameObject
+CestaCarrucola --> "audioSource" AudioSource
+CestaCarrucola --> "successSound" AudioClip
+CestaCarrucola --> "errorSound" AudioClip
+class RayCorda {
+    - grandSeg : float = 0.5f
+    - minSeg : int = 3
+    - Start() : void
+    - Update() : void
+    - UpdateRope() : void
+}
+MonoBehaviour <|-- RayCorda
+RayCorda --> "ray" LineRenderer
+RayCorda --> "posA" Transform
+RayCorda --> "posB" Transform
+class EsterEggCardReader {
+    - isBlueCardInserted : bool = false
+    - isRedCardInserted : bool = false
+    - isGreenCardInserted : bool = false
+    - Update() : void
+    + RedCardCheck() : void
+    + BlueCardCheck() : void
+    + GreenCardCheck() : void
+    + RedCardRemoved() : void
+    + BlueCardRemoved() : void
+    + GreenCardRemoved() : void
+}
+MonoBehaviour <|-- EsterEggCardReader
+EsterEggCardReader --> "step" Step
+EsterEggCardReader --> "socketInteractorRed" XRSocketInteractor
+EsterEggCardReader --> "socketInteractorGreen" XRSocketInteractor
+EsterEggCardReader --> "socketInteractorBlue" XRSocketInteractor
+EsterEggCardReader --> "EsterEggPrefab" GameObject
+EsterEggCardReader --> "audioSource" AudioSource
+EsterEggCardReader --> "soundSuccess" AudioClip
+class EsterEggCardHandler {
+    + SpawnCard(cardType:EsterEggCardType) : void
+}
+struct CardData {
+}
+MonoBehaviour <|-- EsterEggCardHandler
+EsterEggCardHandler +-- CardData
+CardData --> "cardPrefab" GameObject
+CardData --> "type" EsterEggCardType
+CardData --> "spawnPoint" Transform
+class EsterEggCardOnDestroyCaller {
+    - {static} isQuitting : bool
+    - Start() : void
+    - Update() : void
+    - OnApplicationQuit() : void
+    - OnDestroy() : void
+}
+MonoBehaviour <|-- EsterEggCardOnDestroyCaller
+EsterEggCardOnDestroyCaller --> "cardHandler" EsterEggCardHandler
+EsterEggCardOnDestroyCaller --> "cardTypeToSpawn" EsterEggCardType
+class SpaceShipController {
+    - noPerformAnimation : bool = false
+    - Awake() : void
+    - StartFlying() : void
+    + SetPostAnimationPosition() : void
+    + SetNoPerformAnimation() : void
+}
+MonoBehaviour <|-- SpaceShipController
+SpaceShipController --> "audioSource" AudioSource
+SpaceShipController --> "audioClip" AudioClip
+SpaceShipController --> "Portello" GameObject
+SpaceShipController --> "targetPostAnimation" Vector3
+SpaceShipController --> "targetPostAnimationRotation" Vector3
+class VendingMachineManager {
+    - coinInserted : bool = false
+    - Awake() : void
+    + InsertCoin() : void
+    + SpawnCookie() : void
+    - ContinueStepAfterDelay(delay:float) : IEnumerator
+}
+MonoBehaviour <|-- VendingMachineManager
+VendingMachineManager --> "step" Step
+VendingMachineManager --> "socketInteractor" XRSocketInteractor
+VendingMachineManager --> "spawnPoint" Transform
+VendingMachineManager --> "cookiePrefab" GameObject
+VendingMachineManager --> "soundSpawn" AudioClip
+VendingMachineManager --> "soundError" AudioClip
+VendingMachineManager --> "soundCoinInserted" AudioClip
+VendingMachineManager --> "audioSource" AudioSource
+class LootEvent {
+}
+class ToolEvent {
+}
+class ChangeHandEvent {
+}
+class DropToolEvent {
+}
+class onTargetTeleport {
+}
+class onDefocusTeleport {
+}
+class InclinedPlaneObjectDestroyedEvent {
+}
+class GameEvents {
+    - Awake() : void
+}
+class "UnityEvent`2"<T1,T2> {
+}
+class "UnityEvent`1"<T> {
+}
+"UnityEvent`2" "<string,TipoLoot>" <|-- LootEvent
+"UnityEvent`1" "<string>" <|-- ToolEvent
+"UnityEvent`2" "<string,int>" <|-- ChangeHandEvent
+"UnityEvent`1" "<int>" <|-- DropToolEvent
+"UnityEvent`1" "<string>" <|-- onTargetTeleport
+"UnityEvent`1" "<string>" <|-- onDefocusTeleport
+"UnityEvent`1" "<int>" <|-- InclinedPlaneObjectDestroyedEvent
+MonoBehaviour <|-- GameEvents
+GameEvents --> "Instance" GameEvents
+GameEvents --> "onNewLootAcquired" LootEvent
+GameEvents --> "onToolSpawned" ToolEvent
+GameEvents --> "onChangeHandMassTool" ChangeHandEvent
+GameEvents --> "onChangeHandSpawnerTool" ChangeHandEvent
+GameEvents --> "onChangeHandTeleportTool" ChangeHandEvent
+GameEvents --> "onDropMassTool" DropToolEvent
+GameEvents --> "onDropSpawnerTool" DropToolEvent
+GameEvents --> "onDropTeleportTool" DropToolEvent
+GameEvents --> "onTargetTeleport" onTargetTeleport
+GameEvents --> "onDefocusTeleport" onDefocusTeleport
+GameEvents --> "onInclinedPlaneObjectDestroyed" InclinedPlaneObjectDestroyedEvent
+class ActivatorGun {
+    - Awake() : void
+}
+MonoBehaviour <|-- ActivatorGun
+ActivatorGun --> "cr" GravityGunController
+class GravityGunController {
+    - stopInMenu : bool = true
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleLineRenderer(context:InputAction.CallbackContext) : void
+    + Activation() : void
+}
+MonoBehaviour <|-- GravityGunController
+GravityGunController --> "rightActivator" InputActionReference
+GravityGunController --> "leftActivator" InputActionReference
+class InventoryButton {
+    - state : bool = false
+    + SetActive(oldState:bool) : void
+    + AwakeBotton() : void
+    + GetState() : bool
+}
+MonoBehaviour <|-- InventoryButton
+InventoryButton --> "FatherPanel" GameObject
+InventoryButton --> "inventoryButton" GameObject
+class InventoryEnabler {
+    + Awake() : void
+}
+MonoBehaviour <|-- InventoryEnabler
+InventoryEnabler --> "inventoryManager" InventoryManager
+class InventoryManager {
+    - enableInventory : bool = false
+    + EnableInventory() : void
+    + SetActiveFormulaButtons(oldState:SaveInventoryButton[]) : void
+    + SetActiveConstantButtons(oldState:SaveInventoryButton[]) : void
+    + SetActiveToolsButtons(oldState:SaveInventoryButton[]) : void
+    + SaveFormulaButtons() : SaveInventoryButton[]
+    + SaveConstantButtons() : SaveInventoryButton[]
+    + SaveToolsButtons() : SaveInventoryButton[]
+    + AwakeButtons() : void
+    + OpenInventory() : void
+    + CloseInventory() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- InventoryManager
+InventoryManager --> "inventoryPanel" GameObject
+InventoryManager --> "formulaButtons<InventoryButton>" "List`1"
+InventoryManager --> "constantButtons<InventoryButton>" "List`1"
+InventoryManager --> "toolsButtons<InventoryButton>" "List`1"
+class HandMenuManager {
+    + AtrattoreActivate() : void
+    + MassScannerActivate() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- HandMenuManager
+HandMenuManager o-> "Modalita<GameObject>" "List`1"
+HandMenuManager --> "Menu" GameObject
+class MenuCircleManager {
+    + activateMenus() : void
+    + enableAttrattore() : void
+}
+MonoBehaviour <|-- MenuCircleManager
+MenuCircleManager --> "HandMenusRight" GameObject
+MenuCircleManager --> "HandMenusLeft" GameObject
+class FisicaMongolfiera {
+    + activator : bool
+    - massaTotale : float = 1f
+    - <<readonly>> terra : float = 0f
+    - gravita : float
+    - volumeOggetto : float
+    - densitaFluido : float
+    - altezzaMassima : float
+    - altezzaAttesa : int
+    - durataAvvio : float = 3f
+    - tempoAvvio : float = 0f
+    - Start() : void
+    - FixedUpdate() : void
+    + AttivaDisattivaSpinta() : void
+}
+MonoBehaviour <|-- FisicaMongolfiera
+FisicaMongolfiera --> "rb" Rigidbody
+FisicaMongolfiera --> "massaCounterBox" MassaCounterBox
+FisicaMongolfiera --> "Tappo" GameObject
+class MassaCounterBox {
+    - errorBound : float = 15f
+    - massaTotale : float = 0f
+    - Start() : void
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    + TooMuchMass() : bool
+    - SetUp() : IEnumerator
+    + GetErrorBound() : float
+    + GetMassaTotale() : float
+}
+MonoBehaviour <|-- MassaCounterBox
+MassaCounterBox --> "led" GameObject
+MassaCounterBox --> "panel" GameObject
+MassaCounterBox --> "txt" TextMeshProUGUI
+MassaCounterBox --> "red" Material
+MassaCounterBox --> "green" Material
+MassaCounterBox --> "audioSource" AudioSource
+MassaCounterBox --> "onSound" AudioClip
+MassaCounterBox --> "boxCollider" BoxCollider
+class ModuloPuroRotolamento {
+    - radius : float
+    - forzareInerziaTeorica : bool = true
+    - Awake() : void
+    - ConfiguraInerzia() : void
+    - FixedUpdate() : void
+    - OnDestroy() : void
+}
+MonoBehaviour <|-- ModuloPuroRotolamento
+ModuloPuroRotolamento --> "corpo" Rigidbody
+class RuotaPiano {
+    - minAngle : float = 10f
+    - maxAngle : float = 60f
+    - rotazioneMax : float = 60f
+    - smoothingFactor : float = 0.15f
+    - deadzone : float = 0.5f
+    - angoloMano : float
+    - angoloManopolaAttuale : float = 0f
+    - actualPianoAngle : int = 0
+    - Awake() : void
+    - Start() : void
+    - LateUpdate() : void
+    - TransmitResult() : void
+    - OnGrab(args:SelectEnterEventArgs) : void
+    - OnRelease(args:SelectExitEventArgs) : void
+    - UpdateKnob(hand:Transform) : void
+    - GetHandAngle(hand:Transform) : float
+    + GetCurrentPianoAngle() : float
+}
+MonoBehaviour <|-- RuotaPiano
+RuotaPiano --> "angoloText" TextMeshProUGUI
+RuotaPiano --> "piano" Transform
+RuotaPiano --> "interactXR" XRSimpleInteractable
+RuotaPiano --> "currentInteractXR" IXRSelectInteractor
+RuotaPiano --> "fixedPosition" Vector3
+RuotaPiano --> "DataCardSpawner" GameObject
+class SpawnOggettoPuroRotolamento {
+    - Awake() : void
+    + SpawnOggettoPianoInclinato() : void
+    - OnObjectInSocket(args:SelectEnterEventArgs) : void
+    - OnObjectRemovedFromSocket(args:SelectExitEventArgs) : void
+}
+MonoBehaviour <|-- SpawnOggettoPuroRotolamento
+SpawnOggettoPuroRotolamento --> "oggettoPrefab" GameObject
+SpawnOggettoPuroRotolamento --> "oggettoInSocket" GameObject
+SpawnOggettoPuroRotolamento --> "lastObjectInSocket" GameObject
+SpawnOggettoPuroRotolamento --> "socket" XRSocketInteractor
+class velocitascanner {
+    + minimumvelocity : float = 0.05f
+    + detectionValue : float = 0
+    - wasObjectInSocket : bool
+    - savedStateSocket : bool
+    - velocitaFinale : float
+    - accelerazioneGravitazionale : float = 9.81f
+    - lunghezzaPianoInclinato : float = 1.5f
+    - costanteInerzialeSfera : float = 0.4f
+    - costanteInerzialeCilindro : float = 0.5f
+    - ultimoOggetto : string = "Sconosciuto"
+    - lastObjectId : int
+    - abortTriggerExecution : bool
+    + SaveStateSocket() : void
+    - Start() : void
+    - OnObjectInSocket(args:SelectEnterEventArgs) : void
+    - OnObjectRemovedFromSocket(args:SelectExitEventArgs) : void
+    - OnInclinedPlaneObjectDestroyed(objectId:int) : void
+    - OnTriggerEnter(other:Collider) : void
+    - ResetGrabInteractable(other:Collider) : IEnumerator
+}
+MonoBehaviour <|-- velocitascanner
+velocitascanner --> "velocitaText" TextMeshProUGUI
+velocitascanner --> "DataCardSpawner" GameObject
+velocitascanner --> "manopolaAngolo" GameObject
+velocitascanner --> "socket" XRSocketInteractor
+velocitascanner --> "lastObjectInSocket" GameObject
+class VelocitaReale {
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- VelocitaReale
+class PlayerMenuManager {
+    - turnOnStartMenu : bool = false
+    - menuDistance : float = 1.5f
+    - menuHeight : float = 0f
+    - fadeDuration : float = 0.4f
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleMenu(context:InputAction.CallbackContext) : void
+    - PlaceMenuInFrontOfPlayer() : void
+    + TogglePage(pageName:string) : void
+    - CloseStillActive() : void
+    - FindPage(i:int) : void
+    - activatePage(i:int) : void
+    - deactivatePage(i:int) : void
+    + UnlockMenu() : void
+    + ShowSaveNotification(duration:float) : IEnumerator
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- PlayerMenuManager
+PlayerMenuManager --> "menuCanvas" GameObject
+PlayerMenuManager --> "saveNotificationPanel" GameObject
+PlayerMenuManager o-> "menuPages<GameObject>" "List`1"
+PlayerMenuManager o-> "states<bool>" "List`1"
+PlayerMenuManager --> "toggleMenuAction" InputActionReference
+PlayerMenuManager --> "playerCamera" Camera
+PlayerMenuManager --> "playerAudioSource" AudioSource
+PlayerMenuManager --> "saveDataSound" AudioClip
+PlayerMenuManager --> "gruppoCanvas" CanvasGroup
+class SettingsController {
+    - isStartMenu : bool
+    - objectsVolumeMultiplier : float = 2f
+    - Start() : void
+    + SetLightIntensity(value:float) : void
+    + SetAudioVolume(value:float) : void
+    + InsertNewToolInList(newTool:AudioSource) : void
+    + SetSliderSettings() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- SettingsController
+SettingsController --> "mainLight" Light
+SettingsController --> "spotLights<Light>" "List`1"
+SettingsController --> "intensityLight" Slider
+SettingsController --> "mainAudioSource" AudioSource
+SettingsController --> "volumeSlider" Slider
+SettingsController --> "npcAudioSources<AudioSource>" "List`1"
+SettingsController --> "objectsAudioSources<AudioSource>" "List`1"
+SettingsController --> "volume" Volume
+SettingsController --> "bloom" Bloom
+class UiManager {
+    - OnEnable() : void
+    - OnDisable() : void
+    - onLootAcquired(lootName:string, tipoLoot:TipoLoot) : void
+    - ShowLootUI(lootName:string, tipoLoot:TipoLoot) : IEnumerator
+}
+MonoBehaviour <|-- UiManager
+UiManager --> "gameManager" GameManager
+UiManager --> "lootUi" GameObject
+UiManager --> "audioSource" AudioSource
+UiManager --> "lootSound" AudioClip
+UiManager --> "playerCamera" Camera
+UiManager --> "language" Language
+class DialogManager {
+    + afterEndStep : bool
+    + canvasEndToggle : bool = true
+    - index : int = 0
+    - alreadyStarted : bool = false
+    + typingSpeed : float
+    - isTyping : bool = false
+    + Awake() : void
+    + nextSentence() : void
+    - StartTypingCurrent() : void
+    - FinishCurrentSentenceInstant() : void
+    - PlayClipForCurrent() : void
+    - Type() : IEnumerator
+}
+MonoBehaviour <|-- DialogManager
+DialogManager --> "gameManager" GameManager
+DialogManager --> "fatherStep" Step
+DialogManager --> "botText" TextMeshProUGUI
+DialogManager --> "panel" GameObject
+DialogManager --> "canvasPointer" GameObject
+DialogManager --> "bot" GameObject
+DialogManager --> "dialogAudioSource" AudioSource
+DialogManager --> "typingCoroutine" Coroutine
+DialogManager --> "actualLenguage" Language
+class StariDialogue {
+    + OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- StariDialogue
+StariDialogue --> "actualStep" Step
+StariDialogue --> "collider" GameObject
+class AddOnErrorDialogueOneWay {
+    - OnTriggerExit(other:Collider) : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- AddOnErrorDialogueOneWay
+AddOnErrorDialogueOneWay --> "ways<GameObject>" "List`1"
+class ChangeLenguageController {
+    - Start() : void
+    - setArray(array:List<GameObject>, value:bool) : void
+    - SetLenguage(lenguage:Language) : void
+    + SetItalian() : void
+    + SetEnglish() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ChangeLenguageController
+ChangeLenguageController --> "gm" GameManager
+ChangeLenguageController --> "italianTexts<GameObject>" "List`1"
+ChangeLenguageController --> "engTexts<GameObject>" "List`1"
+class DialogueBoxScanner {
+    + scanForDialogueBox() : void
+}
+MonoBehaviour <|-- DialogueBoxScanner
+class ErrorDialogue {
+    - indexError : int = 0
+    - alreadyStartedError : bool = false
+    + typingSpeedError : float
+    - oneWayAddOn : bool
+    - autoNextDelay : float = 10f
+    - isTypingError : bool = false
+    - initialPointState : bool
+    + Awake() : void
+    + StarterDialogueError() : void
+    + nextSentenceError() : void
+    - StartTypingCurrentError() : void
+    - FinishCurrentSentenceInstantError() : void
+    - PlayClipForCurrentError() : void
+    - TypeError() : IEnumerator
+    - AutoNextError() : IEnumerator
+    - Reset() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ErrorDialogue
+ErrorDialogue --> "gameManagerError" GameManager
+ErrorDialogue --> "botTextError" TextMeshProUGUI
+ErrorDialogue --> "panelError" GameObject
+ErrorDialogue --> "canvasPointerError" GameObject
+ErrorDialogue --> "botError" GameObject
+ErrorDialogue --> "point" GameObject
+ErrorDialogue --> "dialogAudioSourceError" AudioSource
+ErrorDialogue --> "ways<GameObject>" "List`1"
+ErrorDialogue --> "typingCoroutineError" Coroutine
+ErrorDialogue --> "autoNextCoroutineError" Coroutine
+ErrorDialogue --> "actualLenguageError" Language
+class EventScannerForSteps {
+    - toolNameToCheck : string
+    - OnEnable() : void
+    - OnDisable() : void
+    - NextStep(toolName:string) : void
+}
+MonoBehaviour <|-- EventScannerForSteps
+EventScannerForSteps --> "tipoEvento" Event
+EventScannerForSteps --> "stepPointer" Step
+class LootGiver {
+    - nameLootItalian : string
+    - nameLootEnglish : string
+    - main : bool
+    - nameLoot : string
+    + GiveLoot() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- LootGiver
+LootGiver --> "gameManager" GameManager
+LootGiver o-> "lootPrefabs<GameObject>" "List`1"
+LootGiver --> "lootSpawnPoint" Transform
+LootGiver --> "tipoLoot" TipoLoot
+class ManifestManager {
+    + questStarted(idQuest:int) : void
+    + stepCompleted(idQuest:int, idStep:int) : void
+    + questCompleted() : void
+    + ReloadFromSavings(fatherQuest:int, lastStep:int) : void
+}
+class "List`1"<T> {
+}
+struct CheckField {
+    + idStep : int
+    + isYallowAtStart : bool
+}
+struct Page {
+    + idQuest : int
+}
+MonoBehaviour <|-- ManifestManager
+ManifestManager --> "manifestPages<Page>" "List`1"
+ManifestManager --> "anyQuestPage" GameObject
+ManifestManager --> "pinManifestController" PinManifestController
+ManifestManager --> "currentPage" Page
+ManifestManager +-- CheckField
+CheckField --> "checkField" GameObject
+ManifestManager +-- Page
+Page --> "page" GameObject
+Page --> "checkFields<CheckField>" "List`1"
+class PinManifestController {
+    + SetTitlePin(index:int) : void
+    + SetDescriptionPin(fatherIndex:int, index:int) : void
+    + resetPin(fatherIndex:int) : void
+}
+class "List`1"<T> {
+}
+struct RefQuest {
+}
+struct Description {
+}
+MonoBehaviour <|-- PinManifestController
+PinManifestController --> "gameManager" GameManager
+PinManifestController --> "questDescriptions<RefQuest>" "List`1"
+PinManifestController --> "defaultTitle" GameObject
+PinManifestController --> "actualLanguage" Language
+PinManifestController +-- RefQuest
+RefQuest --> "italianTitle" GameObject
+RefQuest --> "englishTitle" GameObject
+RefQuest --> "description" Description
+PinManifestController +-- Description
+Description --> "italianDescriptions<GameObject>" "List`1"
+Description --> "englishDescriptions<GameObject>" "List`1"
+class Quest {
+    + questID : int
+    - state : string = "noActivated"
+    - Start() : void
+    + startQuest() : void
+    + endQuest() : void
+    + isAllAlreadyCompletedEnd() : bool
+    + setQuestState(oldState:string) : void
+    + getIdQuest() : int
+    + getQuestState() : string
+    + allReadyComplete() : bool
+    + PlayErrorMessage() : void
+    + setSavedStep(savedSteps:SavedStep[]) : void
+    + getSavedQuest() : SavedQuest
+    + GetLastOnGoingStep() : int
+    + DestroyQuestTrigger() : void
+    - TurnOffPoint() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- Quest
+Quest --> "alreadyComplete<Quest>" "List`1"
+Quest --> "point" GameObject
+Quest --> "manifestManager" ManifestManager
+Quest --> "dialogueMgError" GameObject
+Quest --> "questManager" QuestManager
+class QuestManager {
+    - currentQuest : int = 0
+    + startQuest(number:int) : bool
+    + settingsSaves(allQuest:SavedQuest[]) : void
+    + getSavedQuests() : SavedQuest[]
+    + OnQuestCompleted() : void
+    - AllQuestsCompleted() : void
+    - PointsHandler() : void
+}
+struct StartTriggersContainer {
+}
+MonoBehaviour <|-- QuestManager
+QuestManager --> "EsterEggQuest" GameObject
+QuestManager --> "manifestManager" ManifestManager
+QuestManager +-- StartTriggersContainer
+class StartCollider {
+    - number : int
+    + OnTriggerEnter(other:Collider) : void
+    + DestroyTriggers() : void
+}
+MonoBehaviour <|-- StartCollider
+StartCollider --> "questManager" QuestManager
+class Step {
+    - stepID : int
+    - state : string = "noActivated"
+    - isLastStep : bool
+    - giveLootAtEndStep : bool
+    + startStep() : void
+    + endStep() : void
+    + setStateStep(oldState:string) : void
+    - GiveLoot() : void
+    + getStateStep() : string
+    + getIdStep() : int
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- Step
+Step --> "father" Quest
+Step --> "NextStep" Step
+Step o-> "lootGivers<LootGiver>" "List`1"
+Step --> "manifestManager" ManifestManager
+class timerStep {
+    + timerNextStep(time:float) : void
+    - timer(time:float) : IEnumerator
+}
+MonoBehaviour <|-- timerStep
+timerStep --> "step" Step
+class TriggerStep {
+    - alreadyTriggered : bool = false
+    - triggerTag : string
+    - OnTriggerEnter(other:Collider) : void
+}
+enum StepAction {
+    StartNewStep,
+    EndCurrentStep,
+}
+MonoBehaviour <|-- TriggerStep
+TriggerStep --> "step" Step
+TriggerStep --> "stepAction" StepAction
+TriggerStep +-- StepAction
+class ChangePageStartMenu {
+    + ChangePage() : void
+}
+MonoBehaviour <|-- ChangePageStartMenu
+ChangePageStartMenu --> "pageNext" GameObject
+ChangePageStartMenu --> "pageActual" GameObject
+class DeleteButtonSelf {
+    + DeleteSelf() : void
+}
+MonoBehaviour <|-- DeleteButtonSelf
+class CalculationCore {
+    - result : float
+    - unitaMisura : string
+    - velocitaReale : float
+    - eliminaOggettiInSockets() : void
+    - SpawnResultCard(nomeResult:string) : void
+    - ConversioneSocket(sockets:XRSocketInteractor[]) : bool
+    - EnergiaCinetica() : bool
+    - EnergiaPotenziale() : bool
+    - EnergiaElastica() : bool
+    - ForzaElastica() : bool
+    - ForzaNewtoniana() : bool
+    - ForzaCentripeta() : bool
+    - ForzaAttritoStatico() : bool
+    - ForzaElettrostatica() : bool
+    - ForzaDiLorentz() : bool
+    - VolumeCubo() : bool
+    - VolumeSfera() : bool
+    - VolumeCilindro() : bool
+    - VolumeX1() : bool
+    - DensitaX1() : bool
+    - DensitaArch() : bool
+    - DensitaO() : bool
+    - AltezzaSeno() : bool
+    - AltezzaCoseno() : bool
+    - AltezzaTan() : bool
+    - MassaDaInerzia() : bool
+    - CostanteInerzialeX1() : bool
+    - CostanteInerzialeX2() : bool
+    - CostanteInerzialeO() : bool
+    - InerziaX1() : bool
+    - InerziaX2() : bool
+    - InerziaX3() : bool
+    - InerziaO() : bool
+    - Calcolo(operazione:Operazione) : void
+    + CalcoloAltezzaSeno() : void
+    + CalcoloAltezzaCoseno() : void
+    + CalcoloAltezzaTan() : void
+    + CalcoloMassaDaInerzia() : void
+    + CalcoloCostanteInerzialeX1() : void
+    + CalcoloCostanteInerzialeX2() : void
+    + CalcoloCostanteInerzialeO() : void
+    + CalcoloInerziaX1() : void
+    + CalcoloInerziaX2() : void
+    + CalcoloInerziaX3() : void
+    + CalcoloInerziaO() : void
+    + CalcoloDensitaX1() : void
+    + CalcoloDensitaArch() : void
+    + CalcoloDensitaO() : void
+    + CalcoloVolumeCubo() : void
+    + CalcoloVolumeSfera() : void
+    + CalcoloVolumeCilindro() : void
+    + CalcoloVolumeX1() : void
+    + CalcoloForzaCentripeta() : void
+    + CalcoloForzaNewtoniana() : void
+    + CalcoloForzaElastica() : void
+    + CalcoloForzaElettrostatica() : void
+    + CalcoloForzaDiLorentz() : void
+    + CalcoloForzaAttritoStatico() : void
+    + CalcoloEnergiaCinetica() : void
+    + CalcoloEnergiaPotenziale() : void
+    + CalcoloEnergiaElastica() : void
+}
+class "Dictionary`2"<T1,T2> {
+}
+MonoBehaviour <|-- CalculationCore
+CalculationCore o-> "simboliUnita<UnitaMisura,string>" "Dictionary`2"
+CalculationCore --> "gm" GameManager
+CalculationCore --> "resultCardPrefab" GameObject
+CalculationCore --> "spawnSocket" XRSocketInteractor
+CalculationCore --> "spawnResultCard" Transform
+CalculationCore --> "audioSource" AudioSource
+CalculationCore --> "clickSoundError" AudioClip
+CalculationCore --> "clickSoundSuccess" AudioClip
+CalculationCore --> "changePageScript" changePage
+CalculationCore --> "value<string,float>" "Dictionary`2"
+class CanvasLoader {
+    + durataFade : float = 0.5f
+    + ChengeCanvasAttivo(nuovoCanvas:GameObject) : void
+    - Awake() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnObjectPlaced(args:SelectEnterEventArgs) : void
+    - OnObjectRemoved(args:SelectExitEventArgs) : void
+    - EseguiFade(targetAlpha:float, attivazione:bool) : IEnumerator
+}
+MonoBehaviour <|-- CanvasLoader
+CanvasLoader --> "socket" XRSocketInteractor
+CanvasLoader --> "canvasGroupAttuale" CanvasGroup
+CanvasLoader --> "fadeCoroutine" Coroutine
+CanvasLoader --> "canvasAttivo" GameObject
+class changePage {
+    - ChangePage(command:string) : void
+    + ChangePageNext() : void
+}
+MonoBehaviour <|-- changePage
+changePage --> "pageNext" GameObject
+changePage --> "pageActual" GameObject
+changePage --> "canvasLoader" CanvasLoader
+class FormulaCanvasData {
+    - Awake() : void
+    + SetCanvas(NewCanvas:GameObject) : void
+}
+MonoBehaviour <|-- FormulaCanvasData
+FormulaCanvasData --> "canvasDaAttivare" GameObject
+class SpawnTerminal {
+    + Spawn() : void
+    + Deactive() : void
+}
+MonoBehaviour <|-- SpawnTerminal
+SpawnTerminal --> "terminalManager" TerminalManager
+SpawnTerminal --> "spawnPosition" Transform
+class TerminalManager {
+    + DeactiveTerminal() : void
+    + SpawnTerminal(position:Vector3, rotation:Quaternion) : void
+    + ActiveTerminal() : void
+}
+MonoBehaviour <|-- TerminalManager
+TerminalManager --> "terminale" GameObject
+abstract class "Handler`1"<T> {
+    + {abstract} Perform(data:T) : void
+}
+MonoBehaviour <|-- "Handler`1"
+"Handler`1" --> "target" GameObject
+class ValueReader {
+    - unitaMisura : string
+    - socketDisableDuration : float = 1f
+    - ejectForce : float = 3f
+    + ActivateCheckValue() : void
+    - DisableSocketTemporarily() : IEnumerator
+    - RestoreCollision(cardCollider:Collider) : IEnumerator
+    - DestroyCard(interactable:IXRSelectInteractable) : IEnumerator
+}
+class "Handler`1"<T> {
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ValueReader
+ValueReader --> "socketInteractor" XRSocketInteractor
+ValueReader --> "handler<float>" "Handler`1"
+ValueReader --> "audioSource" AudioSource
+ValueReader --> "soundError" AudioClip
+ValueReader o-> "ejectDirection" Vector3
+ValueReader --> "box<Collider>" "List`1"
+class WaterAnimation {
+    + scrollSpeedX : float = 0.05f
+    + scrollSpeedY : float = 0.02f
+    + waveHeight : float = 0.05f
+    + waveSpeed : float = 1.5f
+    - Start() : void
+    - Update() : void
+    - AnimateUVScroll() : void
+    - AnimateWave() : void
+}
+MonoBehaviour <|-- WaterAnimation
+WaterAnimation --> "mat" Material
+WaterAnimation --> "startPosition" Vector3
+class DetectOnDualGrab {
+    - isGrabbedRight : bool = false
+    - isGrabbedLeft : bool = false
+    - Awake() : void
+    - OnGrabbed(args:SelectEnterEventArgs) : void
+    - OnReleased(args:SelectExitEventArgs) : void
+    + IsGrabbedByBothHands() : bool
+}
+MonoBehaviour <|-- DetectOnDualGrab
+DetectOnDualGrab --> "grab" XRGrabInteractable
+class LaserBroomTool {
+    - Awake() : void
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- LaserBroomTool
+LaserBroomTool --> "detectOnDualGrab" DetectOnDualGrab
+class DualHandAttach {
+    - isRight : bool? = null
+    - beforeGrabIsRight : bool? = null
+    - counterDebug : int = 0
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    + getScanAction() : InputActionReference
+    + getSpawnCardAction() : InputActionReference
+}
+MonoBehaviour <|-- DualHandAttach
+DualHandAttach --> "attachRight" Transform
+DualHandAttach --> "attachLeft" Transform
+DualHandAttach --> "scanActionRight" InputActionReference
+DualHandAttach --> "scanActionLeft" InputActionReference
+DualHandAttach --> "spawnCardActionRight" InputActionReference
+DualHandAttach --> "spawnCardActionLeft" InputActionReference
+DualHandAttach --> "spawnCardAction" InputActionReference
+DualHandAttach --> "scanAction" InputActionReference
+DualHandAttach --> "grabbable" XRGrabInteractable
+class MassLaserScanner {
+    - maxDistance : float = 10f
+    - massaMemorizzata : float = 0f
+    - Awake() : void
+    - RebindActions() : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnDestroy() : void
+    - Update() : void
+    - EseguiScansione(context:InputAction.CallbackContext) : void
+    - GenerateDataCard(context:InputAction.CallbackContext) : void
+    - ImpostaColoreLaser(colore:Color) : void
+}
+MonoBehaviour <|-- MassLaserScanner
+MassLaserScanner --> "spawnCard" SpawnCard
+MassLaserScanner --> "rayOrigin" Transform
+MassLaserScanner o-> "coloreNormale" Color
+MassLaserScanner o-> "coloreScansionabile" Color
+MassLaserScanner --> "detectHandOnGrab" DetectHandOnGrab
+MassLaserScanner --> "scanAction" InputActionReference
+MassLaserScanner --> "spawnCardAction" InputActionReference
+MassLaserScanner --> "lineRenderer" LineRenderer
+MassLaserScanner --> "displayRisultato" TextMeshProUGUI
+class SpawnTool {
+    + Spawn() : void
+}
+MonoBehaviour <|-- SpawnTool
+SpawnTool --> "prefabToSpawn" GameObject
+SpawnTool --> "spawnPoint" Transform
+SpawnTool --> "audioSource" AudioSource
+SpawnTool --> "spawnSound" AudioClip
+class DetectHandOnGrab {
+    - isRight : bool? = null
+    - beforeGrabIsRight : bool? = null
+    - Awake() : void
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    - OnSelectEntered(args:SelectEnterEventArgs) : void
+    - OnSelectExited(args:SelectExitEventArgs) : void
+    + GetPrimaryAction() : InputActionReference
+    + GetSecondaryAction() : InputActionReference
+}
+MonoBehaviour <|-- DetectHandOnGrab
+DetectHandOnGrab --> "tipoTool" TipoTool
+DetectHandOnGrab --> "attachRight" Transform
+DetectHandOnGrab --> "attachLeft" Transform
+DetectHandOnGrab --> "primaryActionRight" InputActionReference
+DetectHandOnGrab --> "primaryActionLeft" InputActionReference
+DetectHandOnGrab --> "secondaryActionRight" InputActionReference
+DetectHandOnGrab --> "secondaryActionLeft" InputActionReference
+DetectHandOnGrab --> "alreadyAttach" Transform
+DetectHandOnGrab --> "grabbable" XRGrabInteractable
+DetectHandOnGrab --> "primaryAction" InputActionReference
+DetectHandOnGrab --> "secondaryAction" InputActionReference
+enum Hand {
+    Left,
+    Right,
+}
+class ManoEco {
+}
+MonoBehaviour <|-- ManoEco
+ManoEco --> "hand" Hand
+class ObjectSpawnTool {
+    - massa : float = 1f
+    - raggio : float = 1f
+    - fattoreDiScala : float = 0.01f
+    - Awake() : void
+    - RebindActions() : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnSpawnPerformed(context:InputAction.CallbackContext) : void
+    - OnOpenMenuPerformed(context:InputAction.CallbackContext) : void
+    - OpenMenu() : void
+    - Spawn() : void
+    - ChangeShape(nuovaForma:Forma) : void
+    - ChangeMaterial(nuovoMateriale:Materiale) : void
+    - IncreaseMass(amount:float) : void
+    - DecreaseMass(amount:float) : void
+    + IncreaseMassOneOnTen() : void
+    + DecreaseMassOneOnTen() : void
+    + IncreaseMassOne() : void
+    + DecreaseMassOne() : void
+    + IncreaseMassTen() : void
+    + DecreaseMassTen() : void
+    + IncreaseMassHalf() : void
+    + DecreaseMassHalf() : void
+    + ChangeRadius() : void
+    - ChangeScreenPosition(newHand:string) : void
+    + ChangeShapeCube() : void
+    + ChangeShapeSphere() : void
+    + ChangeShapeCylinder() : void
+    + ChangeMaterialWood() : void
+    + ChangeMaterialRock() : void
+    + ChangeMaterialRubber() : void
+    + ChangeMaterialMetal() : void
+    + ChangeMaterialGlass() : void
+}
+enum Forma {
+    Cubo,
+    Sfera,
+    Cilindro,
+}
+enum Materiale {
+    Legno,
+    Roccia,
+    Gomma,
+    Metallo,
+    Vetro,
+}
+class "List`1"<T> {
+}
+class "Dictionary`2"<T1,T2> {
+}
+MonoBehaviour <|-- ObjectSpawnTool
+ObjectSpawnTool --> "detectHandOnGrab" DetectHandOnGrab
+ObjectSpawnTool --> "spawnAction" InputActionReference
+ObjectSpawnTool --> "openMenuAction" InputActionReference
+ObjectSpawnTool --> "menuPrefab" GameObject
+ObjectSpawnTool --> "spawnAttach" Transform
+ObjectSpawnTool o-> "forma" Forma
+ObjectSpawnTool o-> "materiale" Materiale
+ObjectSpawnTool --> "massaText" TextMeshProUGUI
+ObjectSpawnTool --> "massaSlider" Slider
+ObjectSpawnTool --> "raggioText" TextMeshProUGUI
+ObjectSpawnTool --> "raggioSlider" Slider
+ObjectSpawnTool o-> "materiali<Material>" "List`1"
+ObjectSpawnTool o-> "materialeMap<Materiale,Material>" "Dictionary`2"
+ObjectSpawnTool +-- Forma
+ObjectSpawnTool +-- Materiale
+class LookTarget {
+    - teleporterName : string
+    - resetDelay : float = 2f
+    - triggered : bool = false
+    - Awake() : void
+    + GetTeleporterName() : string
+    + Activate() : void
+    - ResetTriggeredAfterDelay(delay:float) : IEnumerator
+    - TargetTeleport(targetName:string) : void
+    - DefocusTeleport(targetName:string) : void
+}
+MonoBehaviour <|-- LookTarget
+LookTarget --> "onActivated" UnityEvent
+LookTarget --> "emissionController" EmissionController
+class Teleport {
+    - Awake() : void
+    + TeleportPlayer() : void
+    + TeleportBot() : void
+}
+MonoBehaviour <|-- Teleport
+Teleport --> "player" GameObject
+Teleport --> "Bot" GameObject
+Teleport --> "targetPositionPlayer" Vector3
+Teleport --> "targetPositionBot" Vector3
+Teleport --> "botController" BotController
+class TeleportBlockerCollider {
+    - Awake() : void
+    - Update() : void
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TeleportBlockerCollider
+TeleportBlockerCollider --> "position" Vector3
+TeleportBlockerCollider --> "Player" Transform
+TeleportBlockerCollider --> "xrCollider" Collider
+class TeleporterGlobe {
+    - maxDistance : float = 10f
+    - coneAngle : float = 15f
+    - isHeld : bool = false
+    - Awake() : void
+    - RebindActions() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - OnDestroy() : void
+    - OnGrabbed(args:SelectEnterEventArgs) : void
+    - OnChangeHand(newHand:string, idRiser:int) : void
+    - OnDrop(idRiser:int) : void
+    - OnReleased(args:SelectExitEventArgs) : void
+    - OnInputPerformed(context:InputAction.CallbackContext) : void
+    - Update() : void
+    - FindBestTargetInCone() : LookTarget
+}
+MonoBehaviour <|-- TeleporterGlobe
+TeleporterGlobe --> "cam" Camera
+TeleporterGlobe --> "detectHandOnGrab" DetectHandOnGrab
+TeleporterGlobe --> "inputTeleport" InputActionReference
+TeleporterGlobe --> "targetLayers" LayerMask
+TeleporterGlobe --> "grabInteractable" XRGrabInteractable
+TeleporterGlobe --> "currentTarget" LookTarget
+class WaterSplashEffect {
+    + minVelocityForSplash : float = 1.5f
+    + maxRipples : int = 3
+    - OnTriggerEnter(other:Collider) : void
+    - SpawnSplash(point:Vector3, speed:float, objSize:Vector3) : void
+    - SpawnRipples(point:Vector3, speed:float) : void
+    - SpawnRippleDelayed(point:Vector3, delay:float, index:int) : System.Collections.IEnumerator
+    - ExpandRipple(ripple:GameObject, index:int) : System.Collections.IEnumerator
+}
+MonoBehaviour <|-- WaterSplashEffect
+WaterSplashEffect --> "splashPrefab" GameObject
+WaterSplashEffect --> "ripplePrefab" GameObject
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class Bullet {
+    - launchForce : float
+    + Shoot() : void
+    + SetLaunchForce(force:float) : void
+    + SetLaunchDirection(direction:Vector3) : void
+}
+MonoBehaviour <|-- Bullet
+Bullet --> "launchDirection" Vector3
+Bullet --> "rb" Rigidbody
+@enduml

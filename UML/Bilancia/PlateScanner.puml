@@ -1,0 +1,8 @@
+@startuml
+class PlateScanner {
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+}
+MonoBehaviour <|-- PlateScanner
+PlateScanner --> "bilancia" BilanciaDuePiatti
+@enduml

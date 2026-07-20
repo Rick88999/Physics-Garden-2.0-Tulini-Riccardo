@@ -1,0 +1,12 @@
+@startuml
+class DetectOnDualGrab {
+    - isGrabbedRight : bool = false
+    - isGrabbedLeft : bool = false
+    - Awake() : void
+    - OnGrabbed(args:SelectEnterEventArgs) : void
+    - OnReleased(args:SelectExitEventArgs) : void
+    + IsGrabbedByBothHands() : bool
+}
+MonoBehaviour <|-- DetectOnDualGrab
+DetectOnDualGrab --> "grab" XRGrabInteractable
+@enduml

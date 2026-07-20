@@ -1,0 +1,8 @@
+@startuml
+class StariDialogue {
+    + OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- StariDialogue
+StariDialogue --> "actualStep" Step
+StariDialogue --> "collider" GameObject
+@enduml

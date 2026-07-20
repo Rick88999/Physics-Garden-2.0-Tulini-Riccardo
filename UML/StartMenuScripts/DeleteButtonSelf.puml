@@ -1,0 +1,6 @@
+@startuml
+class DeleteButtonSelf {
+    + DeleteSelf() : void
+}
+MonoBehaviour <|-- DeleteButtonSelf
+@enduml

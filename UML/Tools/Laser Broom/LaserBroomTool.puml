@@ -1,0 +1,8 @@
+@startuml
+class LaserBroomTool {
+    - Awake() : void
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- LaserBroomTool
+LaserBroomTool --> "detectOnDualGrab" DetectOnDualGrab
+@enduml

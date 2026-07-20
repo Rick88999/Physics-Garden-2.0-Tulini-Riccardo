@@ -1,0 +1,6 @@
+@startuml
+class DialogueBoxScanner {
+    + scanForDialogueBox() : void
+}
+MonoBehaviour <|-- DialogueBoxScanner
+@enduml

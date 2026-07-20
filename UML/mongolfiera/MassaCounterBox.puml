@@ -1,0 +1,22 @@
+@startuml
+class MassaCounterBox {
+    - errorBound : float = 15f
+    - massaTotale : float = 0f
+    - Start() : void
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    + TooMuchMass() : bool
+    - SetUp() : IEnumerator
+    + GetErrorBound() : float
+    + GetMassaTotale() : float
+}
+MonoBehaviour <|-- MassaCounterBox
+MassaCounterBox --> "led" GameObject
+MassaCounterBox --> "panel" GameObject
+MassaCounterBox --> "txt" TextMeshProUGUI
+MassaCounterBox --> "red" Material
+MassaCounterBox --> "green" Material
+MassaCounterBox --> "audioSource" AudioSource
+MassaCounterBox --> "onSound" AudioClip
+MassaCounterBox --> "boxCollider" BoxCollider
+@enduml

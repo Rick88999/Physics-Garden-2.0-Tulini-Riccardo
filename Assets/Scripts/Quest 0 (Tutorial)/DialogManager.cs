@@ -130,7 +130,7 @@ public class DialogManager : MonoBehaviour
         dialogAudioSource.Play();
     }
 
-    IEnumerator Type()
+    private IEnumerator Type()
     {
         isTyping = true;
 

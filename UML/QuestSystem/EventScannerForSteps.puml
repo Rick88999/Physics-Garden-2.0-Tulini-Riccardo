@@ -1,0 +1,11 @@
+@startuml
+class EventScannerForSteps {
+    - toolNameToCheck : string
+    - OnEnable() : void
+    - OnDisable() : void
+    - NextStep(toolName:string) : void
+}
+MonoBehaviour <|-- EventScannerForSteps
+EventScannerForSteps --> "tipoEvento" Event
+EventScannerForSteps --> "stepPointer" Step
+@enduml

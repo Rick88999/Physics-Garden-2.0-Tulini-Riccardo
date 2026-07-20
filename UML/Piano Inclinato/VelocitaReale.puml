@@ -1,0 +1,7 @@
+@startuml
+class VelocitaReale {
+    - Start() : void
+    - Update() : void
+}
+MonoBehaviour <|-- VelocitaReale
+@enduml

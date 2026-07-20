@@ -1,0 +1,8 @@
+@startuml
+class timerStep {
+    + timerNextStep(time:float) : void
+    - timer(time:float) : IEnumerator
+}
+MonoBehaviour <|-- timerStep
+timerStep --> "step" Step
+@enduml

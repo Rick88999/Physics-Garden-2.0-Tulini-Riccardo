@@ -1,0 +1,21 @@
+@startuml
+class DualHandAttach {
+    - isRight : bool? = null
+    - beforeGrabIsRight : bool? = null
+    - counterDebug : int = 0
+    - OnTriggerEnter(other:Collider) : void
+    - OnTriggerExit(other:Collider) : void
+    + getScanAction() : InputActionReference
+    + getSpawnCardAction() : InputActionReference
+}
+MonoBehaviour <|-- DualHandAttach
+DualHandAttach --> "attachRight" Transform
+DualHandAttach --> "attachLeft" Transform
+DualHandAttach --> "scanActionRight" InputActionReference
+DualHandAttach --> "scanActionLeft" InputActionReference
+DualHandAttach --> "spawnCardActionRight" InputActionReference
+DualHandAttach --> "spawnCardActionLeft" InputActionReference
+DualHandAttach --> "spawnCardAction" InputActionReference
+DualHandAttach --> "scanAction" InputActionReference
+DualHandAttach --> "grabbable" XRGrabInteractable
+@enduml

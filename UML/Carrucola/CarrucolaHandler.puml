@@ -1,0 +1,13 @@
+@startuml
+class CarrucolaHandler {
+    + <<override>> Perform(data:float) : void
+    - ComeDownAfterDelay(delay:float) : IEnumerator
+}
+class "Handler`1"<T> {
+}
+"Handler`1" "<float>" <|-- CarrucolaHandler
+CarrucolaHandler --> "cestaCarrucolaSocket" CestaCarrucola
+CarrucolaHandler --> "step" Step
+CarrucolaHandler --> "successSound" AudioClip
+CarrucolaHandler --> "errorSound" AudioClip
+@enduml

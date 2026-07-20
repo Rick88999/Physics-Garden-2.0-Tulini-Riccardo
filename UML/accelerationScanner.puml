@@ -1,0 +1,11 @@
+@startuml
+class accelerationScanner {
+    + minimumAcceleration : float = 0.1f
+    + detectionValue : float = 0
+    + acceleration : float <<get>>
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- accelerationScanner
+accelerationScanner --> "tracker" TimeAnsVelocityScanner
+accelerationScanner --> "accelerationText" TextMeshProUGUI
+@enduml

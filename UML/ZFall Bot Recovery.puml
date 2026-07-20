@@ -1,0 +1,16 @@
+@startuml
+class ZFallBotRecovery {
+    - sampleInterval : float = 0.5f
+    - floorTolerance : float = 2f
+    - sampleTimer : float
+    - isFalling : bool
+    - Start() : void
+    - Update() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- ZFallBotRecovery
+ZFallBotRecovery --> "teleporters<GameObject>" "List`1"
+ZFallBotRecovery --> "Player" GameObject
+ZFallBotRecovery --> "pastPlayerPosition" Vector3
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class HandMenuManager {
+    + AtrattoreActivate() : void
+    + MassScannerActivate() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- HandMenuManager
+HandMenuManager o-> "Modalita<GameObject>" "List`1"
+HandMenuManager --> "Menu" GameObject
+@enduml

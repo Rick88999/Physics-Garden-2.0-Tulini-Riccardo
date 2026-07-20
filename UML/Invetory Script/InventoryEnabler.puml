@@ -1,0 +1,7 @@
+@startuml
+class InventoryEnabler {
+    + Awake() : void
+}
+MonoBehaviour <|-- InventoryEnabler
+InventoryEnabler --> "inventoryManager" InventoryManager
+@enduml

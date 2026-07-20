@@ -1,0 +1,19 @@
+@startuml
+class HandMenu {
+    + spawnDistance : float = 1.0f
+    + enableButton : bool = false
+    + updateButton() : void
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleMenu(context:InputAction.CallbackContext) : void
+    - ResetHand() : void
+}
+class "List`1"<T> {
+}
+MonoBehaviour <|-- HandMenu
+HandMenu --> "radialMenu" GameObject
+HandMenu --> "Player" Transform
+HandMenu --> "toggleMenuAction" InputActionReference
+HandMenu --> "Base" GameObject
+HandMenu o-> "Modalita<GameObject>" "List`1"
+@enduml

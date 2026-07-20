@@ -1,0 +1,18 @@
+@startuml
+class VendingMachineManager {
+    - coinInserted : bool = false
+    - Awake() : void
+    + InsertCoin() : void
+    + SpawnCookie() : void
+    - ContinueStepAfterDelay(delay:float) : IEnumerator
+}
+MonoBehaviour <|-- VendingMachineManager
+VendingMachineManager --> "step" Step
+VendingMachineManager --> "socketInteractor" XRSocketInteractor
+VendingMachineManager --> "spawnPoint" Transform
+VendingMachineManager --> "cookiePrefab" GameObject
+VendingMachineManager --> "soundSpawn" AudioClip
+VendingMachineManager --> "soundError" AudioClip
+VendingMachineManager --> "soundCoinInserted" AudioClip
+VendingMachineManager --> "audioSource" AudioSource
+@enduml

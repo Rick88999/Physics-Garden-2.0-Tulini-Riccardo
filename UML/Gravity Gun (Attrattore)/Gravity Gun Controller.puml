@@ -1,0 +1,12 @@
+@startuml
+class GravityGunController {
+    - stopInMenu : bool = true
+    - OnEnable() : void
+    - OnDisable() : void
+    - ToggleLineRenderer(context:InputAction.CallbackContext) : void
+    + Activation() : void
+}
+MonoBehaviour <|-- GravityGunController
+GravityGunController --> "rightActivator" InputActionReference
+GravityGunController --> "leftActivator" InputActionReference
+@enduml

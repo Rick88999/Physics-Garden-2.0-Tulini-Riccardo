@@ -1,0 +1,19 @@
+@startuml
+class CestaCarrucola {
+    - altezza : float = 5.6f
+    - fattoreDiScala : float = 1.0f
+    - energiaPotenziale : float
+    - OnTriggerEnter(other:Collider) : void
+    - WrongObjectType(go:GameObject) : void
+    - OnTriggerExit(other:Collider) : void
+    + ShowWarningCanvas(duration:float) : IEnumerator
+    - CalcoloEnergiaPotenziale(massa:float) : void
+    + GetEnergiaPotenziale() : float
+}
+MonoBehaviour <|-- CestaCarrucola
+CestaCarrucola --> "materialeDesiderato" Material
+CestaCarrucola --> "warningCanvas" GameObject
+CestaCarrucola --> "audioSource" AudioSource
+CestaCarrucola --> "successSound" AudioClip
+CestaCarrucola --> "errorSound" AudioClip
+@enduml

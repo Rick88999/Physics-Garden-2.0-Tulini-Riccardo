@@ -1,0 +1,10 @@
+@startuml
+class BasketController {
+    - OnTriggerEnter(other:Collider) : void
+    - EndStepDelay() : IEnumerator
+}
+MonoBehaviour <|-- BasketController
+BasketController --> "step" Step
+BasketController --> "audioSource" AudioSource
+BasketController --> "catchSound" AudioClip
+@enduml

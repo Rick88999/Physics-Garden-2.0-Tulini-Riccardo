@@ -1,0 +1,11 @@
+@startuml
+class TeleportBlockerCollider {
+    - Awake() : void
+    - Update() : void
+    - OnTriggerEnter(other:Collider) : void
+}
+MonoBehaviour <|-- TeleportBlockerCollider
+TeleportBlockerCollider --> "position" Vector3
+TeleportBlockerCollider --> "Player" Transform
+TeleportBlockerCollider --> "xrCollider" Collider
+@enduml
