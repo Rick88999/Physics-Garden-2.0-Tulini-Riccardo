@@ -58814,7 +58814,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 159035425}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
@@ -90022,7 +90022,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 2049803233}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
@@ -200352,7 +200352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 1327185754}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
@@ -260902,7 +260902,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 2051809874}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
@@ -275620,7 +275620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 1465613168}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
@@ -283438,7 +283438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1464078000}
+      - m_Target: {fileID: 1966847874}
         m_TargetAssemblyTypeName: ErrorDialogue, Assembly-CSharp
         m_MethodName: nextSentence
         m_Mode: 1
