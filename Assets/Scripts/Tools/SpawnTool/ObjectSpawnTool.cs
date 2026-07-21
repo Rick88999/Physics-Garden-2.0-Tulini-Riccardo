@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,46 +5,42 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class ObjectSpawnTool : MonoBehaviour
+public class ObjectSpawnTool : VRTool
 {
     private enum Forma { Cubo, Sfera, Cilindro }
     private enum Materiale { Legno, Roccia, Gomma, Metallo, Vetro }
+
     [Header("Configurazione Oggetto")]
-    private DetectHandOnGrab detectHandOnGrab;
-    private InputActionReference spawnAction;
-    private InputActionReference openMenuAction;
     [SerializeField] private GameObject menuPrefab;
     [SerializeField] private Transform spawnAttach;
     [SerializeField] private Forma forma = Forma.Cubo;
     [SerializeField] private Materiale materiale = Materiale.Legno;
+
     [Header("Massa")]
     [SerializeField] private float massa = 1f;
     [SerializeField] private TextMeshProUGUI massaText;
     [SerializeField] private Slider massaSlider;
+
     [Header("Raggio")]
     [SerializeField] private float raggio = 1f;
     [SerializeField] private TextMeshProUGUI raggioText;
     [SerializeField] private Slider raggioSlider;
+
     [Header("Materiali")]
     [SerializeField] private List<Material> materiali = new List<Material>();
     [SerializeField] private float fattoreDiScala = 0.01f;
 
     private Dictionary<Materiale, Material> materialeMap = new Dictionary<Materiale, Material>();
 
-    private void Awake()
+    protected override void Awake()
     {
-        detectHandOnGrab = GetComponent<DetectHandOnGrab>();
-        
-        if (detectHandOnGrab == null)
+        base.Awake();
+
+        if (GameEvents.Instance != null)
         {
-            Debug.LogError("DetectHand non trovato! Assicurati che il componente 'DetectHandOnGrab' sia presente sullo stesso GameObject.");
-            return;
+            GameEvents.Instance.onChangeHandSpawnerTool.AddListener(OnChangeHand);
+            GameEvents.Instance.onDropSpawnerTool.AddListener(OnDrop);
         }
-
-        
-        GameEvents.Instance.onChangeHandSpawnerTool.AddListener(OnChangeHand);
-        GameEvents.Instance.onDropSpawnerTool.AddListener(OnDrop);
-
 
         if (materiali.Count >= 5)
         {
@@ -61,24 +56,28 @@ public class ObjectSpawnTool : MonoBehaviour
         }
     }
 
-    private void RebindActions()
+    protected override void SubscribeActions()
     {
-        
-        if (spawnAction != null)
-            spawnAction.action.performed -= OnSpawnPerformed;
-        if (openMenuAction != null)
-            openMenuAction.action.performed -= OnOpenMenuPerformed;
-        
+        if (isActiveAndEnabled)
+        {
+            if (primaryAction != null) primaryAction.action.performed += OnSpawnPerformed;
+            if (secondaryAction != null) secondaryAction.action.performed += OnOpenMenuPerformed;
+        }
+    }
 
+    protected override void UnsubscribeActions()
+    {
+        if (primaryAction != null) primaryAction.action.performed -= OnSpawnPerformed;
+        if (secondaryAction != null) secondaryAction.action.performed -= OnOpenMenuPerformed;
+    }
 
-        spawnAction = detectHandOnGrab.GetPrimaryAction();
-        openMenuAction = detectHandOnGrab.GetSecondaryAction();
-
-        
-        if (isActiveAndEnabled && spawnAction != null)
-            spawnAction.action.performed += OnSpawnPerformed;
-        if (isActiveAndEnabled && openMenuAction != null)
-            openMenuAction.action.performed += OnOpenMenuPerformed;
+    protected override void UnsubscribeEvents()
+    {
+        if (GameEvents.Instance != null)
+        {
+            GameEvents.Instance.onChangeHandSpawnerTool.RemoveListener(OnChangeHand);
+            GameEvents.Instance.onDropSpawnerTool.RemoveListener(OnDrop);
+        }
     }
 
     private void OnChangeHand(string newHand, int idRiser)
@@ -95,30 +94,17 @@ public class ObjectSpawnTool : MonoBehaviour
         if (gameObject.GetInstanceID() == idRiser)
         {
             RebindActions();
-            menuPrefab.SetActive(false);
+            if (menuPrefab != null) menuPrefab.SetActive(false);
         }
-    }
-    
-
-    private void OnEnable() => RebindActions();
-
-    private void OnDisable()
-    {
-        if (spawnAction != null)
-            spawnAction.action.performed -= OnSpawnPerformed;
     }
 
     private void OnSpawnPerformed(InputAction.CallbackContext context) => Spawn();
-
     private void OnOpenMenuPerformed(InputAction.CallbackContext context) => OpenMenu();
 
     private void OpenMenu()
     {
         if (menuPrefab != null)
-            if (menuPrefab.activeSelf)
-                menuPrefab.SetActive(false);
-            else
-                menuPrefab.SetActive(true);
+            menuPrefab.SetActive(!menuPrefab.activeSelf);
     }
 
     private void Spawn()
@@ -136,12 +122,14 @@ public class ObjectSpawnTool : MonoBehaviour
                 oggetto = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 break;
         }
+
         if (oggetto != null)
         {
             Rigidbody rb = oggetto.AddComponent<Rigidbody>();
             rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-            XRGrabInteractable grab = oggetto.AddComponent<XRGrabInteractable>();
-            oggetto.transform.position = spawnAttach.position;
+            oggetto.AddComponent<XRGrabInteractable>();
+            
+            if (spawnAttach != null) oggetto.transform.position = spawnAttach.position;
             oggetto.tag = "Spawned Object";
 
             float sizeM = raggio * fattoreDiScala;
@@ -163,32 +151,23 @@ public class ObjectSpawnTool : MonoBehaviour
         }
     }
 
-    private void ChangeShape(Forma nuovaForma)
-    {
-        forma = nuovaForma;
-    }
+    private void ChangeShape(Forma nuovaForma) => forma = nuovaForma;
+    private void ChangeMaterial(Materiale nuovoMateriale) => materiale = nuovoMateriale;
 
-    private void ChangeMaterial(Materiale nuovoMateriale)
+    private void IncreaseMass(float amount)
     {
-        materiale = nuovoMateriale;
-    }
-
-     private void IncreaseMass(float amount)
-     {
         massa += amount;
-        if(massa > 100f)
-            massa = 100f;
-        massaText.text = massa.ToString("F1");
-     }
+        if (massa > 100f) massa = 100f;
+        if (massaText != null) massaText.text = massa.ToString("F1");
+    }
 
     private void DecreaseMass(float amount)
     {
         if (massa > 1f)
         {
             massa -= amount;
-            if (massa < 1f)
-                massa = 1f;
-            massaText.text = massa.ToString("F1");
+            if (massa < 1f) massa = 1f;
+            if (massaText != null) massaText.text = massa.ToString("F1");
         }
     }
 
@@ -201,17 +180,17 @@ public class ObjectSpawnTool : MonoBehaviour
     public void IncreaseMassHalf() => IncreaseMass(0.5f);
     public void DecreaseMassHalf() => DecreaseMass(0.5f);
 
-
-
     public void ChangeRadius()
     {
+        if (raggioSlider == null) return;
         raggio = raggioSlider.value;  
-        raggioText.text = raggio.ToString();
+        if (raggioText != null) raggioText.text = raggio.ToString();
     }
 
     private void ChangeScreenPosition(string newHand)
     {
-        menuPrefab.transform.localPosition = newHand == "Right" ? new Vector3(0.0500001907f, 0.00740000606f, 0.25f) : new Vector3(0.0500001907f, 0.00740000606f, -0.25f);
+        if (menuPrefab != null)
+            menuPrefab.transform.localPosition = newHand == "Right" ? new Vector3(0.0500001907f, 0.00740000606f, 0.25f) : new Vector3(0.0500001907f, 0.00740000606f, -0.25f);
     }
 
     public void ChangeShapeCube() => ChangeShape(Forma.Cubo);
@@ -223,5 +202,4 @@ public class ObjectSpawnTool : MonoBehaviour
     public void ChangeMaterialRubber() => ChangeMaterial(Materiale.Gomma);
     public void ChangeMaterialMetal() => ChangeMaterial(Materiale.Metallo);
     public void ChangeMaterialGlass() => ChangeMaterial(Materiale.Vetro);
-
 }

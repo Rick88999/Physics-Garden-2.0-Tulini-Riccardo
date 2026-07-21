@@ -20,8 +20,8 @@ public class DetectHandOnGrab : MonoBehaviour
     [Header("Debug Values")]
     [SerializeField] private Transform alreadyAttach;
     private XRGrabInteractable grabbable;
-    [SerializeField]private InputActionReference primaryAction; //Dorsale
-    [SerializeField]private InputActionReference secondaryAction;//Pulsante
+    [SerializeField] private InputActionReference primaryAction; //Dorsale
+    [SerializeField] private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
 
@@ -32,12 +32,12 @@ public class DetectHandOnGrab : MonoBehaviour
         grabbable.selectExited.AddListener(OnSelectExited);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("PlayerHand") || (attachLeft == null && attachRight == null)) return;
 
         beforeGrabIsRight = isRight;
-        var handedness = other.GetComponentInParent<ManoEco>();
+        ManoEco handedness = other.GetComponentInParent<ManoEco>();
         if (handedness == null)
         {
             Debug.LogWarning("Interactor senza Handedness nei parent: non posso determinare la mano.");
@@ -51,7 +51,7 @@ public class DetectHandOnGrab : MonoBehaviour
 
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("PlayerHand") || (attachLeft == null && attachRight == null)) return;
 

@@ -19,7 +19,7 @@ public class ManifestManager : MonoBehaviour
         public int idStep;
         public GameObject checkField;
 
-        public bool isYallowAtStart;
+        public bool isYellowAtStart;
     }
     [System.Serializable]
     private struct Page
@@ -48,7 +48,7 @@ public class ManifestManager : MonoBehaviour
                     if(check.idStep == 0)
                     {
                         Image image = check.checkField.GetComponent<Image>();
-                        if(!check.isYallowAtStart)
+                        if(!check.isYellowAtStart)
                             image.color = Color.yellow;
                         pinManifestController.SetTitlePin(page.idQuest);
                         pinManifestController.SetDescriptionPin(page.idQuest, check.idStep);

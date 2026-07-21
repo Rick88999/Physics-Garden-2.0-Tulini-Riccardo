@@ -64653,6 +64653,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 318742776}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 318742782}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
       insertIndex: -1
@@ -64666,9 +64669,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 318742777}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 318742776}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ac3bb7782032de42b07910a545c07dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 318742783}
@@ -106374,139 +106374,139 @@ MonoBehaviour:
     checkFields:
     - idStep: 0
       checkField: {fileID: 1245090369}
-      isYallowAtStart: 1
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 735207240}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 1371847564}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 693627986}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 4
       checkField: {fileID: 552091070}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 5
       checkField: {fileID: 33518206}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 6
       checkField: {fileID: 1449509341}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 1
     page: {fileID: 1465437773}
     checkFields:
     - idStep: 0
       checkField: {fileID: 1182630298}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 88885263}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 1977065668}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 704116100}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 2
     page: {fileID: 2122757291}
     checkFields:
     - idStep: 0
       checkField: {fileID: 1872596765}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 1940519713}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 1893717780}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 2125325545}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 4
       checkField: {fileID: 2096892571}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 5
       checkField: {fileID: 2005835641}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 3
     page: {fileID: 1132051123}
     checkFields:
     - idStep: 0
       checkField: {fileID: 325589341}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 1422365649}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 1875821269}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 1955585786}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 4
     page: {fileID: 1199765603}
     checkFields:
     - idStep: 0
       checkField: {fileID: 464226428}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 210171539}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 248829456}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 1866884716}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 4
       checkField: {fileID: 194221370}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 5
     page: {fileID: 512394222}
     checkFields:
     - idStep: 0
       checkField: {fileID: 2013971857}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 286145005}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 73110903}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 1135240082}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 6
     page: {fileID: 764657308}
     checkFields:
     - idStep: 0
       checkField: {fileID: 1400241074}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 228790350}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 2036954216}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   - idQuest: 7
     page: {fileID: 68279953}
     checkFields:
     - idStep: 0
       checkField: {fileID: 26792267}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 1
       checkField: {fileID: 1337733522}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 2
       checkField: {fileID: 1799223547}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 3
       checkField: {fileID: 1066877818}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
     - idStep: 4
       checkField: {fileID: 1974959037}
-      isYallowAtStart: 0
+      isYellowAtStart: 0
   anyQuestPage: {fileID: 1716396970}
   pinManifestController: {fileID: 1886385794}
 --- !u!1 &771353943

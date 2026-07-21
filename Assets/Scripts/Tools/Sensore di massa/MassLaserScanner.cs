@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 [RequireComponent(typeof(LineRenderer))]
-public class MassLaserScanner : MonoBehaviour
+public class MassLaserScanner : VRTool
 {
     [SerializeField] private SpawnCard spawnCard;
     [SerializeField] private Transform rayOrigin;
@@ -12,71 +12,47 @@ public class MassLaserScanner : MonoBehaviour
     [SerializeField] private Color coloreNormale = Color.red;
     [SerializeField] private Color coloreScansionabile = Color.green;
 
-    private DetectHandOnGrab detectHandOnGrab;
-    [SerializeField]private InputActionReference scanAction;
-    [SerializeField] private InputActionReference spawnCardAction;
     private LineRenderer lineRenderer;
-
     private float massaMemorizzata = 0f;
     
     [SerializeField] private TextMeshProUGUI displayRisultato;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         lineRenderer = GetComponent<LineRenderer>();
-        detectHandOnGrab = GetComponent<DetectHandOnGrab>();
         spawnCard = GetComponent<SpawnCard>();
-        lineRenderer.positionCount = 2;
+        
+        if (lineRenderer != null)
+            lineRenderer.positionCount = 2;
 
-        GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
-        GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
+        if (GameEvents.Instance != null)
+        {
+            GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
+            GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
+        }
 
         ImpostaColoreLaser(coloreNormale);
     }
 
-    private void RebindActions()
+    protected override void SubscribeActions()
     {
-        lineRenderer.enabled = true;
-        if (spawnCardAction != null)
-            spawnCardAction.action.performed -= GenerateDataCard;
-        if (scanAction != null)
-            scanAction.action.performed -= EseguiScansione;
-        
+        if (lineRenderer != null) lineRenderer.enabled = true;
 
-
-        spawnCardAction = detectHandOnGrab.GetPrimaryAction();
-        scanAction = detectHandOnGrab.GetSecondaryAction();
-
-        
-        if (isActiveAndEnabled && spawnCardAction != null)
-            spawnCardAction.action.performed += GenerateDataCard;
-        if (isActiveAndEnabled && scanAction != null)
-            scanAction.action.performed += EseguiScansione;
-    }
-
-    private void OnChangeHand(string newHand, int idRiser)
-    { 
-        if(gameObject.GetInstanceID() == idRiser) RebindActions();
-    }
-
-    private void OnDrop(int idRiser)
-    {
-        if (gameObject.GetInstanceID() == idRiser)
+        if (isActiveAndEnabled)
         {
-            RebindActions();
-            lineRenderer.enabled = false;
+            if (primaryAction != null) primaryAction.action.performed += GenerateDataCard;
+            if (secondaryAction != null) secondaryAction.action.performed += EseguiScansione;
         }
     }
 
-    private void OnEnable() => RebindActions();
-
-    private void OnDisable()
+    protected override void UnsubscribeActions()
     {
-        if (spawnCardAction != null) spawnCardAction.action.performed -= GenerateDataCard;
-        if (scanAction != null) scanAction.action.performed -= EseguiScansione;
+        if (primaryAction != null) primaryAction.action.performed -= GenerateDataCard;
+        if (secondaryAction != null) secondaryAction.action.performed -= EseguiScansione;
     }
 
-    private void OnDestroy()
+    protected override void UnsubscribeEvents()
     {
         if (GameEvents.Instance != null)
         {
@@ -85,11 +61,23 @@ public class MassLaserScanner : MonoBehaviour
         }
     }
 
-    
+    private void OnChangeHand(string newHand, int idRiser)
+    { 
+        if (gameObject.GetInstanceID() == idRiser) RebindActions();
+    }
+
+    private void OnDrop(int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser)
+        {
+            RebindActions();
+            if (lineRenderer != null) lineRenderer.enabled = false;
+        }
+    }
 
     private void Update()
     {
-        if (rayOrigin == null) return;
+        if (rayOrigin == null || lineRenderer == null) return;
 
         lineRenderer.SetPosition(0, rayOrigin.position);
 
@@ -98,26 +86,20 @@ public class MassLaserScanner : MonoBehaviour
             lineRenderer.SetPosition(1, hit.point);
 
             if (hit.collider.attachedRigidbody != null)
-            {
                 ImpostaColoreLaser(coloreScansionabile);
-            }
             else
-            {
                 ImpostaColoreLaser(coloreNormale);
-            }
         }
         else
         {
             lineRenderer.SetPosition(1, rayOrigin.position + rayOrigin.forward * maxDistance);
-
             ImpostaColoreLaser(coloreNormale);
         }
     }
 
     private void EseguiScansione(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
-        if (rayOrigin == null) return;
+        if (!context.performed || rayOrigin == null) return;
 
         if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out RaycastHit hit, maxDistance))
         {
@@ -126,8 +108,7 @@ public class MassLaserScanner : MonoBehaviour
             if (rb != null)
             {
                 massaMemorizzata = rb.mass;
-
-                displayRisultato.text = massaMemorizzata+"kg";
+                if (displayRisultato != null) displayRisultato.text = massaMemorizzata + "kg";
                 Debug.Log("Massa scansionata: " + massaMemorizzata + " kg");
             }
         }
@@ -135,18 +116,15 @@ public class MassLaserScanner : MonoBehaviour
 
     private void GenerateDataCard(InputAction.CallbackContext context) 
     { 
-        if (!context.performed) return;
-        if (spawnCard == null) return;
-        if(massaMemorizzata <= 0f) return;
+        if (!context.performed || spawnCard == null || massaMemorizzata <= 0f) return;
 
         spawnCard.ValueReceiver(massaMemorizzata);
         spawnCard.SpawnDataCard();
-
     }
 
- 
     private void ImpostaColoreLaser(Color colore)
     {
+        if (lineRenderer == null) return;
         lineRenderer.startColor = colore;
         lineRenderer.endColor = colore;
     }

@@ -4,12 +4,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(XRGrabInteractable))]
-public class TeleporterGlobe : MonoBehaviour
+public class TeleporterGlobe : VRTool
 {
     [Header("References")]
     [SerializeField] private Camera cam;
-    private DetectHandOnGrab detectHandOnGrab;
-    private InputActionReference inputTeleport;
 
     [Header("Cone Settings")]
     [SerializeField] private float maxDistance = 10f;
@@ -24,47 +22,40 @@ public class TeleporterGlobe : MonoBehaviour
     private bool isHeld = false;
     private LookTarget currentTarget;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         grabInteractable = GetComponent<XRGrabInteractable>();
-        detectHandOnGrab = GetComponent<DetectHandOnGrab>();
 
         if (grabInteractable != null)
         {
             grabInteractable.selectEntered.AddListener(OnGrabbed);
             grabInteractable.selectExited.AddListener(OnReleased);
+        }
+
+        if (GameEvents.Instance != null)
+        {
             GameEvents.Instance.onChangeHandTeleportTool.AddListener(OnChangeHand);
             GameEvents.Instance.onDropTeleportTool.AddListener(OnDrop);
         }
     }
 
-    private void RebindActions()
+    protected override void SubscribeActions()
     {
-        if(inputTeleport != null)
-            inputTeleport.action.performed -= OnInputPerformed;
-        
-        inputTeleport = detectHandOnGrab.GetPrimaryAction();
-
-        if (isActiveAndEnabled && inputTeleport != null)
+        if (isActiveAndEnabled && primaryAction != null)
         {
-            inputTeleport.action.performed += OnInputPerformed;
-            // L'action è condivisa tra tutti i tool della stessa mano:
-            // riabilitarla qui recupera eventuali Disable() fatti altrove.
-            inputTeleport.action.Enable();
+            primaryAction.action.performed += OnInputPerformed;
+            primaryAction.action.Enable();
         }
     }
 
-    private void OnEnable() => RebindActions();
-
-    private void OnDisable()
+    protected override void UnsubscribeActions()
     {
-        // Solo unsubscribe: niente Disable(), l'action è condivisa
-        // e spegnerla bloccherebbe l'input di tutti gli altri tool.
-        if (inputTeleport != null && inputTeleport.action != null)
-            inputTeleport.action.performed -= OnInputPerformed;
+        if (primaryAction != null && primaryAction.action != null)
+            primaryAction.action.performed -= OnInputPerformed;
     }
 
-    private void OnDestroy()
+    protected override void UnsubscribeEvents()
     {
         if (GameEvents.Instance != null)
         {
@@ -73,21 +64,10 @@ public class TeleporterGlobe : MonoBehaviour
         }
     }
 
-
     private void OnGrabbed(SelectEnterEventArgs args)
     {
         isHeld = true;
         RebindActions();
-    }
-
-    private void OnChangeHand(string newHand, int idRiser)
-    {
-        if (gameObject.GetInstanceID() == idRiser) RebindActions();
-    }
-
-    private void OnDrop(int idRiser)
-    {
-        if (gameObject.GetInstanceID() == idRiser) RebindActions();
     }
 
     private void OnReleased(SelectExitEventArgs args)
@@ -101,19 +81,27 @@ public class TeleporterGlobe : MonoBehaviour
         }
     }
 
+    private void OnChangeHand(string newHand, int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser) RebindActions();
+    }
+
+    private void OnDrop(int idRiser)
+    {
+        if (gameObject.GetInstanceID() == idRiser) RebindActions();
+    }
+
     private void OnInputPerformed(InputAction.CallbackContext context)
     {
         if (!isHeld) return;
 
         if (currentTarget != null)
             currentTarget.Activate();
-        
     }
 
-    void Update()
+    private void Update()
     {
-        if (!isHeld) return;
-        if (cam == null) return;
+        if (!isHeld || cam == null) return;
 
         LookTarget newTarget = FindBestTargetInCone();
 
@@ -144,8 +132,7 @@ public class TeleporterGlobe : MonoBehaviour
             Vector3 toTarget = target.transform.position - cam.transform.position;
             float distance = toTarget.magnitude;
 
-            if (distance > maxDistance)
-                continue;
+            if (distance > maxDistance) continue;
 
             float angle = Vector3.Angle(cam.transform.forward, toTarget.normalized);
 
