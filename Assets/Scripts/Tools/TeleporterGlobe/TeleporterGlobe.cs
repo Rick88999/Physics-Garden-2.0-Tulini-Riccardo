@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(XRGrabInteractable))]
-public class TeleporterGlobe : VRTool
+public class TeleporterGlobe : VRToolOneHand
 {
     [Header("References")]
     [SerializeField] private Camera cam;
@@ -14,7 +14,7 @@ public class TeleporterGlobe : VRTool
     [SerializeField] private float coneAngle = 15f;
     [SerializeField] private LayerMask targetLayers;
 
-    [Header("Debug Gizmos")]
+    //[Header("Debug Gizmos")]
     //[SerializeField] private bool drawGizmos = true;
     //[SerializeField] private int gizmoSegments = 24;
 
@@ -81,12 +81,12 @@ public class TeleporterGlobe : VRTool
         }
     }
 
-    private void OnChangeHand(string newHand, int idRiser)
+    protected override void OnChangeHand(string newHand, int idRiser)
     {
         if (gameObject.GetInstanceID() == idRiser) RebindActions();
     }
 
-    private void OnDrop(int idRiser)
+    protected override void OnDrop(int idRiser)
     {
         if (gameObject.GetInstanceID() == idRiser) RebindActions();
     }

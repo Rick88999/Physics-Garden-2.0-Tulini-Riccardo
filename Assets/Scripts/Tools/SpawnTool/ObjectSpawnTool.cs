@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class ObjectSpawnTool : VRTool
+public class ObjectSpawnTool : VRToolOneHand
 {
     private enum Forma { Cubo, Sfera, Cilindro }
     private enum Materiale { Legno, Roccia, Gomma, Metallo, Vetro }
@@ -80,7 +80,7 @@ public class ObjectSpawnTool : VRTool
         }
     }
 
-    private void OnChangeHand(string newHand, int idRiser)
+    protected override void OnChangeHand(string newHand, int idRiser)
     {
         if (gameObject.GetInstanceID() == idRiser)
         {
@@ -89,7 +89,7 @@ public class ObjectSpawnTool : VRTool
         }
     }
 
-    private void OnDrop(int idRiser)
+    protected override void OnDrop(int idRiser)
     {
         if (gameObject.GetInstanceID() == idRiser)
         {

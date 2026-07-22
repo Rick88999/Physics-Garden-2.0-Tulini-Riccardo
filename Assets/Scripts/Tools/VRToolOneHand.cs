@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(DetectHandOnGrab))]
-public abstract class VRTool : MonoBehaviour
+public abstract class VRToolOneHand : MonoBehaviour
 {
     protected DetectHandOnGrab detectHandOnGrab;
     
@@ -49,4 +49,7 @@ public abstract class VRTool : MonoBehaviour
     protected virtual void SubscribeActions() { }
     protected virtual void UnsubscribeActions() { }
     protected virtual void UnsubscribeEvents() { }
+
+    protected virtual void OnChangeHand(string newHand, int idRiser){ }
+    protected virtual void OnDrop(int idRiser) { }
 }

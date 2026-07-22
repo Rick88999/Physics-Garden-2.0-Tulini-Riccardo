@@ -20,13 +20,13 @@ public class BotController : MonoBehaviour
     private Mode mode = Mode.Idle;
     private float nextFollowUpdate;
 
-    void Awake()
+    private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (mode != Mode.Follow) return;
         if (!agent.enabled) return;
@@ -143,8 +143,6 @@ public class BotController : MonoBehaviour
         agent.Warp(position);
         agent.isStopped = true;
     }
-
-    public Mode GetMode() => mode;
 
     private string ModeToString(Mode m)
     {

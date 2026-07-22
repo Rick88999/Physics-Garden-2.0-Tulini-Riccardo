@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LaserBroomTool : MonoBehaviour
+public class LaserBroomTool : VRToolBothHands
 {
-    private DetectOnDualGrab detectOnDualGrab;
-
-    private void Awake() => detectOnDualGrab = GetComponentInParent<DetectOnDualGrab>();
+    protected override void Awake() => base.Awake();
     
     private void OnTriggerEnter(Collider other)
     {

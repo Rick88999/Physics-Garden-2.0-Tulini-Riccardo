@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 [RequireComponent(typeof(LineRenderer))]
-public class MassLaserScanner : VRTool
+public class MassLaserScanner : VRToolOneHand
 {
     [SerializeField] private SpawnCard spawnCard;
     [SerializeField] private Transform rayOrigin;
@@ -61,12 +61,12 @@ public class MassLaserScanner : VRTool
         }
     }
 
-    private void OnChangeHand(string newHand, int idRiser)
+    protected override void OnChangeHand(string newHand, int idRiser)
     { 
         if (gameObject.GetInstanceID() == idRiser) RebindActions();
     }
 
-    private void OnDrop(int idRiser)
+    protected override void OnDrop(int idRiser)
     {
         if (gameObject.GetInstanceID() == idRiser)
         {

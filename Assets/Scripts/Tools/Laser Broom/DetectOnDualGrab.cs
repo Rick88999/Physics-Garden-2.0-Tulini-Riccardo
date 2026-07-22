@@ -3,21 +3,20 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 [RequireComponent(typeof(XRGrabInteractable))]
-public class DetectOnDualGrab : MonoBehaviour
+public class DetectOnDualGrab : VRGrabDetector
 {
-    private XRGrabInteractable grab;
     private bool isGrabbedRight = false;
     private bool isGrabbedLeft = false;
-    private void Awake()
+    protected override void Awake()
     {
-        grab = GetComponent<XRGrabInteractable>();
-        grab.selectEntered.AddListener(OnGrabbed);
-        grab.selectExited.AddListener(OnReleased);
+        base.Awake();
+        grabbable.selectEntered.AddListener(OnSelectEntered);
+        grabbable.selectExited.AddListener(OnSelectExited);
     }
 
-    private void OnGrabbed(SelectEnterEventArgs args)
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        var handedness = args.interactorObject.transform.GetComponentInParent<ManoEco>();
+        ManoEco handedness = args.interactorObject.transform.GetComponentInParent<ManoEco>();
         if (handedness == null) return;
 
         if (handedness.hand == Hand.Right)
@@ -26,9 +25,9 @@ public class DetectOnDualGrab : MonoBehaviour
             isGrabbedLeft = true;
     }
 
-    private void OnReleased(SelectExitEventArgs args)
+    protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        var handedness = args.interactorObject.transform.GetComponentInParent<ManoEco>();
+        ManoEco handedness = args.interactorObject.transform.GetComponentInParent<ManoEco>();
         if (handedness == null) return;
         
         if (handedness.hand == Hand.Right)

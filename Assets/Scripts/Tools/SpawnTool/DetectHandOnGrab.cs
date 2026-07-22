@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using static UnityEngine.Rendering.GPUSort;
 
 [RequireComponent(typeof(XRGrabInteractable))]
-public class DetectHandOnGrab : MonoBehaviour
+public class DetectHandOnGrab : VRGrabDetector
 {
     [Header("Controls Settings")]
     [SerializeField] private TipoTool tipoTool;
@@ -19,15 +19,14 @@ public class DetectHandOnGrab : MonoBehaviour
     [SerializeField] private InputActionReference secondaryActionLeft;
     [Header("Debug Values")]
     [SerializeField] private Transform alreadyAttach;
-    private XRGrabInteractable grabbable;
     [SerializeField] private InputActionReference primaryAction; //Dorsale
     [SerializeField] private InputActionReference secondaryAction;//Pulsante
     private bool? isRight = null;
     private bool? beforeGrabIsRight = null;
 
-    private void Awake()
+    protected override void Awake()
     {
-        grabbable = GetComponent<XRGrabInteractable>();
+        base.Awake();
         grabbable.selectEntered.AddListener(OnSelectEntered);
         grabbable.selectExited.AddListener(OnSelectExited);
     }
@@ -69,14 +68,14 @@ public class DetectHandOnGrab : MonoBehaviour
         //Debug.Log($"Mano uscita: {isRight} con AttachTransform: {grabbable.attachTransform?.name}");
     }
 
-    private void OnSelectEntered(SelectEnterEventArgs args)
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
 
         var interactorComponent = args.interactorObject as Component;
         if (interactorComponent == null)
             return;
 
-        var handedness = interactorComponent.GetComponentInParent<ManoEco>();
+        ManoEco handedness = interactorComponent.GetComponentInParent<ManoEco>();
         if (handedness == null)
         {
             Debug.LogWarning("Interactor senza Handedness nei parent: non posso determinare la mano.");
@@ -103,7 +102,7 @@ public class DetectHandOnGrab : MonoBehaviour
 
     }
 
-    private void OnSelectExited(SelectExitEventArgs args)
+    protected override void OnSelectExited(SelectExitEventArgs args)
     {
         primaryAction = null;   secondaryAction = null;
         switch(tipoTool)
