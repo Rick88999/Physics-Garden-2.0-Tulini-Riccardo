@@ -29,14 +29,14 @@ public class CalculationCore : MonoBehaviour
     };
     [SerializeField] private GameManager gm;
     [Header("Sockets per i valori")]
-    [SerializeField]XRSocketInteractor[] sockets;
+    [SerializeField] private XRSocketInteractor[] sockets;
 
     [Header("Prefab della card risultato (DataCard)")]
-    [SerializeField] GameObject resultCardPrefab;
+    [SerializeField] private GameObject resultCardPrefab;
 
     [Header("Puntatori per la spawn della card risultato")]
-    [SerializeField] XRSocketInteractor spawnSocket;
-    [SerializeField] Transform spawnResultCard;
+    [SerializeField] private XRSocketInteractor spawnSocket;
+    [SerializeField] private Transform spawnResultCard;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -44,13 +44,12 @@ public class CalculationCore : MonoBehaviour
     [SerializeField] private AudioClip clickSoundSuccess;
 
     [Header("Script per il cambio pagina")]
-    [SerializeField] changePage changePageScript;
+    [SerializeField] private changePage changePageScript;
 
     private Dictionary<string, float> value;
     private float result;
     
     private string unitaMisura;
-    private float velocitaReale;
 
 
     private void eliminaOggettiInSockets()

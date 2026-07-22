@@ -6,7 +6,7 @@ public class changePage : MonoBehaviour
     [SerializeField] private GameObject pageActual;
     [SerializeField] private CanvasLoader canvasLoader;
 
-    private  void ChangePage(string command)
+    private void ChangePage(string command)
     {
         if(command == "next")
         {

@@ -15,8 +15,6 @@ public class TerminalManager : MonoBehaviour
         terminale.transform.rotation = rotation;
     }
 
-    public void ActiveTerminal()
-    {
-        terminale.SetActive(true);
-    }
+    public void ActiveTerminal() => terminale.SetActive(true);
+    
 }

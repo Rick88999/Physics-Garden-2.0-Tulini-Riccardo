@@ -74796,7 +74796,7 @@ GameObject:
   - component: {fileID: 483675287}
   - component: {fileID: 483675288}
   m_Layer: 0
-  m_Name: TerminalManager
+  m_Name: TerminalHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123412,10 +123412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9748de6c252dd03418ab566d6af868c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FormulaCard
-  formulaCanvasData: {fileID: 910029823}
   nome: 
   details: 
   textTarghetta: {fileID: 258508113}
+  formulaCanvasData: {fileID: 910029823}
 --- !u!1 &912519051
 GameObject:
   m_ObjectHideFlags: 0
@@ -124352,8 +124352,6 @@ MonoBehaviour:
   maxDistance: 10
   coloreNormale: {r: 1, g: 0, b: 0.8427777, a: 1}
   coloreScansionabile: {r: 0, g: 1, b: 0, a: 1}
-  scanAction: {fileID: 0}
-  spawnCardAction: {fileID: 0}
   displayRisultato: {fileID: 1038601508}
 --- !u!82 &916475837
 AudioSource:
@@ -187263,11 +187261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519467458a01b6049bf061e0bf4e0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataCard
-  valore: 0
   nome: 
-  unitaMisura: 
   details: 
   textTarghetta: {fileID: 891362837}
+  valore: 0
+  unitaMisura: 
 --- !u!65 &1283483175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279508,7 +279506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebe26d3ad3f1b84cbfddacdd88357da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CanvasLoader
-  durataFade: 0.5
 --- !u!1 &1943314319
 GameObject:
   m_ObjectHideFlags: 0
@@ -311513,8 +311510,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2099585674}
-  - {fileID: 852711394}
   - {fileID: 1861053280}
+  - {fileID: 852711394}
   - {fileID: 1283483171}
   - {fileID: 1166819686}
   - {fileID: 916475826}

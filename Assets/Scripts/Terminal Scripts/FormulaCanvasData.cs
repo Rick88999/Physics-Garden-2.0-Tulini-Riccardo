@@ -4,7 +4,7 @@ public class FormulaCanvasData : MonoBehaviour
 {
     public GameObject canvasDaAttivare;
 
-    void Awake()
+    private void Awake()
     {
         if (canvasDaAttivare != null)
         {

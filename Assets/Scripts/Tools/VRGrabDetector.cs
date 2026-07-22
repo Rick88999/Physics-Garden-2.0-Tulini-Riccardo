@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class VRGrabDetector : MonoBehaviour
+public abstract class VRGrabDetector : MonoBehaviour
 {
     [FormerlySerializedAs("grabbable")][FormerlySerializedAs("grab")]
     protected XRGrabInteractable grabbable;

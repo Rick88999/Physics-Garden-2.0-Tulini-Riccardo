@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VRToolBothHands : MonoBehaviour
+public abstract class VRToolBothHands : MonoBehaviour
 {
     protected DetectOnDualGrab detectOnDualGrab;
 

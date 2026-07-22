@@ -11,25 +11,25 @@ public class CanvasLoader : MonoBehaviour
     private CanvasGroup canvasGroupAttuale;
     private Coroutine fadeCoroutine;
     private GameObject canvasAttivo;
-    public float durataFade = 0.5f;
+    private float durataFade = 0.5f;
 
     public void ChengeCanvasAttivo(GameObject nuovoCanvas)
     {
         canvasAttivo = nuovoCanvas;
     }
 
-    void Awake()
+    private void Awake()
     {
         socket = GetComponent<XRSocketInteractor>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         socket.selectEntered.AddListener(OnObjectPlaced);
         socket.selectExited.AddListener(OnObjectRemoved);
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         socket.selectEntered.RemoveListener(OnObjectPlaced);
         socket.selectExited.RemoveListener(OnObjectRemoved);

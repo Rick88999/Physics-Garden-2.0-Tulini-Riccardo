@@ -11,8 +11,6 @@ public class SpawnTerminal : MonoBehaviour
             terminalManager.SpawnTerminal(spawnPosition.position, spawnPosition.rotation);
         terminalManager.ActiveTerminal();
     }
-    public void Deactive()
-    {
-        terminalManager.DeactiveTerminal();
-    }
+    public void Deactive() => terminalManager.DeactiveTerminal();
+    
 }

@@ -1,14 +1,10 @@
 using TMPro;
 using UnityEngine;
 
-public class DataCard : MonoBehaviour
+public class DataCard : CardBase
 {
-    [SerializeField]private float valore;
-    [SerializeField]private string nome;
-    [SerializeField]private string unitaMisura;
-    [SerializeField] private string details;
-    [SerializeField] private TextMeshProUGUI textTarghetta;
-
+    [SerializeField] private float valore;
+    [SerializeField] private string unitaMisura;
 
     public float GetValue()
     {
@@ -20,7 +16,7 @@ public class DataCard : MonoBehaviour
         valore = value;
     }
 
-    public void SetTextTarghetta()
+    public override void SetTextTarghetta()
     {
         if (textTarghetta != null)
         {
@@ -38,23 +34,5 @@ public class DataCard : MonoBehaviour
         unitaMisura = unit;
     }
 
-    public string GetName()
-        {
-            return nome;
-    }
-
-    public void SetName(string name)
-    {
-        nome = name;
-    }
-
-    public string GetDetails()
-    {
-        return details;
-    }
-
-    public void SetDetails(string details)
-    {
-        this.details = details;
-    }
+    
 }
