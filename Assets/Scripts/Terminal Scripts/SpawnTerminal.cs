@@ -1,16 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpawnTerminal : MonoBehaviour
 {
-    [SerializeField] private TerminalManager terminalManager;
+    [FormerlySerializedAs("terminalManager")]
+    [SerializeField] private TerminalController terminalController;
     [SerializeField] private Transform spawnPosition;
 
     public void Spawn()
     {
-        if(terminalManager.terminale.transform.position  != spawnPosition.position)
-            terminalManager.SpawnTerminal(spawnPosition.position, spawnPosition.rotation);
-        terminalManager.ActiveTerminal();
+        if(terminalController.terminale.transform.position  != spawnPosition.position)
+            terminalController.SpawnTerminal(spawnPosition.position, spawnPosition.rotation);
+        terminalController.ActiveTerminal();
     }
-    public void Deactive() => terminalManager.DeactiveTerminal();
+
+    public void Deactive() => terminalController.DeactiveTerminal();
     
 }

@@ -74796,7 +74796,7 @@ GameObject:
   - component: {fileID: 483675287}
   - component: {fileID: 483675288}
   m_Layer: 0
-  m_Name: TerminalHandler
+  m_Name: TerminalController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90822,7 +90822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 779669628}
 --- !u!64 &637040764
 MeshCollider:
@@ -95867,7 +95867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 988742116}
 --- !u!1 &674558282
 GameObject:
@@ -125513,7 +125513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1487630851}
 --- !u!54 &922197533
 Rigidbody:
@@ -270077,7 +270077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1814484310}
 --- !u!64 &1872341695
 MeshCollider:
@@ -294669,7 +294669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 2072069521}
 --- !u!1 &2033875197
 GameObject:
@@ -297231,7 +297231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
-  terminalManager: {fileID: 483675288}
+  terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1193970541}
 --- !u!64 &2050506818
 MeshCollider:

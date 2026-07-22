@@ -1,14 +1,11 @@
 using UnityEngine;
 
-public class TerminalManager : MonoBehaviour
+public class TerminalController : MonoBehaviour
 {
     [SerializeField] public GameObject terminale;
 
-    public void DeactiveTerminal()
-    {
-        terminale.SetActive(false);
-    }
-
+    public void DeactiveTerminal() => terminale.SetActive(false);
+    
     public void SpawnTerminal(Vector3 position, Quaternion rotation)
     {
         terminale.transform.position = position;
