@@ -5,9 +5,10 @@ public class FormulaCard : CardBase
 {
     [SerializeField] private GameObject formulaCanvasData;
 
-    public GameObject GetFormulaData()
+    public FormulaCanvasData GetFormulaData()
     {
-        return formulaCanvasData;
+        FormulaCanvasData canvasData = this.formulaCanvasData.GetComponent<FormulaCanvasData>();
+        return canvasData;
     }
 
     public void SetFormulaData(GameObject g)

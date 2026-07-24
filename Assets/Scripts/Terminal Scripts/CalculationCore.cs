@@ -24,7 +24,7 @@ public class CalculationCore : MonoBehaviour
         { UnitaMisura.InerziaX2, "kg*m<sup>3</sup>" },
         { UnitaMisura.InerziaX3, "kg<sup>2</sup>*m" },
         { UnitaMisura.Newton, "N" },
-        { UnitaMisura.Jouole, "J" },
+        { UnitaMisura.Joule, "J" },
         { UnitaMisura.None, "" }
     };
     [SerializeField] private GameManager gm;
@@ -816,7 +816,7 @@ public class CalculationCore : MonoBehaviour
                     break;
                 case Operazione.EnergiaCinetica:
                     esito = EnergiaCinetica();
-                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    unitaMisura = simboliUnita[UnitaMisura.Joule];
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
@@ -827,7 +827,7 @@ public class CalculationCore : MonoBehaviour
                     break;
                 case Operazione.EnergiaPotenziale:
                     esito = EnergiaPotenziale();
-                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    unitaMisura = simboliUnita[UnitaMisura.Joule];
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)
@@ -838,7 +838,7 @@ public class CalculationCore : MonoBehaviour
                     break;
                 case Operazione.EnergiaElastica:
                     esito = EnergiaElastica();
-                    unitaMisura = simboliUnita[UnitaMisura.Jouole];
+                    unitaMisura = simboliUnita[UnitaMisura.Joule];
                     if (esito)
                     {
                         if (gm.GetLanguage() == Language.Italian)

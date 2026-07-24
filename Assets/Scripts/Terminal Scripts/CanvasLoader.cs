@@ -37,7 +37,8 @@ public class CanvasLoader : MonoBehaviour
 
     private void OnObjectPlaced(SelectEnterEventArgs args)
     { 
-        FormulaCanvasData itemData = args.interactableObject.transform.GetComponent<FormulaCanvasData>();
+        FormulaCard formulaCard = args.interactableObject.transform.GetComponent<FormulaCard>();
+        FormulaCanvasData itemData = formulaCard.GetFormulaData();
 
         if (itemData != null && itemData.canvasDaAttivare != null)
         {

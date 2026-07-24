@@ -47,7 +47,7 @@ public enum UnitaMisura
     InerziaX2,
     InerziaX3,
     Newton,
-    Jouole,
+    Joule,
     None
 }
 
