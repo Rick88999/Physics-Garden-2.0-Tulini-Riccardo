@@ -89,3 +89,13 @@ public enum Language
     Italian,
     English
 }
+
+public enum EjectDirectionAxis
+{
+    Forward,
+    Back,
+    Right,
+    Left,
+    Up,
+    Down
+}

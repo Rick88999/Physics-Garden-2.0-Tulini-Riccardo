@@ -6937,7 +6937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &54097594
 Transform:
   m_ObjectHideFlags: 0
@@ -7035,6 +7035,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04, y: 0.09, z: 0.1}
   m_Center: {x: 0, y: 0.01, z: 0}
+--- !u!64 &54131862 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 105040720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &54421094
 GameObject:
   m_ObjectHideFlags: 0
@@ -18861,17 +18866,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1280598211}
-  memory:
-  - {fileID: 105040721}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 424837254}
+  socketInteractor: {fileID: 424837255}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 690232729}
+  - {fileID: 1706397931}
+  - {fileID: 664403953}
+  - {fileID: 606039964}
+  - {fileID: 54131862}
   audioSource: {fileID: 105040725}
   clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 424837255}
+  Step: {fileID: 1280598211}
+  stepCallDelay: 3.5
 --- !u!1 &105068943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6821887585681450876, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
@@ -19304,6 +19313,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9173058490249226726, guid: 9f8b478066925ff4abcde347c0ff8b3d, type: 3}
+--- !u!64 &110649069 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 585073006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &111224816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20145,6 +20159,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       insertIndex: -1
       addedObject: {fileID: 115518312}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 115518314}
   m_SourcePrefab: {fileID: 100100000, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
 --- !u!1 &115518310 stripped
 GameObject:
@@ -20269,6 +20286,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &115518314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115518310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
+  socketInteractor: {fileID: 1822142898}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 1856009784}
+  - {fileID: 1579984147}
+  - {fileID: 1475203808}
+  - {fileID: 504773423}
+  - {fileID: 1989723288}
+  audioSource: {fileID: 115518313}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
+  Step: {fileID: 1754470032}
+  stepCallDelay: 3.5
 --- !u!1 &115718442
 GameObject:
   m_ObjectHideFlags: 0
@@ -33663,6 +33707,11 @@ MonoBehaviour:
   clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   clickSoundSuccess: {fileID: 8300000, guid: 5566c557dc208214ca78297361d4b7a2, type: 3}
   changePageScript: {fileID: 2032939002}
+--- !u!64 &196343557 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1180378048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &198875040
 GameObject:
   m_ObjectHideFlags: 0
@@ -34522,7 +34571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 825655710}
         m_TargetAssemblyTypeName: ValueReader, Assembly-CSharp
-        m_MethodName: ActivateCheckValue
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43533,7 +43582,8 @@ MonoBehaviour:
   fatherStep: {fileID: 1093923457}
   afterEndStep: 0
   canvasEndToggle: 1
-  toActivateAtEnd: []
+  toActivateAtEnd:
+  - {fileID: 54097593}
 --- !u!4 &235199625
 Transform:
   m_ObjectHideFlags: 0
@@ -43904,7 +43954,6 @@ MonoBehaviour:
   objectsToDeactivateAtStart: []
   objectsList:
   - {fileID: 1026969690}
-  - {fileID: 1695145293}
   - {fileID: 1434681435}
   lootGivers:
   - {fileID: 1849187811}
@@ -43924,7 +43973,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1695145295}
   - {fileID: 1026969692}
   - {fileID: 1434681438}
   m_Father: {fileID: 218441060}
@@ -47804,7 +47852,6 @@ MonoBehaviour:
   afterEndStep: 0
   canvasEndToggle: 1
   toActivateAtEnd:
-  - {fileID: 440509665}
   - {fileID: 115518310}
 --- !u!1 &271558367
 GameObject:
@@ -49699,6 +49746,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286948381}
   m_CullTransparentMesh: 1
+--- !u!64 &287751538 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1160730625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &288765381
 GameObject:
   m_ObjectHideFlags: 0
@@ -50816,8 +50868,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2105895721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.59324515}
-  m_AnchorMax: {x: 1, y: 0.9998981}
+  m_AnchorMin: {x: 0, y: 0.593169}
+  m_AnchorMax: {x: 1, y: 0.9998219}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -52833,7 +52885,6 @@ GameObject:
   - component: {fileID: 314023363}
   - component: {fileID: 314023362}
   - component: {fileID: 314023361}
-  - component: {fileID: 314023360}
   - component: {fileID: 314023359}
   m_Layer: 0
   m_Name: Socket Point (Densita)
@@ -52918,18 +52969,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &314023360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314023357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &314023361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54577,7 +54616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000042833602, y: 0.0152281765}
+  m_AnchoredPosition: {x: -0.000042833602, y: 0.02865591}
   m_SizeDelta: {x: 0.6, y: 246.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &320852928
@@ -57456,6 +57495,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339216635}
   m_CullTransparentMesh: 1
+--- !u!64 &339941483 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1318780296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &342134064
 GameObject:
   m_ObjectHideFlags: 0
@@ -66074,6 +66118,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408511775}
   m_CullTransparentMesh: 1
+--- !u!64 &408934922 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 585073006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409075987
 GameObject:
   m_ObjectHideFlags: 0
@@ -68204,7 +68253,6 @@ GameObject:
   - component: {fileID: 424837260}
   - component: {fileID: 424837259}
   - component: {fileID: 424837258}
-  - component: {fileID: 424837257}
   - component: {fileID: 424837255}
   m_Layer: 0
   m_Name: Socket Point (Densita)
@@ -68289,18 +68337,6 @@ Transform:
   - {fileID: 1842589813}
   m_Father: {fileID: 105040722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &424837257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424837254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &424837258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68793,6 +68829,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
   m_PrefabInstance: {fileID: 263649613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &427141521 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 585073006}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &427987546
 GameObject:
@@ -70122,61 +70163,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440469120}
   m_CullTransparentMesh: 1
---- !u!1 &440509665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 440509666}
-  - component: {fileID: 440509667}
-  m_Layer: 0
-  m_Name: DataCardScanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &440509666
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440509665}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1754470033}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &440509667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440509665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1754470032}
-  memory:
-  - {fileID: 115518310}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 1822142896}
-  audioSource: {fileID: 115518313}
-  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
-  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 1822142898}
 --- !u!1 &440822116
 GameObject:
   m_ObjectHideFlags: 0
@@ -77284,6 +77270,11 @@ Transform:
   - {fileID: 411084509}
   m_Father: {fileID: 2001446047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &504773423 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 115518309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &506364262
 GameObject:
   m_ObjectHideFlags: 0
@@ -84064,6 +84055,11 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 1180720675}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+--- !u!64 &579423791 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1180378048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &580557762
 GameObject:
   m_ObjectHideFlags: 0
@@ -84582,17 +84578,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 56181013}
-  memory:
-  - {fileID: 585073008}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 2147412571}
+  socketInteractor: {fileID: 2147412573}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 427141521}
+  - {fileID: 408934922}
+  - {fileID: 767685905}
+  - {fileID: 110649069}
+  - {fileID: 775283673}
   audioSource: {fileID: 585073010}
   clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 2147412573}
+  Step: {fileID: 56181013}
+  stepCallDelay: 3.5
 --- !u!82 &585073010
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87243,6 +87243,11 @@ Transform:
   - {fileID: 804898331}
   m_Father: {fileID: 1164634571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &606039964 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 105040720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &606112347
 GameObject:
   m_ObjectHideFlags: 0
@@ -94366,6 +94371,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664251676}
   m_CullTransparentMesh: 1
+--- !u!64 &664403953 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 105040720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &664737568
 GameObject:
   m_ObjectHideFlags: 0
@@ -95532,6 +95542,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1896143716}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &671778061 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1180378048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &673049802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97339,6 +97354,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!64 &690232729 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 105040720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &690937122
 GameObject:
   m_ObjectHideFlags: 0
@@ -105887,6 +105907,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7010061138069007725, guid: a3f8ba02ff00f424e9a57d48bb8f97d2, type: 3}
+--- !u!64 &767685905 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 585073006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &769424679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 877169514579444012, guid: 7a3f2d7936c9c484fae2fa573180a256, type: 3}
@@ -107030,6 +107055,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774776899}
   m_CullTransparentMesh: 1
+--- !u!64 &775283673 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 585073006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &775308491
 GameObject:
   m_ObjectHideFlags: 0
@@ -112296,6 +112326,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816421797}
   m_CullTransparentMesh: 1
+--- !u!64 &816507566 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1318780296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &817266130
 GameObject:
   m_ObjectHideFlags: 0
@@ -113962,19 +113997,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ValueReader
   socketInteractor: {fileID: 203579616}
-  handler: {fileID: 825655712}
-  unitaMisura: J
-  audioSource: {fileID: 825655711}
-  soundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   socketDisableDuration: 1
   ejectForce: 5
-  ejectDirection: {x: 0, y: 0, z: 1}
+  ejectDirectionAxis: 2
   box:
   - {fileID: 825655708}
   - {fileID: 825655707}
   - {fileID: 825655706}
   - {fileID: 825655705}
   - {fileID: 825655704}
+  audioSource: {fileID: 825655711}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 0}
+  handler: {fileID: 825655712}
+  unitaMisura: J
 --- !u!82 &825655711
 AudioSource:
   m_ObjectHideFlags: 0
@@ -121013,6 +121049,11 @@ MonoBehaviour:
   clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   clickSoundSuccess: {fileID: 8300000, guid: 5566c557dc208214ca78297361d4b7a2, type: 3}
   changePageScript: {fileID: 659977996}
+--- !u!64 &894589549 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1318780296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894800980
 GameObject:
   m_ObjectHideFlags: 0
@@ -122773,6 +122814,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5888765399538998960, guid: ad818c36731146e994540a1896ad8f24, type: 3}
   m_PrefabInstance: {fileID: 1292000037}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &907456146 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1160730625}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &908345622
 GameObject:
@@ -128577,7 +128623,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1171757586}
         m_TargetAssemblyTypeName: ValueReader, Assembly-CSharp
-        m_MethodName: ActivateCheckValue
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -131657,6 +131703,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969252808}
   m_CullTransparentMesh: 1
+--- !u!64 &970886507 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1318780296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &972747777
 GameObject:
   m_ObjectHideFlags: 0
@@ -135618,7 +135669,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1911130805}
   - {fileID: 1834757372}
   m_Father: {fileID: 218441060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135639,11 +135689,9 @@ MonoBehaviour:
   father: {fileID: 218441061}
   NextStep: {fileID: 240910064}
   objectsToActivate:
-  - {fileID: 1911130803}
   - {fileID: 1834757371}
   objectsToDeactivateAtStart: []
   objectsList:
-  - {fileID: 1911130803}
   - {fileID: 1834757371}
   lootGivers: []
   isLastStep: 0
@@ -138103,7 +138151,6 @@ MonoBehaviour:
   canvasEndToggle: 1
   toActivateAtEnd:
   - {fileID: 1434681435}
-  - {fileID: 1695145293}
 --- !u!4 &1026969692
 Transform:
   m_ObjectHideFlags: 0
@@ -145356,61 +145403,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
---- !u!1 &1089487641
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1089487642}
-  - component: {fileID: 1089487643}
-  m_Layer: 0
-  m_Name: DataCardScanner (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1089487642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089487641}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1754470033}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1089487643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089487641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1754470032}
-  memory:
-  - {fileID: 115518310}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 1822142896}
-  audioSource: {fileID: 115518313}
-  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
-  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 1822142898}
 --- !u!1 &1089645440
 GameObject:
   m_ObjectHideFlags: 0
@@ -164552,6 +164544,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1434681439}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1434681440}
   m_SourcePrefab: {fileID: 100100000, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
 --- !u!1 &1161310412
 GameObject:
@@ -165426,19 +165421,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ValueReader
   socketInteractor: {fileID: 949570458}
-  handler: {fileID: 1171757587}
-  unitaMisura: N
-  audioSource: {fileID: 1171757585}
-  soundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   socketDisableDuration: 1
   ejectForce: 5
-  ejectDirection: {x: 0, y: 0, z: 1}
+  ejectDirectionAxis: 2
   box:
   - {fileID: 169266334}
   - {fileID: 857099338}
   - {fileID: 512785531}
   - {fileID: 1812579904}
   - {fileID: 838952731}
+  audioSource: {fileID: 1171757585}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 0}
+  handler: {fileID: 1171757587}
+  unitaMisura: N
 --- !u!114 &1171757587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171450,6 +171446,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1180378051}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1180378053}
   m_SourcePrefab: {fileID: 100100000, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
 --- !u!1 &1180378049 stripped
 GameObject:
@@ -171574,6 +171573,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1180378053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180378049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
+  socketInteractor: {fileID: 1444533515}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 579423791}
+  - {fileID: 1582803507}
+  - {fileID: 2024244937}
+  - {fileID: 196343557}
+  - {fileID: 671778061}
+  audioSource: {fileID: 1180378052}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
+  Step: {fileID: 1482478876}
+  stepCallDelay: 3.5
 --- !u!1 &1180720673
 GameObject:
   m_ObjectHideFlags: 0
@@ -174615,6 +174641,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1588142392}
   m_SourcePrefab: {fileID: 100100000, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
+--- !u!64 &1200931012 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1672947170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201957836
 GameObject:
   m_ObjectHideFlags: 0
@@ -197170,6 +197201,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1834757374}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1834757375}
   m_SourcePrefab: {fileID: 100100000, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
 --- !u!1 &1320630733
 GameObject:
@@ -212877,6 +212911,33 @@ MonoBehaviour:
   matchNameEnglish: Inertia
   matchData: 0.004
   delta: 0.00001
+--- !u!114 &1434681440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434681435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
+  socketInteractor: {fileID: 1792222651}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 2060919513}
+  - {fileID: 2041995617}
+  - {fileID: 287751538}
+  - {fileID: 1917032237}
+  - {fileID: 907456146}
+  audioSource: {fileID: 1434681436}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
+  Step: {fileID: 240910064}
+  stepCallDelay: 3.5
 --- !u!1 &1435136509
 GameObject:
   m_ObjectHideFlags: 0
@@ -214394,7 +214455,6 @@ GameObject:
   - component: {fileID: 1444533519}
   - component: {fileID: 1444533518}
   - component: {fileID: 1444533517}
-  - component: {fileID: 1444533516}
   - component: {fileID: 1444533515}
   m_Layer: 0
   m_Name: Socket Point
@@ -214451,7 +214511,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1817900266}
+      - m_Target: {fileID: 1180378053}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
         m_MethodName: ActiavateChecks
         m_Mode: 1
@@ -214465,19 +214525,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
@@ -214491,18 +214539,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1444533516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444533513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &1444533517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217884,6 +217920,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473725094}
   m_CullTransparentMesh: 1
+--- !u!64 &1475203808 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 115518309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475416066
 GameObject:
   m_ObjectHideFlags: 0
@@ -218430,11 +218471,9 @@ MonoBehaviour:
   father: {fileID: 218441061}
   NextStep: {fileID: 1639189151}
   objectsToActivate:
-  - {fileID: 1817900265}
   - {fileID: 1180378049}
   objectsToDeactivateAtStart: []
   objectsList:
-  - {fileID: 1817900265}
   - {fileID: 1180378049}
   lootGivers: []
   isLastStep: 0
@@ -218453,7 +218492,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1817900267}
   - {fileID: 1180378050}
   m_Father: {fileID: 218441060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230690,6 +230728,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579165240}
   m_CullTransparentMesh: 1
+--- !u!64 &1579984147 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 115518309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1580769187
 GameObject:
   m_ObjectHideFlags: 0
@@ -231035,6 +231078,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582789717}
   m_CullTransparentMesh: 1
+--- !u!64 &1582803507 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1180378048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1584346084
 GameObject:
   m_ObjectHideFlags: 0
@@ -245838,7 +245886,6 @@ GameObject:
   - component: {fileID: 1691081556}
   - component: {fileID: 1691081555}
   - component: {fileID: 1691081554}
-  - component: {fileID: 1691081553}
   - component: {fileID: 1691081552}
   m_Layer: 0
   m_Name: Socket Point
@@ -245895,7 +245942,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1911130804}
+      - m_Target: {fileID: 1834757375}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
         m_MethodName: ActiavateChecks
         m_Mode: 1
@@ -245923,18 +245970,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1691081553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691081550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &1691081554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246013,6 +246048,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691081550}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &1692687830 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1672947170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692714630
 GameObject:
   m_ObjectHideFlags: 0
@@ -246103,61 +246143,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692714630}
   m_Mesh: {fileID: -5581687565373973441, guid: d4f176f47b2e9334490db403b92d1836, type: 3}
---- !u!1 &1695145293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1695145295}
-  - component: {fileID: 1695145294}
-  m_Layer: 0
-  m_Name: DataCardScanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1695145294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695145293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 240910064}
-  memory:
-  - {fileID: 1434681435}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 1792222650}
-  audioSource: {fileID: 1434681436}
-  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
-  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 1792222651}
---- !u!4 &1695145295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695145293}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 240910065}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696097324
 GameObject:
   m_ObjectHideFlags: 0
@@ -248552,6 +248537,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706340145}
   m_CullTransparentMesh: 1
+--- !u!64 &1706397931 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 105040720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706425750
 GameObject:
   m_ObjectHideFlags: 0
@@ -253826,7 +253816,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 296748301}
   m_HandleRect: {fileID: 296748300}
   m_Direction: 2
-  m_Value: 0.9998282
+  m_Value: 0.9996999
   m_Size: 0.40665293
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -254052,7 +254042,6 @@ MonoBehaviour:
   objectsList:
   - {fileID: 270236952}
   - {fileID: 1844331452}
-  - {fileID: 440509665}
   - {fileID: 115518310}
   lootGivers: []
   isLastStep: 0
@@ -254073,8 +254062,6 @@ Transform:
   m_Children:
   - {fileID: 270236953}
   - {fileID: 1844331449}
-  - {fileID: 440509666}
-  - {fileID: 1089487642}
   - {fileID: 115518311}
   m_Father: {fileID: 1947110044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259239,7 +259226,6 @@ GameObject:
   - component: {fileID: 1792222655}
   - component: {fileID: 1792222654}
   - component: {fileID: 1792222653}
-  - component: {fileID: 1792222652}
   - component: {fileID: 1792222651}
   m_Layer: 0
   m_Name: Socket Point
@@ -259280,7 +259266,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1695145294}
+      - m_Target: {fileID: 1434681440}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
         m_MethodName: ActiavateChecks
         m_Mode: 1
@@ -259294,19 +259280,7 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
@@ -259320,18 +259294,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1792222652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792222650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &1792222653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -262348,61 +262310,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814986188}
   m_CullTransparentMesh: 1
---- !u!1 &1817900265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1817900267}
-  - component: {fileID: 1817900266}
-  m_Layer: 0
-  m_Name: DataCardScanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1817900266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817900265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1482478876}
-  memory:
-  - {fileID: 1180378049}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 1444533513}
-  audioSource: {fileID: 1180378052}
-  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
-  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 1444533515}
---- !u!4 &1817900267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817900265}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1482478877}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818373485
 GameObject:
   m_ObjectHideFlags: 0
@@ -263665,7 +263572,6 @@ GameObject:
   - component: {fileID: 1822142902}
   - component: {fileID: 1822142901}
   - component: {fileID: 1822142900}
-  - component: {fileID: 1822142899}
   - component: {fileID: 1822142898}
   m_Layer: 0
   m_Name: Socket Point (Massa)
@@ -263722,7 +263628,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 440509667}
+      - m_Target: {fileID: 115518314}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
         m_MethodName: ActiavateChecks
         m_Mode: 1
@@ -263750,18 +263656,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1822142899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822142896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &1822142900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265317,6 +265211,33 @@ MonoBehaviour:
   matchNameEnglish: Height
   matchData: 0.75
   delta: 0.00001
+--- !u!114 &1834757375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834757371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
+  socketInteractor: {fileID: 1691081552}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 2
+  box:
+  - {fileID: 894589549}
+  - {fileID: 970886507}
+  - {fileID: 2061289857}
+  - {fileID: 816507566}
+  - {fileID: 339941483}
+  audioSource: {fileID: 1834757373}
+  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
+  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
+  Step: {fileID: 1003166028}
+  stepCallDelay: 3.5
 --- !u!1 &1834945139 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6821887585681450876, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
@@ -267556,6 +267477,11 @@ RectTransform:
   m_AnchoredPosition: {x: 307.7926, y: -125.23039}
   m_SizeDelta: {x: 575.5852, y: 49.8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!64 &1856009784 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 115518309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1856311037
 GameObject:
   m_ObjectHideFlags: 0
@@ -269042,6 +268968,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865548866}
   m_CullTransparentMesh: 1
+--- !u!64 &1866451423 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1672947170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1866501445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275757,61 +275688,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1134013029}
   m_SourcePrefab: {fileID: 100100000, guid: 4dee58bd8ecb914468027d9503586c7b, type: 3}
---- !u!1 &1911130803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1911130805}
-  - component: {fileID: 1911130804}
-  m_Layer: 0
-  m_Name: DataCardScanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1911130804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911130803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1003166028}
-  memory:
-  - {fileID: 1834757371}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 1691081550}
-  audioSource: {fileID: 1834757373}
-  clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
-  clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 1691081552}
---- !u!4 &1911130805
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911130803}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1003166027}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1912289552
 GameObject:
   m_ObjectHideFlags: 0
@@ -276588,6 +276464,11 @@ MonoBehaviour:
   isLastStep: 0
   giveLootAtEndStep: 1
   manifestManager: {fileID: 771222185}
+--- !u!64 &1917032237 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1160730625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1918157112
 GameObject:
   m_ObjectHideFlags: 0
@@ -282382,6 +282263,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971299207}
   m_CullTransparentMesh: 1
+--- !u!64 &1971590042 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1672947170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972433477
 GameObject:
   m_ObjectHideFlags: 0
@@ -282495,6 +282381,11 @@ MonoBehaviour:
   toActivateAtEnd:
   - {fileID: 380325282}
   - {fileID: 414730969}
+--- !u!64 &1974339540 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 439516310653078524, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1672947170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1974716142
 GameObject:
   m_ObjectHideFlags: 0
@@ -284529,6 +284420,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 949570457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1989723288 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -4532423388025515788, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 115518309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1990153998
 GameObject:
   m_ObjectHideFlags: 0
@@ -293515,6 +293411,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!64 &2024244937 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1180378048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2024247951
 GameObject:
   m_ObjectHideFlags: 0
@@ -295604,6 +295505,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040637027}
   m_CullTransparentMesh: 1
+--- !u!64 &2041995617 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -6694755761742603305, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1160730625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2042454917
 GameObject:
   m_ObjectHideFlags: 0
@@ -298506,6 +298412,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060541924}
   m_CullTransparentMesh: 1
+--- !u!64 &2060919513 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1160730625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2061289857 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: -808966925217029657, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
+  m_PrefabInstance: {fileID: 1318780296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062506068
 GameObject:
   m_ObjectHideFlags: 0
@@ -304698,17 +304614,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436de6db36b9af4eb29f96c87cf5b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataCardScanValueActivator
-  Step: {fileID: 1361092496}
-  memory:
-  - {fileID: 2114334353}
-  socketPreviste: 1
-  sockets:
-  - {fileID: 314023357}
+  socketInteractor: {fileID: 314023359}
+  socketDisableDuration: 1
+  ejectForce: 3
+  ejectDirectionAxis: 0
+  box:
+  - {fileID: 1692687830}
+  - {fileID: 1971590042}
+  - {fileID: 1200931012}
+  - {fileID: 1974339540}
+  - {fileID: 1866451423}
   audioSource: {fileID: 2114334356}
   clickSoundError: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
   clickSoundSuccess: {fileID: 8300000, guid: 715bd903b64c62a42819d033d67948b6, type: 3}
-  socketInteractors:
-  - {fileID: 314023359}
+  Step: {fileID: 1361092496}
+  stepCallDelay: 3.5
 --- !u!82 &2114334356
 AudioSource:
   m_ObjectHideFlags: 0
@@ -310082,7 +310002,6 @@ GameObject:
   - component: {fileID: 2147412577}
   - component: {fileID: 2147412576}
   - component: {fileID: 2147412575}
-  - component: {fileID: 2147412574}
   - component: {fileID: 2147412573}
   m_Layer: 0
   m_Name: Socket Point (Densita)
@@ -310167,18 +310086,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &2147412574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2147412571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464165a50e213ca48a3a18709fb8b9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampHolder
 --- !u!65 &2147412575
 BoxCollider:
   m_ObjectHideFlags: 0
