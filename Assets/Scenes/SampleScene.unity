@@ -52943,7 +52943,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2114334355}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -68295,7 +68295,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105040726}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -90172,7 +90172,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Premi per continuare...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 174685853689b7b408b7a27344f68097, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
   m_sharedMaterial: {fileID: -7496019867241093955, guid: 174685853689b7b408b7a27344f68097, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -90239,7 +90239,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &630995015
@@ -96498,7 +96498,7 @@ MonoBehaviour:
   ItalianSentences:
   - "Cerca allora la forza necessaria per colpire quella sfera luminosa li gi\xF9.
     Attento per\xF2..."
-  - Il cannone accetta solo proiettili della dimesnione giusta e con un massa superiore
+  - Il cannone accetta solo proiettili della dimensione giusta e con un massa superiore
     ad 1 kg.
   - "Inoltre, se la forza \xE8 troppo debole non funzioner\xE0. Chiudi il dialogo
     e prova!."
@@ -180091,7 +180091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1247691357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -214513,7 +214513,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1180378053}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -245944,7 +245944,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1834757375}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -247431,7 +247431,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 174685853689b7b408b7a27344f68097, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
   m_sharedMaterial: {fileID: -7496019867241093955, guid: 174685853689b7b408b7a27344f68097, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -247498,7 +247498,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1702658066
@@ -257949,7 +257949,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 174685853689b7b408b7a27344f68097, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
   m_sharedMaterial: {fileID: -7496019867241093955, guid: 174685853689b7b408b7a27344f68097, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -258016,7 +258016,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1783611681
@@ -259268,7 +259268,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1434681440}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -263630,7 +263630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 115518314}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -303329,7 +303329,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Premi per continuare...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 174685853689b7b408b7a27344f68097, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 665cd6750ed66a8438a1355eb2dd7df5, type: 2}
   m_sharedMaterial: {fileID: -7496019867241093955, guid: 174685853689b7b408b7a27344f68097, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -303396,7 +303396,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2106187794
@@ -304617,7 +304617,7 @@ MonoBehaviour:
   socketInteractor: {fileID: 314023359}
   socketDisableDuration: 1
   ejectForce: 3
-  ejectDirectionAxis: 0
+  ejectDirectionAxis: 2
   box:
   - {fileID: 1692687830}
   - {fileID: 1971590042}
@@ -310060,7 +310060,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 585073009}
         m_TargetAssemblyTypeName: DataCardScanValueActivator, Assembly-CSharp
-        m_MethodName: ActiavateChecks
+        m_MethodName: ActivateChecks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
