@@ -55,8 +55,10 @@ public class RuotaPiano : MonoBehaviour
     }
 
     private void TransmitResult() { 
-        if (DataCardSpawner != null) {
-            DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(actualPianoAngle);
+        if (DataCardSpawner != null) 
+        {
+            SpawnCard cardSpawner = DataCardSpawner.GetComponent<SpawnCard>();
+            cardSpawner.ValueReceiver(actualPianoAngle);
         }
     }
 
@@ -92,7 +94,7 @@ public class RuotaPiano : MonoBehaviour
         
         piano.localRotation = Quaternion.Euler(-pianoAngle, 0f, 0f);
         actualPianoAngle = (int)Mathf.Round(pianoAngle);
-        angoloText.text = $"{actualPianoAngle}°";
+        angoloText.text = $"{actualPianoAngle}Â°";
     }
 
     private float GetHandAngle(Transform hand)

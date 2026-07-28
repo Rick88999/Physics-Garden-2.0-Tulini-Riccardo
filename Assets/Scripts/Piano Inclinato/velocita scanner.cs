@@ -134,6 +134,7 @@ public class velocitascanner : MonoBehaviour
 
             float angolo =  manopolaAngolo.GetComponent<RuotaPiano>().GetCurrentPianoAngle();
             float angoloPiano = Mathf.RoundToInt(angolo);
+            SpawnCard cardSpawner = DataCardSpawner.GetComponent<SpawnCard>();
 
             if (abortTriggerExecution)
             {
@@ -145,18 +146,18 @@ public class velocitascanner : MonoBehaviour
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad))/(1+costanteInerzialeSfera));
                 velocitaText.text = $"{velocitaFinale:F1} m/s";
-                DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
+                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
             else if (tipoOggetto == "Cilindro" && ultimoOggetto == "Cilindro" && savedStateSocket)
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad)) / (1 + costanteInerzialeCilindro));
                 velocitaText.text = $"{velocitaFinale:F2} m/s";
-                DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
+                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
             else
             {
                 velocitaText.text = "Error: Retry";
-                DataCardSpawner.GetComponent<SpawnCard>().ValueReceiver(0);
+                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(0);
             }
             savedStateSocket = false;
             wasObjectInSocket = false;
@@ -167,8 +168,8 @@ public class velocitascanner : MonoBehaviour
                 return;
             }
 
-            DataCardSpawner.GetComponent<SpawnCard>().DetailsReceiver($"{tipoOggetto:F1}");
-            DataCardSpawner.GetComponent<SpawnCard>().SpawnDataCard();
+            cardSpawner.GetComponent<SpawnCard>().DetailsReceiver($"{tipoOggetto:F1}");
+            cardSpawner.GetComponent<SpawnCard>().SpawnDataCard();
 
             StartCoroutine(ResetGrabInteractable(other));
 
