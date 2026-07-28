@@ -146,18 +146,18 @@ public class velocitascanner : MonoBehaviour
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad))/(1+costanteInerzialeSfera));
                 velocitaText.text = $"{velocitaFinale:F1} m/s";
-                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
+                cardSpawner.ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
             else if (tipoOggetto == "Cilindro" && ultimoOggetto == "Cilindro" && savedStateSocket)
             {
                 velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad)) / (1 + costanteInerzialeCilindro));
                 velocitaText.text = $"{velocitaFinale:F2} m/s";
-                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
+                cardSpawner.ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
             else
             {
                 velocitaText.text = "Error: Retry";
-                cardSpawner.GetComponent<SpawnCard>().ValueReceiver(0);
+                cardSpawner.ValueReceiver(0);
             }
             savedStateSocket = false;
             wasObjectInSocket = false;
@@ -168,8 +168,8 @@ public class velocitascanner : MonoBehaviour
                 return;
             }
 
-            cardSpawner.GetComponent<SpawnCard>().DetailsReceiver($"{tipoOggetto:F1}");
-            cardSpawner.GetComponent<SpawnCard>().SpawnDataCard();
+            cardSpawner.DetailsReceiver($"{tipoOggetto:F1}");
+            cardSpawner.SpawnDataCard();
 
             StartCoroutine(ResetGrabInteractable(other));
 
