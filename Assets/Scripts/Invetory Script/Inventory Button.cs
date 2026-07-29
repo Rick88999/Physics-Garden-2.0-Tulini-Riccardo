@@ -9,7 +9,7 @@ public class InventoryButton : MonoBehaviour
     public void SetActive(bool oldState)
     {
         state = oldState;
-        inventoryButton.SetActive(state);
+        AwakeBotton();
     }
 
     public void AwakeBotton() => inventoryButton.SetActive(state);
