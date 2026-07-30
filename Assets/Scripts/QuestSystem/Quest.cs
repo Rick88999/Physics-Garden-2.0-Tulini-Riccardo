@@ -21,6 +21,10 @@ public class Quest : MonoBehaviour
     private void Start()
     {
         questManager = GetComponentInParent<QuestManager>();
+        if(startColliders == null || startColliders.Length == 0)
+        {
+            throw new System.Exception("No StartColliders found for quest " + questID);
+        }
     }
 
 
@@ -38,14 +42,6 @@ public class Quest : MonoBehaviour
         questManager.OnQuestCompleted();
     }
 
-    public bool isAllAlreadyCompletedEnd()
-    {
-        if (alreadyComplete == null || alreadyComplete.Count == 0) return true;
-        foreach (Quest quest in alreadyComplete) if (quest.getQuestState() != "Completed") return false;
-        return true;
-    }
-    
-
     public void setQuestState(string oldState) => state = oldState;
 
     public int getIdQuest() => questID;
@@ -56,9 +52,11 @@ public class Quest : MonoBehaviour
     public bool allReadyComplete()
     {
         if (questID == 0) return true;
-        else if (alreadyComplete == null || alreadyComplete.Count == 0) return false;
+        
+        if (alreadyComplete == null || alreadyComplete.Count == 0) return false;
 
         foreach (Quest quest in alreadyComplete) if (quest.getQuestState() != "Completed") return false;
+
         return true;
     }
 
@@ -110,5 +108,6 @@ public class Quest : MonoBehaviour
     }
 
     private void TurnOffPoint() => point.SetActive(false);
+
 
 }

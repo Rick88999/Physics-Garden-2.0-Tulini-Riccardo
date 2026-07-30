@@ -107,7 +107,7 @@ public class QuestManager : MonoBehaviour
         {
             if(quests[i].getQuestState() == "noActivated")
             {
-                if (quests[i].isAllAlreadyCompletedEnd())
+                if (quests[i].allReadyComplete())
                 {
                     points[i].SetActive(true);
                 }
@@ -118,4 +118,6 @@ public class QuestManager : MonoBehaviour
                 }
         }
     }
+
+    public int GetCurrentQuestIndex() => currentQuest;
 }

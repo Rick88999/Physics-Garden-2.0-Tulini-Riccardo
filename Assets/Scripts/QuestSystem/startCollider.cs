@@ -16,6 +16,6 @@ public class StartCollider : MonoBehaviour
     public void DestroyTriggers()
     {
         if (members == null || members.Length == 0) return;
-        foreach (GameObject member in members) Destroy(member);
+        foreach (GameObject member in members) member.SetActive(false);
     }
 }
