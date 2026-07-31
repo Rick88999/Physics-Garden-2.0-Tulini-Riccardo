@@ -18,8 +18,6 @@ public class ManifestManager : MonoBehaviour
     {
         public int idStep;
         public GameObject checkField;
-
-        public bool isYellowAtStart;
     }
     [System.Serializable]
     private struct Page
@@ -34,9 +32,9 @@ public class ManifestManager : MonoBehaviour
 
     public void questStarted(int idQuest)
     {
-        var frame = new StackTrace().GetFrame(1);
+        /*var frame = new StackTrace().GetFrame(1);
         var metodo = frame?.GetMethod();
-        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");
+        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");*/
         foreach (Page page in manifestPages) 
             if (page.idQuest == idQuest)
             {
@@ -48,8 +46,8 @@ public class ManifestManager : MonoBehaviour
                     if(check.idStep == 0)
                     {
                         Image image = check.checkField.GetComponent<Image>();
-                        if(!check.isYellowAtStart)
-                            image.color = Color.yellow;
+                        
+                        image.color = Color.yellow;
                         pinManifestController.SetTitlePin(page.idQuest);
                         pinManifestController.SetDescriptionPin(page.idQuest, check.idStep);
                     }
@@ -59,9 +57,9 @@ public class ManifestManager : MonoBehaviour
 
     public void stepCompleted(int idQuest, int idStep)
     {
-        var frame = new StackTrace().GetFrame(1);
+        /*var frame = new StackTrace().GetFrame(1);
         var metodo = frame?.GetMethod();
-        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");
+        Debug.Log($"Chiamato da: {metodo?.DeclaringType?.FullName}.{metodo?.Name}");*/
         foreach (Page page in manifestPages)
         {
             if (page.idQuest == idQuest)
