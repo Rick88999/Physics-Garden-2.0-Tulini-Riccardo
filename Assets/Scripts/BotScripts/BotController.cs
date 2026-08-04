@@ -82,7 +82,7 @@ public class BotController : MonoBehaviour
     {
         if (point == null)
         {
-            Debug.LogError("GoToPoint: point � null");
+            Debug.LogError("GoToPoint: point è null");
             return;
         }
 
@@ -117,7 +117,7 @@ public class BotController : MonoBehaviour
     {
         if (playerTarget == null)
         {
-            Debug.LogError("StartFollow: playerTarget � null");
+            Debug.LogError("StartFollow: playerTarget è null");
             return;
         }
 

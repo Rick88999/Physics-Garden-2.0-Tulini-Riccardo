@@ -23,16 +23,15 @@ public class MassLaserScanner : VRToolOneHand
         lineRenderer = GetComponent<LineRenderer>();
         spawnCard = GetComponent<SpawnCard>();
         
-        if (lineRenderer != null)
-            lineRenderer.positionCount = 2;
+        if (lineRenderer != null) lineRenderer.positionCount = 2;
+        
+        ImpostaColoreLaser(coloreNormale);
 
         if (GameEvents.Instance != null)
         {
             GameEvents.Instance.onChangeHandMassTool.AddListener(OnChangeHand);
             GameEvents.Instance.onDropMassTool.AddListener(OnDrop);
         }
-
-        ImpostaColoreLaser(coloreNormale);
     }
 
     protected override void SubscribeActions()
