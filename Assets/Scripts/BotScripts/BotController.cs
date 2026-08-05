@@ -13,7 +13,6 @@ public class BotController : MonoBehaviour
     
     [SerializeField] private float followDistance = 1.5f;
 
-  
     [SerializeField] private float stopIfCloserThan = 1.2f;
 
     private NavMeshAgent agent;
@@ -45,37 +44,44 @@ public class BotController : MonoBehaviour
         }
 
 
-        Vector3 botPosFlat = transform.position; botPosFlat.y = 0f;
-        Vector3 playerPosFlat = player.position; playerPosFlat.y = 0f;
+        Vector3 botPosFlat = transform.position; 
+        botPosFlat.y = 0f;
+
+        Vector3 playerPosFlat = player.position; 
+        playerPosFlat.y = 0f;
+
 
         float dist = Vector3.Distance(botPosFlat, playerPosFlat);
 
-       
         if (dist <= stopIfCloserThan)
         {
             if (!agent.isStopped) agent.isStopped = true;
             return;
         }
-
-       
-        if (agent.isStopped) agent.isStopped = false;
-
-        if (Time.time < nextFollowUpdate) return;
-        nextFollowUpdate = Time.time + followRefreshRate;
-
-        
-        Vector3 dirFromPlayerToBotFlat = (botPosFlat - playerPosFlat).normalized;
-
-        
-        if (dirFromPlayerToBotFlat.sqrMagnitude < 0.0001f)
+        else
         {
-            Vector3 pf = player.forward; pf.y = 0f;
-            dirFromPlayerToBotFlat = (pf.sqrMagnitude > 0.0001f) ? -pf.normalized : Vector3.back;
+            agent.isStopped = false;
+
+            if (Time.time < nextFollowUpdate) return;
+            
+            nextFollowUpdate = Time.time + followRefreshRate;
+
+            Vector3 dirFromPlayerToBotFlat = (botPosFlat - playerPosFlat).normalized;
+
+            if (dirFromPlayerToBotFlat.sqrMagnitude < 0.0001f)
+            {
+                Vector3 pf = player.forward; 
+                pf.y = 0f;
+
+                dirFromPlayerToBotFlat = (pf.sqrMagnitude > 0.0001f) ? -pf.normalized : Vector3.back;
+            }
+
+            Vector3 desired = player.position + dirFromPlayerToBotFlat * followDistance;
+
+            agent.SetDestination(desired);
         }
 
-        Vector3 desired = player.position + dirFromPlayerToBotFlat * followDistance;
-
-        agent.SetDestination(desired);
+        
     }
 
     public void GoToFixedPoint(Transform point)
@@ -136,6 +142,7 @@ public class BotController : MonoBehaviour
         if (agent.enabled) agent.isStopped = true;
     }
 
+    
     public void TeleportTo(Vector3 position)
     {
         mode = Mode.Idle;
