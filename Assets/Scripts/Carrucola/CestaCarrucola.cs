@@ -21,7 +21,7 @@ public class CestaCarrucola : MonoBehaviour
         {
             if (mr.sharedMaterial == materialeDesiderato)
             {
-                if(SizeM >= 3*fattoreDiScala)
+                if(SizeM >= 3*fattoreDiScala && SizeM <= 5*fattoreDiScala)
                 {
                     audioSource.PlayOneShot(successSound);
                     other.tag = "No Destroy";
