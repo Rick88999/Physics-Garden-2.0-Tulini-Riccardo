@@ -11,10 +11,7 @@ public class FormulaCard : CardBase
         return canvasData;
     }
 
-    public void SetFormulaData(GameObject g)
-    {
-        formulaCanvasData = g;
-    }
+    public void SetFormulaData(GameObject g) => formulaCanvasData = g;
 
     public override void SetTextTarghetta()
     {

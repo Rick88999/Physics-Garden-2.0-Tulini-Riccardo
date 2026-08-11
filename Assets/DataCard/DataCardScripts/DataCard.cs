@@ -6,15 +6,9 @@ public class DataCard : CardBase
     [SerializeField] private float valore;
     [SerializeField] private string unitaMisura;
 
-    public float GetValue()
-    {
-        return valore;
-    }
+    public float GetValue() => valore;
 
-    public void SetValue(float value)
-    {
-        valore = value;
-    }
+    public void SetValue(float value) => valore = value;
 
     public override void SetTextTarghetta()
     {
@@ -24,15 +18,11 @@ public class DataCard : CardBase
         }
     }
 
-    public string GetUnitaMisura()
-    {
-        return unitaMisura.ToString();
-    }
+    public string GetUnitaMisura() => unitaMisura;
+    
 
-    public void SetUnitaMisura(string unit)
-    {
-        unitaMisura = unit;
-    }
+    public void SetUnitaMisura(string unit) => unitaMisura = unit;
+    
 
     
 }
