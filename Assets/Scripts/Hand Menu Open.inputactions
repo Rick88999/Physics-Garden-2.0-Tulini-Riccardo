@@ -121,7 +121,7 @@
             "id": "7a546e15-a178-4788-886c-0bd40a1f2ba4",
             "actions": [
                 {
-                    "name": "SpawnCardRight",
+                    "name": "CustomVRActionRight",
                     "type": "Button",
                     "id": "aef6caff-a906-45e0-ac53-ca5f7c60a11e",
                     "expectedControlType": "",
@@ -130,7 +130,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpawnCardLeft",
+                    "name": "CustomVRActionLeft",
                     "type": "Button",
                     "id": "0a39742d-d7d8-489d-90c4-58a5d8e66d61",
                     "expectedControlType": "",
@@ -147,9 +147,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SpawnCardRight",
+                    "action": "CustomVRActionRight",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "RightHandHTCVive",
+                    "id": "b940641f-946a-4426-8b6c-ea88b9226383",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "8da5dbb7-f35e-409d-9d75-dd60db1c6a80",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "becf38d6-64a4-4526-b10f-953b56e34d99",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/trackpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -158,9 +191,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SpawnCardLeft",
+                    "action": "CustomVRActionLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "LeftHandMenu",
+                    "id": "f6bca169-60e6-4743-af30-32511209806c",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "e3417b5d-1575-4483-8c6c-a97c9bb1d21e",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "dbe07b84-295a-4af2-9f8f-cf5fc1f8a2ee",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/trackpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -183,6 +249,17 @@
                     "name": "",
                     "id": "cfb6f44d-569d-4f0f-81e3-ddf8db7468c4",
                     "path": "<QuestTouchPlusController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54aa932f-9b6d-4202-9422-10977e4e5a65",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>{LeftHand}/menu",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

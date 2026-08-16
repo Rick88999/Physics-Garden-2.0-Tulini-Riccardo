@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
     [Header("Setting Light & Audio")]
     [SerializeField] private SettingsController settingsController;
 
+    [Header("VR Headset Detector")]
+    [SerializeField] private GameObject vrHeadsetMetaQuest;
+    [SerializeField] private GameObject vrHeadsetHTCViveCE;
+    private VRHeadsetType vrType;
+
     private bool closingGame = false;
 
     private SavedState actualSavedState;
@@ -88,6 +93,23 @@ public class GameManager : MonoBehaviour
     
     public void SetLanguage(Language language) => actualLanguage = language;
     public Language GetLanguage() => actualLanguage;
+
+    private void Start()
+    {
+        vrType = GetComponentInChildren<VRHeadsetDetector>().DetectVRHeadset();
+
+        switch (vrType)
+        {
+            case VRHeadsetType.MetaQuest:
+                vrHeadsetMetaQuest.SetActive(true);
+                break;
+            case VRHeadsetType.HTCViveCE: 
+                vrHeadsetHTCViveCE.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
 
     public void NewSaveGame(string name)
     {

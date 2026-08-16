@@ -99,3 +99,9 @@ public enum EjectDirectionAxis
     Up,
     Down
 }
+
+public enum VRHeadsetType
+{
+    MetaQuest,   
+    HTCViveCE    
+}
