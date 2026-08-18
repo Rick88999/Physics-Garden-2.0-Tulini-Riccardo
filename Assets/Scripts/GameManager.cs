@@ -81,7 +81,9 @@ public class GameManager : MonoBehaviour
 
     [Header("VR Headset Detector")]
     [SerializeField] private GameObject vrHeadsetMetaQuest;
+    [SerializeField] private GameObject startMetaControls;
     [SerializeField] private GameObject vrHeadsetHTCViveCE;
+    [SerializeField] private GameObject startHTCControls;
     private VRHeadsetType vrType;
 
     private bool closingGame = false;
@@ -102,9 +104,11 @@ public class GameManager : MonoBehaviour
         {
             case VRHeadsetType.MetaQuest:
                 vrHeadsetMetaQuest.SetActive(true);
+                startMetaControls.SetActive(true);
                 break;
             case VRHeadsetType.HTCViveCE: 
                 vrHeadsetHTCViveCE.SetActive(true);
+                startHTCControls.SetActive(true);
                 break;
             default:
                 break;
