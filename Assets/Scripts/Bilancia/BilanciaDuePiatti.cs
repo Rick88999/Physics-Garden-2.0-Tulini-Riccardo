@@ -10,8 +10,9 @@ public class BilanciaDuePiatti : MonoBehaviour
 
     [Header("Impostazioni Peso")]
     [SerializeField] private float leftPlateWeight;
+    [SerializeField] private float rightPlateWeight = 0f;
 
-    [Header ("Led")]
+    [Header ("Impostazioni Led")]
     [SerializeField] private GameObject led;
     [SerializeField] private Material red;
     [SerializeField] private Material green;
@@ -25,7 +26,7 @@ public class BilanciaDuePiatti : MonoBehaviour
     private Vector3 leftInitialPos;
     private Vector3 rightInitialPos;
 
-    [SerializeField] private float rightPlateWeight = 0f;
+    
     private List<GameObject> objectsOnRightPlate = new List<GameObject>();
 
     private void Start()

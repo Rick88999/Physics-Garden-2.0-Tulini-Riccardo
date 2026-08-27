@@ -132,8 +132,11 @@ public class velocitascanner : MonoBehaviour
                 return;
             }
 
-            float angolo =  manopolaAngolo.GetComponent<RuotaPiano>().GetCurrentPianoAngle();
+            RuotaPiano ruotaPiano = manopolaAngolo.GetComponent<RuotaPiano>();
+
+            float angolo =  ruotaPiano.GetCurrentPianoAngle();
             float angoloPiano = Mathf.RoundToInt(angolo);
+            
             SpawnCard cardSpawner = DataCardSpawner.GetComponent<SpawnCard>();
 
             if (abortTriggerExecution)
