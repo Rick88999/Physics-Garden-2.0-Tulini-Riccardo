@@ -28,19 +28,19 @@ public class RuotaPiano : MonoBehaviour
     [SerializeField] private GameObject DataCardSpawner;
     private int actualPianoAngle = 0;
 
-    void Awake()
+    private void Awake()
     {
         interactXR = GetComponent<XRSimpleInteractable>();
         interactXR.selectEntered.AddListener(OnGrab);
         interactXR.selectExited.AddListener(OnRelease);
     }
 
-    void Start()
+    private void Start()
     {
         fixedPosition = transform.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         
         transform.position = fixedPosition;

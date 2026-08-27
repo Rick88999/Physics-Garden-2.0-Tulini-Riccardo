@@ -43,7 +43,7 @@ public class CanvasLoader : MonoBehaviour
         if (itemData != null && itemData.canvasDaAttivare != null)
         {
             canvasAttivo = itemData.canvasDaAttivare;
-            canvasAttivo.SetActive(true);
+            //canvasAttivo.SetActive(true);
         }
 
         canvasGroupAttuale = canvasAttivo.GetComponent<CanvasGroup>();
@@ -58,11 +58,11 @@ public class CanvasLoader : MonoBehaviour
 
     private void OnObjectRemoved(SelectExitEventArgs args)
     {
-        if (canvasAttivo != null)
+        /*if (canvasAttivo != null)
         {
             canvasAttivo.SetActive(false);
             canvasAttivo = null; 
-        }
+        }*/
 
         if (canvasAttivo != null && canvasGroupAttuale != null)
         {

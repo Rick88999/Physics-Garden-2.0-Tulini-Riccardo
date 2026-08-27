@@ -194759,7 +194759,7 @@ GameObject:
   - component: {fileID: 1268735256}
   - component: {fileID: 1268735254}
   m_Layer: 17
-  m_Name: scanner velocita
+  m_Name: "scanner velocit\xE0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,7 +7,7 @@ public class FormulaCard : CardBase
 
     public FormulaCanvasData GetFormulaData()
     {
-        FormulaCanvasData canvasData = this.formulaCanvasData.GetComponent<FormulaCanvasData>();
+        FormulaCanvasData canvasData = formulaCanvasData.GetComponent<FormulaCanvasData>();
         return canvasData;
     }
 
