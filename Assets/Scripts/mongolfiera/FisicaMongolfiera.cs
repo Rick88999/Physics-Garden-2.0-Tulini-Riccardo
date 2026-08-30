@@ -33,11 +33,10 @@ public class FisicaMongolfiera : MonoBehaviour
             tempoAvvio += Time.fixedDeltaTime;
             float fattoreAvvio = Mathf.Clamp01(tempoAvvio / durataAvvio);
 
-            float targetY = altezzaAttesa;
-            float distanza = targetY - transform.position.y;
+            float distanza = altezzaAttesa - transform.position.y;
 
-            float forzaMinima = Mathf.Clamp(Mathf.Abs(distanza) * 15f, 3f, 50f);
-            float forzaVersTarget = Mathf.Sign(distanza) * forzaMinima * massaTotale * fattoreAvvio;
+            float accelerazioneeMinima = Mathf.Clamp(Mathf.Abs(distanza) * 15f, 3f, 50f);
+            float forzaVersTarget = Mathf.Sign(distanza) * accelerazioneeMinima * massaTotale * fattoreAvvio;
 
             float compensazioneGravita = massaTotale * gravita;
 

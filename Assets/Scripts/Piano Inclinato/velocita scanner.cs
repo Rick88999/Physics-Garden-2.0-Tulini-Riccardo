@@ -147,7 +147,7 @@ public class velocitascanner : MonoBehaviour
             
             if(tipoOggetto == "Sfera" && ultimoOggetto == "Sfera" && savedStateSocket)
             {
-                velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad))/(1+costanteInerzialeSfera));
+                velocitaFinale = Mathf.Sqrt((2 * accelerazioneGravitazionale * lunghezzaPianoInclinato * Mathf.Sin(angoloPiano * Mathf.Deg2Rad))/(1 + costanteInerzialeSfera));
                 velocitaText.text = $"{velocitaFinale:F1} m/s";
                 cardSpawner.ValueReceiver(Mathf.Round(velocitaFinale * 100f) / 100f);
             }
