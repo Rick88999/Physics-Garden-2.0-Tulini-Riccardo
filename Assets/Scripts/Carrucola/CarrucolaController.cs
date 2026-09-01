@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class CarrucolaController : MonoBehaviour
 {
+    [Header("Carrucola bounds Anchor points")]
     [SerializeField] private Transform endPoint;
     [SerializeField] private Transform startPoint;
+    [Header("Porte di ingresso")]
     [SerializeField] private GameObject[] doors;
+    [Header("Dati base spostamento")]
     [SerializeField] private float baseSpeed;
+    [SerializeField] private float minSpeed;
+    [SerializeField] private float maxDistance = 10f;
+    [Header("Tipo spostamento")]
     [SerializeField] private bool downToTop = false;
     [SerializeField] private bool topToDown = false;
 
@@ -13,9 +19,6 @@ public class CarrucolaController : MonoBehaviour
     private bool isMoving = false;
     private GameObject carrucola;
    
-    private float minSpeed = 0.1f;
-    
-
     void Start() => carrucola = gameObject;
 
     /*vf = sqrt(2*(L-mgh)/m) => vf = sqrt(2*((1.12*mgh)-mgh)/m) => vf = sqrt(2*0.12*gh)
@@ -30,13 +33,14 @@ public class CarrucolaController : MonoBehaviour
     {
         if(downToTop)
         {
-            float t01 = Vector3.Distance(carrucola.transform.position, endPoint.position) / 10f;
-            float speed01 = Mathf.Lerp(minSpeed, baseSpeed, 1f - Mathf.Pow(1f - t01, 3f));
+            float distNorm01 = Vector3.Distance(carrucola.transform.position, endPoint.position) / maxDistance;
+            float speed01 = Mathf.Lerp(minSpeed, baseSpeed, 1f - Mathf.Pow(1f - distNorm01, 3f));
             carrucola.transform.position = Vector3.MoveTowards(carrucola.transform.position, endPoint.position, speed01 * Time.deltaTime);
             isMoving = true;
+
             if (Vector3.Distance(carrucola.transform.position, endPoint.position) < 0.1f)
             {
-                t01 = 0f;
+                distNorm01 = 0f;
                 speed01 = 0f;
                 isMoving = false;
                 downToTop = false;
@@ -44,14 +48,14 @@ public class CarrucolaController : MonoBehaviour
         }
         else if(topToDown)
         {
-            float t02 = Vector3.Distance(carrucola.transform.position, startPoint.position) / 10f;
-            float speed02 = Mathf.Lerp(minSpeed, baseSpeed, 1f - Mathf.Pow(1f - t02, 3f));
+            float distNorm02 = Vector3.Distance(carrucola.transform.position, startPoint.position) / maxDistance;
+            float speed02 = Mathf.Lerp(minSpeed, baseSpeed, 1f - Mathf.Pow(1f - distNorm02, 3f));
             carrucola.transform.position = Vector3.MoveTowards(carrucola.transform.position, startPoint.position, speed02 * Time.deltaTime);
             isMoving = true;
 
             if (Vector3.Distance(carrucola.transform.position, startPoint.position) < 0.1f)
             {
-                t02 = 0f;
+                distNorm02 = 0f;
                 speed02 = 0f;
                 isMoving = false;
                 topToDown = false;
