@@ -35,10 +35,12 @@ public class GameEvents : MonoBehaviour
     public ChangeHandEvent onChangeHandMassTool;
     public ChangeHandEvent onChangeHandSpawnerTool;
     public ChangeHandEvent onChangeHandTeleportTool;
+    public ChangeHandEvent onChangeHandCookie;
 
     public DropToolEvent onDropMassTool;
     public DropToolEvent onDropSpawnerTool;
     public DropToolEvent onDropTeleportTool;
+    public DropToolEvent onDropCookie;
 
     public onTargetTeleport onTargetTeleport;
     public onDefocusTeleport onDefocusTeleport;
@@ -61,10 +63,12 @@ public class GameEvents : MonoBehaviour
         onChangeHandMassTool ??= new ChangeHandEvent();
         onChangeHandSpawnerTool ??= new ChangeHandEvent();
         onChangeHandTeleportTool ??= new ChangeHandEvent();
+        onChangeHandCookie ??= new ChangeHandEvent();
 
         onDropMassTool ??= new DropToolEvent();
         onDropSpawnerTool ??= new DropToolEvent();
         onDropTeleportTool ??= new DropToolEvent();
+        onDropCookie ??= new DropToolEvent();
 
         onTargetTeleport ??= new onTargetTeleport();
         onDefocusTeleport ??=new onDefocusTeleport();

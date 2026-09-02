@@ -252,16 +252,19 @@ public class GameManager : MonoBehaviour
                     {
                         foreach (SavedStep step in quest.allSteps)
                         {
+                            if (step.id_step == 0)
+                            {
+                                if (step.state == "Completed") esterEggPlatform.SetActive(true);
+                            }    
+                            
                             if (step.id_step == 1)
                             {
                                 if (step.state == "Completed")
                                 {
-                                    esterEggPlatform.SetActive(true);
                                     spaceShip.GetComponent<SpaceShipController>().SetNoPerformAnimation();
                                     spaceShip.GetComponent<SpaceShipController>().SetPostAnimationPosition();
                                     spaceShip.SetActive(true);
                                 }
-                                    
                             }
                         }
                     }

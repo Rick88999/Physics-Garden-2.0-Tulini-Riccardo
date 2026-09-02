@@ -56,11 +56,11 @@ public class Step : MonoBehaviour
             manifestManager.questCompleted();
             father.endQuest();
         }
-        else if (NextStep != null && !isLastStep)
+        else
         {
             if (giveLootAtEndStep) GiveLoot();
             manifestManager.stepCompleted(father.getIdQuest(), stepID);
-            NextStep.startStep();
+            if (NextStep != null) NextStep.startStep();
         }
     }
 

@@ -74,7 +74,8 @@ public enum TipoTool
 {
     MassSensor,
     Spawner,
-    Teleport
+    Teleport,
+    Cookie
 }
 
 public enum EsterEggCardType

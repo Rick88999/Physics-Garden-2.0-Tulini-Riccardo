@@ -15,6 +15,7 @@ public class VendingMachineManager : MonoBehaviour
 
     private AudioSource audioSource;
     private bool coinInserted = false;
+    private bool stepCompleted = false;
 
     private void Awake() => audioSource = GetComponent<AudioSource>();
 
@@ -42,7 +43,7 @@ public class VendingMachineManager : MonoBehaviour
             coinInserted = false;
             if (step != null)
             {
-                StartCoroutine(ContinueStepAfterDelay(1.5f));
+               if(!stepCompleted) StartCoroutine(ContinueStepAfterDelay(1.5f));
             }
         }
         else audioSource.PlayOneShot(soundError);
@@ -53,6 +54,7 @@ public class VendingMachineManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (step != null)
         {
+            stepCompleted = true;   
             step.endStep();
         }
     }

@@ -98,6 +98,9 @@ public class DetectHandOnGrab : VRGrabDetector
             case TipoTool.Teleport:
                 GameEvents.Instance.onChangeHandTeleportTool.Invoke(handedness.hand.ToString(), gameObject.GetInstanceID());
                 break;
+            case TipoTool.Cookie:
+                GameEvents.Instance.onChangeHandCookie.Invoke(handedness.hand.ToString(), gameObject.GetInstanceID());
+                break;
         }
 
     }
@@ -115,6 +118,9 @@ public class DetectHandOnGrab : VRGrabDetector
                 break;
             case TipoTool.Teleport:
                 GameEvents.Instance.onDropTeleportTool.Invoke(gameObject.GetInstanceID());
+                break;
+            case TipoTool.Cookie:   
+                GameEvents.Instance.onDropCookie.Invoke(gameObject.GetInstanceID());
                 break;
         }
     }
