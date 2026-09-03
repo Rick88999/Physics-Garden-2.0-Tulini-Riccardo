@@ -19426,6 +19426,7 @@ MonoBehaviour:
   matchNameItalian: "Densit\xE0"
   matchNameEnglish: Density
   matchData: 30
+  unitaDiMisura: kg/m<sup>3</sup>
   delta: 0.00001
 --- !u!82 &105040725
 AudioSource:
@@ -21181,6 +21182,7 @@ MonoBehaviour:
   matchNameItalian: Massa
   matchNameEnglish: Mass
   matchData: 25
+  unitaDiMisura: kg
   delta: 0.00001
 --- !u!82 &115518313
 AudioSource:
@@ -80036,6 +80038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TerminalManager
   terminale: {fileID: 285621824}
+  audioSource: {fileID: 1346244707}
+  audioClip: {fileID: 8300000, guid: ddcfefe22d25cea4bbbef18d6521abe9, type: 3}
 --- !u!1001 &483992339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90096,6 +90100,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 1180720675}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!64 &579423791 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 7136255102593125250, guid: 82de0c6ab46a3ec4daec3aeed2336559, type: 3}
@@ -90746,6 +90751,7 @@ MonoBehaviour:
   matchNameItalian: "Densit\xE0"
   matchNameEnglish: Density
   matchData: 480
+  unitaDiMisura: kg/m<sup>3</sup>
   delta: 0.00001
 --- !u!1 &585412592
 GameObject:
@@ -97130,6 +97136,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 664737570}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!114 &637040763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97142,6 +97149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 779669628}
 --- !u!64 &637040764
@@ -102497,6 +102505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 988742116}
 --- !u!1 &674558282
@@ -121918,6 +121927,8 @@ MonoBehaviour:
   clickSoundSuccess: {fileID: 0}
   handler: {fileID: 825655712}
   unitaMisura: J
+  cardNameIta: Energia Potenziale
+  cardNameEng: Potential Energy
 --- !u!82 &825655711
 AudioSource:
   m_ObjectHideFlags: 0
@@ -134356,6 +134367,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 1167399543}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!114 &922197529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134368,6 +134380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1487630851}
 --- !u!54 &922197533
@@ -176486,6 +176499,8 @@ MonoBehaviour:
   clickSoundSuccess: {fileID: 0}
   handler: {fileID: 1171757587}
   unitaMisura: N
+  cardNameIta: Forza Newtoniana
+  cardNameEng: Newtonian Force
 --- !u!114 &1171757587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182712,6 +182727,7 @@ MonoBehaviour:
   matchNameItalian: Inerzia
   matchNameEnglish: Inertia
   matchData: 0.005
+  unitaDiMisura: kg*m<sup>2</sup>
   delta: 0.00001
 --- !u!82 &1180378052
 AudioSource:
@@ -194734,6 +194750,7 @@ MonoBehaviour:
   cooldownDelay: 0.5
   audioSource: {fileID: 1285194732}
   onSound: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
+  isTerminalButton: 0
 --- !u!114 &1266495207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225728,6 +225745,7 @@ MonoBehaviour:
   matchNameItalian: Inerzia
   matchNameEnglish: Inertia
   matchData: 0.004
+  unitaDiMisura: kg*m<sup>2</sup>
   delta: 0.00001
 --- !u!114 &1434681440
 MonoBehaviour:
@@ -271770,6 +271788,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 1711234167}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!64 &1770465581
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -281760,6 +281779,7 @@ MonoBehaviour:
   matchNameItalian: Altezza
   matchNameEnglish: Height
   matchData: 0.75
+  unitaDiMisura: m
   delta: 0.00001
 --- !u!114 &1834757375
 MonoBehaviour:
@@ -286740,7 +286760,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1b88ae37f5565c44bbdc883494080eaf, type: 2}
     - target: {fileID: 919132149155446097, guid: da686fa6ed818b6468dee5fb72041959, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: Button Terminale
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -286830,6 +286850,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 556005420}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!114 &1872341694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286842,6 +286863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1814484310}
 --- !u!64 &1872341695
@@ -302652,6 +302674,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990153998}
   m_CullTransparentMesh: 1
+--- !u!1 &1990555838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990555840}
+  - component: {fileID: 1990555839}
+  m_Layer: 0
+  m_Name: TerminaleCalllerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1990555839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990555838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cc5adb66e70d843bb8c7dab5646e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TerminalCallerManager
+  lastTerminalCaller: {fileID: 0}
+--- !u!4 &1990555840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990555838}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2099585674}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991109755
 GameObject:
   m_ObjectHideFlags: 0
@@ -313307,6 +313374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 2072069521}
 --- !u!1 &2033875197
@@ -316270,6 +316338,7 @@ MonoBehaviour:
   cooldownDelay: 2
   audioSource: {fileID: 1050678417}
   onSound: {fileID: 8300000, guid: 6b8759b6312ea314daee8104d9d17be1, type: 3}
+  isTerminalButton: 1
 --- !u!114 &2050506817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316282,6 +316351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c60e6b027ac5343b83974553fdaec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnTerminal
+  terminalCallerManager: {fileID: 1990555839}
   terminalController: {fileID: 483675288}
   spawnPosition: {fileID: 1193970541}
 --- !u!64 &2050506818
@@ -322388,6 +322458,7 @@ Transform:
   - {fileID: 2040516902}
   - {fileID: 1954238527}
   - {fileID: 334770736}
+  - {fileID: 1990555840}
   - {fileID: 483675287}
   - {fileID: 1273737703}
   - {fileID: 410087041}
@@ -324735,6 +324806,7 @@ MonoBehaviour:
   matchNameItalian: "Densit\xE0"
   matchNameEnglish: Density
   matchData: 1
+  unitaDiMisura: kg/m<sup>3</sup>
   delta: 0.00001
 --- !u!1 &2115829425
 GameObject:

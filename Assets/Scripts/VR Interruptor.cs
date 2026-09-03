@@ -20,16 +20,21 @@ public class VRInterruptor : MonoBehaviour
     private GraphEvent actualEvent = new GraphEvent();
 
 
+
     [Header("Impostazioni Pulsante")]
     [Tooltip("Secondi da aspettare dopo il rilascio prima di poter premere di nuovo")]
     [SerializeField] private float cooldownDelay = 2.0f;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip onSound;
 
+    [SerializeField] private bool isTerminalButton = false;
+
     private XRSimpleInteractable interactable;
     private Vector3 startPosition;
     private bool isPressed = false;
     private bool inCooldown = false; 
+
+    private bool block = false;
 
     void Awake()
     {
@@ -54,10 +59,31 @@ public class VRInterruptor : MonoBehaviour
         isPressed = true;
 
         transform.localPosition = startPosition - new Vector3(0, 0.005f, 0);
-
-        audioSource.PlayOneShot(onSound);
-
-        actualEvent.eventIO.Invoke();
+        if(isTerminalButton)
+        {
+            SpawnTerminal spawnTerminal = GetComponentInParent<SpawnTerminal>();
+            if(spawnTerminal != null)
+            {
+                spawnTerminal.SetLastTerminalCaller(gameObject);
+                if(spawnTerminal.CardAlreadyInSocket() && actualEvent == off)
+                {
+                    spawnTerminal.PlayAudioClip();
+                    block = true;
+                    return;
+                }
+                else
+                {
+                    block = false;
+                    audioSource.PlayOneShot(onSound);
+                    actualEvent.eventIO.Invoke();
+                }
+            }
+        }
+        else
+        {
+            audioSource.PlayOneShot(onSound);
+            actualEvent.eventIO.Invoke();
+        }
     }
 
     private void OnRelease(HoverExitEventArgs args)
@@ -66,7 +92,21 @@ public class VRInterruptor : MonoBehaviour
 
         isPressed = false;
         transform.localPosition = startPosition;
-        actualEvent = actualEvent.nextEvent;
+        
+        if(isTerminalButton)
+        {
+            if(!block) 
+            {
+                actualEvent = actualEvent.nextEvent;
+            }
+            else
+            {
+                block = false;
+            }
+        }
+        else actualEvent = actualEvent.nextEvent;
+        
+        
 
         StartCoroutine(CooldownRoutine());
     }
@@ -76,5 +116,10 @@ public class VRInterruptor : MonoBehaviour
         inCooldown = true; 
         yield return new WaitForSeconds(cooldownDelay); 
         inCooldown = false;
+    }
+
+    public void ResetActualEvent()
+    {
+        actualEvent = on;
     }
 }

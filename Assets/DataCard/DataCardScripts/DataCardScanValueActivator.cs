@@ -31,6 +31,7 @@ public class DataCardScanValueActivator : CardReader
     public override void ActivateChecks()
     {
         string name;
+        string unita;
         float value;
         if (socketInteractor != null)
         {
@@ -41,10 +42,11 @@ public class DataCardScanValueActivator : CardReader
                 if (dataCardValue != null)
                 {
                     name = dataCardValue.GetName();
+                    unita = dataCardValue.GetUnitaMisura();
                     value = dataCardValue.GetValue();
                     if (memoryValue != null)
                     {
-                        if (memoryValue.ControlValue(name, value))
+                        if (memoryValue.ControlValue(name, unita, value))
                         {
                            if (audioSource != null && clickSoundSuccess != null)
                             {

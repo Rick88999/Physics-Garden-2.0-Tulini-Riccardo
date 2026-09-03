@@ -13,6 +13,8 @@ public class CanvasLoader : MonoBehaviour
     private GameObject canvasAttivo;
     private float durataFade = 0.5f;
 
+    private bool cardInSocket = false;
+
     public void ChengeCanvasAttivo(GameObject nuovoCanvas)
     {
         canvasAttivo = nuovoCanvas;
@@ -27,12 +29,32 @@ public class CanvasLoader : MonoBehaviour
     {
         socket.selectEntered.AddListener(OnObjectPlaced);
         socket.selectExited.AddListener(OnObjectRemoved);
+
+        if(socket.hasSelection)
+        {
+            FormulaCard formulaCard = socket.GetOldestInteractableSelected().transform.GetComponent<FormulaCard>();
+            if(formulaCard != null) 
+            {
+                FormulaCanvasData itemData = formulaCard.GetFormulaData();
+                if(itemData != null && itemData.canvasDaAttivare != null)
+                {
+                    canvasAttivo = itemData.canvasDaAttivare;
+                }
+            }
+        }
     }
 
     private void OnDisable()
     {
         socket.selectEntered.RemoveListener(OnObjectPlaced);
         socket.selectExited.RemoveListener(OnObjectRemoved);
+
+        if(canvasAttivo != null)
+        {
+            canvasAttivo.SetActive(false);
+            canvasAttivo = null;
+            cardInSocket = false;
+        }
     }
 
     private void OnObjectPlaced(SelectEnterEventArgs args)
@@ -43,6 +65,7 @@ public class CanvasLoader : MonoBehaviour
         if (itemData != null && itemData.canvasDaAttivare != null)
         {
             canvasAttivo = itemData.canvasDaAttivare;
+            cardInSocket = true;
             //canvasAttivo.SetActive(true);
         }
 
@@ -63,9 +86,11 @@ public class CanvasLoader : MonoBehaviour
             canvasAttivo.SetActive(false);
             canvasAttivo = null; 
         }*/
-
+        if (!gameObject.activeInHierarchy || !Application.isPlaying) return;
+        
         if (canvasAttivo != null && canvasGroupAttuale != null)
         {
+            cardInSocket = false;
             if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
             fadeCoroutine = StartCoroutine(EseguiFade(0f, false));
         }
@@ -98,4 +123,7 @@ public class CanvasLoader : MonoBehaviour
             canvasGroupAttuale = null;
         }
     }
+
+    public bool IsCardInSocket() => cardInSocket == true;
+
 }

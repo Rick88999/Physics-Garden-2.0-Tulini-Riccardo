@@ -5,13 +5,16 @@ public class MemoryValue : MonoBehaviour
     [SerializeField] private string matchNameItalian;
     [SerializeField] private string matchNameEnglish;
     [SerializeField] private float matchData;
+    [SerializeField] private string unitaDiMisura;
     [Header("Tolleranza")]
     [SerializeField] private float delta;
 
-    public bool ControlValue(string name, float value)
+
+    public bool ControlValue(string name, string unita, float value)
     {
         bool checkValue = Mathf.Abs(value - matchData) <= delta;
-        if ((name == matchNameItalian || name == matchNameEnglish) && checkValue)
+        bool checkUnita = unita == unitaDiMisura;
+        if ((name == matchNameItalian || name == matchNameEnglish) && checkValue && checkUnita)
         {
             return true;
         }

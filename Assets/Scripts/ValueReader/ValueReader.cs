@@ -10,6 +10,8 @@ public class ValueReader : CardReader
 
     [SerializeField] private Handler<float> handler;
     [SerializeField] private string unitaMisura;
+    [SerializeField] private string cardNameIta;
+    [SerializeField] private string cardNameEng;
 
     public override void ActivateChecks()
     {
@@ -21,7 +23,7 @@ public class ValueReader : CardReader
                 DataCard dataCard = interactable.transform.GetComponent<DataCard>();
                 if (dataCard != null)
                 {
-                    if (dataCard.GetUnitaMisura() == unitaMisura)
+                    if (dataCard.GetUnitaMisura() == unitaMisura &&(dataCard.GetName() == cardNameIta || dataCard.GetName() == cardNameEng) )
                     {
                         handler.Perform(dataCard.GetValue());
                         StartCoroutine(DestroyCard(interactable));
