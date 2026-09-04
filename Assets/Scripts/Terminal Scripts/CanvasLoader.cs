@@ -6,18 +6,17 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 [RequireComponent(typeof(XRSocketInteractor))]
 public class CanvasLoader : MonoBehaviour
 {
-
     private XRSocketInteractor socket;
-    private CanvasGroup canvasGroupAttuale;
     private Coroutine fadeCoroutine;
-    private GameObject canvasAttivo;
+
+    private GameObject canvasCorrente;
+    private CanvasGroup cgCorrente;
+
     private float durataFade = 0.5f;
-
     private bool cardInSocket = false;
-
     public void ChengeCanvasAttivo(GameObject nuovoCanvas)
     {
-        canvasAttivo = nuovoCanvas;
+        canvasCorrente = nuovoCanvas;
     }
 
     private void Awake()
@@ -30,15 +29,16 @@ public class CanvasLoader : MonoBehaviour
         socket.selectEntered.AddListener(OnObjectPlaced);
         socket.selectExited.AddListener(OnObjectRemoved);
 
-        if(socket.hasSelection)
+        if (socket.hasSelection)
         {
             FormulaCard formulaCard = socket.GetOldestInteractableSelected().transform.GetComponent<FormulaCard>();
-            if(formulaCard != null) 
+            if (formulaCard != null)
             {
                 FormulaCanvasData itemData = formulaCard.GetFormulaData();
-                if(itemData != null && itemData.canvasDaAttivare != null)
+                if (itemData != null && itemData.canvasDaAttivare != null)
                 {
-                    canvasAttivo = itemData.canvasDaAttivare;
+                    MostraCanvas(itemData.canvasDaAttivare);
+                    cardInSocket = true;
                 }
             }
         }
@@ -49,81 +49,101 @@ public class CanvasLoader : MonoBehaviour
         socket.selectEntered.RemoveListener(OnObjectPlaced);
         socket.selectExited.RemoveListener(OnObjectRemoved);
 
-        if(canvasAttivo != null)
+        if (fadeCoroutine != null)
         {
-            canvasAttivo.SetActive(false);
-            canvasAttivo = null;
-            cardInSocket = false;
+            StopCoroutine(fadeCoroutine);
+            fadeCoroutine = null;
         }
+
+        if (canvasCorrente != null)
+        {
+            canvasCorrente.SetActive(false);
+        }
+        canvasCorrente = null;
+        cgCorrente = null;
+        cardInSocket = false;
     }
 
     private void OnObjectPlaced(SelectEnterEventArgs args)
-    { 
+    {
         FormulaCard formulaCard = args.interactableObject.transform.GetComponent<FormulaCard>();
+        if (formulaCard == null) return;
+
         FormulaCanvasData itemData = formulaCard.GetFormulaData();
+        if (itemData == null || itemData.canvasDaAttivare == null) return;
 
-        if (itemData != null && itemData.canvasDaAttivare != null)
-        {
-            canvasAttivo = itemData.canvasDaAttivare;
-            cardInSocket = true;
-            //canvasAttivo.SetActive(true);
-        }
-
-        canvasGroupAttuale = canvasAttivo.GetComponent<CanvasGroup>();
-        if (canvasGroupAttuale == null)
-        {
-            canvasGroupAttuale = canvasAttivo.AddComponent<CanvasGroup>();
-        }
-
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        fadeCoroutine = StartCoroutine(EseguiFade(1f, true));
+        cardInSocket = true;
+        MostraCanvas(itemData.canvasDaAttivare);
     }
 
     private void OnObjectRemoved(SelectExitEventArgs args)
     {
-        /*if (canvasAttivo != null)
-        {
-            canvasAttivo.SetActive(false);
-            canvasAttivo = null; 
-        }*/
         if (!gameObject.activeInHierarchy || !Application.isPlaying) return;
-        
-        if (canvasAttivo != null && canvasGroupAttuale != null)
-        {
-            cardInSocket = false;
-            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-            fadeCoroutine = StartCoroutine(EseguiFade(0f, false));
-        }
+
+        cardInSocket = false;
+        NascondiCanvas();
     }
 
-    private IEnumerator EseguiFade(float targetAlpha, bool attivazione)
+    private void MostraCanvas(GameObject nuovoCanvas)
     {
-        if (attivazione)
+        if (canvasCorrente != null && canvasCorrente != nuovoCanvas)
         {
-            canvasAttivo.SetActive(true);
-            canvasGroupAttuale.alpha = 0f;
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+
+            if (cgCorrente != null) cgCorrente.alpha = 0f;
+            canvasCorrente.SetActive(false);
+        }
+        else if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
         }
 
-        float startAlpha = canvasGroupAttuale.alpha;
+        canvasCorrente = nuovoCanvas;
+        cgCorrente = canvasCorrente.GetComponent<CanvasGroup>();
+        if (cgCorrente == null)
+        {
+            cgCorrente = canvasCorrente.AddComponent<CanvasGroup>();
+        }
+
+        canvasCorrente.SetActive(true);
+        fadeCoroutine = StartCoroutine(EseguiFade(cgCorrente, canvasCorrente, 1f, true));
+    }
+
+    private void NascondiCanvas()
+    {
+        if (canvasCorrente == null) return;
+
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+        fadeCoroutine = StartCoroutine(EseguiFade(cgCorrente, canvasCorrente, 0f, false));
+    }
+
+    private IEnumerator EseguiFade(CanvasGroup cg, GameObject canvas, float targetAlpha, bool attivazione)
+    {
+        float startAlpha = cg.alpha;
         float time = 0f;
 
         while (time < durataFade)
         {
             time += Time.deltaTime;
-            canvasGroupAttuale.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / durataFade);
+            cg.alpha = Mathf.Lerp(startAlpha, targetAlpha, time / durataFade);
             yield return null;
         }
 
-        canvasGroupAttuale.alpha = targetAlpha;
+        cg.alpha = targetAlpha;
 
         if (!attivazione)
         {
-            canvasAttivo.SetActive(false);
-            canvasAttivo = null;
-            canvasGroupAttuale = null;
+            canvas.SetActive(false);
+
+            if (canvasCorrente == canvas)
+            {
+                canvasCorrente = null;
+                cgCorrente = null;
+            }
         }
+
+        fadeCoroutine = null;
     }
 
-    public bool IsCardInSocket() => cardInSocket == true;
-
+    public bool IsCardInSocket() => cardInSocket;
 }
