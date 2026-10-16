@@ -71,6 +71,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "25ddb523-d530-4bb9-b999-b6f2a99cf7c6",
+                    "path": "<XRController>{RightHand}/{secondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "LeftHandMenu",
                     "id": "5a827977-1f67-421a-9c43-238656bea3af",
                     "path": "OneModifier",
@@ -107,6 +118,17 @@
                     "name": "",
                     "id": "ef10a520-4cd4-4240-88bf-f499e0fd7171",
                     "path": "<QuestTouchPlusController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenHandMenuLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb3e9d86-6760-4cf3-8ee2-1041ad60458e",
+                    "path": "<XRController>{LeftHand}/{secondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -152,6 +174,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "9a32dae7-9d7d-4504-8287-e051195569ab",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "RightHandHTCVive",
                     "id": "b940641f-946a-4426-8b6c-ea88b9226383",
                     "path": "OneModifier",
@@ -188,6 +221,17 @@
                     "name": "",
                     "id": "24f62ea0-bdbf-4475-ace9-c70153f6df8f",
                     "path": "<QuestTouchPlusController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CustomVRActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdd2d40d-600a-4d14-9675-1ebe55efeba0",
+                    "path": "<XRController>{LefttHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -249,6 +293,17 @@
                     "name": "",
                     "id": "cfb6f44d-569d-4f0f-81e3-ddf8db7468c4",
                     "path": "<QuestTouchPlusController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e63d449-1695-4fdd-aa90-253434b48b02",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
