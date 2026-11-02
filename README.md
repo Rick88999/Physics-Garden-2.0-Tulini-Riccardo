@@ -1,6 +1,12 @@
 # VR Physic Garden 2
 
-Gioco educativo in realtà virtuale per l'apprendimento e/o il ripasso della fisica, sviluppato in Unity 
+🇮🇹 [Italiano](#-italiano) | 🇬🇧 [English](#-english)
+
+---
+
+# 🇮🇹 Italiano
+
+Gioco educativo in realtà virtuale per l'apprendimento e/o il ripasso della fisica, sviluppato in Unity
 come progetto di tesi triennale in Ingegneria dell'Informazione (Informatica), Sapienza Università di Roma.
 
 Il giocatore esplora un laboratorio virtuale e interagisce con simulazioni fisiche in prima persona, risolvendo i vari esperimenti.
@@ -23,7 +29,7 @@ Il giocatore esplora un laboratorio virtuale e interagisce con simulazioni fisic
 - Unity `(LTS)` `6000.3.11f1` con Universal Render Pipeline (URP)
 - XR Interaction Toolkit
 - Visore compatibile (vedi sopra)
-- NerverSoft JSON
+- Newtonsoft JSON
 
 ## Come avviare il progetto
 
@@ -57,7 +63,7 @@ Il codice è pensato per essere ampliato da futuri tesisti.
 
 - Fai un fork del repository e lavora sul tuo ramo, al fine di continuare la tesi
   (suggerisco nel nome del ramo di aggiungere il nome del tesista o almeno l'anno di tesi).
-- Il ramo main è bloccato. Se vuoi proponi le modifiche con una pull request, che verrà valutata dall'autore.
+- Il ramo main è bloccato. Se vuoi, proponi le modifiche con una pull request, che verrà valutata dall'autore.
 - Le impostazioni dei moduli fisici sono configurabili dall'Inspector di Unity.
 
 ## Autore
@@ -67,3 +73,75 @@ Riccardo Tulini
 ## Licenza
 
 Distribuito con una licenza MIT modificata. Vedi il file [LICENSE](LICENSE).
+
+---
+
+# 🇬🇧 English
+
+An educational virtual reality game for learning and/or reviewing physics, developed in Unity
+as a bachelor's thesis project in Information Engineering (Computer Science track), Sapienza University of Rome.
+
+The player explores a virtual laboratory and interacts with physics simulations in first person, solving the various experiments.
+
+## Features
+
+- **Pure rolling**: spheres and cylinders on an adjustable inclined plane, with custom friction and surface normal detection via raycast.
+- **Hot air balloon**: simulation based on Archimedes' principle and dynamic damping, with objects that can be carried in the basket.
+- **Scale**: physical interaction mechanics with objects and masses.
+- **Interactive terminal**: formulas rendered with TextMeshPro and answer validation with a tolerance tied to the PhysX simulation error.
+- **Multi-headset support**: automatic controller type detection and management of lighting, audio and bloom from the VR settings.
+
+## Supported platforms
+
+- Meta Quest 3
+- HTC Vive CE
+
+## Requirements
+
+- Unity `(LTS)` `6000.3.11f1` with Universal Render Pipeline (URP)
+- XR Interaction Toolkit
+- Compatible headset (see above)
+- Newtonsoft JSON
+
+## Getting started
+
+1. Clone the repository:
+   ```bash
+   git clone [REPOSITORY-URL]
+   ```
+2. Open the folder with Unity Hub, using the version indicated above.
+3. Open the main scene `SampleScene`.
+4. Connect the headset (Link/USB) and press Play.
+
+## Controls
+
+| Headset | Movement | Actions |
+|---|---|---|
+| Meta Quest 3 | Controller stick | Grip to grab, A/B/X/Y buttons |
+| HTC Vive CE | Left trackpad | Right trackpad emulates A/B/X/Y |
+
+## Project structure
+
+```
+Assets/
+  Scripts/     # simulation logic and VR interaction
+  Scenes/      # game scenes
+  Models/      # 3D models
+```
+
+## For those who want to extend the project, future thesis students
+
+The code is designed to be extended by future thesis students.
+
+- Fork the repository and work on your own branch in order to continue the thesis
+  (I suggest adding the student's name, or at least the thesis year, to the branch name).
+- The main branch is locked. If you wish, propose your changes through a pull request, which will be reviewed by the author.
+- The settings of the physics modules can be configured from the Unity Inspector.
+
+## Author
+
+Riccardo Tulini
+
+## License
+
+Distributed under a modified MIT license. See the [LICENSE](LICENSE) file.
