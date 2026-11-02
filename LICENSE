@@ -1,6 +1,6 @@
-MIT License
+MIT License (with relaxed attribution for extensions)
 
-Copyright (c) 2026 Ryckie45/Riccardo Tulini
+Copyright (c) 2026 Riccardo Tulini
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11,6 +11,14 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+Attribution relaxation: works that extend, modify or build upon the Software
+("Extensions") are not required to credit the copyright holder as the author
+of the Extension or of the system as a whole, nor to display the copyright
+holder's name in the Extension's documentation, user interface or credits.
+The copyright notice and this permission notice must be retained only in the
+copies or substantial portions of the original, unmodified Software that the
+Extension contains.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
