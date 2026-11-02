@@ -72,7 +72,7 @@ Riccardo Tulini
 
 ## Licenza
 
-Distribuito con una licenza MIT modificata. Vedi il file [LICENSE](LICENSE).
+Distribuito con una licenza MIT. Vedi il file [LICENSE](LICENSE).
 
 ---
 
@@ -144,4 +144,4 @@ Riccardo Tulini
 
 ## License
 
-Distributed under a modified MIT license. See the [LICENSE](LICENSE) file.
+Distributed under a MIT license. See the [LICENSE](LICENSE) file.
