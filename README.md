@@ -1,4 +1,4 @@
-# VR Physic Garden 2
+# VR Physics Garden 2
 
 🇮🇹 [Italiano](#-italiano) | 🇬🇧 [English](#-english)
 
