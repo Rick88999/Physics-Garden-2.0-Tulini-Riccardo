@@ -6,6 +6,22 @@
 
 # 🇮🇹 Italiano
 
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/12947a1d-50da-40e6-96ff-62ba64eb2470" width="400" alt="Immagine 1"></td>
+    <td><img src="https://github.com/user-attachments/assets/ca9341d9-75ce-476b-ab4b-0227c7116309" width="400" alt="Immagine 2"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a9c6c404-9b2b-4bb5-be38-de7705791b55" width="400" alt="Immagine 3"></td>
+    <td><img src="https://github.com/user-attachments/assets/897a195b-2e9e-40fa-9897-0d5663f4a2de" width="400" alt="Immagine 4"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="https://github.com/user-attachments/assets/5c6adb40-3525-4f08-a342-98bc351fbb75" width="400" alt="Immagine 5"></td>
+  </tr>
+</table>
+
+
+
 Gioco educativo in realtà virtuale per l'apprendimento e/o il ripasso della fisica, sviluppato in Unity
 come progetto di tesi triennale in Ingegneria dell'Informazione (Informatica), Sapienza Università di Roma.
 
@@ -18,6 +34,9 @@ Il giocatore esplora un laboratorio virtuale e interagisce con simulazioni fisic
 - **Bilancia**: meccaniche di interazione fisica con oggetti e masse.
 - **Terminale interattivo**: formule renderizzate con TextMeshPro e validazione delle risposte con tolleranza legata all'errore della simulazione PhysX.
 - **Supporto multi-visore**: rilevamento automatico del tipo di controller e gestione di luci, audio e bloom dalle impostazioni VR.
+
+
+
 
 ## Piattaforme supportate
 
@@ -77,6 +96,19 @@ Distribuito con una licenza MIT. Vedi il file [LICENSE](LICENSE).
 ---
 
 # 🇬🇧 English
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/12947a1d-50da-40e6-96ff-62ba64eb2470" width="400" alt="Immagine 1"></td>
+    <td><img src="https://github.com/user-attachments/assets/ca9341d9-75ce-476b-ab4b-0227c7116309" width="400" alt="Immagine 2"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a9c6c404-9b2b-4bb5-be38-de7705791b55" width="400" alt="Immagine 3"></td>
+    <td><img src="https://github.com/user-attachments/assets/897a195b-2e9e-40fa-9897-0d5663f4a2de" width="400" alt="Immagine 4"></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="https://github.com/user-attachments/assets/5c6adb40-3525-4f08-a342-98bc351fbb75" width="400" alt="Immagine 5"></td>
+  </tr>
+</table>
 
 An educational virtual reality game for learning and/or reviewing physics, developed in Unity
 as a bachelor's thesis project in Information Engineering (Computer Science track), Sapienza University of Rome.
